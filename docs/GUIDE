@@ -1,0 +1,184 @@
+# 头哥侃码 Reboot 用户指南
+
+本指南说明如何把 `touge-writing-reboot-skill` 用在不同场景里。核心原则只有一个：这个仓库是 skill 和知识能力包，不默认充当在线服务。是否做成服务、接入飞书、接入企业微信、写入石墨文档，都应该由外部 AI Agent 或业务系统负责。
+
+## 1. 在 Codex 中直接使用
+
+适合个人写作、改稿、标题、口播稿和风格审计。
+
+安装目录：
+
+```text
+~/.codex/skills/touge-writing-reboot-skill
+```
+
+调用方式：
+
+```text
+请使用 $touge-writing-reboot-skill，把这个主题写成一篇我的风格文章
+```
+
+常见任务：
+
+- 写一篇技术趋势判断文章。
+- 把一段很官方的稿子改得更像“头哥侃码”。
+- 判断一段文字哪里 AI 味太重。
+- 对职业选择、组织问题、技术转型问题给出交流式回应。
+
+## 2. 安装到外部 AI Agent
+
+适合把“头哥侃码 Reboot”变成某个 Agent 的能力模块，再由这个 Agent 连接飞书、企业微信、石墨文档或内部知识库。
+
+生成 Agent 上下文包：
+
+```bash
+python3 scripts/build_agent_context.py \
+  --scenario qa \
+  --channel feishu \
+  --agent-name touge-internal-qa-agent \
+  --out /tmp/touge-agent-context.md
+```
+
+外部 Agent 应该把 `/tmp/touge-agent-context.md` 作为 system/developer context 或长期知识文件加载。加载后，Agent 负责：
+
+- 接收用户消息。
+- 调用模型。
+- 决定是否检索私有知识库。
+- 执行飞书、企业微信或文档写入工具。
+- 记录日志、权限、审计和人工接管。
+
+skill 只负责提供风格、判断协议、输出契约和边界，不负责持有任何平台 token。
+
+## 3. 接入飞书
+
+推荐结构：
+
+```text
+Feishu Event
+-> FeishuAdapter
+-> unified inbound envelope
+-> AI Agent Runtime
+-> touge-writing-reboot-skill context
+-> unified reply envelope
+-> FeishuAdapter
+```
+
+飞书适合的场景：
+
+- 内部知识问答。
+- 技术判断类咨询。
+- 文章选题讨论。
+- 先生成草稿，再由本人确认发送。
+
+建议自动化等级：
+
+- 默认 L1：只生成草稿，人工确认。
+- 对低风险 FAQ 可升到 L2：低风险自动回复，高风险人工接管。
+- 不建议一开始 L3 全自动。
+
+## 4. 接入企业微信
+
+企业微信通常会接触员工、客户或外部联系人，权限边界要更严格。
+
+建议策略：
+
+- 内部员工群：可以做 L1/L2。
+- 客户或外部联系人：默认 L1。
+- 涉及价格、承诺、合同、法律、财务、医疗、招聘结论：必须人工接管。
+
+企业微信 Adapter 不应该把企微字段直接塞进 skill 规则里。它只需要转换成统一输入：
+
+```json
+{
+  "channel": "wecom",
+  "conversation_id": "...",
+  "sender_id": "...",
+  "sender_role": "external_user",
+  "text": "用户问题",
+  "attachments": [],
+  "timestamp": "..."
+}
+```
+
+## 5. 写入石墨文档指定目录
+
+如果最终不是直接发布到某个内容平台，而是写入石墨文档，应该把石墨当成目标系统，不要让 skill 直接处理账号和权限。
+
+推荐流程：
+
+```text
+用户提出主题
+-> Agent 使用 skill 生成草稿
+-> 风格审计
+-> 人工确认或策略审批
+-> ShimoDocumentAdapter 写入指定目录
+-> Agent 返回文档链接和审计备注
+```
+
+文档标题可以由 `titles` 模式生成。正文由 `write` 或 `rewrite` 模式生成。是否发布到公众号、朋友圈、知识库或其他平台，由使用者在石墨之后自行决定。
+
+## 6. 包装成服务
+
+如果需要把“头哥侃码 Reboot”本身包装成服务，可以做一个外部服务壳：
+
+```text
+HTTP API
+-> Auth and policy
+-> Agent Runtime
+-> skill context
+-> optional private retriever
+-> response and audit log
+```
+
+最小 API：
+
+```json
+{
+  "mode": "write | rewrite | conversation | reboot | audit | titles",
+  "topic": "string",
+  "draft": "optional string",
+  "user_context": "optional string",
+  "sharpness": "low | medium | high"
+}
+```
+
+这种方式适合多端复用，但要注意：服务化的是外部 Agent Runtime，不是这个 skill 仓库本身。这个仓库仍然只提供能力包、脚本和规则。
+
+## 7. 私有语料增强
+
+公开仓库不放原文语料。如果本地有私有 manifest，可以在生成 prompt 或 Agent context 前先检索相关旧文：
+
+```bash
+python3 scripts/private_retriever.py \
+  --manifest /path/to/private/corpus/manifest.json \
+  --query "技术人转管理 岗位选择 职业判断" \
+  --top-k 5
+```
+
+私有语料只能作为 grounding，不应该直接复制到最终回复，也不应该提交到公开仓库。
+
+## 8. 评测与验收
+
+每次产品化使用前至少做三类检查：
+
+```bash
+python3 scripts/preflight_check.py
+python3 scripts/style_eval.py /path/to/draft.md
+python3 scripts/build_agent_context.py --scenario all --channel generic > /tmp/touge-agent-context.md
+```
+
+人工验收建议：
+
+- 10 个真实问题。
+- 至少覆盖写作、交流、改稿、reboot、标题五类。
+- 标记“哪里像、哪里不像、哪里不能自动发”。
+- 把稳定规则写回 `references/`，不要把一次性偏好写成永久规则。
+
+## 9. 推荐落地顺序
+
+1. 先在 Codex 中手工使用 skill，积累可接受输出。
+2. 用 `build_agent_context.py` 接入一个外部 Agent。
+3. 接飞书或企业微信，但默认只生成草稿。
+4. 加私有知识库检索和人工接管。
+5. 再考虑低风险 FAQ 自动回复。
+6. 最后才考虑服务化或多端自动化。

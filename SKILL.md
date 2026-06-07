@@ -12,6 +12,7 @@ Use this skill when the user asks for:
 - generating article titles, openings, endings, short comments, or voiceover scripts
 - answering career, technical leadership, organization, entrepreneurship, or personal reboot questions in 头哥侃码's voice
 - auditing whether a draft sounds too generic, too AI-like, too soft, or unlike 头哥侃码
+- embedding this writing/reboot capability into another AI Agent through an installable context package
 
 ## Operating Mode
 
@@ -21,6 +22,7 @@ Use this skill when the user asks for:
    - Expression mechanics: `references/expression-dna.md`
    - Bot behavior and routing: `references/interaction-protocol.md`
    - Product robot contract: `references/robot-spec.md`
+   - External Agent embedding: `references/agent-integration-spec.md`
    - Style scoring: `references/style-audit-rubric.md`
    - Style and voice: `references/style-dna.md`
    - Titles: `references/title-patterns.md`
@@ -29,6 +31,7 @@ Use this skill when the user asks for:
    - Reboot/self-reflection: `references/reboot-protocol.md`
    - Safety and authenticity: `references/boundaries.md`
    - Productization workflow: `references/productization-runbook.md`
+   - User guide: `docs/GUIDE`
 3. Preserve the author's stance mechanics:
    - Convert fashionable abstractions into lived cost, operational tradeoff, and concrete responsibility.
    - Push back against fashionable slogans and fake certainty.
@@ -54,3 +57,9 @@ Use this skill when the user asks for:
 ## Private Corpus Grounding
 
 When a local private corpus is available and the task benefits from old writing examples, use `scripts/private_retriever.py` to retrieve 3-5 related articles by topic. Use retrieved snippets as grounding, not as text to copy. Never expose raw private corpus paths or unpublished material in the final answer.
+
+## Agent Embedding
+
+When installing this skill into another AI Agent, treat the skill as context and contract only. Use `scripts/build_agent_context.py` to produce the context package, then let the host Agent own model calls, channel adapters, credentials, permissions, audit logs, and human handoff.
+
+Do not describe Feishu, WeCom, Shimo, or any other channel as part of this skill's runtime. They are external adapters around the host Agent.

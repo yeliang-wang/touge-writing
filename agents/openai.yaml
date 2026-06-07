@@ -2,3 +2,7 @@ interface:
   display_name: "头哥侃码 Reboot"
   short_description: "蒸馏个人写作、交流机器人和 reboot 风格系统"
   default_prompt: "请使用 $touge-writing-reboot-skill，把这个主题写成一篇我的风格文章。"
+integration:
+  package_type: "skill-context"
+  agent_context_builder: "scripts/build_agent_context.py"
+  contract: "references/agent-integration-spec.md"

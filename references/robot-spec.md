@@ -10,12 +10,13 @@
 - Rewrite generic drafts into a sharper, more grounded voice.
 - Answer career, technical leadership, organization, entrepreneurship, and personal reboot questions.
 - Audit whether a draft matches the style system.
+- Provide an installable context contract for an external AI Agent.
 
 ## Inputs
 
 ```json
 {
-  "mode": "write | rewrite | diagnose | reboot | audit | titles",
+  "mode": "write | rewrite | diagnose | conversation | reboot | audit | titles",
   "topic": "string",
   "user_context": "optional string",
   "draft": "optional string",
@@ -35,6 +36,7 @@ Always available:
 - `references/cognitive-os.md`
 - `references/expression-dna.md`
 - `references/interaction-protocol.md`
+- `references/agent-integration-spec.md`
 - `references/boundaries.md`
 
 Mode-specific:
@@ -72,6 +74,20 @@ Optional private grounding:
   "tradeoff": "...",
   "reply": "...",
   "next_actions": ["..."]
+}
+```
+
+### Agent Reply
+
+```json
+{
+  "reply_type": "answer | draft | ask_clarification | handoff | reject",
+  "mode": "conversation | write | rewrite | reboot | audit | titles",
+  "text": "...",
+  "confidence": 0.82,
+  "need_human_review": false,
+  "risk_tags": ["..."],
+  "audit_note": "..."
 }
 ```
 

@@ -66,16 +66,39 @@ user question
 -> answer with diagnosis, tradeoff, and next action
 ```
 
-## 5. Release Checklist
+## 5. External Agent Embedding
 
-- `quick_validate.py` passes.
+Generate a context package for the target Agent:
+
+```bash
+python3 scripts/build_agent_context.py \
+  --scenario qa \
+  --channel feishu \
+  --agent-name touge-internal-qa-agent \
+  --out /tmp/touge-agent-context.md
+```
+
+The target Agent should load the generated context as system/developer instructions or as a pinned knowledge file. The Agent, not this skill, owns:
+
+- model calls
+- Feishu, WeCom, web, or document adapters
+- credentials and permissions
+- conversation state and memory
+- audit logs and human handoff
+
+For channel integration, use the contract in `references/agent-integration-spec.md`.
+
+## 6. Release Checklist
+
+- `python3 scripts/preflight_check.py` passes.
 - No raw corpus files are committed.
 - No account token, cookie, temporary key, or local private path is committed.
 - `evals/tasks.jsonl` has at least five product scenarios.
+- `scripts/build_agent_context.py --scenario all --channel generic` can generate an Agent context package.
 - A human owner has reviewed 10 generated outputs and marked at least 8 as acceptable.
 - Public bot surfaces disclose that this is an AI persona system, not the real person.
 
-## 6. Feedback Loop
+## 7. Feedback Loop
 
 Record owner feedback outside the public repository:
 
@@ -93,6 +116,6 @@ python3 scripts/record_feedback.py \
 
 Fold stable revision rules back into references after review.
 
-## 7. Current Non-Automatable Gate
+## 8. Current Non-Automatable Gate
 
 The final quality gate requires the author to score real outputs. Without that human preference loop, the system can be product-ready as a package, but not honestly called a 100% faithful writing/persona robot.

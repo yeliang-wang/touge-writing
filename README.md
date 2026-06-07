@@ -1,6 +1,6 @@
 # 头哥侃码写作与人格 Reboot Skill
 
-这是一个面向个人写作、交流机器人和 reboot 型人格蒸馏的公开仓库骨架。它参考了 `zhangxuefeng-skill`、`nuwa-skill` 这类 persona distill 项目的结构，但目标不是复刻某个公众人物，而是把一个长期写作者的公开表达沉淀为可执行的写作与交流系统。
+这是一个面向个人写作、交流机器人和 reboot 型人格蒸馏的公开 skill 仓库。它把“头哥侃码”的长期公开表达沉淀为可执行的写作、交流、风格审计和 Agent 嵌入能力。
 
 ## 当前语料快照
 
@@ -17,16 +17,20 @@
 2. 交流机器人：以作者常见判断方式回应职业、技术、组织、创业、个人状态类问题。
 3. Reboot 模块：重建作者的价值判断、表达边界、反应模式和自我校准机制。
 4. 风格审计：判断一段文字哪里不像作者，哪里 AI 味太重，如何改。
+5. Agent 嵌入：把 skill 安装到外部 AI Agent 中，通过飞书、企业微信、石墨文档等系统完成问答、草稿和知识协作。
 
 ## 目录
 
 ```text
 .
 ├── SKILL.md
+├── docs/
+│   └── GUIDE
 ├── references/
 │   ├── cognitive-os.md
 │   ├── expression-dna.md
 │   ├── interaction-protocol.md
+│   ├── agent-integration-spec.md
 │   ├── style-audit-rubric.md
 │   ├── distillation-report.md
 │   ├── robot-spec.md
@@ -45,6 +49,7 @@
 └── scripts/
     ├── fetch_wechat_articles.py
     ├── build_robot_prompt.py
+    ├── build_agent_context.py
     ├── private_retriever.py
     ├── record_feedback.py
     └── style_eval.py
@@ -60,15 +65,37 @@
 
 也可以作为通用 prompt/agent 知识库，把 `SKILL.md` 和 `references/` 接入自己的机器人。
 
+如果要安装到外部 AI Agent 中，先生成一个 Agent 上下文包：
+
+```bash
+python3 scripts/build_agent_context.py \
+  --scenario qa \
+  --channel feishu \
+  --out /tmp/touge-agent-context.md
+```
+
+外部 Agent 负责模型调用、权限、审计、飞书/企业微信连接和人工接管；本 skill 负责提供风格、判断协议、输出契约和边界。
+
 ## 蒸馏层次
 
 - `cognitive-os.md`：判断循环、价值坐标、主题簇。
 - `expression-dna.md`：标题、开头、短语、段落运动和语气机制。
 - `interaction-protocol.md`：写作机器人、交流机器人和 reboot 模式的路由协议。
+- `agent-integration-spec.md`：把 skill 嵌入外部 AI Agent、IM 通道和知识问答场景的产品契约。
 - `style-audit-rubric.md`：用 15 分制检查一段输出是否贴近风格系统。
 - `distillation-report.md`：从私有语料中提取出的总体结论。
 - `robot-spec.md`：写作/交流/reboot 机器人输入输出契约。
 - `productization-runbook.md`：本地运行、私有检索、评测和发布检查流程。
+
+## 用户指南
+
+完整场景指南见 [`docs/GUIDE`](docs/GUIDE)，包括：
+
+- 在 Codex 中作为 `$touge-writing-reboot-skill` 使用。
+- 安装到外部 AI Agent，连接飞书或企业微信。
+- 把输出写入石墨文档指定目录。
+- 将“头哥侃码 Reboot”包装成服务。
+- 私有语料、评测、人工反馈和发布检查。
 
 ## 私有语料检索
 
