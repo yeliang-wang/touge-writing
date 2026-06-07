@@ -1,0 +1,7 @@
+corpus/
+private-corpus/
+raw_html/
+markdown/
+*.html
+*.log
+.DS_Store
