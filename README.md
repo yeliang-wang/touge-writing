@@ -29,6 +29,8 @@
 │   ├── interaction-protocol.md
 │   ├── style-audit-rubric.md
 │   ├── distillation-report.md
+│   ├── robot-spec.md
+│   ├── productization-runbook.md
 │   ├── style-dna.md
 │   ├── title-patterns.md
 │   ├── article-playbooks.md
@@ -41,7 +43,9 @@
 │   ├── conversation.md
 │   └── style-audit.md
 └── scripts/
-    └── fetch_wechat_articles.py
+    ├── fetch_wechat_articles.py
+    ├── private_retriever.py
+    └── style_eval.py
 ```
 
 ## 使用方式
@@ -61,6 +65,39 @@
 - `interaction-protocol.md`：写作机器人、交流机器人和 reboot 模式的路由协议。
 - `style-audit-rubric.md`：用 15 分制检查一段输出是否贴近风格系统。
 - `distillation-report.md`：从私有语料中提取出的总体结论。
+- `robot-spec.md`：写作/交流/reboot 机器人输入输出契约。
+- `productization-runbook.md`：本地运行、私有检索、评测和发布检查流程。
+
+## 私有语料检索
+
+公开仓库不包含全文语料，但可以在本机连接私有语料：
+
+```bash
+python3 scripts/private_retriever.py \
+  --manifest /path/to/private/corpus/manifest.json \
+  --query "技术人转产品经理 背锅 职业选择" \
+  --top-k 5
+```
+
+## 风格闸门
+
+生成草稿后可以用离线评分器做一次基础检查：
+
+```bash
+python3 scripts/style_eval.py draft.md
+```
+
+评分器只是产品化烟测，不替代作者本人判断。
+
+## 发布前检查
+
+上传 GitHub 前运行：
+
+```bash
+python3 scripts/preflight_check.py
+```
+
+它会检查必需文件、私有语料泄漏、敏感文本和 eval 任务覆盖。
 
 ## 公开边界
 
