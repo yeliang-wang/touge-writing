@@ -11,12 +11,13 @@
 - Answer career, technical leadership, organization, entrepreneurship, and personal reboot questions.
 - Audit whether a draft matches the style system.
 - Provide an installable context contract for an external AI Agent.
+- Support registered custom capabilities such as product-manager Q&A.
 
 ## Inputs
 
 ```json
 {
-  "mode": "write | rewrite | diagnose | conversation | reboot | audit | titles",
+  "mode": "write | rewrite | diagnose | conversation | reboot | audit | titles | product_qa",
   "topic": "string",
   "user_context": "optional string",
   "draft": "optional string",
@@ -37,7 +38,9 @@ Always available:
 - `references/expression-dna.md`
 - `references/interaction-protocol.md`
 - `references/agent-integration-spec.md`
+- `references/evolution-spec.md`
 - `references/boundaries.md`
+- `configs/capabilities.json`
 
 Mode-specific:
 
@@ -45,6 +48,7 @@ Mode-specific:
 - conversation: `conversation-persona.md`
 - reboot: `reboot-protocol.md`
 - audit: `style-audit-rubric.md`
+- product_qa: `product-manager-capability.md`
 
 Optional private grounding:
 
@@ -88,6 +92,20 @@ Optional private grounding:
   "need_human_review": false,
   "risk_tags": ["..."],
   "audit_note": "..."
+}
+```
+
+### Product Q&A
+
+```json
+{
+  "question_reframe": "...",
+  "known_facts": ["..."],
+  "missing_facts": ["..."],
+  "tradeoff": "...",
+  "recommendation": "...",
+  "next_actions": ["..."],
+  "need_human_review": false
 }
 ```
 

@@ -174,11 +174,64 @@ python3 scripts/build_agent_context.py --scenario all --channel generic > /tmp/t
 - 标记“哪里像、哪里不像、哪里不能自动发”。
 - 把稳定规则写回 `references/`，不要把一次性偏好写成永久规则。
 
-## 9. 推荐落地顺序
+## 9. 持续语料接入
+
+后续企业微信、飞书、产品文档、会议纪要、客户反馈都可以接入，但原始材料必须留在私有目录，不进入公开仓库。
+
+示例：导入企业微信聊天记录。
+
+```bash
+python3 scripts/ingest_corpus.py \
+  --source-type wecom_chat \
+  --source-id wecom_im_export \
+  --input /path/to/private/wecom/export.jsonl \
+  --out-dir /path/to/private/evolution-corpus \
+  --tag im_chat \
+  --tag product_qa \
+  --redact
+```
+
+导入后的私有目录会包含：
+
+```text
+manifest.jsonl
+documents/
+```
+
+`manifest.jsonl` 用于后续检索、抽样、评测和蒸馏。真正写回公开仓库的，只能是稳定规则、能力定义、合成样例和聚合统计。
+
+## 10. 自定义能力扩展
+
+新增能力先改 `configs/capabilities.json`，不要直接把能力写死在 `SKILL.md`。
+
+例如要支持“某某产品的产品经理能力”：
+
+```text
+1. 在 configs/capabilities.json 注册 product_manager_qa 或新的产品能力。
+2. 把产品事实放到私有 product_doc 语料源。
+3. 使用 references/product-manager-capability.md 定义回答结构和边界。
+4. 在 evals/tasks.jsonl 增加产品问答样例。
+5. 通过 build_agent_context.py --scenario product_pm 生成 Agent 上下文。
+```
+
+生成产品经理能力上下文：
+
+```bash
+python3 scripts/build_agent_context.py \
+  --scenario product_pm \
+  --channel wecom \
+  --out /tmp/touge-product-pm-context.md
+```
+
+注意：skill 可以提供“像头哥一样做产品判断”的方法，但不能凭空知道某个产品的路线图、价格、客户承诺和线上事故。这些必须来自外部生产知识库。
+
+## 11. 推荐落地顺序
 
 1. 先在 Codex 中手工使用 skill，积累可接受输出。
 2. 用 `build_agent_context.py` 接入一个外部 Agent。
 3. 接飞书或企业微信，但默认只生成草稿。
 4. 加私有知识库检索和人工接管。
 5. 再考虑低风险 FAQ 自动回复。
-6. 最后才考虑服务化或多端自动化。
+6. 接入企业微信/飞书聊天记录，形成私有 evolution corpus。
+7. 注册第一个自定义能力，例如产品经理问答。
+8. 最后才考虑服务化或多端自动化。

@@ -11,9 +11,11 @@ BASE_FILES = [
     "SKILL.md",
     "references/robot-spec.md",
     "references/agent-integration-spec.md",
+    "references/evolution-spec.md",
     "references/cognitive-os.md",
     "references/interaction-protocol.md",
     "references/boundaries.md",
+    "configs/capabilities.json",
 ]
 
 SCENARIO_FILES = {
@@ -25,6 +27,7 @@ SCENARIO_FILES = {
         "references/reboot-protocol.md",
         "references/style-audit-rubric.md",
         "references/productization-runbook.md",
+        "references/product-manager-capability.md",
     ],
     "writing": [
         "references/expression-dna.md",
@@ -40,6 +43,16 @@ SCENARIO_FILES = {
     "audit": [
         "references/expression-dna.md",
         "references/style-audit-rubric.md",
+    ],
+    "product_pm": [
+        "references/conversation-persona.md",
+        "references/product-manager-capability.md",
+        "references/style-audit-rubric.md",
+    ],
+    "evolution": [
+        "references/evolution-spec.md",
+        "references/productization-runbook.md",
+        "configs/corpus-sources.example.json",
     ],
 }
 

@@ -45,6 +45,8 @@ def check_required_files():
         "references/expression-dna.md",
         "references/interaction-protocol.md",
         "references/agent-integration-spec.md",
+        "references/evolution-spec.md",
+        "references/product-manager-capability.md",
         "references/robot-spec.md",
         "references/evaluation-report.md",
         "references/style-audit-rubric.md",
@@ -55,7 +57,11 @@ def check_required_files():
         "evals/outputs/rewrite_ai_smell.md",
         "evals/outputs/reboot_low_point.md",
         "evals/outputs/title_set.md",
+        "evals/outputs/product_qa_missing_context.md",
         "docs/GUIDE",
+        "configs/capabilities.json",
+        "configs/corpus-sources.example.json",
+        "scripts/ingest_corpus.py",
         "scripts/build_agent_context.py",
         "scripts/build_robot_prompt.py",
         "scripts/private_retriever.py",
@@ -80,10 +86,11 @@ def check_no_private_files():
 
 def check_no_secret_text():
     hits = []
+    allowed_checker_files = {"preflight_check.py", "ingest_corpus.py"}
     for path in ROOT.rglob("*"):
         if ".git" in path.parts or not path.is_file():
             continue
-        if path.name == "preflight_check.py":
+        if path.name in allowed_checker_files:
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
         for pat in SECRET_PATTERNS:
@@ -103,9 +110,27 @@ def check_evals():
     modes = {r["mode"] for r in rows}
     if len(rows) < 5:
         return fail("expected at least 5 eval tasks")
-    if not {"write", "conversation", "rewrite", "reboot", "titles"}.issubset(modes):
+    if not {"write", "conversation", "rewrite", "reboot", "titles", "product_qa"}.issubset(modes):
         return fail(f"missing eval modes: {modes}")
     return ok("eval suite covers core modes")
+
+
+def check_capabilities():
+    path = ROOT / "configs" / "capabilities.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    seen = set()
+    missing = []
+    for capability in data.get("capabilities", []):
+        cap_id = capability.get("id")
+        if not cap_id:
+            return fail("capability without id")
+        if cap_id in seen:
+            return fail(f"duplicate capability id: {cap_id}")
+        seen.add(cap_id)
+        for ref in capability.get("required_references", []):
+            if not (ROOT / ref).exists():
+                missing.append(f"{cap_id}:{ref}")
+    return ok("capability registry valid") if not missing else fail(f"capability references missing: {missing}")
 
 
 def main():
@@ -114,6 +139,7 @@ def main():
         check_no_private_files(),
         check_no_secret_text(),
         check_evals(),
+        check_capabilities(),
     ]
     if all(checks):
         print("[OK] preflight passed")

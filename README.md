@@ -18,6 +18,7 @@
 3. Reboot 模块：重建作者的价值判断、表达边界、反应模式和自我校准机制。
 4. 风格审计：判断一段文字哪里不像作者，哪里 AI 味太重，如何改。
 5. Agent 嵌入：把 skill 安装到外部 AI Agent 中，通过飞书、企业微信、石墨文档等系统完成问答、草稿和知识协作。
+6. 持续进化：接入新的私有语料源和自定义能力，让 skill 从写作/交流扩展到产品经理问答、产品知识问答等场景。
 
 ## 目录
 
@@ -26,11 +27,16 @@
 ├── SKILL.md
 ├── docs/
 │   └── GUIDE
+├── configs/
+│   ├── capabilities.json
+│   └── corpus-sources.example.json
 ├── references/
 │   ├── cognitive-os.md
 │   ├── expression-dna.md
 │   ├── interaction-protocol.md
 │   ├── agent-integration-spec.md
+│   ├── evolution-spec.md
+│   ├── product-manager-capability.md
 │   ├── style-audit-rubric.md
 │   ├── distillation-report.md
 │   ├── robot-spec.md
@@ -48,6 +54,7 @@
 │   └── style-audit.md
 └── scripts/
     ├── fetch_wechat_articles.py
+    ├── ingest_corpus.py
     ├── build_robot_prompt.py
     ├── build_agent_context.py
     ├── private_retriever.py
@@ -82,6 +89,8 @@ python3 scripts/build_agent_context.py \
 - `expression-dna.md`：标题、开头、短语、段落运动和语气机制。
 - `interaction-protocol.md`：写作机器人、交流机器人和 reboot 模式的路由协议。
 - `agent-integration-spec.md`：把 skill 嵌入外部 AI Agent、IM 通道和知识问答场景的产品契约。
+- `evolution-spec.md`：持续接入新语料、能力注册、评测和公开边界的演进协议。
+- `product-manager-capability.md`：面向具体产品/业务系统的产品经理问答能力模板。
 - `style-audit-rubric.md`：用 15 分制检查一段输出是否贴近风格系统。
 - `distillation-report.md`：从私有语料中提取出的总体结论。
 - `robot-spec.md`：写作/交流/reboot 机器人输入输出契约。
@@ -96,6 +105,23 @@ python3 scripts/build_agent_context.py \
 - 把输出写入石墨文档指定目录。
 - 将“头哥侃码 Reboot”包装成服务。
 - 私有语料、评测、人工反馈和发布检查。
+
+## 持续进化入口
+
+新的语料源不要直接提交到公开仓库。先在私有目录里规范化：
+
+```bash
+python3 scripts/ingest_corpus.py \
+  --source-type wecom_chat \
+  --source-id wecom_im_export \
+  --input /path/to/private/wecom/export.jsonl \
+  --out-dir /path/to/private/evolution-corpus \
+  --tag im_chat \
+  --tag product_qa \
+  --redact
+```
+
+新的能力先注册到 `configs/capabilities.json`，再补对应的 `references/*.md` 和 eval 任务。比如“某某产品的产品经理能力”应该接入产品文档、客户反馈和会话语料，但产品事实留在私有知识库，公开仓库只保留能力框架和边界。
 
 ## 私有语料检索
 

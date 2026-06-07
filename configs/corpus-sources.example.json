@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "id": "wechat_articles_2017_2024",
+      "type": "wechat_article",
+      "visibility": "private",
+      "path": "/path/to/private/wechat/corpus/manifest.json",
+      "allowed_uses": ["style_distillation", "private_retrieval", "evaluation"],
+      "forbidden_uses": ["public_commit_raw_text"]
+    },
+    {
+      "id": "wecom_im_export",
+      "type": "wecom_chat",
+      "visibility": "private",
+      "path": "/path/to/private/wecom/export",
+      "allowed_uses": ["conversation_style", "qa_pattern_mining", "private_retrieval"],
+      "forbidden_uses": ["public_commit_raw_text", "verbatim_reply_without_review"]
+    },
+    {
+      "id": "product_docs",
+      "type": "product_doc",
+      "visibility": "private",
+      "path": "/path/to/private/product/docs",
+      "allowed_uses": ["product_qa", "agent_grounding", "evaluation"],
+      "forbidden_uses": ["claim_without_source", "public_commit_confidential_content"]
+    }
+  ]
+}

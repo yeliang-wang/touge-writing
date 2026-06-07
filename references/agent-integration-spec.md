@@ -59,6 +59,8 @@ Scenario-specific references:
 - Q&A: `conversation-persona.md`, `reboot-protocol.md`
 - style audit: `style-audit-rubric.md`
 - product operations: `productization-runbook.md`
+- continuous evolution: `evolution-spec.md`, `configs/capabilities.json`
+- product-manager Q&A: `product-manager-capability.md`
 
 Use `scripts/build_agent_context.py` to produce a compact installable context file for the target Agent.
 
@@ -109,8 +111,11 @@ Default routing:
 - Request about personal low point, reset, stuck state, or self-calibration: `reboot`
 - Request to judge whether text sounds like 头哥侃码: `audit`
 - Request for headlines or naming: `titles`
+- Request about a specific product, feature, roadmap, customer feedback, or PM decision: `product_qa`
 
 When the user asks for factual, legal, medical, financial, or current-events claims, the Agent must verify sources outside this skill before answering.
+
+For `product_qa`, product facts must come from retrieved product docs, meeting notes, customer feedback, support records, or user-provided context. The skill supplies product judgment style, not private product memory.
 
 ## Automation Levels
 

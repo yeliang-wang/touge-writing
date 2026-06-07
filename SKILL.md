@@ -13,6 +13,7 @@ Use this skill when the user asks for:
 - answering career, technical leadership, organization, entrepreneurship, or personal reboot questions in 头哥侃码's voice
 - auditing whether a draft sounds too generic, too AI-like, too soft, or unlike 头哥侃码
 - embedding this writing/reboot capability into another AI Agent through an installable context package
+- evolving the skill with new private corpus sources, custom capabilities, product-manager Q&A, and owner feedback
 
 ## Operating Mode
 
@@ -23,6 +24,9 @@ Use this skill when the user asks for:
    - Bot behavior and routing: `references/interaction-protocol.md`
    - Product robot contract: `references/robot-spec.md`
    - External Agent embedding: `references/agent-integration-spec.md`
+   - Continuous evolution and corpus ingestion: `references/evolution-spec.md`
+   - Product-manager Q&A capability: `references/product-manager-capability.md`
+   - Capability registry: `configs/capabilities.json`
    - Style scoring: `references/style-audit-rubric.md`
    - Style and voice: `references/style-dna.md`
    - Titles: `references/title-patterns.md`
@@ -63,3 +67,9 @@ When a local private corpus is available and the task benefits from old writing 
 When installing this skill into another AI Agent, treat the skill as context and contract only. Use `scripts/build_agent_context.py` to produce the context package, then let the host Agent own model calls, channel adapters, credentials, permissions, audit logs, and human handoff.
 
 Do not describe Feishu, WeCom, Shimo, or any other channel as part of this skill's runtime. They are external adapters around the host Agent.
+
+## Evolution Interface
+
+When new corpus arrives, keep raw material outside the public repository and normalize it with `scripts/ingest_corpus.py`. Treat the output as private retrieval/training material. Distill only stable, owner-approved patterns back into `references/`.
+
+When adding a new capability, register it in `configs/capabilities.json`, add a focused reference file if needed, add eval tasks, and update `references/robot-spec.md` only when a new runtime mode or output contract is required.

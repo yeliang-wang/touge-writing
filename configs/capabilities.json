@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "capabilities": [
+    {
+      "id": "writing",
+      "display_name": "写作机器人",
+      "description": "生成长文、短评、口播稿、标题和二稿。",
+      "modes": ["write", "rewrite", "titles", "audit"],
+      "required_references": [
+        "references/cognitive-os.md",
+        "references/expression-dna.md",
+        "references/article-playbooks.md",
+        "references/title-patterns.md",
+        "references/style-audit-rubric.md",
+        "references/boundaries.md"
+      ],
+      "optional_corpus_tags": ["wechat_article", "draft", "public_post"]
+    },
+    {
+      "id": "conversation",
+      "display_name": "交流机器人",
+      "description": "回应职业、技术、组织、创业、个人状态类问题。",
+      "modes": ["conversation", "diagnose", "reboot"],
+      "required_references": [
+        "references/cognitive-os.md",
+        "references/conversation-persona.md",
+        "references/reboot-protocol.md",
+        "references/boundaries.md"
+      ],
+      "optional_corpus_tags": ["im_chat", "qa", "wechat_article"]
+    },
+    {
+      "id": "reboot",
+      "display_name": "Reboot 模块",
+      "description": "用于自我复盘、低谷处理、状态重启和边界重建。",
+      "modes": ["reboot", "conversation"],
+      "required_references": [
+        "references/cognitive-os.md",
+        "references/reboot-protocol.md",
+        "references/conversation-persona.md",
+        "references/boundaries.md"
+      ],
+      "optional_corpus_tags": ["self_reflection", "im_chat", "wechat_article"]
+    },
+    {
+      "id": "product_manager_qa",
+      "display_name": "产品经理问答能力",
+      "description": "回答某个产品、行业、岗位或业务系统的产品经理类问题。",
+      "modes": ["product_qa", "conversation", "diagnose"],
+      "required_references": [
+        "references/cognitive-os.md",
+        "references/conversation-persona.md",
+        "references/product-manager-capability.md",
+        "references/boundaries.md"
+      ],
+      "optional_corpus_tags": ["product_doc", "prd", "customer_feedback", "im_chat", "meeting_note"]
+    }
+  ],
+  "extension_contract": {
+    "required_fields": ["id", "display_name", "description", "modes", "required_references"],
+    "recommended_fields": ["optional_corpus_tags", "output_contract", "evaluation_tasks"],
+    "rule": "Add new capabilities here first, then add mode-specific references and eval tasks. Do not hard-code a channel or company-specific product into SKILL.md."
+  }
+}
