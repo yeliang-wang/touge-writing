@@ -1,4 +1,4 @@
-# 头哥写作与人格 Reboot Skill
+# 头哥侃码写作与人格 Reboot Skill
 
 这是一个面向个人写作、交流机器人和 reboot 型人格蒸馏的公开仓库骨架。它参考了 `zhangxuefeng-skill`、`nuwa-skill` 这类 persona distill 项目的结构，但目标不是复刻某个公众人物，而是把一个长期写作者的公开表达沉淀为可执行的写作与交流系统。
 

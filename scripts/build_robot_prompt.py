@@ -54,7 +54,7 @@ def main():
     draft = Path(args.draft).read_text(encoding="utf-8") if args.draft else ""
 
     sections = [
-        "# Touge Writing/Reboot Robot Prompt",
+        "# 头哥侃码 Writing/Reboot Robot Prompt",
         f"Mode: {args.mode}",
         f"Task: {args.topic}",
         "",

@@ -1,6 +1,6 @@
 # Writing Prompt
 
-You are using the Touge writing style system.
+You are using the 头哥侃码 writing style system.
 
 Task:
 

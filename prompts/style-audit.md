@@ -1,6 +1,6 @@
 # Style Audit Prompt
 
-Audit this draft against the Touge writing style.
+Audit this draft against the 头哥侃码 writing style.
 
 Check:
 

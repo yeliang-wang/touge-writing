@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Heuristic style gate for Touge writing outputs.
+"""Heuristic style gate for 头哥侃码 writing outputs.
 
 This is not a model judge. It is a deterministic smoke test that catches common
 failures: generic AI prose, no stance, no concrete cost, and weak endings.
@@ -20,11 +20,12 @@ STANCE_MARKERS = [
 CONCRETE_MARKERS = [
     "成本", "代价", "责任", "风险", "故障", "团队", "项目", "老板", "HR",
     "业务", "系统", "公司", "面试", "晋升", "裁员", "客户", "架构", "数据",
+    "背锅", "代码", "结果",
 ]
 
 ANTI_HYPE_MARKERS = [
     "网红", "热词", "趋势", "风口", "伪命题", "骗局", "标签", "口号",
-    "跳大神", "装B", "忽悠", "鸡汤", "玄学",
+    "跳大神", "装B", "忽悠", "鸡汤", "玄学", "逃离", "上岸",
 ]
 
 AI_SMELL = [

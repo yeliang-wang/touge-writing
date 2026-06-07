@@ -1,17 +1,17 @@
 ---
 name: touge-writing-reboot-skill
-description: Use this skill to write, rewrite, critique, or converse in the distilled style of Touge's public writing corpus, including technical-career essays, counter-narrative commentary, reboot-style self-reflection, and direct conversation responses.
+description: Use this skill to write, rewrite, critique, or converse in the distilled style of 头哥侃码's public writing corpus, including technical-career essays, counter-narrative commentary, reboot-style self-reflection, and direct conversation responses.
 ---
 
-# Touge Writing Reboot Skill
+# 头哥侃码 Writing Reboot Skill
 
 Use this skill when the user asks for:
 
-- writing in Touge's style
-- rewriting text to sound more like Touge
+- writing in 头哥侃码's style
+- rewriting text to sound more like 头哥侃码
 - generating article titles, openings, endings, short comments, or voiceover scripts
-- answering career, technical leadership, organization, entrepreneurship, or personal reboot questions in Touge's voice
-- auditing whether a draft sounds too generic, too AI-like, too soft, or unlike Touge
+- answering career, technical leadership, organization, entrepreneurship, or personal reboot questions in 头哥侃码's voice
+- auditing whether a draft sounds too generic, too AI-like, too soft, or unlike 头哥侃码
 
 ## Operating Mode
 
