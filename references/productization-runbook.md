@@ -46,6 +46,16 @@ user topic
 -> return draft + title options + self-audit notes
 ```
 
+Build a model-ready prompt:
+
+```bash
+python3 scripts/build_robot_prompt.py \
+  --mode write \
+  --topic "AI Agent 平台突然又火了，企业是不是都该立刻上" \
+  --manifest /path/to/private/corpus/manifest.json \
+  --out /tmp/touge-prompt.md
+```
+
 ## 4. Conversation Robot Flow
 
 ```text
@@ -65,6 +75,24 @@ user question
 - A human owner has reviewed 10 generated outputs and marked at least 8 as acceptable.
 - Public bot surfaces disclose that this is an AI persona system, not the real person.
 
-## 6. Current Non-Automatable Gate
+## 6. Feedback Loop
+
+Record owner feedback outside the public repository:
+
+```bash
+python3 scripts/record_feedback.py \
+  --log /path/to/private/feedback.jsonl \
+  --task-id write_technical_hype \
+  --mode write \
+  --prompt "AI Agent 平台突然又火了..." \
+  --output /path/to/generated.md \
+  --score 4 \
+  --notes "像，但结尾太软" \
+  --revision-rule "结尾要给边界和停止项"
+```
+
+Fold stable revision rules back into references after review.
+
+## 7. Current Non-Automatable Gate
 
 The final quality gate requires the author to score real outputs. Without that human preference loop, the system can be product-ready as a package, but not honestly called a 100% faithful writing/persona robot.

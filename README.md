@@ -44,7 +44,9 @@
 │   └── style-audit.md
 └── scripts/
     ├── fetch_wechat_articles.py
+    ├── build_robot_prompt.py
     ├── private_retriever.py
+    ├── record_feedback.py
     └── style_eval.py
 ```
 
@@ -77,6 +79,16 @@ python3 scripts/private_retriever.py \
   --manifest /path/to/private/corpus/manifest.json \
   --query "技术人转产品经理 背锅 职业选择" \
   --top-k 5
+```
+
+## 机器人 Prompt 组装
+
+```bash
+python3 scripts/build_robot_prompt.py \
+  --mode write \
+  --topic "AI Agent 平台突然又火了，企业是不是都该立刻上" \
+  --manifest /path/to/private/corpus/manifest.json \
+  --out /tmp/touge-prompt.md
 ```
 
 ## 风格闸门

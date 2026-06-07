@@ -22,7 +22,7 @@ SECRET_PATTERNS = [
     re.compile(r"tempkey=", re.I),
     re.compile(r"cookie", re.I),
     re.compile(r"/Users/[^\\s)]+"),
-    re.compile(r"643129234"),
+    re.compile(r"mp_token_[0-9]+"),
 ]
 
 
@@ -48,7 +48,9 @@ def check_required_files():
         "references/style-audit-rubric.md",
         "references/productization-runbook.md",
         "evals/tasks.jsonl",
+        "scripts/build_robot_prompt.py",
         "scripts/private_retriever.py",
+        "scripts/record_feedback.py",
         "scripts/style_eval.py",
     ]
     missing = [p for p in required if not (ROOT / p).exists()]
