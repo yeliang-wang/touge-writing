@@ -1,6 +1,6 @@
 ---
 name: touge-writing-reboot-skill
-description: Use this skill to write, rewrite, critique, or converse in the distilled style of 头哥侃码's public writing corpus, including technical-career essays, counter-narrative commentary, reboot-style self-reflection, and direct conversation responses.
+description: Use this skill to write, rewrite, critique, or converse in the distilled style of 头哥侃码's public writing corpus, including technical-career essays, counter-narrative commentary, reboot-style self-reflection, direct conversation responses, and article/PPT/Markdown content packages.
 ---
 
 # 头哥侃码 Writing Reboot Skill
@@ -10,6 +10,7 @@ Use this skill when the user asks for:
 - writing in 头哥侃码's style
 - rewriting text to sound more like 头哥侃码
 - generating article titles, openings, endings, short comments, or voiceover scripts
+- generating content packages such as articles, presentation outlines, WPS-compatible PPTX files, and per-slide Markdown speaker scripts
 - answering career, technical leadership, organization, entrepreneurship, or personal reboot questions in 头哥侃码's voice
 - auditing whether a draft sounds too generic, too AI-like, too soft, or unlike 头哥侃码
 - embedding this writing/reboot capability into another AI Agent through an installable context package
@@ -17,7 +18,7 @@ Use this skill when the user asks for:
 
 ## Operating Mode
 
-1. Identify the requested output type: article, short comment, voiceover, conversation reply, title set, style audit, or reboot reflection.
+1. Identify the requested output type: article, short comment, voiceover, conversation reply, title set, style audit, reboot reflection, or content deck.
 2. Load only the needed reference:
    - Worldview and judgment loop: `references/cognitive-os.md`
    - Expression mechanics: `references/expression-dna.md`
@@ -26,6 +27,7 @@ Use this skill when the user asks for:
    - External Agent embedding: `references/agent-integration-spec.md`
    - Continuous evolution and corpus ingestion: `references/evolution-spec.md`
    - Product-manager Q&A capability: `references/product-manager-capability.md`
+   - Article/PPT/Markdown content packages: `references/content-deck-playbook.md`
    - Capability registry: `configs/capabilities.json`
    - Style scoring: `references/style-audit-rubric.md`
    - Style and voice: `references/style-dna.md`
@@ -73,3 +75,13 @@ Do not describe Feishu, WeCom, Shimo, or any other channel as part of this skill
 When new corpus arrives, keep raw material outside the public repository and normalize it with `scripts/ingest_corpus.py`. Treat the output as private retrieval/training material. Distill only stable, owner-approved patterns back into `references/`.
 
 When adding a new capability, register it in `configs/capabilities.json`, add a focused reference file if needed, add eval tasks, and update `references/robot-spec.md` only when a new runtime mode or output contract is required.
+
+## Content Deck Mode
+
+When the user asks for PPT, courseware, a talk deck, a Markdown talk script, or a topic-to-content package, use `content_deck` mode:
+
+1. Load `references/content-deck-playbook.md` together with the core style references.
+2. Decide whether the request needs article-only, deck-only, or article + deck output.
+3. Draft the argument first in the author's style, then convert it into a slide plan. Do not let the slide structure flatten the judgment into generic bullet points.
+4. If the user wants actual files, create a slide-plan JSON and run `scripts/build_content_deck.py` to produce the WPS-compatible PPTX, Markdown guide, preview contact sheet, and manifest.
+5. For project or product explainers, use diagrams only when they clarify boundaries, tradeoffs, lifecycle, or execution paths. For opinion pieces, prefer clear claims, scenes, contrasts, and takeaways.

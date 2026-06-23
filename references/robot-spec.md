@@ -12,15 +12,23 @@
 - Audit whether a draft matches the style system.
 - Provide an installable context contract for an external AI Agent.
 - Support registered custom capabilities such as product-manager Q&A.
+- Produce content packages that include an article, WPS-compatible PPTX, and Markdown talk script.
 
 ## Inputs
 
 ```json
 {
-  "mode": "write | rewrite | diagnose | conversation | reboot | audit | titles | product_qa",
+  "mode": "write | rewrite | diagnose | conversation | reboot | audit | titles | product_qa | content_deck",
   "topic": "string",
   "user_context": "optional string",
   "draft": "optional string",
+  "output_formats": ["article_md", "slide_plan_json", "pptx", "speaker_md"],
+  "deck": {
+    "slides": 8,
+    "audience": "optional string",
+    "scenario": "internal sharing | public talk | courseware | product explainer",
+    "needs_files": true
+  },
   "sharpness": "low | medium | high",
   "retrieval": {
     "enabled": true,
@@ -49,6 +57,7 @@ Mode-specific:
 - reboot: `reboot-protocol.md`
 - audit: `style-audit-rubric.md`
 - product_qa: `product-manager-capability.md`
+- content_deck: `content-deck-playbook.md`, `article-playbooks.md`, `style-dna.md`
 
 Optional private grounding:
 
@@ -109,6 +118,41 @@ Optional private grounding:
 }
 ```
 
+### Content Deck
+
+```json
+{
+  "title_options": ["..."],
+  "article_markdown": "optional full article",
+  "slide_plan": {
+    "title": "...",
+    "audience": "...",
+    "scenario": "...",
+    "slides": [
+      {
+        "title": "...",
+        "subtitle": "...",
+        "kind": "cover | claim | contrast | bullets | sequence | architecture | lifecycle | summary",
+        "points": ["..."],
+        "talk": "One natural oral paragraph in the author's style."
+      }
+    ],
+    "takeaways": ["..."]
+  },
+  "files": {
+    "pptx": "optional path",
+    "speaker_markdown": "optional path",
+    "contact_sheet": "optional path",
+    "manifest": "optional path"
+  },
+  "style_self_audit": {
+    "position": "...",
+    "cost_or_tradeoff": "...",
+    "generic_slide_risk": "..."
+  }
+}
+```
+
 ### Audit
 
 ```json
@@ -127,6 +171,7 @@ Optional private grounding:
 - Style score >= 11/15 for publishable drafts.
 - For `high` sharpness, the target must be an idea, system, behavior, or public claim, not a vulnerable person.
 - High-stakes factual claims require source verification outside this skill.
+- Content decks must preserve the argument spine; do not turn sharp judgment into generic training bullets.
 
 ## Human Preference Loop
 

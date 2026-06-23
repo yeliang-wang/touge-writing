@@ -14,11 +14,12 @@
 ## 能力目标
 
 1. 写作机器人：根据主题生成接近作者风格的长文、短评、口播稿、标题和二稿。
-2. 交流机器人：以作者常见判断方式回应职业、技术、组织、创业、个人状态类问题。
-3. Reboot 模块：重建作者的价值判断、表达边界、反应模式和自我校准机制。
-4. 风格审计：判断一段文字哪里不像作者，哪里 AI 味太重，如何改。
-5. Agent 嵌入：把 skill 安装到外部 AI Agent 中，通过飞书、企业微信、石墨文档等系统完成问答、草稿和知识协作。
-6. 持续进化：接入新的私有语料源和自定义能力，让 skill 从写作/交流扩展到产品经理问答、产品知识问答等场景。
+2. 内容交付包：把主题、文章草稿或项目材料转成文章、PPT 大纲、WPS 兼容 PPTX 和逐页 Markdown 讲稿。
+3. 交流机器人：以作者常见判断方式回应职业、技术、组织、创业、个人状态类问题。
+4. Reboot 模块：重建作者的价值判断、表达边界、反应模式和自我校准机制。
+5. 风格审计：判断一段文字哪里不像作者，哪里 AI 味太重，如何改。
+6. Agent 嵌入：把 skill 安装到外部 AI Agent 中，通过飞书、企业微信、石墨文档等系统完成问答、草稿和知识协作。
+7. 持续进化：接入新的私有语料源和自定义能力，让 skill 从写作/交流扩展到产品经理问答、产品知识问答等场景。
 
 ## 目录
 
@@ -37,6 +38,7 @@
 │   ├── agent-integration-spec.md
 │   ├── evolution-spec.md
 │   ├── product-manager-capability.md
+│   ├── content-deck-playbook.md
 │   ├── style-audit-rubric.md
 │   ├── distillation-report.md
 │   ├── robot-spec.md
@@ -56,6 +58,7 @@
     ├── fetch_wechat_articles.py
     ├── ingest_corpus.py
     ├── build_robot_prompt.py
+    ├── build_content_deck.py
     ├── build_agent_context.py
     ├── private_retriever.py
     ├── record_feedback.py
@@ -71,6 +74,12 @@
 ```
 
 也可以作为通用 prompt/agent 知识库，把 `SKILL.md` 和 `references/` 接入自己的机器人。
+
+生成文章 + PPT + Markdown 讲稿时，可让 Codex 使用 `content_deck` 能力：
+
+```text
+请使用 $touge-writing-reboot-skill，把“AI Agent 平台到底值不值得上”做成一套 8 页 PPT 和逐页讲稿，风格按我的表达来。
+```
 
 如果要安装到外部 AI Agent 中，先生成一个 Agent 上下文包：
 
@@ -91,6 +100,7 @@ python3 scripts/build_agent_context.py \
 - `agent-integration-spec.md`：把 skill 嵌入外部 AI Agent、IM 通道和知识问答场景的产品契约。
 - `evolution-spec.md`：持续接入新语料、能力注册、评测和公开边界的演进协议。
 - `product-manager-capability.md`：面向具体产品/业务系统的产品经理问答能力模板。
+- `content-deck-playbook.md`：文章、PPT 大纲、WPS PPTX 和逐页 Markdown 讲稿的内容交付规则。
 - `style-audit-rubric.md`：用 15 分制检查一段输出是否贴近风格系统。
 - `distillation-report.md`：从私有语料中提取出的总体结论。
 - `robot-spec.md`：写作/交流/reboot 机器人输入输出契约。
@@ -153,6 +163,33 @@ python3 scripts/style_eval.py draft.md
 ```
 
 评分器只是产品化烟测，不替代作者本人判断。
+
+## 内容交付包生成
+
+当需要把一个主题或文章草稿做成 PPT 与讲稿，先让 Agent 产出 `slide-plan.json`，再运行：
+
+```bash
+python3 scripts/build_content_deck.py \
+  --plan /path/to/slide-plan.json \
+  --out /path/to/output-dir \
+  --slug ai-agent-platform
+```
+
+输出包括：
+
+```text
+output/
+  <slug>-wps-compatible.pptx
+  <slug>-guide.md
+  <slug>-article.md
+  build-manifest.json
+preview/
+  contact-sheet.png
+  slide-01.png
+  ...
+```
+
+这套流程的原则是先有判断，再有页面。PPT 负责承载观点，Markdown 负责保留口述逻辑，不能把内容打散成泛泛的培训 bullet。
 
 ## 发布前检查
 

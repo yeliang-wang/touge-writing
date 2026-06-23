@@ -21,11 +21,54 @@
 常见任务：
 
 - 写一篇技术趋势判断文章。
+- 把主题、文章草稿或项目材料做成 PPT 和 Markdown 讲稿。
 - 把一段很官方的稿子改得更像“头哥侃码”。
 - 判断一段文字哪里 AI 味太重。
 - 对职业选择、组织问题、技术转型问题给出交流式回应。
 
-## 2. 安装到外部 AI Agent
+## 2. 生成文章、PPT 和 Markdown 讲稿
+
+适合公开分享、内部培训、课程稿、产品讲解和文章转演讲稿。
+
+调用方式：
+
+```text
+请使用 $touge-writing-reboot-skill，把这个主题做成一套 8 页 PPT、逐页 Markdown 讲稿，并保留文章版。
+```
+
+工作方式：
+
+1. 先用 `references/content-deck-playbook.md` 明确论点、听众、场景和输出深度。
+2. 生成文章或论点主线。
+3. 生成 `slide-plan.json`，每页只承载一个判断。
+4. 如需实际文件，运行 `scripts/build_content_deck.py`。
+
+命令示例：
+
+```bash
+python3 scripts/build_content_deck.py \
+  --plan /path/to/slide-plan.json \
+  --out /path/to/output-dir \
+  --slug topic-deck
+```
+
+输出结构：
+
+```text
+output/
+  topic-deck-wps-compatible.pptx
+  topic-deck-guide.md
+  topic-deck-article.md
+  build-manifest.json
+preview/
+  contact-sheet.png
+  slide-01.png
+  ...
+```
+
+注意：PPT 是交付形态，核心仍然是作者风格里的判断、场景、代价和行动建议。不要把它做成泛泛的“背景、挑战、方案、展望”模板。
+
+## 3. 安装到外部 AI Agent
 
 适合把“头哥侃码 Reboot”变成某个 Agent 的能力模块，再由这个 Agent 连接飞书、企业微信、石墨文档或内部知识库。
 
@@ -49,7 +92,7 @@ python3 scripts/build_agent_context.py \
 
 skill 只负责提供风格、判断协议、输出契约和边界，不负责持有任何平台 token。
 
-## 3. 接入飞书
+## 4. 接入飞书
 
 推荐结构：
 
@@ -76,7 +119,7 @@ Feishu Event
 - 对低风险 FAQ 可升到 L2：低风险自动回复，高风险人工接管。
 - 不建议一开始 L3 全自动。
 
-## 4. 接入企业微信
+## 5. 接入企业微信
 
 企业微信通常会接触员工、客户或外部联系人，权限边界要更严格。
 
@@ -100,7 +143,7 @@ Feishu Event
 }
 ```
 
-## 5. 写入石墨文档指定目录
+## 6. 写入石墨文档指定目录
 
 如果最终不是直接发布到某个内容平台，而是写入石墨文档，应该把石墨当成目标系统，不要让 skill 直接处理账号和权限。
 
@@ -117,7 +160,7 @@ Feishu Event
 
 文档标题可以由 `titles` 模式生成。正文由 `write` 或 `rewrite` 模式生成。是否发布到公众号、朋友圈、知识库或其他平台，由使用者在石墨之后自行决定。
 
-## 6. 包装成服务
+## 7. 包装成服务
 
 如果需要把“头哥侃码 Reboot”本身包装成服务，可以做一个外部服务壳：
 
@@ -134,7 +177,7 @@ HTTP API
 
 ```json
 {
-  "mode": "write | rewrite | conversation | reboot | audit | titles",
+  "mode": "write | rewrite | conversation | reboot | audit | titles | product_qa | content_deck",
   "topic": "string",
   "draft": "optional string",
   "user_context": "optional string",
@@ -144,7 +187,7 @@ HTTP API
 
 这种方式适合多端复用，但要注意：服务化的是外部 Agent Runtime，不是这个 skill 仓库本身。这个仓库仍然只提供能力包、脚本和规则。
 
-## 7. 私有语料增强
+## 8. 私有语料增强
 
 公开仓库不放原文语料。如果本地有私有 manifest，可以在生成 prompt 或 Agent context 前先检索相关旧文：
 
@@ -157,7 +200,7 @@ python3 scripts/private_retriever.py \
 
 私有语料只能作为 grounding，不应该直接复制到最终回复，也不应该提交到公开仓库。
 
-## 8. 评测与验收
+## 9. 评测与验收
 
 每次产品化使用前至少做三类检查：
 
@@ -170,11 +213,11 @@ python3 scripts/build_agent_context.py --scenario all --channel generic > /tmp/t
 人工验收建议：
 
 - 10 个真实问题。
-- 至少覆盖写作、交流、改稿、reboot、标题五类。
+- 至少覆盖写作、交流、改稿、reboot、标题、产品问答和内容交付包。
 - 标记“哪里像、哪里不像、哪里不能自动发”。
 - 把稳定规则写回 `references/`，不要把一次性偏好写成永久规则。
 
-## 9. 持续语料接入
+## 10. 持续语料接入
 
 后续企业微信、飞书、产品文档、会议纪要、客户反馈都可以接入，但原始材料必须留在私有目录，不进入公开仓库。
 
@@ -200,7 +243,7 @@ documents/
 
 `manifest.jsonl` 用于后续检索、抽样、评测和蒸馏。真正写回公开仓库的，只能是稳定规则、能力定义、合成样例和聚合统计。
 
-## 10. 自定义能力扩展
+## 11. 自定义能力扩展
 
 新增能力先改 `configs/capabilities.json`，不要直接把能力写死在 `SKILL.md`。
 
@@ -225,7 +268,7 @@ python3 scripts/build_agent_context.py \
 
 注意：skill 可以提供“像头哥一样做产品判断”的方法，但不能凭空知道某个产品的路线图、价格、客户承诺和线上事故。这些必须来自外部生产知识库。
 
-## 11. 推荐落地顺序
+## 12. 推荐落地顺序
 
 1. 先在 Codex 中手工使用 skill，积累可接受输出。
 2. 用 `build_agent_context.py` 接入一个外部 Agent。

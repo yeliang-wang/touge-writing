@@ -54,6 +54,30 @@
         "references/boundaries.md"
       ],
       "optional_corpus_tags": ["product_doc", "prd", "customer_feedback", "im_chat", "meeting_note"]
+    },
+    {
+      "id": "content_deck",
+      "display_name": "内容交付包能力",
+      "description": "把主题、文章草稿或项目材料转成头哥风格的文章、PPT 大纲、WPS 兼容 PPTX 和逐页 Markdown 讲稿。",
+      "modes": ["content_deck", "presentation", "article_package", "talk_script"],
+      "required_references": [
+        "references/cognitive-os.md",
+        "references/expression-dna.md",
+        "references/style-dna.md",
+        "references/article-playbooks.md",
+        "references/content-deck-playbook.md",
+        "references/style-audit-rubric.md",
+        "references/boundaries.md"
+      ],
+      "optional_corpus_tags": ["wechat_article", "draft", "public_post", "product_doc", "meeting_note"],
+      "output_contract": {
+        "optional_article_markdown": "完整文章或长文稿",
+        "slide_plan_json": "可交给 scripts/build_content_deck.py 的 slides plan",
+        "pptx": "WPS-compatible full-slide PNG PPTX",
+        "speaker_markdown": "逐页口述稿 Markdown",
+        "preview": "contact sheet and slide PNGs"
+      },
+      "evaluation_tasks": ["content_deck_topic_to_package", "content_deck_article_to_talk"]
     }
   ],
   "extension_contract": {
