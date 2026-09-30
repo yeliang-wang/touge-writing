@@ -1,60 +1,19 @@
-# Smoke Test Evidence
+# v2.0 烟测说明
 
-## Private Retrieval
+本页说明如何观察基础行为，不保存私人文章、真实书稿或账号回包。完整验收结果另由本机报告记录。
 
-Command:
+## 合成作品
 
-```bash
-python3 scripts/private_retriever.py \
-  --manifest /path/to/private/corpus/manifest.json \
-  --query "技术人转产品经理 背锅 职业选择" \
-  --top-k 5
-```
+在临时目录初始化一个小说和一篇文章，登记合成方案与正文，观察：目录隔离、历史父版本保持、状态缓存可重建、默认检索不包含其他作品。自动用例位于 [tests/test_workspace.py](../tests/test_workspace.py)。
 
-Result shape:
+## 机械检查
 
-- Retrieved `从互联网程序员到云厂商产品经理：过去一年，他都经历了什么？`
-- Retrieved `真实经历：整整一年了，他是这样从程序员转型做产品经理的`
-- Retrieved `做架构师不好么？做什么产品经理`
-- Retrieved `怎样才算成功转型 “乙方产品经理”？避免陷入这20个误区`
+给结构扫描器一个含 `## 幕一` 的合成 Markdown，确认标题中的结构词也能被报告。给风格评分器普通文本，确认它返回各维度及机械 pass；输出仅为线索，不代表作者批准。测试不修改真实正文。
 
-This proves the private grounding path can find thematically related old articles without committing the private corpus.
+## 文档与上下文
 
-## Style Gate Negative Case
+对支持的 Agent 场景运行上下文构建器，验证引用存在、文件可读。用合成文章清单检索，确认返回来源标识、正文路径和片段。JSONL 导入清单不能直接作为此检索输入。
 
-Input:
+## 外部服务
 
-```text
-随着时代的发展，技术人员需要不断提升综合能力，以适应复杂多变的市场环境。总而言之，我们要打造多维度能力闭环，实现个人价值增长。
-```
-
-Result:
-
-```json
-{
-  "total": 0,
-  "verdict": "unlike",
-  "pass": false,
-  "ai_smell_markers": ["随着时代的发展", "总而言之", "闭环", "多维度"]
-}
-```
-
-## Style Gate Positive Case
-
-Input topic:
-
-```text
-技术人转产品经理不是逃离代码，而是换一种方式背锅。
-```
-
-Result:
-
-```json
-{
-  "total": 11,
-  "verdict": "close",
-  "pass": true
-}
-```
-
-This is only a deterministic smoke test. The final 1.0 gate still requires the owner to review real outputs.
+模拟回执只能验证记录器逻辑。腾讯文档实测需真实账号、指定测试对象、预读、修改与完整回读，证据保留私有；公众号在 v2.0 明确不进行这类验收。

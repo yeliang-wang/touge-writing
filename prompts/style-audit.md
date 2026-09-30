@@ -1,19 +1,7 @@
-# Style Audit Prompt
+# v2.0 风格审阅输入
 
-Audit this draft against the 头哥侃码 writing style.
+输入：文体、当前稿、希望保留的表达、已有事实来源及本次允许的修改范围。
 
-Check:
+先读共享作者能力，再选择公众号或小说方法。公众号检查判断、论据、代价和段落运动；小说检查叙事距离、动作、对话、节奏及当前作品约定。不要将公众号11/15分或建议式结尾套用所有小说。
 
-- opening too generic?
-- no clear judgment?
-- too many official or AI phrases?
-- sharp wording unsupported by reasoning?
-- lacks concrete work/life scene?
-- ending too motivational?
-
-Output:
-
-1. Verdict: like / partially like / unlike
-2. Top 5 problems
-3. Rewrite plan
-4. Revised version
+交付保留项、具体问题位置、原因与修改建议。用户要求改写时再产出新稿，旧定稿不覆盖。机械结果只作线索，不能宣称已经核实事实或获得作者批准。

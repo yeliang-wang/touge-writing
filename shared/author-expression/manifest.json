@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "touge",
+  "version": "1.0.0",
+  "entrypoint": "PROFILE.md",
+  "source": "existing approved repository distillation; detailed corpus kept private",
+  "private_corpus_summary": {
+    "records": 370,
+    "urls": 352,
+    "usable_articles": 341
+  },
+  "files": [
+    {
+      "path": "PROFILE.md",
+      "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d"
+    },
+    {
+      "path": "expression-evidence.md",
+      "sha256": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb"
+    },
+    {
+      "path": "judgment.md",
+      "sha256": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede"
+    },
+    {
+      "path": "language.md",
+      "sha256": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a"
+    },
+    {
+      "path": "lexicon.yaml",
+      "sha256": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582"
+    },
+    {
+      "path": "rubric.md",
+      "sha256": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000"
+    },
+    {
+      "path": "wechat-rubric.md",
+      "sha256": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0"
+    }
+  ]
+}

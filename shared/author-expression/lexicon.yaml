@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "format": "JSON-compatible YAML",
+  "source": "expression-evidence.md#Quantitative Signals",
+  "interpretation": "语料中的描述性频次，不是强制用词或配额。",
+  "observations": [
+    {
+      "phrase": "不是",
+      "source_count": 1327,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "而是",
+      "source_count": 167,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "别说",
+      "source_count": 102,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "问题是",
+      "source_count": 39,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "这玩意",
+      "source_count": 27,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "抱歉",
+      "source_count": 23,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "对不起",
+      "source_count": 15,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "放屁",
+      "source_count": 12,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "说真的",
+      "source_count": 12,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "很遗憾",
+      "source_count": 10,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "从来都不是",
+      "source_count": 10,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "别扯了",
+      "source_count": 6,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "少扯",
+      "source_count": 5,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "醒醒吧",
+      "source_count": 5,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "恕我直言",
+      "source_count": 5,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "想多了",
+      "source_count": 3,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "真特么",
+      "source_count": 2,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    },
+    {
+      "phrase": "别傻了",
+      "source_count": 1,
+      "scope": "author-expression",
+      "status": "observed",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "头哥 · 公众号写作"
+  short_description: "按作者表达习惯创作和审阅公众号单篇文章，保留素材来源与过程版本。"
+  default_prompt: "请使用 $touge-wechat-writing，根据这些材料写一篇我的风格公众号文章。"

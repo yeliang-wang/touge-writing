@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 BASE_FILES = [
     "SKILL.md",
+    "shared/author-expression/PROFILE.md",
+    "shared/author-expression/rubric.md",
+    "shared/author-expression/language.md",
+    "shared/author-expression/lexicon.yaml",
     "references/robot-spec.md",
     "references/agent-integration-spec.md",
     "references/evolution-spec.md",
@@ -19,7 +23,15 @@ BASE_FILES = [
 ]
 
 SCENARIO_FILES = {
+    "wechat": [".agents/skills/touge-wechat-writing/SKILL.md", "references/wechat-public-account-playbook.md", "references/article-playbooks.md", "references/title-patterns.md", "shared/author-expression/wechat-rubric.md", "docs/external-services/wechat.md"],
+    "novel": [".agents/skills/touge-novel-writing/SKILL.md", ".agents/skills/touge-novel-writing/references/workflow.md", "templates/book-plan.md", "templates/chapter-plan.md", "docs/external-services/tencent-docs.md"],
     "all": [
+        ".agents/skills/touge-wechat-writing/SKILL.md",
+        ".agents/skills/touge-novel-writing/SKILL.md",
+        ".agents/skills/touge-novel-writing/references/workflow.md",
+        "references/wechat-public-account-playbook.md",
+        "docs/external-services/tencent-docs.md",
+        "docs/external-services/wechat.md",
         "references/expression-dna.md",
         "references/article-playbooks.md",
         "references/title-patterns.md",

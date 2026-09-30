@@ -5,3 +5,16 @@ markdown/
 *.html
 *.log
 .DS_Store
+
+# Private writing assets and local runtime state (not distribution content).
+workspace/
+work/
+outputs/
+dist/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/

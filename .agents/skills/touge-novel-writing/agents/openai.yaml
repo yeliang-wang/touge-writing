@@ -1,0 +1,4 @@
+interface:
+  display_name: "头哥 · 小说写作"
+  short_description: "管理长篇小说的全书与章节方案、连续性和版本，恢复当前进度后继续创作。"
+  default_prompt: "请使用 $touge-novel-writing，恢复当前作品进度并继续章节方案 review。"

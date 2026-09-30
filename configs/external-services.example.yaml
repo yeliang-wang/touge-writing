@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "format": "capability description, not host configuration",
+  "services": {
+    "wechat": {
+      "status": "documented_not_live_tested",
+      "v2_acceptance": "capability_only_per_user",
+      "operations": [
+        "account.inspect",
+        "content.read",
+        "media.upload",
+        "draft.create",
+        "draft.read",
+        "draft.update",
+        "publish.submit",
+        "publish.status"
+      ],
+      "authentication": "host-managed"
+    },
+    "tencent-docs": {
+      "status": "configure_in_host_per_installation",
+      "url": "https://docs.qq.com/openapi/mcp",
+      "authorization_header": "Authorization",
+      "authentication": "host-managed",
+      "v2_acceptance": "real_read_and_controlled_write",
+      "operations": [
+        "content.read",
+        "document.create",
+        "document.update",
+        "directory.read"
+      ]
+    }
+  }
+}

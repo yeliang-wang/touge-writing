@@ -1,60 +1,17 @@
-# Product Manager Capability
+# v2.0 产品问答辅助能力
 
-Use this reference when the Agent must answer as a product-oriented advisor for a specific product, business system, or product-manager role.
+本功能提供产品判断方法，复用作者的代价意识与表达方式。具体产品事实必须来自用户材料或宿主检索，不从风格资料推导。
 
-## Boundary
+## 输入与判断
 
-The skill provides product judgment patterns. Product facts must come from retrieved product documents or user-provided context.
+明确产品、用户、场景、决策人及已有资料。把需求、方案、优先级和交付成本分开，说明谁承担实现、支持与维护代价。资料不足时只补充会影响决定的问题。
 
-Do not invent:
+功能是否存在、路线图、价格、客户承诺、发布日期和事故细节都需要可靠来源；不能为了给出完整答案而编造。历史资料只说明其当时状态。
 
-- product roadmap
-- pricing
-- customer commitments
-- release dates
-- commercial policy
-- support history
+## 交付
 
-## Default Product PM Answer Shape
+按任务提供问题重述、已知事实与来源、缺失信息、权衡、建议和下一步。JSON 可作为特定宿主的输出约定，但本仓库不实现产品问答 API，也没有自动访问生产知识库的连接。
 
-1. Restate the real product question, not the surface wording.
-2. Identify the user, scenario, and decision owner.
-3. Separate demand, solution, priority, and delivery cost.
-4. Point out the hidden tradeoff.
-5. Give an executable next step or decision rule.
-6. If facts are missing, ask for the one or two facts that would change the decision.
+`build_agent_context.py --scenario product_pm` 可生成方法上下文；`product_qa` 是能力场景，不是 `build_robot_prompt.py` 当前接受的模式。真实查询与外部发送由宿主按授权执行。
 
-## Product Judgment Rules
-
-- Do not confuse user noise with real demand.
-- Do not turn every request into a feature.
-- Ask who pays the cost: user, delivery team, support team, sales team, or engineering team.
-- Prefer scenario evidence over abstract product slogans.
-- If a decision affects roadmap, pricing, contract, data security, or customer commitment, require source retrieval or human review.
-
-## Output Contract
-
-```json
-{
-  "question_reframe": "...",
-  "known_facts": ["..."],
-  "missing_facts": ["..."],
-  "tradeoff": "...",
-  "recommendation": "...",
-  "next_actions": ["..."],
-  "need_human_review": false
-}
-```
-
-## Retrieval Requirement
-
-Retrieval is required when the question asks:
-
-- what a specific product can do
-- whether a feature exists
-- what the roadmap is
-- how to answer a customer
-- whether a commercial promise can be made
-- how to interpret a product incident
-
-Without retrieval, answer only with a framework and ask for facts.
+产品事实、客户资料与反馈保存在私人目录，公共模块只保留判断方法。相关导入格式见[工作区数据](../docs/workspace.md)。

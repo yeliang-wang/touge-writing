@@ -1,48 +1,11 @@
-# Evaluation Report
+# v2.0 验收结果口径
 
-## Scope
+本页取代旧版“1.0-rc/10份人工输出”发布判断。v2.0 以 [acceptance.json](../configs/acceptance.json) 的12组检查和本机实际报告作为工程与迁移验收依据。
 
-This report evaluates five core product scenarios from `evals/tasks.jsonl`:
+发布准备已完成19项合成单元测试、公共边界、迁移哈希、历史继承与进度恢复、分享包、上下文与检索、Skill结构、独立行为、腾讯文档真实读写和完整备份恢复。最终执行结果保存在私人 workspace/acceptance/report.json。
 
-- long-form writing
-- career conversation
-- rewrite / de-AI
-- reboot reflection
-- title generation
+公众号真实连接与操作按确认范围不验收。书稿事实、文学质量和具体章节方案批准也不是升级门槛；本次通过不等于“100%复现作者”或自动批准稿件。
 
-The outputs are stored under `evals/outputs/`.
+`evals/outputs/` 的旧合成样例继续用于兼容观察，历史得分不冒充新版全面实测。新写作评测使用合成材料，真实作品内容工作留给发布后的独立使用任务。
 
-## Automated Style Gate
-
-All five outputs passed `scripts/style_eval.py`.
-
-| Task | Output | Score | Verdict | Pass |
-|---|---|---:|---|---|
-| write_technical_hype | `write_technical_hype.md` | 13 | close | yes |
-| career_reply_age | `career_reply_age.md` | 12 | close | yes |
-| rewrite_ai_smell | `rewrite_ai_smell.md` | 11 | close | yes |
-| reboot_low_point | `reboot_low_point.md` | 12 | close | yes |
-| title_set | `title_set.md` | 14 | strong_match | yes |
-
-## Reviewer Notes
-
-### Strengths
-
-- The system reliably avoids generic AI openings.
-- The outputs preserve a direct stance and practical tradeoff framing.
-- Career and technical topics sound closest to the corpus.
-- The title generator captures question, rebuttal, and responsibility patterns.
-- The reboot output is sober and practical instead of motivational.
-
-### Weak Spots
-
-- The deterministic style scorer is still a smoke test, not a true preference model.
-- Reboot output needs owner review because personal low-point tone is hard to judge automatically.
-- Some sharpness can drift toward formula if every output starts with `别扯了`; future feedback should diversify openings.
-- The private retriever helps grounding but does not yet use embeddings, so semantic recall is acceptable but not ideal.
-
-## Current Product Judgment
-
-The package is ready as a public `1.0-rc` repository and local Codex skill.
-
-It should be called `1.0` only after the owner reviews at least 10 real outputs and accepts 8 or more.
+命令与证据边界见[测试说明](../docs/testing.md)。

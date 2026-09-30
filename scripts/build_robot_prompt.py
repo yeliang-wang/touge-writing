@@ -4,12 +4,14 @@
 import argparse
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 MODE_REFS = {
+    "wechat_public_article": ["cognitive-os.md", "expression-dna.md", "wechat-public-account-playbook.md", "title-patterns.md", "style-audit-rubric.md", "boundaries.md"],
     "write": ["cognitive-os.md", "expression-dna.md", "article-playbooks.md", "title-patterns.md", "boundaries.md"],
     "rewrite": ["cognitive-os.md", "expression-dna.md", "interaction-protocol.md", "style-audit-rubric.md", "boundaries.md"],
     "conversation": ["cognitive-os.md", "interaction-protocol.md", "conversation-persona.md", "boundaries.md"],
@@ -27,7 +29,7 @@ def retrieve(manifest, query, top_k):
     if not manifest:
         return None
     cmd = [
-        "python3",
+        sys.executable,
         str(ROOT / "scripts" / "private_retriever.py"),
         "--manifest",
         manifest,
@@ -68,6 +70,9 @@ def main():
         for item in retrieval["results"]:
             compact.append({
                 "title": item["title"],
+                "source_id": item.get("source_id"),
+                "url": item.get("url"),
+                "markdown_path": item.get("markdown_path"),
                 "publish_time": item["publish_time"],
                 "score": item["score"],
                 "snippets": item["snippets"],

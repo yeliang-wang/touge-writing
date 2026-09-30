@@ -1,65 +1,144 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "capabilities": [
     {
       "id": "writing",
-      "display_name": "写作机器人",
-      "description": "生成长文、短评、口播稿、标题和二稿。",
-      "modes": ["write", "rewrite", "titles", "audit"],
+      "display_name": "公众号写作兼容入口",
+      "description": "旧 write/rewrite 等调用入口，沿用公众号写作；小说任务交给 novel_writing。",
+      "modes": [
+        "write",
+        "rewrite",
+        "titles",
+        "audit",
+        "wechat_public_article"
+      ],
       "required_references": [
         "references/cognitive-os.md",
         "references/expression-dna.md",
         "references/article-playbooks.md",
+        "references/wechat-public-account-playbook.md",
         "references/title-patterns.md",
         "references/style-audit-rubric.md",
         "references/boundaries.md"
       ],
-      "optional_corpus_tags": ["wechat_article", "draft", "public_post"]
+      "optional_corpus_tags": [
+        "wechat_article",
+        "draft",
+        "public_post"
+      ],
+      "alias_of": "wechat_writing"
     },
     {
       "id": "conversation",
       "display_name": "交流机器人",
       "description": "回应职业、技术、组织、创业、个人状态类问题。",
-      "modes": ["conversation", "diagnose", "reboot"],
+      "modes": [
+        "conversation",
+        "diagnose",
+        "reboot"
+      ],
       "required_references": [
         "references/cognitive-os.md",
         "references/conversation-persona.md",
         "references/reboot-protocol.md",
         "references/boundaries.md"
       ],
-      "optional_corpus_tags": ["im_chat", "qa", "wechat_article"]
+      "optional_corpus_tags": [
+        "im_chat",
+        "qa",
+        "wechat_article"
+      ]
     },
     {
       "id": "reboot",
       "display_name": "Reboot 模块",
       "description": "用于自我复盘、低谷处理、状态重启和边界重建。",
-      "modes": ["reboot", "conversation"],
+      "modes": [
+        "reboot",
+        "conversation"
+      ],
       "required_references": [
         "references/cognitive-os.md",
         "references/reboot-protocol.md",
         "references/conversation-persona.md",
         "references/boundaries.md"
       ],
-      "optional_corpus_tags": ["self_reflection", "im_chat", "wechat_article"]
+      "optional_corpus_tags": [
+        "self_reflection",
+        "im_chat",
+        "wechat_article"
+      ]
     },
     {
       "id": "product_manager_qa",
       "display_name": "产品经理问答能力",
       "description": "回答某个产品、行业、岗位或业务系统的产品经理类问题。",
-      "modes": ["product_qa", "conversation", "diagnose"],
+      "modes": [
+        "product_qa",
+        "conversation",
+        "diagnose"
+      ],
       "required_references": [
         "references/cognitive-os.md",
         "references/conversation-persona.md",
         "references/product-manager-capability.md",
         "references/boundaries.md"
       ],
-      "optional_corpus_tags": ["product_doc", "prd", "customer_feedback", "im_chat", "meeting_note"]
+      "optional_corpus_tags": [
+        "product_doc",
+        "prd",
+        "customer_feedback",
+        "im_chat",
+        "meeting_note"
+      ]
+    },
+    {
+      "id": "wechat_public_article",
+      "display_name": "微信公众号长文能力",
+      "description": "把主题、参考文章、产品材料或项目材料写成适合微信公众号发布的头哥风格长文。",
+      "modes": [
+        "wechat_public_article",
+        "wechat_outline",
+        "wechat_titles",
+        "wechat_audit"
+      ],
+      "required_references": [
+        "references/cognitive-os.md",
+        "references/expression-dna.md",
+        "references/article-playbooks.md",
+        "references/wechat-public-account-playbook.md",
+        "references/title-patterns.md",
+        "references/style-audit-rubric.md",
+        "references/boundaries.md"
+      ],
+      "optional_corpus_tags": [
+        "wechat_article",
+        "draft",
+        "public_post",
+        "product_doc",
+        "meeting_note"
+      ],
+      "output_contract": {
+        "main_title": "主标题",
+        "subtitle": "副标题",
+        "cover_summary": "40-70 字封面摘要",
+        "body_markdown": "微信公众号正文 Markdown",
+        "optional_visual_notes": "可选配图建议"
+      },
+      "evaluation_tasks": [
+        "wechat_reference_article_to_product_case"
+      ]
     },
     {
       "id": "content_deck",
       "display_name": "内容交付包能力",
       "description": "把主题、文章草稿或项目材料转成头哥风格的文章、PPT 大纲、WPS 兼容 PPTX 和逐页 Markdown 讲稿。",
-      "modes": ["content_deck", "presentation", "article_package", "talk_script"],
+      "modes": [
+        "content_deck",
+        "presentation",
+        "article_package",
+        "talk_script"
+      ],
       "required_references": [
         "references/cognitive-os.md",
         "references/expression-dna.md",
@@ -69,7 +148,13 @@
         "references/style-audit-rubric.md",
         "references/boundaries.md"
       ],
-      "optional_corpus_tags": ["wechat_article", "draft", "public_post", "product_doc", "meeting_note"],
+      "optional_corpus_tags": [
+        "wechat_article",
+        "draft",
+        "public_post",
+        "product_doc",
+        "meeting_note"
+      ],
       "output_contract": {
         "optional_article_markdown": "完整文章或长文稿",
         "slide_plan_json": "可交给 scripts/build_content_deck.py 的 slides plan",
@@ -77,12 +162,57 @@
         "speaker_markdown": "逐页口述稿 Markdown",
         "preview": "contact sheet and slide PNGs"
       },
-      "evaluation_tasks": ["content_deck_topic_to_package", "content_deck_article_to_talk"]
+      "evaluation_tasks": [
+        "content_deck_topic_to_package",
+        "content_deck_article_to_talk"
+      ]
+    },
+    {
+      "id": "wechat_writing",
+      "display_name": "公众号写作（短篇，单篇）",
+      "description": "单篇文章创作、修改、审稿和发布准备。",
+      "modes": [
+        "wechat_public_article"
+      ],
+      "required_references": [
+        ".agents/skills/touge-wechat-writing/SKILL.md",
+        "shared/author-expression/PROFILE.md"
+      ]
+    },
+    {
+      "id": "novel_writing",
+      "display_name": "小说写作（长篇，连载）",
+      "description": "全书和章节方案、叙事、连续性与版本管理。",
+      "modes": [
+        "novel_plan",
+        "chapter_review",
+        "chapter_draft",
+        "novel_audit"
+      ],
+      "required_references": [
+        ".agents/skills/touge-novel-writing/SKILL.md",
+        "shared/author-expression/PROFILE.md"
+      ]
     }
   ],
   "extension_contract": {
-    "required_fields": ["id", "display_name", "description", "modes", "required_references"],
-    "recommended_fields": ["optional_corpus_tags", "output_contract", "evaluation_tasks"],
+    "required_fields": [
+      "id",
+      "display_name",
+      "description",
+      "modes",
+      "required_references"
+    ],
+    "recommended_fields": [
+      "optional_corpus_tags",
+      "output_contract",
+      "evaluation_tasks"
+    ],
     "rule": "Add new capabilities here first, then add mode-specific references and eval tasks. Do not hard-code a channel or company-specific product into SKILL.md."
-  }
+  },
+  "primary_capabilities": [
+    "wechat_writing",
+    "novel_writing"
+  ],
+  "shared_author_profile": "shared/author-expression/manifest.json"
 }

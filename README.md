@@ -1,206 +1,59 @@
-# 头哥侃码写作与人格 Reboot Skill
+# 头哥写作工作台 · v2.0
 
-这是一个面向个人写作、交流机器人和 reboot 型人格蒸馏的公开 skill 仓库。它把“头哥侃码”的长期公开表达沉淀为可执行的写作、交流、风格审计和 Agent 嵌入能力。
+在 Codex 中写公众号文章和长篇小说，共享从头哥公众号历史文章中蒸馏的判断方式、表达风格与习惯性用词。项目提供两类写作 Skill、可独立分享的作者能力，以及管理本地作品的文件工具。
 
-## 当前语料快照
+| 能力 | 入口 | 用途 |
+|---|---|---|
+| 公众号写作（短篇、单篇） | [touge-wechat-writing](.agents/skills/touge-wechat-writing/README.md) | 选题、素材、结构、成稿、修改、审稿与发布准备 |
+| 小说写作（长篇、连载） | [touge-novel-writing](.agents/skills/touge-novel-writing/README.md) | 全书与章节方案、版本继承、叙事连续性和进度恢复 |
+| 共享作者能力 | [author-expression](shared/author-expression/README.md) | 判断方式、语言偏好、词库及不同文体的评价原则 |
 
-- 公众号发表记录：370 条
-- 标准公开文章链接：352 篇
-- 已提取可用正文：341 篇
-- 覆盖时间：2017-2024
-- 私有正文语料规模：约 101.5 万中文字符
-- 注意：本仓库不发布全文语料。公开内容只包含提炼后的风格规则、工作流、边界说明和工具脚本。
+旧入口 `touge-writing-reboot-skill` 保留路由，以及交流、Reboot、产品问答和内容交付包等[辅助能力](docs/auxiliary-guide.md)。
 
-## 能力目标
+## 安装并创建本地作品
 
-1. 写作机器人：根据主题生成接近作者风格的长文、短评、口播稿、标题和二稿。
-2. 内容交付包：把主题、文章草稿或项目材料转成文章、PPT 大纲、WPS 兼容 PPTX 和逐页 Markdown 讲稿。
-3. 交流机器人：以作者常见判断方式回应职业、技术、组织、创业、个人状态类问题。
-4. Reboot 模块：重建作者的价值判断、表达边界、反应模式和自我校准机制。
-5. 风格审计：判断一段文字哪里不像作者，哪里 AI 味太重，如何改。
-6. Agent 嵌入：把 skill 安装到外部 AI Agent 中，通过飞书、企业微信、石墨文档等系统完成问答、草稿和知识协作。
-7. 持续进化：接入新的私有语料源和自定义能力，让 skill 从写作/交流扩展到产品经理问答、产品知识问答等场景。
+核心工具需要 macOS 或 Linux、Python 3.9+；Git 用于克隆与发布检查。PPT 和文章抓取的可选依赖见[安装说明](docs/installation.md)。
 
-## 目录
+```bash
+git clone --branch v2.0.0 https://github.com/yeliang-wang/touge-writing-reboot-skill.git
+cd touge-writing-reboot-skill
+python3 scripts/writing_workspace.py init --id my-novel --title "我的小说" --type novel
+python3 scripts/writing_workspace.py resume --project my-novel
+```
+
+在 Codex 打开完整项目，可使用 `$touge-novel-writing` 或 `$touge-wechat-writing`，例如“为我的小说建立全书方案”或“根据这些材料写一篇公众号文章”。这些是安装后的使用任务，产品升级不会自动审阅已有书稿。
+
+**`workspace/` 不随仓库或 Release 分发。** 首次初始化会在本机创建作品目录与索引；已有作品通过私人迁移或备份恢复导入。安装不会自带作者原始语料、私人小说或账号连接。
+
+## 架构与数据边界
 
 ```text
-.
-├── SKILL.md
-├── docs/
-│   └── GUIDE
-├── configs/
-│   ├── capabilities.json
-│   └── corpus-sources.example.json
-├── references/
-│   ├── cognitive-os.md
-│   ├── expression-dna.md
-│   ├── interaction-protocol.md
-│   ├── agent-integration-spec.md
-│   ├── evolution-spec.md
-│   ├── product-manager-capability.md
-│   ├── content-deck-playbook.md
-│   ├── style-audit-rubric.md
-│   ├── distillation-report.md
-│   ├── robot-spec.md
-│   ├── productization-runbook.md
-│   ├── style-dna.md
-│   ├── title-patterns.md
-│   ├── article-playbooks.md
-│   ├── conversation-persona.md
-│   ├── reboot-protocol.md
-│   ├── boundaries.md
-│   └── corpus-summary.md
-├── prompts/
-│   ├── writing.md
-│   ├── conversation.md
-│   └── style-audit.md
-└── scripts/
-    ├── fetch_wechat_articles.py
-    ├── ingest_corpus.py
-    ├── build_robot_prompt.py
-    ├── build_content_deck.py
-    ├── build_agent_context.py
-    ├── private_retriever.py
-    ├── record_feedback.py
-    └── style_eval.py
+Codex 执行任务
+  ├─ 共享作者能力 + 公众号 Skill / 小说 Skill
+  ├─ 本地文件工具 → 私有 workspace
+  └─ 宿主 MCP 连接 → 微信公众号 / 腾讯文档 / 其他外部服务
 ```
 
-## 使用方式
+MCP 是外部服务连接能力。写作方法保存在 Skill 中，作品和版本状态保存在本地；本项目不提供独立 Agent 服务或 MCP 插件运行框架。详见[架构说明](docs/architecture.md)。
 
-在 Codex 中可作为 skill 使用：
+公开文件包括方法、模板、脚本、技术文档和经审阅的风格抽象。正文、素材、镜像、过程记录、备份及云端回执保持私有；授权密钥由宿主管理。
 
-```text
-请使用 $touge-writing-reboot-skill，把这个主题写成一篇我的风格文章
-```
+## 外部服务
 
-也可以作为通用 prompt/agent 知识库，把 `SKILL.md` 和 `references/` 接入自己的机器人。
+- [腾讯文档](docs/external-services/tencent-docs.md)：v2.0 已完成目标账号的真实读取、受控 Word 创建与更新、回读及操作记录验证。每次新安装需配置自己的连接。
+- [微信公众号](docs/external-services/wechat.md)：v2.0 建立能力与接入约定，按确认范围不做真实账号验证。服务实现与权限需在后续实际接入时确认。
+- [扩展其他服务](docs/external-services/adding-service.md)：接入宿主工具，补充能力说明与结果查询方式，复用本地操作记录。
 
-生成文章 + PPT + Markdown 讲稿时，可让 Codex 使用 `content_deck` 能力：
+## 分享与验证
 
-```text
-请使用 $touge-writing-reboot-skill，把“AI Agent 平台到底值不值得上”做成一套 8 页 PPT 和逐页讲稿，风格按我的表达来。
-```
-
-如果要安装到外部 AI Agent 中，先生成一个 Agent 上下文包：
+作者能力来自既有的 370 条发表记录、352 条文章链接和 341 篇可用正文。公开包只包含蒸馏结果，统计为既有快照，不随安装自动更新。
 
 ```bash
-python3 scripts/build_agent_context.py \
-  --scenario qa \
-  --channel feishu \
-  --out /tmp/touge-agent-context.md
-```
-
-外部 Agent 负责模型调用、权限、审计、飞书/企业微信连接和人工接管；本 skill 负责提供风格、判断协议、输出契约和边界。
-
-## 蒸馏层次
-
-- `cognitive-os.md`：判断循环、价值坐标、主题簇。
-- `expression-dna.md`：标题、开头、短语、段落运动和语气机制。
-- `interaction-protocol.md`：写作机器人、交流机器人和 reboot 模式的路由协议。
-- `agent-integration-spec.md`：把 skill 嵌入外部 AI Agent、IM 通道和知识问答场景的产品契约。
-- `evolution-spec.md`：持续接入新语料、能力注册、评测和公开边界的演进协议。
-- `product-manager-capability.md`：面向具体产品/业务系统的产品经理问答能力模板。
-- `content-deck-playbook.md`：文章、PPT 大纲、WPS PPTX 和逐页 Markdown 讲稿的内容交付规则。
-- `style-audit-rubric.md`：用 15 分制检查一段输出是否贴近风格系统。
-- `distillation-report.md`：从私有语料中提取出的总体结论。
-- `robot-spec.md`：写作/交流/reboot 机器人输入输出契约。
-- `productization-runbook.md`：本地运行、私有检索、评测和发布检查流程。
-
-## 用户指南
-
-完整场景指南见 [`docs/GUIDE`](docs/GUIDE)，包括：
-
-- 在 Codex 中作为 `$touge-writing-reboot-skill` 使用。
-- 安装到外部 AI Agent，连接飞书或企业微信。
-- 把输出写入石墨文档指定目录。
-- 将“头哥侃码 Reboot”包装成服务。
-- 私有语料、评测、人工反馈和发布检查。
-
-## 持续进化入口
-
-新的语料源不要直接提交到公开仓库。先在私有目录里规范化：
-
-```bash
-python3 scripts/ingest_corpus.py \
-  --source-type wecom_chat \
-  --source-id wecom_im_export \
-  --input /path/to/private/wecom/export.jsonl \
-  --out-dir /path/to/private/evolution-corpus \
-  --tag im_chat \
-  --tag product_qa \
-  --redact
-```
-
-新的能力先注册到 `configs/capabilities.json`，再补对应的 `references/*.md` 和 eval 任务。比如“某某产品的产品经理能力”应该接入产品文档、客户反馈和会话语料，但产品事实留在私有知识库，公开仓库只保留能力框架和边界。
-
-## 私有语料检索
-
-公开仓库不包含全文语料，但可以在本机连接私有语料：
-
-```bash
-python3 scripts/private_retriever.py \
-  --manifest /path/to/private/corpus/manifest.json \
-  --query "技术人转产品经理 背锅 职业选择" \
-  --top-k 5
-```
-
-## 机器人 Prompt 组装
-
-```bash
-python3 scripts/build_robot_prompt.py \
-  --mode write \
-  --topic "AI Agent 平台突然又火了，企业是不是都该立刻上" \
-  --manifest /path/to/private/corpus/manifest.json \
-  --out /tmp/touge-prompt.md
-```
-
-## 风格闸门
-
-生成草稿后可以用离线评分器做一次基础检查：
-
-```bash
-python3 scripts/style_eval.py draft.md
-```
-
-评分器只是产品化烟测，不替代作者本人判断。
-
-## 内容交付包生成
-
-当需要把一个主题或文章草稿做成 PPT 与讲稿，先让 Agent 产出 `slide-plan.json`，再运行：
-
-```bash
-python3 scripts/build_content_deck.py \
-  --plan /path/to/slide-plan.json \
-  --out /path/to/output-dir \
-  --slug ai-agent-platform
-```
-
-输出包括：
-
-```text
-output/
-  <slug>-wps-compatible.pptx
-  <slug>-guide.md
-  <slug>-article.md
-  build-manifest.json
-preview/
-  contact-sheet.png
-  slide-01.png
-  ...
-```
-
-这套流程的原则是先有判断，再有页面。PPT 负责承载观点，Markdown 负责保留口述逻辑，不能把内容打散成泛泛的培训 bullet。
-
-## 发布前检查
-
-上传 GitHub 前运行：
-
-```bash
+python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
+python3 -m unittest discover -s tests -v
 python3 scripts/preflight_check.py
 ```
 
-它会检查必需文件、私有语料泄漏、敏感文本和 eval 任务覆盖。
+v2.0 的完整发布验收还要求迁移、独立行为及外部服务证据，不能用本地单元测试代替。[验收说明](docs/testing.md)区分公共可复现检查与私人迁移验收。
 
-## 公开边界
-
-不要把原始全文语料、后台索引、阅读数据、私密经历细节直接提交到公开仓库。若需要示例，优先使用合成示例、短片段、或已经明确可公开复用的文章链接。
+[文档导航](docs/README.md) · [安装](docs/installation.md) · [使用指南](docs/GUIDE) · [命令参考](docs/cli.md) · [迁移](docs/migration-v2.md) · [发布流程](docs/releasing.md) · [变更记录](CHANGELOG.md)

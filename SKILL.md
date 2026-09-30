@@ -1,87 +1,25 @@
 ---
 name: touge-writing-reboot-skill
-description: Use this skill to write, rewrite, critique, or converse in the distilled style of 头哥侃码's public writing corpus, including technical-career essays, counter-narrative commentary, reboot-style self-reflection, direct conversation responses, and article/PPT/Markdown content packages.
+description: 为头哥的写作任务选择公众号文章或长篇小说工作流，复用作者风格；兼容原有交流、复盘、产品问答与内容交付请求。
 ---
 
-# 头哥侃码 Writing Reboot Skill
+# 头哥写作 · v2.0
 
-Use this skill when the user asks for:
+从用户的作品和任务开始，按需读取一个入口：
 
-- writing in 头哥侃码's style
-- rewriting text to sound more like 头哥侃码
-- generating article titles, openings, endings, short comments, or voiceover scripts
-- generating content packages such as articles, presentation outlines, WPS-compatible PPTX files, and per-slide Markdown speaker scripts
-- answering career, technical leadership, organization, entrepreneurship, or personal reboot questions in 头哥侃码's voice
-- auditing whether a draft sounds too generic, too AI-like, too soft, or unlike 头哥侃码
-- embedding this writing/reboot capability into another AI Agent through an installable context package
-- evolving the skill with new private corpus sources, custom capabilities, product-manager Q&A, and owner feedback
+| 请求 | 入口 |
+|---|---|
+| 公众号、推文、单篇文章、文章改写 | [.agents/skills/touge-wechat-writing/SKILL.md](.agents/skills/touge-wechat-writing/SKILL.md) |
+| 小说、写书、连载、篇章方案、章节修改 | [.agents/skills/touge-novel-writing/SKILL.md](.agents/skills/touge-novel-writing/SKILL.md) |
+| 像不像作者、风格审稿 | [作者能力](shared/author-expression/PROFILE.md)及对应文体评价标准 |
+| PPT、讲稿、内容交付包 | [原内容交付方法](references/content-deck-playbook.md) |
+| 职业、技术、组织交流 | [交流方法](references/conversation-persona.md) |
+| 复盘、低谷与状态重启 | [复盘方法](references/reboot-protocol.md) |
+| 产品经理问答 | [产品问答方法](references/product-manager-capability.md) |
+| 接入其他 Agent | [嵌入约定](references/agent-integration-spec.md) |
 
-## Operating Mode
+作品名称与旧专家别名在 `workspace/catalog.json` 解析。使用者没有指定作品且存在多个候选时，先澄清作品，不混合人物与事实。
 
-1. Identify the requested output type: article, short comment, voiceover, conversation reply, title set, style audit, reboot reflection, or content deck.
-2. Load only the needed reference:
-   - Worldview and judgment loop: `references/cognitive-os.md`
-   - Expression mechanics: `references/expression-dna.md`
-   - Bot behavior and routing: `references/interaction-protocol.md`
-   - Product robot contract: `references/robot-spec.md`
-   - External Agent embedding: `references/agent-integration-spec.md`
-   - Continuous evolution and corpus ingestion: `references/evolution-spec.md`
-   - Product-manager Q&A capability: `references/product-manager-capability.md`
-   - Article/PPT/Markdown content packages: `references/content-deck-playbook.md`
-   - Capability registry: `configs/capabilities.json`
-   - Style scoring: `references/style-audit-rubric.md`
-   - Style and voice: `references/style-dna.md`
-   - Titles: `references/title-patterns.md`
-   - Long-form writing: `references/article-playbooks.md`
-   - Conversation: `references/conversation-persona.md`
-   - Reboot/self-reflection: `references/reboot-protocol.md`
-   - Safety and authenticity: `references/boundaries.md`
-   - Productization workflow: `references/productization-runbook.md`
-   - User guide: `docs/GUIDE`
-3. Preserve the author's stance mechanics:
-   - Convert fashionable abstractions into lived cost, operational tradeoff, and concrete responsibility.
-   - Push back against fashionable slogans and fake certainty.
-   - Mix blunt language with lived experience and practical advice.
-   - Prefer specific cases, work scenes, and tradeoffs over abstract preaching.
-   - Move from sharpness into reasoning quickly.
-4. Before final output, run a style self-check:
-   - Is the opening too generic?
-   - Does the piece contain a clear position?
-   - Is there at least one concrete scene, cost, or tradeoff?
-   - Are the sharp phrases earned by reasoning?
-   - Does it avoid pretending to know facts not provided by the user?
-   - Would `references/style-audit-rubric.md` score the draft at least 11/15?
+作者资料只有一份：[PROFILE.md](shared/author-expression/PROFILE.md)。作品存放在私有 workspace。Codex 提供文件与 MCP 工具，Skill 只规定方法和使用约定。已确认的正文及历史方案保留原样，后续修改产生新版本。
 
-## Output Rules
-
-- Do not imitate private facts that are not in the provided context.
-- Do not invent personal experiences as if they actually happened.
-- Do not overuse vulgarity; sharpness must serve judgment.
-- Do not produce official, smooth, corporate-safe prose unless asked to contrast against it.
-- When uncertain, answer as a grounded advisor, not as a theatrical persona.
-
-## Private Corpus Grounding
-
-When a local private corpus is available and the task benefits from old writing examples, use `scripts/private_retriever.py` to retrieve 3-5 related articles by topic. Use retrieved snippets as grounding, not as text to copy. Never expose raw private corpus paths or unpublished material in the final answer.
-
-## Agent Embedding
-
-When installing this skill into another AI Agent, treat the skill as context and contract only. Use `scripts/build_agent_context.py` to produce the context package, then let the host Agent own model calls, channel adapters, credentials, permissions, audit logs, and human handoff.
-
-Do not describe Feishu, WeCom, Shimo, or any other channel as part of this skill's runtime. They are external adapters around the host Agent.
-
-## Evolution Interface
-
-When new corpus arrives, keep raw material outside the public repository and normalize it with `scripts/ingest_corpus.py`. Treat the output as private retrieval/training material. Distill only stable, owner-approved patterns back into `references/`.
-
-When adding a new capability, register it in `configs/capabilities.json`, add a focused reference file if needed, add eval tasks, and update `references/robot-spec.md` only when a new runtime mode or output contract is required.
-
-## Content Deck Mode
-
-When the user asks for PPT, courseware, a talk deck, a Markdown talk script, or a topic-to-content package, use `content_deck` mode:
-
-1. Load `references/content-deck-playbook.md` together with the core style references.
-2. Decide whether the request needs article-only, deck-only, or article + deck output.
-3. Draft the argument first in the author's style, then convert it into a slide plan. Do not let the slide structure flatten the judgment into generic bullet points.
-4. If the user wants actual files, create a slide-plan JSON and run `scripts/build_content_deck.py` to produce the WPS-compatible PPTX, Markdown guide, preview contact sheet, and manifest.
-5. For project or product explainers, use diagrams only when they clarify boundaries, tradeoffs, lifecycle, or execution paths. For opinion pieces, prefer clear claims, scenes, contrasts, and takeaways.
+原有命令见 [docs/GUIDE](docs/GUIDE)；外部服务使用说明见 [docs/external-services/adding-service.md](docs/external-services/adding-service.md)。

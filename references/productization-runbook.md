@@ -1,159 +1,25 @@
-# Productization Runbook
+# v2.0 运行维护手册
 
-This repository has two layers:
+本页保留旧引用路径，运行流程以当前本地工作区与外部连接边界为准。
 
-1. Public skill layer: safe to publish. It contains distilled rules, prompts, scripts, and aggregate corpus facts.
-2. Private corpus layer: keep local. It contains raw HTML, Markdown, metrics, and article manifests.
-3. Evolution layer: keep private by default. It contains normalized IM exports, product docs, meeting notes, owner feedback, and capability-specific retrieval indexes.
+## 首次安装
 
-## 1. Local Skill Use
+取得完整项目，运行作品 init 创建私人 workspace，再由宿主执行写作。单独复制某个Skill目录会缺少共享资料与脚本。环境和步骤见[安装](../docs/installation.md)。
 
-Install by copying this directory to:
+## 日常运行
 
-```text
-~/.codex/skills/touge-writing-reboot-skill
-```
+恢复作品登记状态 → 按用户任务取得材料并执行相应Skill → 保存新版本和实际决定 → 按需进行外部操作。公众号风格分数是辅助提示，不要求所有小说套用11/15阈值。
 
-Then invoke:
+检索器返回片段后应继续阅读相关来源。旧正文、旧对话和云端快照属于证据，不自动变成当前有效指令。命令见[CLI参考](../docs/cli.md)。
 
-```text
-请使用 $touge-writing-reboot-skill，把这个主题写成一篇我的风格文章。
-```
+## 备份与故障
 
-Restart Codex if the skill does not appear in the current session.
+全量备份写到工作区之外并保留校验凭证；恢复到新目录，验证后再切换使用路径。哈希冲突先核对源文件，不能覆盖旧稿来消除错误。外部操作结果不明先回读，不能盲目重发。
 
-## 2. Private Retrieval Use
+## 反馈和扩展
 
-Keep the private corpus outside this repository. Query it like this:
+反馈日志保持私有。区分作品修改与长期作者规则，稳定规则经来源确认后才更新共享资料。新增服务由宿主连接；本项目不默认提供飞书、企微或文档平台的业务适配器。
 
-```bash
-python3 scripts/private_retriever.py \
-  --manifest /path/to/private/corpus/manifest.json \
-  --query "技术人转产品经理 背锅 职业选择" \
-  --top-k 5
-```
+## 发布
 
-Use retrieved titles and short snippets as grounding context before drafting.
-
-## 3. Writing Robot Flow
-
-```text
-user topic
--> retrieve 3-5 related private articles
--> load cognitive-os + expression-dna + article-playbooks
--> draft
--> run style audit rubric
--> revise until score >= 11/15
--> return draft + title options + self-audit notes
-```
-
-Build a model-ready prompt:
-
-```bash
-python3 scripts/build_robot_prompt.py \
-  --mode write \
-  --topic "AI Agent 平台突然又火了，企业是不是都该立刻上" \
-  --manifest /path/to/private/corpus/manifest.json \
-  --out /tmp/touge-prompt.md
-```
-
-## 4. Conversation Robot Flow
-
-```text
-user question
--> classify mode: diagnose / reboot / rewrite / write / audit
--> load interaction-protocol
--> optionally retrieve related corpus entries
--> answer with diagnosis, tradeoff, and next action
-```
-
-## 5. External Agent Embedding
-
-Generate a context package for the target Agent:
-
-```bash
-python3 scripts/build_agent_context.py \
-  --scenario qa \
-  --channel feishu \
-  --agent-name touge-internal-qa-agent \
-  --out /tmp/touge-agent-context.md
-```
-
-The target Agent should load the generated context as system/developer instructions or as a pinned knowledge file. The Agent, not this skill, owns:
-
-- model calls
-- Feishu, WeCom, web, or document adapters
-- credentials and permissions
-- conversation state and memory
-- audit logs and human handoff
-
-For channel integration, use the contract in `references/agent-integration-spec.md`.
-
-## 6. Continuous Corpus Ingestion
-
-Normalize new private material before using it for retrieval or distillation:
-
-```bash
-python3 scripts/ingest_corpus.py \
-  --source-type wecom_chat \
-  --source-id wecom_im_export \
-  --input /path/to/private/wecom/export.jsonl \
-  --out-dir /path/to/private/evolution-corpus \
-  --tag im_chat \
-  --tag product_qa \
-  --redact
-```
-
-The output manifest is private. Use it to retrieve, review, and mine patterns. Only owner-approved distilled rules should be folded back into this repository.
-
-## 7. Capability Extension
-
-Register new capabilities in `configs/capabilities.json`.
-
-Minimum extension workflow:
-
-```text
-define capability
--> add or reuse reference files
--> define corpus tags
--> add eval tasks
--> run preflight
--> owner reviews sample outputs
--> widen runtime usage
-```
-
-For product-manager Q&A, use `references/product-manager-capability.md` and keep product facts in private product documents.
-
-## 8. Release Checklist
-
-- `python3 scripts/preflight_check.py` passes.
-- No raw corpus files are committed.
-- No account token, cookie, temporary key, or local private path is committed.
-- `evals/tasks.jsonl` has at least five product scenarios.
-- `scripts/build_agent_context.py --scenario all --channel generic` can generate an Agent context package.
-- `configs/capabilities.json` is valid JSON and every registered reference exists.
-- `configs/corpus-sources.example.json` contains examples only, not real private paths.
-- A human owner has reviewed 10 generated outputs and marked at least 8 as acceptable.
-- Public bot surfaces disclose that this is an AI persona system, not the real person.
-
-## 9. Feedback Loop
-
-Record owner feedback outside the public repository:
-
-```bash
-python3 scripts/record_feedback.py \
-  --log /path/to/private/feedback.jsonl \
-  --task-id write_technical_hype \
-  --mode write \
-  --prompt "AI Agent 平台突然又火了..." \
-  --output /path/to/generated.md \
-  --score 4 \
-  --notes "像，但结尾太软" \
-  --revision-rule "结尾要给边界和停止项"
-```
-
-Fold stable revision rules back into references after review.
-
-## 10. Current Non-Automatable Gate
-
-The final quality gate requires the author to score real outputs. Without that human preference loop, the system can be product-ready as a package, but not honestly called a 100% faithful writing/persona robot.
+执行公共测试和本次完整验收，只从已审阅Git树构建包，核对提交、标签、Release与下载资产。真实作品内容审阅不属于升级发布流程。详见[发布说明](../docs/releasing.md)。

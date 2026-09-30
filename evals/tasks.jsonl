@@ -1,8 +1,13 @@
-{"id":"write_technical_hype","mode":"write","prompt":"写一篇关于“AI Agent 平台突然又火了，企业是不是都该立刻上”的短文，目标读者是技术负责人。","acceptance":["开头不能使用宏大背景","必须指出口号背后的组织成本","必须给出可执行判断标准","风格评分至少 11/15"]}
-{"id":"career_reply_age","mode":"conversation","prompt":"我 38 岁，技术管理做了几年，但最近很焦虑，感觉大厂不要我，小厂也嫌我贵，我该怎么办？","acceptance":["先诊断真实问题","不能只安慰","必须给 3 个现实动作","不能编造作者经历"]}
-{"id":"rewrite_ai_smell","mode":"rewrite","prompt":"将一段平滑 AI 文改写成头哥风格：随着时代的发展，技术人员需要不断提升综合能力，以适应复杂多变的市场环境。","acceptance":["去掉 AI 套话","出现明确立场","加入代价和场景","结尾有行动建议"]}
-{"id":"reboot_low_point","mode":"reboot","prompt":"我最近很低落，感觉过去几年都白干了，想重新开始，但不知道从哪里开始。","acceptance":["承认低谷但不煽情","分离事实和情绪","提出边界和实践","不做心理治疗式承诺"]}
-{"id":"title_set","mode":"titles","prompt":"为一篇关于“技术人转产品经理不是逃离代码，而是换一种方式背锅”的文章生成 12 个标题。","acceptance":["至少 4 个反问式标题","至少 3 个直接反驳式标题","避免营销号夸张","标题里有真实冲突"]}
-{"id":"product_qa_missing_context","mode":"product_qa","prompt":"客户问我们这个产品下个版本能不能支持企业微信审批流自动同步，我应该怎么回答？","acceptance":["不能编造路线图","必须指出需要检索产品文档或路线图","必须区分客户需求、产品承诺和交付成本","给出可执行回复模板","需要时标记人工 review"]}
-{"id":"content_deck_topic_to_package","mode":"content_deck","prompt":"把“AI Agent 平台到底值不值得上”做成 8 页公开分享 PPT，保留文章版和逐页 Markdown 讲稿。","acceptance":["必须先给出清晰论点","每页只承载一个判断","至少包含一个真实工作场景或组织成本","输出 slide-plan JSON 契约","讲稿要能自然口述","不能变成泛泛的背景挑战方案模板"]}
-{"id":"content_deck_article_to_talk","mode":"content_deck","prompt":"把一篇已有长文改成 6 页内部分享 PPT 和逐页口述稿，主题是技术人转产品经理不是逃离代码。","acceptance":["保留原文立场","拆出 claim、scene、cost、action","PPT 可见文字要短","Markdown 讲稿承载细节","至少一页使用 contrast 结构","不能编造个人经历"]}
+{"id": "write_technical_hype", "mode": "write", "prompt": "写一篇关于“AI Agent 平台突然又火了，企业是不是都该立刻上”的短文，目标读者是技术负责人。", "acceptance": ["开头不能使用宏大背景", "必须指出口号背后的组织成本", "必须给出可执行判断标准", "风格评分至少 11/15"]}
+{"id": "career_reply_age", "mode": "conversation", "prompt": "我 38 岁，技术管理做了几年，但最近很焦虑，感觉大厂不要我，小厂也嫌我贵，我该怎么办？", "acceptance": ["先诊断真实问题", "不能只安慰", "必须给 3 个现实动作", "不能编造作者经历"]}
+{"id": "rewrite_ai_smell", "mode": "rewrite", "prompt": "将一段平滑 AI 文改写成头哥风格：随着时代的发展，技术人员需要不断提升综合能力，以适应复杂多变的市场环境。", "acceptance": ["去掉 AI 套话", "出现明确立场", "加入代价和场景", "结尾有行动建议"]}
+{"id": "reboot_low_point", "mode": "reboot", "prompt": "我最近很低落，感觉过去几年都白干了，想重新开始，但不知道从哪里开始。", "acceptance": ["承认低谷但不煽情", "分离事实和情绪", "提出边界和实践", "不做心理治疗式承诺"]}
+{"id": "title_set", "mode": "titles", "prompt": "为一篇关于“技术人转产品经理不是逃离代码，而是换一种方式背锅”的文章生成 12 个标题。", "acceptance": ["至少 4 个反问式标题", "至少 3 个直接反驳式标题", "避免营销号夸张", "标题里有真实冲突"]}
+{"id": "product_qa_missing_context", "mode": "product_qa", "prompt": "客户问我们这个产品下个版本能不能支持企业微信审批流自动同步，我应该怎么回答？", "acceptance": ["不能编造路线图", "必须指出需要检索产品文档或路线图", "必须区分客户需求、产品承诺和交付成本", "给出可执行回复模板", "需要时标记人工 review"]}
+{"id": "content_deck_topic_to_package", "mode": "content_deck", "prompt": "把“AI Agent 平台到底值不值得上”做成 8 页公开分享 PPT，保留文章版和逐页 Markdown 讲稿。", "acceptance": ["必须先给出清晰论点", "每页只承载一个判断", "至少包含一个真实工作场景或组织成本", "输出 slide-plan JSON 契约", "讲稿要能自然口述", "不能变成泛泛的背景挑战方案模板"]}
+{"id": "content_deck_article_to_talk", "mode": "content_deck", "prompt": "把一篇已有长文改成 6 页内部分享 PPT 和逐页口述稿，主题是技术人转产品经理不是逃离代码。", "acceptance": ["保留原文立场", "拆出 claim、scene、cost、action", "PPT 可见文字要短", "Markdown 讲稿承载细节", "至少一页使用 contrast 结构", "不能编造个人经历"]}
+{"id": "wechat_reference_article_to_product_case", "mode": "wechat_public_article", "prompt": "参考一篇以强比喻展开的微信公众号文章写法，并结合一个真实产品项目的 README 和 Dashboard 材料，写一篇公众号文章。示例主题：AI Agent 时代企业缺的不是更多 Agent，而是可治理的进化控制面。", "acceptance": ["必须输出主标题、副标题、封面摘要和正文", "开头从具体交流、项目压力或管理问题进入，不能用宏大背景", "必须提炼参考文章的结构运动，不能复制参考文章表述", "必须把 Skill/流程知识写成公共方法，而不是绑定某个具体项目", "必须把项目事实和作者判断分开", "不得编造发布状态、用户数量、客户案例或生产证据", "风格评分至少 11/15"]}
+{"id": "novel_resume_registered_stage", "mode": "novel_plan", "input": "继续当前小说第二章。", "expected": ["从作品目录恢复登记版本", "区分旧正文基线与已确认新方案", "按当前阶段交付", "不默认重写邻章"]}
+{"id": "chapter_historical_inheritance", "mode": "chapter_review", "input": "全书方案更新了，检查第一章的继承关系。", "expected": ["保留旧章方案的历史父版本", "报告新旧方案差异", "不自动升级或确认"]}
+{"id": "novel_source_conflict", "mode": "novel_audit", "input": "旧稿与素材中的入行时间不同，请核查。", "expected": ["双向来源", "冲突记录", "不拼造第三种时间", "保留原定稿"]}
+{"id": "wechat_private_grounding", "mode": "wechat_public_article", "input": "按我的公众号风格讨论职业选择，先给结构和材料依据。", "expected": ["阅读全文后引用", "虚构案例不变成事实", "历史观点不当作现状", "不用小说专属设定"]}

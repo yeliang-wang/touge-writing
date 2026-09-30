@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "required_checks": [
+    {
+      "id": "unit_tests",
+      "description": "版本、路径、不可覆盖、隔离、备份和操作记录的行为测试"
+    },
+    {
+      "id": "public_boundary",
+      "description": "Git索引和公开候选内容检查"
+    },
+    {
+      "id": "migration_integrity",
+      "description": "原源文件与迁移副本逐文件SHA-256一致"
+    },
+    {
+      "id": "curation_integrity",
+      "description": "当前工作副本与归档逐文件一致"
+    },
+    {
+      "id": "corpus_integrity",
+      "description": "352条索引/341篇正文和原始语料核对"
+    },
+    {
+      "id": "writing_state_and_inheritance",
+      "description": "现行版本、历史继承与已保存进度的恢复"
+    },
+    {
+      "id": "shareable_author_profile",
+      "description": "独立作者能力包白名单导出"
+    },
+    {
+      "id": "context_and_retrieval",
+      "description": "上下文导出兼容和真实私有检索"
+    },
+    {
+      "id": "skill_structure",
+      "description": "三个Skill入口通过官方结构校验"
+    },
+    {
+      "id": "independent_writing_behavior",
+      "description": "独立行为证据：任务路由、阶段遵守与来源使用边界"
+    },
+    {
+      "id": "tencent_docs_live",
+      "description": "真实账号原Word/表格读取、空间目录、创建、更新与完整回读"
+    },
+    {
+      "id": "backup_restore",
+      "description": "全量私有workspace备份、逐文件恢复及恢复后续写入口"
+    }
+  ],
+  "excluded_by_user": [
+    {
+      "id": "wechat_live",
+      "reason": "用户明确：v2.0仅建立微信公众号MCP能力，不做验证验收。"
+    }
+  ],
+  "scope_notes": [
+    "产品升级验收只检查能力与迁移正确性；不审阅真实作品内容。事实、情节、正文与章节方案审阅属于发布后的独立使用任务。",
+    "原来源缺失文件单独列账；迁移完整性针对已冻结清单，不能将源缺失写成已恢复。",
+    "腾讯文档实测结果绑定本次账号、权限、文档类型与工具版本；不宣称所有平台操作均已验证。",
+    "恢复到已保存的章节review阶段仅验证进度恢复，不执行该review；历史测试中的内容观察不构成发布条件。"
+  ]
+}

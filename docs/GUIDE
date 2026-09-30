@@ -1,280 +1,57 @@
-# 头哥侃码 Reboot 用户指南
+# v2.0 使用指南
 
-本指南说明如何把 `touge-writing-reboot-skill` 用在不同场景里。核心原则只有一个：这个仓库是 skill 和知识能力包，不默认充当在线服务。是否做成服务、接入飞书、接入企业微信、写入石墨文档，都应该由外部 AI Agent 或业务系统负责。
+本指南适用于安装后的写作任务。首次使用先完成 [安装与初始化](installation.md)。产品升级和发布不会自动执行本文中的作品内容审阅。
 
-## 1. 在 Codex 中直接使用
+## 公众号写作
 
-适合个人写作、改稿、标题、口播稿和风格审计。
+在 Codex 中使用 `$touge-wechat-writing`，提供主题、读者和已有素材；也可直接指定改稿、标题或审稿任务。任务明确要求直接成稿时，不额外强制先审批提纲。
 
-安装目录：
-
-```text
-~/.codex/skills/touge-writing-reboot-skill
-```
-
-调用方式：
-
-```text
-请使用 $touge-writing-reboot-skill，把这个主题写成一篇我的风格文章
-```
-
-常见任务：
-
-- 写一篇技术趋势判断文章。
-- 把主题、文章草稿或项目材料做成 PPT 和 Markdown 讲稿。
-- 把一段很官方的稿子改得更像“头哥侃码”。
-- 判断一段文字哪里 AI 味太重。
-- 对职业选择、组织问题、技术转型问题给出交流式回应。
-
-## 2. 生成文章、PPT 和 Markdown 讲稿
-
-适合公开分享、内部培训、课程稿、产品讲解和文章转演讲稿。
-
-调用方式：
-
-```text
-请使用 $touge-writing-reboot-skill，把这个主题做成一套 8 页 PPT、逐页 Markdown 讲稿，并保留文章版。
-```
-
-工作方式：
-
-1. 先用 `references/content-deck-playbook.md` 明确论点、听众、场景和输出深度。
-2. 生成文章或论点主线。
-3. 生成 `slide-plan.json`，每页只承载一个判断。
-4. 如需实际文件，运行 `scripts/build_content_deck.py`。
-
-命令示例：
+1. 建立或定位本地文章。
+2. 按需检索历史文章，并继续阅读命中原文。
+3. 形成结构或正文，保持观点和事实来源可追溯。
+4. 审稿后按真实作者决定登记版本。
+5. 只有需要平台操作时，才连接外部服务并明确目标版本。
 
 ```bash
-python3 scripts/build_content_deck.py \
-  --plan /path/to/slide-plan.json \
-  --out /path/to/output-dir \
-  --slug topic-deck
+python3 scripts/writing_workspace.py init --id career-article --title "职业选择" --type wechat
+python3 scripts/writing_workspace.py resume --project career-article
 ```
 
-输出结构：
+私人语料不随安装提供。自行导入后，可使用 `private_retriever.py` 查询 JSON 数组格式的文章清单；详情见[语料格式](workspace.md)。文章定稿、平台草稿和公开发布是不同操作。
 
-```text
-output/
-  topic-deck-wps-compatible.pptx
-  topic-deck-guide.md
-  topic-deck-article.md
-  build-manifest.json
-preview/
-  contact-sheet.png
-  slide-01.png
-  ...
-```
+## 小说写作
 
-注意：PPT 是交付形态，核心仍然是作者风格里的判断、场景、代价和行动建议。不要把它做成泛泛的“背景、挑战、方案、展望”模板。
-
-## 3. 安装到外部 AI Agent
-
-适合把“头哥侃码 Reboot”变成某个 Agent 的能力模块，再由这个 Agent 连接飞书、企业微信、石墨文档或内部知识库。
-
-生成 Agent 上下文包：
+使用 `$touge-novel-writing`，先建立独立的全书方案、章节配置与材料。书名、视角、人物、时间线和虚构授权只属于当前作品。
 
 ```bash
-python3 scripts/build_agent_context.py \
-  --scenario qa \
-  --channel feishu \
-  --agent-name touge-internal-qa-agent \
-  --out /tmp/touge-agent-context.md
+python3 scripts/writing_workspace.py resume --project my-novel
+python3 scripts/writing_workspace.py resume --project my-novel --chapter ch01
 ```
 
-外部 Agent 应该把 `/tmp/touge-agent-context.md` 作为 system/developer context 或长期知识文件加载。加载后，Agent 负责：
+读取恢复结果中的版本路径和作品约定，再执行当前任务。返回的 `review_chapter_plan` 表示该作品保存的阶段；只有用户发起写作任务时才进入方案审阅。旧基线不是已确认的新方案。
 
-- 接收用户消息。
-- 调用模型。
-- 决定是否检索私有知识库。
-- 执行飞书、企业微信或文档写入工具。
-- 记录日志、权限、审计和人工接管。
+全书方案与章节方案分别登记。章方案指向明确的全书版本，正文定稿指向同章已确认方案；更换父版本须在新方案中说明。CLI 不会自动审批稿件，也不会自动维护人物和时间线资料。
 
-skill 只负责提供风格、判断协议、输出契约和边界，不负责持有任何平台 token。
+## 保存与检查
 
-## 4. 接入飞书
-
-推荐结构：
-
-```text
-Feishu Event
--> FeishuAdapter
--> unified inbound envelope
--> AI Agent Runtime
--> touge-writing-reboot-skill context
--> unified reply envelope
--> FeishuAdapter
-```
-
-飞书适合的场景：
-
-- 内部知识问答。
-- 技术判断类咨询。
-- 文章选题讨论。
-- 先生成草稿，再由本人确认发送。
-
-建议自动化等级：
-
-- 默认 L1：只生成草稿，人工确认。
-- 对低风险 FAQ 可升到 L2：低风险自动回复，高风险人工接管。
-- 不建议一开始 L3 全自动。
-
-## 5. 接入企业微信
-
-企业微信通常会接触员工、客户或外部联系人，权限边界要更严格。
-
-建议策略：
-
-- 内部员工群：可以做 L1/L2。
-- 客户或外部联系人：默认 L1。
-- 涉及价格、承诺、合同、法律、财务、医疗、招聘结论：必须人工接管。
-
-企业微信 Adapter 不应该把企微字段直接塞进 skill 规则里。它只需要转换成统一输入：
-
-```json
-{
-  "channel": "wecom",
-  "conversation_id": "...",
-  "sender_id": "...",
-  "sender_role": "external_user",
-  "text": "用户问题",
-  "attachments": [],
-  "timestamp": "..."
-}
-```
-
-## 6. 写入石墨文档指定目录
-
-如果最终不是直接发布到某个内容平台，而是写入石墨文档，应该把石墨当成目标系统，不要让 skill 直接处理账号和权限。
-
-推荐流程：
-
-```text
-用户提出主题
--> Agent 使用 skill 生成草稿
--> 风格审计
--> 人工确认或策略审批
--> ShimoDocumentAdapter 写入指定目录
--> Agent 返回文档链接和审计备注
-```
-
-文档标题可以由 `titles` 模式生成。正文由 `write` 或 `rewrite` 模式生成。是否发布到公众号、朋友圈、知识库或其他平台，由使用者在石墨之后自行决定。
-
-## 7. 包装成服务
-
-如果需要把“头哥侃码 Reboot”本身包装成服务，可以做一个外部服务壳：
-
-```text
-HTTP API
--> Auth and policy
--> Agent Runtime
--> skill context
--> optional private retriever
--> response and audit log
-```
-
-最小 API：
-
-```json
-{
-  "mode": "write | rewrite | conversation | reboot | audit | titles | product_qa | content_deck",
-  "topic": "string",
-  "draft": "optional string",
-  "user_context": "optional string",
-  "sharpness": "low | medium | high"
-}
-```
-
-这种方式适合多端复用，但要注意：服务化的是外部 Agent Runtime，不是这个 skill 仓库本身。这个仓库仍然只提供能力包、脚本和规则。
-
-## 8. 私有语料增强
-
-公开仓库不放原文语料。如果本地有私有 manifest，可以在生成 prompt 或 Agent context 前先检索相关旧文：
+将正文、方案、审稿保存为不同条目。`add-revision` 使用新的 ID 和源文件，确认条目还需真实的作者决定文件。完整示例见[命令参考](cli.md)。
 
 ```bash
-python3 scripts/private_retriever.py \
-  --manifest /path/to/private/corpus/manifest.json \
-  --query "技术人转管理 岗位选择 职业判断" \
-  --top-k 5
+python3 scripts/writing_workspace.py validate --project my-novel
+python3 scripts/writing_workspace.py rebuild-state --project my-novel
+python3 scripts/writing_workspace.py search --project my-novel --query "灯塔"
+python3 scripts/writing_workspace.py search --project my-novel --query "灯塔" --history
 ```
 
-私有语料只能作为 grounding，不应该直接复制到最终回复，也不应该提交到公开仓库。
+默认检索现行登记版本；`--history` 加入登记历史，未登记的镜像从本地档案索引另行查阅。修改已登记正文会触发哈希不匹配，应恢复原件并建立新版本。
 
-## 9. 评测与验收
+`manuscript_check.py` 扫描重复窗口、结构词和破折号密度；`style_eval.py` 提供公众号风格的启发式评分。结果都需结合文体判断，不能直接视为小说事实或文学质量验收。
 
-每次产品化使用前至少做三类检查：
+## 同步、分享与恢复
 
-```bash
-python3 scripts/preflight_check.py
-python3 scripts/style_eval.py /path/to/draft.md
-python3 scripts/build_agent_context.py --scenario all --channel generic > /tmp/touge-agent-context.md
-```
+- 云端协作：[腾讯文档](external-services/tencent-docs.md)；平台草稿与发布：[微信公众号](external-services/wechat.md)。
+- 单独分享作者风格：[作者能力模块](../shared/author-expression/README.md)。
+- 搬迁私人作品：使用[备份与恢复命令](cli.md)，备份存放在工作区之外，恢复到新目录。
+- 交流、Reboot、PPT、产品问答：[辅助能力指南](auxiliary-guide.md)。
 
-人工验收建议：
-
-- 10 个真实问题。
-- 至少覆盖写作、交流、改稿、reboot、标题、产品问答和内容交付包。
-- 标记“哪里像、哪里不像、哪里不能自动发”。
-- 把稳定规则写回 `references/`，不要把一次性偏好写成永久规则。
-
-## 10. 持续语料接入
-
-后续企业微信、飞书、产品文档、会议纪要、客户反馈都可以接入，但原始材料必须留在私有目录，不进入公开仓库。
-
-示例：导入企业微信聊天记录。
-
-```bash
-python3 scripts/ingest_corpus.py \
-  --source-type wecom_chat \
-  --source-id wecom_im_export \
-  --input /path/to/private/wecom/export.jsonl \
-  --out-dir /path/to/private/evolution-corpus \
-  --tag im_chat \
-  --tag product_qa \
-  --redact
-```
-
-导入后的私有目录会包含：
-
-```text
-manifest.jsonl
-documents/
-```
-
-`manifest.jsonl` 用于后续检索、抽样、评测和蒸馏。真正写回公开仓库的，只能是稳定规则、能力定义、合成样例和聚合统计。
-
-## 11. 自定义能力扩展
-
-新增能力先改 `configs/capabilities.json`，不要直接把能力写死在 `SKILL.md`。
-
-例如要支持“某某产品的产品经理能力”：
-
-```text
-1. 在 configs/capabilities.json 注册 product_manager_qa 或新的产品能力。
-2. 把产品事实放到私有 product_doc 语料源。
-3. 使用 references/product-manager-capability.md 定义回答结构和边界。
-4. 在 evals/tasks.jsonl 增加产品问答样例。
-5. 通过 build_agent_context.py --scenario product_pm 生成 Agent 上下文。
-```
-
-生成产品经理能力上下文：
-
-```bash
-python3 scripts/build_agent_context.py \
-  --scenario product_pm \
-  --channel wecom \
-  --out /tmp/touge-product-pm-context.md
-```
-
-注意：skill 可以提供“像头哥一样做产品判断”的方法，但不能凭空知道某个产品的路线图、价格、客户承诺和线上事故。这些必须来自外部生产知识库。
-
-## 12. 推荐落地顺序
-
-1. 先在 Codex 中手工使用 skill，积累可接受输出。
-2. 用 `build_agent_context.py` 接入一个外部 Agent。
-3. 接飞书或企业微信，但默认只生成草稿。
-4. 加私有知识库检索和人工接管。
-5. 再考虑低风险 FAQ 自动回复。
-6. 接入企业微信/飞书聊天记录，形成私有 evolution corpus。
-7. 注册第一个自定义能力，例如产品经理问答。
-8. 最后才考虑服务化或多端自动化。
+保留作者已明确的授权与决定，不重复索取同一批准；没有明确的发文任务时，稿件保持本地交付。

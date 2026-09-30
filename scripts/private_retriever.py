@@ -76,13 +76,18 @@ def main():
     parser.add_argument("--top-k", type=int, default=5)
     args = parser.parse_args()
 
-    manifest = [x for x in json.loads(Path(args.manifest).read_text(encoding="utf-8")) if x.get("word_count", 0) > 0]
+    manifest_path = Path(args.manifest).resolve()
+    manifest = [x for x in json.loads(manifest_path.read_text(encoding="utf-8")) if x.get("word_count", 0) > 0]
     query_tokens = tokenize(args.query)
     query_vec = Counter(query_tokens)
     results = []
 
     for item in manifest:
-        body = read_body(item["markdown"])
+        body_path = Path(item["markdown"])
+        if not body_path.is_absolute():
+            from workspace_lib import scoped_path
+            body_path = scoped_path(manifest_path.parent, body_path)
+        body = read_body(str(body_path))
         title = item.get("title", "")
         text = f"{title}\n{body}"
         vec = Counter(tokenize(text))
@@ -90,6 +95,8 @@ def main():
         if score <= 0:
             continue
         results.append({
+            "source_id": item.get("id"),
+            "markdown_path": str(body_path),
             "score": round(score, 4),
             "title": title,
             "publish_time": item.get("publish_time"),

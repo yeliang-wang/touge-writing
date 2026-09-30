@@ -1,197 +1,27 @@
-# Robot Spec
+# v2.0 任务与产物约定
 
-## Product Name
+项目是写作能力包，由宿主调用模型、文件工具和外部服务。本页约定输入与交付，不定义可调用的 HTTP 服务或统一运行时 API。
 
-头哥侃码 Writing/Reboot Robot
+## 输入
 
-## Jobs To Be Done
+至少明确任务类型与材料；已有作品优先通过 catalog 定位。按任务接收主题、读者、目标、稿件、版本、来源、当前阶段及输出形式。用户没有指定作品且存在多个候选时再澄清，不能混合不同作品事实。
 
-- Draft essays in the author's public writing style.
-- Rewrite generic drafts into a sharper, more grounded voice.
-- Answer career, technical leadership, organization, entrepreneurship, and personal reboot questions.
-- Audit whether a draft matches the style system.
-- Provide an installable context contract for an external AI Agent.
-- Support registered custom capabilities such as product-manager Q&A.
-- Produce content packages that include an article, WPS-compatible PPTX, and Markdown talk script.
+## 产物
 
-## Inputs
+| 场景 | 主要交付 |
+|---|---|
+| 公众号 | 标题、摘要、结构或正文、必要来源与修改说明 |
+| 小说全书 | 体裁、读者、视角、章节职责、事实和虚构范围 |
+| 章节任务 | 章方案或正文/审稿，明确父方案与当前阶段 |
+| 交流/Reboot | 问题判断、依据、代价与适量行动建议 |
+| 产品问答 | 已知事实、缺失资料、权衡与建议，不编造路线图 |
+| 内容交付包 | slide-plan JSON、按需文章、PPTX与逐页讲稿 |
+| 风格审阅 | 保留项、问题位置、理由与建议，改写仅按任务范围 |
 
-```json
-{
-  "mode": "write | rewrite | diagnose | conversation | reboot | audit | titles | product_qa | content_deck",
-  "topic": "string",
-  "user_context": "optional string",
-  "draft": "optional string",
-  "output_formats": ["article_md", "slide_plan_json", "pptx", "speaker_md"],
-  "deck": {
-    "slides": 8,
-    "audience": "optional string",
-    "scenario": "internal sharing | public talk | courseware | product explainer",
-    "needs_files": true
-  },
-  "sharpness": "low | medium | high",
-  "retrieval": {
-    "enabled": true,
-    "top_k": 5
-  }
-}
-```
+具体文章或书籍阈值由作品决定。共享作者风格不提供私人事实。源稿与平台排版、图片等派生产物分别保存。
 
-## Internal Context
+## 状态和授权
 
-Always available:
+作品版本以本地记录和真实作者决定为准，登记确认不等于云端同步或公开发布。已明确的操作授权继续有效；目的地、账号或稿件版本改变时应明确新对象。
 
-- `SKILL.md`
-- `references/cognitive-os.md`
-- `references/expression-dna.md`
-- `references/interaction-protocol.md`
-- `references/agent-integration-spec.md`
-- `references/evolution-spec.md`
-- `references/boundaries.md`
-- `configs/capabilities.json`
-
-Mode-specific:
-
-- write: `article-playbooks.md`, `title-patterns.md`
-- conversation: `conversation-persona.md`
-- reboot: `reboot-protocol.md`
-- audit: `style-audit-rubric.md`
-- product_qa: `product-manager-capability.md`
-- content_deck: `content-deck-playbook.md`, `article-playbooks.md`, `style-dna.md`
-
-Optional private grounding:
-
-- Top 3-5 results from `scripts/private_retriever.py`
-
-## Output Contract
-
-### Write
-
-```json
-{
-  "title_options": ["..."],
-  "draft": "...",
-  "style_self_audit": {
-    "position": "...",
-    "cost_or_tradeoff": "...",
-    "risk": "..."
-  }
-}
-```
-
-### Conversation
-
-```json
-{
-  "diagnosis": "...",
-  "tradeoff": "...",
-  "reply": "...",
-  "next_actions": ["..."]
-}
-```
-
-### Agent Reply
-
-```json
-{
-  "reply_type": "answer | draft | ask_clarification | handoff | reject",
-  "mode": "conversation | write | rewrite | reboot | audit | titles",
-  "text": "...",
-  "confidence": 0.82,
-  "need_human_review": false,
-  "risk_tags": ["..."],
-  "audit_note": "..."
-}
-```
-
-### Product Q&A
-
-```json
-{
-  "question_reframe": "...",
-  "known_facts": ["..."],
-  "missing_facts": ["..."],
-  "tradeoff": "...",
-  "recommendation": "...",
-  "next_actions": ["..."],
-  "need_human_review": false
-}
-```
-
-### Content Deck
-
-```json
-{
-  "title_options": ["..."],
-  "article_markdown": "optional full article",
-  "slide_plan": {
-    "title": "...",
-    "audience": "...",
-    "scenario": "...",
-    "slides": [
-      {
-        "title": "...",
-        "subtitle": "...",
-        "kind": "cover | claim | contrast | bullets | sequence | architecture | lifecycle | summary",
-        "points": ["..."],
-        "talk": "One natural oral paragraph in the author's style."
-      }
-    ],
-    "takeaways": ["..."]
-  },
-  "files": {
-    "pptx": "optional path",
-    "speaker_markdown": "optional path",
-    "contact_sheet": "optional path",
-    "manifest": "optional path"
-  },
-  "style_self_audit": {
-    "position": "...",
-    "cost_or_tradeoff": "...",
-    "generic_slide_risk": "..."
-  }
-}
-```
-
-### Audit
-
-```json
-{
-  "verdict": "unlike | partial | close | strong_match",
-  "problems": ["..."],
-  "rewrite_plan": ["..."],
-  "revised_text": "..."
-}
-```
-
-## Quality Gates
-
-- No fabricated autobiography.
-- No raw corpus quotation beyond short, user-approved snippets.
-- Style score >= 11/15 for publishable drafts.
-- For `high` sharpness, the target must be an idea, system, behavior, or public claim, not a vulnerable person.
-- High-stakes factual claims require source verification outside this skill.
-- Content decks must preserve the argument spine; do not turn sharp judgment into generic training bullets.
-
-## Human Preference Loop
-
-Every accepted/rejected output should be logged as:
-
-```json
-{
-  "task_id": "...",
-  "mode": "...",
-  "prompt": "...",
-  "output_path": "...",
-  "owner_score": 1,
-  "owner_notes": "哪里像，哪里不像",
-  "revision_rule": "需要写回哪条规则"
-}
-```
-
-Accepted learnings should be folded back into:
-
-- `expression-dna.md`
-- `interaction-protocol.md`
-- `style-audit-rubric.md`
-- `boundaries.md`
+v2.0 升级只核对能力和迁移状态，不触发真实作品内容审阅。完整数据字段见[工作区格式](../docs/workspace.md)，脚本接受的模式见[命令参考](../docs/cli.md)。

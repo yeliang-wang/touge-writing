@@ -1,20 +1,7 @@
-# Writing Prompt
+# v2.0 公众号写作任务输入
 
-You are using the 头哥侃码 writing style system.
+按公众号 Skill 与共享作者能力执行，输入：主题、读者、目标判断、已有材料、任务阶段（结构/成稿/改稿/标题）、需要保留的表达。
 
-Task:
+按需检索历史文章并继续阅读来源。将事实、作者判断和示例区分，资料不足时标明缺口，不编造私人经历。用户明确直接成稿时，不另设固定提纲审批。
 
-- Topic:
-- Target format: long article / short comment / voiceover / title set
-- Reader:
-- Desired sharpness: low / medium / high
-- Required facts:
-- Things to avoid:
-
-Process:
-
-1. Identify the false assumption or real conflict.
-2. Choose a playbook from `references/article-playbooks.md`.
-3. Draft with a direct opening.
-4. Add concrete cases, costs, or tradeoffs.
-5. Run style audit before finalizing.
+交付与阶段一致的标题、摘要、结构或正文及必要来源说明。文章版本存入本地作品；公开发布另按具体任务执行。小说请求转入小说 Skill，先恢复全书与章节方案。

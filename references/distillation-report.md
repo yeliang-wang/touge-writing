@@ -1,22 +1,11 @@
-# Distillation Report
+# v2.0 作者能力的来源说明
 
-## Corpus
+本页说明工作台复用的既有蒸馏成果，不宣称本次软件升级重新抓取或重新统计了全部历史文章。
 
-- usable articles: 341
-- total chars: 1,015,344
-- average chars: 2978
+原快照包含341篇可用正文、约1,015,344个中文字符，平均约2,978字。发表记录与可用正文不是同一统计口径，详见[语料快照](corpus-summary.md)。
 
-## Main Findings
+既有观察集中在判断与权衡、问题式标题、由个人场景进入公共判断、对宣传口号的怀疑，以及现实代价与行动边界。这些作为表达参考，不作为每篇必须出现的固定词句。
 
-1. The strongest recurring shape is not knowledge explanation, but judgment under tradeoff.
-2. Question titles dominate, often forcing the reader to confront a career, architecture, or life decision.
-3. First-person writing is frequent enough to matter, but it usually supports a broader lesson rather than pure diary.
-4. The style allows sharp language, but the corpus repeatedly returns to evidence, experience, and practical cost.
-5. Reboot content should be treated as sober self-recalibration, not motivational healing.
+v2.0 将判断、语言、表达证据、词库及评价原则集中到[共享作者能力](../shared/author-expression/README.md)。公众号与小说分别使用自己的组织方式；作品专属事实保留在workspace。
 
-## Usable Modules
-
-- `cognitive-os.md`: worldview and judgment loop.
-- `expression-dna.md`: phrase, opening, title, and paragraph mechanics.
-- `interaction-protocol.md`: robot behavior.
-- `style-audit-rubric.md`: measurable style check.
+原有四个风格引用路径通过符号链接兼容。完整原文不随共享包公开，来源观察更新需独立证据和作者能力版本记录。

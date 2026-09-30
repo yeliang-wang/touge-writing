@@ -1,168 +1,45 @@
-# Content Deck Playbook
+# v2.0 内容交付包
 
-Use this reference when the task asks for PPT, courseware, public talk material, a Markdown speaker script, or a full content package.
+这是保留的辅助功能：把主题或已有文章转成逐页论点、讲稿和按需生成的 PPTX。它不改变公众号与小说两项主能力，也不自动发布内容。
 
-## Content Positioning
+## 内容组织
 
-A content deck is not a slide version of generic advice. It is the author's judgment system rendered into a talkable structure.
+先明确听众、场景和要支持的判断。每页承载一个论点，具体事实来自任务材料；讲稿承接理由、代价和例子。文章可以作为来源，但不能把全文切成无逻辑的页面。
 
-Default outputs:
+共享作者能力用于表达和判断，不能凭空增加个人经历、产品指标或客户案例。需要示例而无真实资料时明确使用合成例子。
 
-- optional long-form article Markdown
-- `slide-plan.json`
-- WPS-compatible `.pptx`
-- per-slide Markdown speaker guide
-- contact-sheet preview PNG
-- `build-manifest.json`
+## 生成器输入
 
-## Input Triage
-
-Identify:
-
-- Topic: what claim or problem is being explained.
-- Audience: programmers, managers, founders, product people, students, or mixed public readers.
-- Scene: public talk, internal sharing, courseware, product explainer, or article-to-deck conversion.
-- Output depth: short outline, full deck files, article + deck, or speaker script only.
-- Evidence boundary: what facts are provided and what must not be invented.
-
-If the user provides a repo or product path, inspect real files before making factual claims. If the user only gives a topic, write from argument and experience-level reasoning, not fake project facts.
-
-## Argument First
-
-Before building slides, define the argument spine:
-
-1. What popular slogan or comfortable misunderstanding is being challenged?
-2. What is the real cost, responsibility, or operating constraint behind it?
-3. What concrete scene makes the issue visible?
-4. What decision rule should the audience take away?
-5. What should they do next Monday?
-
-Use this spine to create the article and the deck. Slides should compress the argument, not replace it with empty bullet lists.
-
-## Deck Shapes
-
-### Opinion Talk
-
-Use for technical-career essays, industry commentary, AI hype judgment, and public sharing.
-
-Suggested structure:
-
-1. Cover: one sharp claim.
-2. Scene: the real workplace moment behind the topic.
-3. Misunderstanding: the fashionable version people repeat.
-4. Cost: what the slogan hides.
-5. Boundary: what is actually hard.
-6. Decision rule: how to judge whether to do it.
-7. Action: what to try, stop, or verify.
-8. Summary: one sentence the audience can repeat.
-
-### Product Or Project Explainer
-
-Use when the content explains a product, repo, platform, or technical system.
-
-Suggested structure:
-
-1. Cover: what this thing is.
-2. Why it exists.
-3. Who pays the cost if it is missing.
-4. Static boundaries: user, agent, service, runtime, storage, evidence.
-5. Dynamic flow: one real request or lifecycle.
-6. Tradeoffs: what the design refuses to do.
-7. Operating proof: logs, tests, metrics, screenshots, or artifacts.
-8. What the audience can reuse.
-
-### Article To Deck
-
-Use when the user provides an existing draft.
-
-Suggested structure:
-
-1. Extract the thesis.
-2. Split paragraphs into claims, scenes, costs, counterarguments, and actions.
-3. Keep one primary claim per slide.
-4. Turn dense paragraphs into oral `talk`, not tiny slide text.
-5. Preserve the original stance unless the user asks for rewriting.
-
-## Slide Plan Contract
-
-Create a JSON file with this shape before running `scripts/build_content_deck.py`:
+`build_content_deck.py` 接收 JSON 计划。下面是可运行的合成最小示例：
 
 ```json
 {
-  "title": "Deck title",
-  "audience": "who this is for",
-  "scenario": "public talk | internal sharing | courseware | product explainer",
-  "style": "touge",
-  "article_markdown": "optional long-form article",
-  "slides": [
-    {
-      "title": "Slide title",
-      "subtitle": "Short visible claim",
-      "kind": "cover | claim | contrast | bullets | quote | architecture | sequence | lifecycle | summary",
-      "points": ["short visible point"],
-      "quote": "optional short sentence",
-      "nodes": [{"id": "User", "label": "User", "note": "optional"}],
-      "edges": [{"from": "User", "to": "Agent", "label": "optional"}],
-      "steps": [{"from": "User", "to": "Agent", "label": "optional"}],
-      "talk": "One oral paragraph. It should sound like the author explaining the slide to real people."
-    }
+  "title":"示例分享",
+  "audience":"工程团队",
+  "article_markdown":"可选文章正文",
+  "slides":[
+    {"title":"先识别成本","subtitle":"选择工具前先明确任务","kind":"cover","talk":"这是一段合成讲稿，用于验证生成器输入。"},
+    {"title":"看见代价","kind":"bullets","points":["维护成本","协作成本"],"talk":"分别考虑维护和协作的代价，再决定是否采用。"}
   ],
-  "takeaways": ["what the audience should remember"]
+  "takeaways":["先明确任务，再比较代价"]
 }
 ```
 
-Required per slide: `title` and `talk`. The builder can render without diagrams, but `kind`, `points`, `nodes`, `edges`, and `steps` improve the visual result.
+每页提供 title 和 talk；kind 支持 cover、claim、contrast、bullets、quote、architecture、modules、sequence、lifecycle、summary 等渲染分支。图形可使用 nodes/edges，流程可使用 steps；节点包含 id/label/note，连线包含 from/to/label。具体渲染以脚本为准，不是任意图形 DSL。
 
-## Slide Writing Rules
+## 运行与环境
 
-- Visible slide text should be short and concrete.
-- Put nuance into `talk`, not crowded text boxes.
-- Use `contrast` when the point is "what people think" vs "what actually happens".
-- Use `architecture`, `sequence`, or `lifecycle` only for real boundaries or flows.
-- Do not add diagrams to every page.
-- Avoid fake certainty, fake case studies, and fake metrics.
-- For sharp language, make the reasoning carry the sharpness.
-
-## File Generation
-
-When actual files are requested:
+需要 Pillow 以及当前脚本使用的 macOS 中文字体路径；核心 Python 工具的 Linux 支持不代表这个渲染器跨平台字体已配置。
 
 ```bash
-python3 scripts/build_content_deck.py \
-  --plan /path/to/slide-plan.json \
-  --out /path/to/output-dir \
-  --slug optional-slug
+python3 scripts/build_content_deck.py --plan /path/to/slide-plan.json --out /path/to/private/deck --slug sample
+python3 scripts/build_content_deck.py --plan /path/to/slide-plan.json --out /path/to/private/deck --estimate-only
 ```
 
-The script creates:
+输出包含 output 下的 PPTX、逐页 Markdown 讲稿、可选文章和 build-manifest.json，以及 preview 下的逐页 PNG 和 contact-sheet.png。用独立目录保存新版本，避免覆盖旧交付物。
 
-```text
-output/
-  <slug>-wps-compatible.pptx
-  <slug>-guide.md
-  <slug>-article.md      # only when article_markdown exists
-  build-manifest.json
-preview/
-  contact-sheet.png
-  slide-01.png
-  ...
-```
+PPTX 以整页 PNG 作为页面内容，不能把它描述成全部文字形状可编辑的原生演示稿。可编辑源是 JSON、Markdown 文章和讲稿。estimate-only 仅估算时长，不渲染页面，也不证明画面质量。
 
-Run a duration estimate when needed:
+## 使用时验收
 
-```bash
-python3 scripts/build_content_deck.py \
-  --plan /path/to/slide-plan.json \
-  --out /path/to/output-dir \
-  --estimate-only
-```
-
-## Acceptance Check
-
-Before final delivery:
-
-- The deck has a clear position, not just a topic.
-- At least one slide shows concrete cost, scene, boundary, or tradeoff.
-- The Markdown speaker guide can be read aloud naturally.
-- Any factual claim that depends on a real product, repo, person, date, or metric has been verified outside the style system.
-- The output does not expose private corpus text or paths.
+生成实际演示稿后核对页面内容、文字完整性、可读性和讲稿顺序；真实事实按来源检查。升级测试只使用合成内容，不借此重写私人作品。其他模式和参数见[辅助指南](../docs/auxiliary-guide.md)与[命令参考](../docs/cli.md)。

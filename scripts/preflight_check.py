@@ -10,20 +10,47 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-FORBIDDEN_PATH_PARTS = {
-    "corpus",
-    "private-corpus",
-    "raw_html",
-    "markdown",
-}
-
+FORBIDDEN_PATH_PARTS = {'corpus', 'private-corpus', 'raw_html', 'markdown', '.venv', '__pycache__'}
+PRIVATE_ROOTS = {'workspace', 'work', 'outputs', 'dist'}
 SECRET_PATTERNS = [
-    re.compile(r"token=\d+"),
-    re.compile(r"tempkey=", re.I),
-    re.compile(r"cookie", re.I),
-    re.compile(r"/Users/[^\\s)]+"),
-    re.compile(r"mp_token_[0-9]+"),
+    re.compile(r"/Users/[A-Za-z0-9._-]+/"),
+    re.compile(r"(?:token=\d+|tempkey=[A-Za-z0-9]|mp_token_\d+)", re.I),
+    re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+    re.compile(r"(?:Authorization|access_token|appsecret|api_key)\s*[:=]\s*[\"']?(?:Bearer )?[A-Za-z0-9_./+=-]{24,}", re.I),
 ]
+
+
+def git_paths(root, *args):
+    import subprocess
+    return subprocess.check_output(['git', '-C', str(root), 'ls-files', '-z', *args]).decode().split('\0')[:-1]
+
+
+def audit_public(root=ROOT):
+    """Check the index AND public working candidates, including force-added files."""
+    import subprocess
+    root = Path(root).resolve()
+    indexed = set(git_paths(root, '--cached'))
+    paths = indexed | set(git_paths(root, '--others', '--exclude-standard'))
+    errors = []
+    for rel in sorted(paths):
+        path = root / rel
+        if Path(rel).parts[0] in PRIVATE_ROOTS or any(x in FORBIDDEN_PATH_PARTS for x in Path(rel).parts) or path.suffix.lower() in {'.html', '.docx', '.pdf', '.sqlite'} or (path.name.startswith('.env') and path.name != '.env.example'):
+            errors.append('private path in public candidates: ' + rel)
+            continue
+        if path.is_symlink():
+            target = path.resolve()
+            if not target.is_relative_to(root) or target.relative_to(root).parts[0] in PRIVATE_ROOTS or any(x in FORBIDDEN_PATH_PARTS for x in target.relative_to(root).parts) or not target.is_file():
+                errors.append('unsafe public symlink: ' + rel)
+                continue
+        bodies = []
+        if path.is_file(): bodies.append(('working', path.read_bytes()))
+        if rel in indexed:
+            bodies.append(('index', subprocess.check_output(['git', '-C', str(root), 'show', ':' + rel])))
+        for source, body in bodies:
+            text = body.decode('utf-8', errors='replace')
+            if any(p.search(text) for p in SECRET_PATTERNS):
+                errors.append('sensitive text in ' + source + ': ' + rel)
+    return errors
 
 
 def fail(message):
@@ -39,6 +66,14 @@ def ok(message):
 def check_required_files():
     required = [
         "SKILL.md",
+        "AGENTS.md",
+        "VERSION",
+        ".agents/skills/touge-wechat-writing/SKILL.md",
+        ".agents/skills/touge-novel-writing/SKILL.md",
+        "shared/author-expression/manifest.json",
+        "scripts/backup_workspace.py",
+        "scripts/acceptance.py",
+        "scripts/export_author_profile.py",
         "README.md",
         "agents/openai.yaml",
         "references/cognitive-os.md",
@@ -48,6 +83,7 @@ def check_required_files():
         "references/evolution-spec.md",
         "references/product-manager-capability.md",
         "references/content-deck-playbook.md",
+        "references/wechat-public-account-playbook.md",
         "references/robot-spec.md",
         "references/evaluation-report.md",
         "references/style-audit-rubric.md",
@@ -74,34 +110,9 @@ def check_required_files():
     return ok("required files present") if not missing else fail(f"missing files: {missing}")
 
 
-def check_no_private_files():
-    bad = []
-    for path in ROOT.rglob("*"):
-        if ".git" in path.parts:
-            continue
-        if path.is_file() and any(part in FORBIDDEN_PATH_PARTS for part in path.parts):
-            bad.append(str(path.relative_to(ROOT)))
-        if path.suffix.lower() == ".html":
-            bad.append(str(path.relative_to(ROOT)))
-    return ok("no private corpus files") if not bad else fail(f"private files found: {bad[:20]}")
-
-
-def check_no_secret_text():
-    hits = []
-    allowed_checker_files = {"preflight_check.py", "ingest_corpus.py"}
-    for path in ROOT.rglob("*"):
-        if ".git" in path.parts or not path.is_file():
-            continue
-        if path.name in allowed_checker_files:
-            continue
-        text = path.read_text(encoding="utf-8", errors="ignore")
-        for pat in SECRET_PATTERNS:
-            if pat.search(text):
-                # Safety docs intentionally name forbidden examples.
-                if path.name in {"boundaries.md", "productization-runbook.md"} and pat.pattern.lower() in {"cookie", "tempkey="}:
-                    continue
-                hits.append(f"{path.relative_to(ROOT)}:{pat.pattern}")
-    return ok("no secret-like text") if not hits else fail(f"secret-like text found: {hits[:20]}")
+def check_public_boundary():
+    errors = audit_public()
+    return ok('index and public candidates contain no private paths or secret patterns') if not errors else fail('; '.join(errors[:20]))
 
 
 def check_evals():
@@ -112,7 +123,20 @@ def check_evals():
     modes = {r["mode"] for r in rows}
     if len(rows) < 5:
         return fail("expected at least 5 eval tasks")
-    if not {"write", "conversation", "rewrite", "reboot", "titles", "product_qa"}.issubset(modes):
+    required_modes = {
+        "write",
+        "conversation",
+        "rewrite",
+        "reboot",
+        "titles",
+        "product_qa",
+        "content_deck",
+        "wechat_public_article",
+        "novel_plan",
+        "chapter_review",
+        "novel_audit",
+    }
+    if not required_modes.issubset(modes):
         return fail(f"missing eval modes: {modes}")
     return ok("eval suite covers core modes")
 
@@ -138,8 +162,7 @@ def check_capabilities():
 def main():
     checks = [
         check_required_files(),
-        check_no_private_files(),
-        check_no_secret_text(),
+        check_public_boundary(),
         check_evals(),
         check_capabilities(),
     ]
