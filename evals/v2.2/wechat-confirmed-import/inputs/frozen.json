@@ -1,0 +1,48 @@
+{
+  "synthetic": true,
+  "network_called": false,
+  "real_author_approval": false,
+  "stage": "inputs_frozen_before_cli_execution",
+  "files": [
+    {
+      "path": "article-v1.md",
+      "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+      "bytes": 342
+    },
+    {
+      "path": "article-v2.md",
+      "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+      "bytes": 455
+    },
+    {
+      "path": "cloud-current-v3.md",
+      "sha256": "d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db",
+      "bytes": 249
+    },
+    {
+      "path": "collaboration.md",
+      "sha256": "2a05685a4a32c43bcf07ffaa7bfe6806593bde769bb43c5840ecdb0b6e76058e",
+      "bytes": 474
+    },
+    {
+      "path": "decision-v1.md",
+      "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5",
+      "bytes": 233
+    },
+    {
+      "path": "decision-v2.md",
+      "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+      "bytes": 466
+    },
+    {
+      "path": "private-contributor.md",
+      "sha256": "f350d88d1cb0fdf890f7928d57dd6e14370917447c770843d3e041fcbebd5d22",
+      "bytes": 99
+    },
+    {
+      "path": "task.md",
+      "sha256": "fce8cb4b11b74716d0794f08211cd722f5e52cf64fb659be3caed458fe6a12ea",
+      "bytes": 716
+    }
+  ]
+}

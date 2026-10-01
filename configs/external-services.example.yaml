@@ -16,7 +16,8 @@
         "publish.status"
       ],
       "authentication": "host-managed",
-      "v2_1_acceptance": "unchanged_capability_only_scope"
+      "v2_1_acceptance": "unchanged_capability_only_scope",
+      "v2_2_acceptance": "unchanged_capability_only_scope"
     },
     "tencent-docs": {
       "status": "configure_in_host_per_installation",
@@ -30,8 +31,9 @@
         "document.update",
         "directory.read"
       ],
-      "v2_1_acceptance": "revalidate_existing_live_evidence_if_protocol_unchanged"
+      "v2_1_acceptance": "revalidate_existing_live_evidence_if_protocol_unchanged",
+      "v2_2_acceptance": "revalidate_existing_live_evidence_if_protocol_unchanged"
     }
   },
-  "product_version": "2.1.0"
+  "product_version": "2.2.0"
 }

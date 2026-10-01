@@ -9,10 +9,30 @@ from workspace_lib import scoped_path, read_json, write_json, digest, immutable_
 from private_retriever import tokenize, cosine, best_snippets
 
 
-def resolve_project(workspace, name):
+def load_catalog(workspace):
     catalog = read_json(Path(workspace) / 'catalog.json')
-    if catalog.get('schema_version') != 1:
+    if not isinstance(catalog, dict) or catalog.get('schema_version') != 1:
         raise ValueError('Unsupported workspace catalog schema')
+    projects = catalog.get('projects')
+    if not isinstance(projects, list):
+        raise ValueError('Workspace catalog projects must be an array')
+    ids, paths = set(), set()
+    for row in projects:
+        if not isinstance(row, dict) or any(not isinstance(row.get(k), str) or not row[k].strip()
+                                           for k in ['id', 'title', 'path']):
+            raise ValueError('Invalid project in workspace catalog')
+        if row.get('type') not in {'novel', 'wechat'} or not isinstance(row.get('aliases', []), list) or any(not isinstance(x, str) for x in row.get('aliases', [])):
+            raise ValueError('Invalid project type or aliases')
+        path = scoped_path(workspace, row['path']).resolve()
+        if row['id'] in ids or path in paths:
+            raise ValueError('Duplicate project ID/path in workspace catalog')
+        ids.add(row['id']); paths.add(path)
+    return catalog
+
+
+def resolve_project(workspace, name):
+    workspace = Path(workspace).expanduser().resolve()
+    catalog = load_catalog(workspace)
     matches = [x for x in catalog['projects'] if name in [x['id'], x['title'], *x.get('aliases', [])]]
     if len(matches) != 1:
         raise ValueError('Select exactly one known project')
@@ -216,9 +236,15 @@ def init_project(workspace, project_id, title, project_type):
     if not re.fullmatch(r'[a-z][a-z0-9-]*', project_id):
         raise ValueError('Use a stable lowercase project ID')
     catalog_path = Path(workspace) / 'catalog.json'
-    catalog = read_json(catalog_path) if catalog_path.exists() else {'schema_version': 1, 'projects': []}
-    if catalog.get('schema_version') != 1:
-        raise ValueError('Unsupported workspace catalog schema')
+    catalog = load_catalog(workspace) if catalog_path.exists() else {'schema_version': 1, 'projects': []}
+    registered = {scoped_path(workspace, p['path']).resolve() for p in catalog['projects']}
+    # Do not hide an existing work behind a new or incomplete catalog.
+    for folder in ['novels', 'wechat']:
+        parent = Path(workspace) / folder
+        if parent.is_dir():
+            for existing in parent.iterdir():
+                if existing.is_dir() and not existing.name.startswith('.') and existing.resolve() not in registered:
+                    raise ValueError('Existing unregistered project; restore/reconcile catalog before init: ' + existing.name)
     if any(project_id == p['id'] or title in [p['title'], *p.get('aliases', [])] for p in catalog['projects']):
         raise ValueError('Project already exists')
     relative = ('novels/' if project_type == 'novel' else 'wechat/') + project_id
@@ -227,7 +253,9 @@ def init_project(workspace, project_id, title, project_type):
     write_json(project / 'book.yaml', {'schema_version': 1, 'id': project_id, 'title': title, 'type': project_type, 'chapters': []})
     write_json(project / '版本记录/revisions.json', {'schema_version': 1, 'revisions': []})
     write_json(project / 'state.json', derive_state(project))
-    atomic_text(project / 'START-HERE.md', '# ' + title + '\n\n先明确本作品目标，建立并确认方案。人物、事实和虚构授权仅属于本作品。\n')
+    opening = ('先明确本作品目标，建立并确认全书及章节方案。' if project_type == 'novel'
+               else '根据本次请求直接成稿、修改或审阅；仅在任务需要时先讨论提纲。')
+    atomic_text(project / 'START-HERE.md', '# ' + title + '\n\n' + opening + '人物、事实和虚构授权仅属于本作品。\n')
     catalog['projects'].append({'id': project_id, 'title': title, 'type': project_type, 'path': relative, 'aliases': []})
     write_json(catalog_path, catalog)
     return project
@@ -269,11 +297,13 @@ def main():
     s = subs.add_parser('init'); s.add_argument('--id', required=True); s.add_argument('--title', required=True)
     s.add_argument('--type', choices=['wechat', 'novel'], required=True)
     a = p.parse_args()
+    a.workspace = a.workspace.expanduser().resolve()
     if a.command == 'init':
         result = str(init_project(a.workspace, a.id, a.title, a.type))
     else:
         project = resolve_project(a.workspace, a.project)
-        if a.command == 'resume': result = context(project, a.chapter)
+        if a.command == 'resume':
+            result = dict(context(project, a.chapter), workspace=str(a.workspace), project_path=str(project))
         elif a.command == 'set-chapters': result = set_chapters(project, read_json(a.file))
         elif a.command == 'validate':
             result = {'errors': validate(project)}

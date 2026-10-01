@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "project_id": "ferry",
+  "title": "合成小说·渡口",
+  "book_plan": "book-v1",
+  "chapters": [
+    {
+      "id": "night",
+      "title": "夜渡",
+      "plan": "night-plan-v1",
+      "accepted_text": "night-text-v1",
+      "latest_text": "night-text-v1"
+    }
+  ],
+  "next_action": null
+}

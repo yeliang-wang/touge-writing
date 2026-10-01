@@ -1,0 +1,278 @@
+{
+  "synthetic": true,
+  "network_called": false,
+  "real_author_approval": false,
+  "path_substitution": {
+    "<REPO>": "installed public project root",
+    "<SYNTHETIC_RUN>": "isolated temporary synthetic workspaces"
+  },
+  "entries": [
+    {
+      "phase": "fixture_setup",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "init",
+        "--id",
+        "shared-draft",
+        "--title",
+        "合成文章·未定意见",
+        "--type",
+        "wechat"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "\"<SYNTHETIC_RUN>/receiver/wechat/shared-draft\"\n",
+      "stderr": ""
+    },
+    {
+      "phase": "fixture_setup",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "add-revision",
+        "--project",
+        "shared-draft",
+        "--source",
+        "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/article-v1.md",
+        "--id",
+        "article-v1",
+        "--kind",
+        "text",
+        "--version",
+        "1",
+        "--status",
+        "accepted",
+        "--decision-file",
+        "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/decision-v1.md"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"id\": \"article-v1\",\n  \"kind\": \"text\",\n  \"version\": \"1\",\n  \"status\": \"accepted\",\n  \"chapter_id\": null,\n  \"parent_plan_id\": null,\n  \"based_on\": null,\n  \"path\": \"版本记录/content/article-v1.md\",\n  \"sha256\": \"51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204\",\n  \"decision_path\": \"决策记录/article-v1.md\",\n  \"decision_sha256\": \"1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "fixture_setup",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/contributor",
+        "init",
+        "--id",
+        "shared-draft",
+        "--title",
+        "合成文章·未定意见",
+        "--type",
+        "wechat"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "\"<SYNTHETIC_RUN>/contributor/wechat/shared-draft\"\n",
+      "stderr": ""
+    },
+    {
+      "phase": "fixture_setup",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/contributor",
+        "add-revision",
+        "--project",
+        "shared-draft",
+        "--source",
+        "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/article-v1.md",
+        "--id",
+        "article-v1",
+        "--kind",
+        "text",
+        "--version",
+        "1",
+        "--status",
+        "accepted",
+        "--decision-file",
+        "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/decision-v1.md"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"id\": \"article-v1\",\n  \"kind\": \"text\",\n  \"version\": \"1\",\n  \"status\": \"accepted\",\n  \"chapter_id\": null,\n  \"parent_plan_id\": null,\n  \"based_on\": null,\n  \"path\": \"版本记录/content/article-v1.md\",\n  \"sha256\": \"51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204\",\n  \"decision_path\": \"决策记录/article-v1.md\",\n  \"decision_sha256\": \"1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "resume",
+        "--project",
+        "shared-draft"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"state\": {\n    \"schema_version\": 1,\n    \"project_id\": \"shared-draft\",\n    \"title\": \"合成文章·未定意见\",\n    \"book_plan\": null,\n    \"chapters\": [],\n    \"next_action\": null,\n    \"latest_text\": \"article-v1\"\n  },\n  \"selected_chapter\": null,\n  \"active_task\": null,\n  \"task_precedence\": \"Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.\",\n  \"material_maps\": [],\n  \"read_full_text\": [\n    {\n      \"id\": \"article-v1\",\n      \"role\": \"article_text\",\n      \"path\": \"<SYNTHETIC_RUN>/receiver/wechat/shared-draft/版本记录/content/article-v1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204\",\n      \"excerpt\": \"# 把未定意见留在草稿里（v1）\\n\\n协作写作最费力的，常常不是一句话写得好不好，而是不知道这句话到底定了没有。\\n\\n如果每次讨论都直接覆盖共同稿，第二天的人就得猜：这是建议，还是决定？把待审稿与共同确认稿分开，是给后来接手的人少留一道猜题。\\n\",\n      \"excerpt_is_full_read\": false\n    }\n  ],\n  \"rules_path\": null,\n  \"open_issues_path\": null,\n  \"workspace\": \"<SYNTHETIC_RUN>/receiver\",\n  \"project_path\": \"<SYNTHETIC_RUN>/receiver/wechat/shared-draft\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "action": "read_local_file",
+      "path": "<SYNTHETIC_RUN>/receiver/wechat/shared-draft/版本记录/content/article-v1.md",
+      "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+      "text": "# 把未定意见留在草稿里（v1）\n\n协作写作最费力的，常常不是一句话写得好不好，而是不知道这句话到底定了没有。\n\n如果每次讨论都直接覆盖共同稿，第二天的人就得猜：这是建议，还是决定？把待审稿与共同确认稿分开，是给后来接手的人少留一道猜题。\n"
+    },
+    {
+      "phase": "request_execution",
+      "action": "read_local_file",
+      "path": "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/collaboration.md",
+      "sha256": "2a05685a4a32c43bcf07ffaa7bfe6806593bde769bb43c5840ecdb0b6e76058e",
+      "text": "# 文章合作约定（合成）\n\n蓝岚负责汇总与最终确认；作者丙可以修稿但不能自行确定共同稿。receiver 与 contributor 各自保留私人工作区。本次允许交换版本正文、来源身份和蓝岚的确认记录，不交换私人笔记。\n\n共同文档标识 synthetic://articles/shared-draft；采用对象以正文 SHA-256 和实际决定为准，不按最新修改时间选择。允许接收并本地登记，不授权公开发布。\n"
+    },
+    {
+      "phase": "request_execution",
+      "action": "read_local_file",
+      "path": "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/article-v2.md",
+      "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+      "text": "# 把未定意见留在草稿里（v2）\n\n协作写作最费力的，常常不是一句话写得好不好，而是不知道这句话到底定了没有。\n\n每个人都能修改，不等于每个人都能替大家确认。待审稿里保留分歧，共同稿里写清采用了哪一版。下一位接手的人需要的是一个可靠起点，不是对修改时间的猜测。\n\n这会多留下一份记录，却能少一次把讨论当成决定的返工。\n"
+    },
+    {
+      "phase": "request_execution",
+      "action": "read_local_file",
+      "path": "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/decision-v2.md",
+      "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+      "text": "# 合成编辑确认记录 v2\n\n确认者：蓝岚（本作品唯一汇总及确认编辑）。\n时间：2026-09-03T10:00:00+08:00。\n决定：采用 article-v2.md 的完整正文作为共同确认稿，SHA-256：be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537。\n云端后续 v3 为丙方讨论稿，不在本次采用范围。本次仅接收并本地登记，不授权公开发布。\n此决定为合成测试输入，不代表真实作者接受。\n"
+    },
+    {
+      "phase": "request_execution",
+      "action": "read_local_file",
+      "path": "<REPO>/evals/v2.2/wechat-confirmed-import/inputs/cloud-current-v3.md",
+      "sha256": "d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db",
+      "text": "# 把未定意见留在草稿里（v3，未确认）\n\n协作写作最费力的，是所有人都只想保留自己的意见。\n\n丙方未确认建议：应该删除版本记录，统一以云端最新内容为准。本条尚未获得蓝岚确认。\n"
+    },
+    {
+      "phase": "request_execution",
+      "action": "read_local_file",
+      "path": "<SYNTHETIC_RUN>/receiver/wechat/shared-draft/sources/import.json",
+      "sha256": "46ee2fb426f6ee7d08e493f2087b2069f2b0975608eb2ea947a6ad65d773c3ff",
+      "text": "{\n  \"synthetic\": true,\n  \"source_id\": \"synthetic://articles/shared-draft\",\n  \"selected_version\": \"v2\",\n  \"selected_sha256\": \"be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537\",\n  \"latest_observed_version\": \"v3\",\n  \"latest_observed_sha256\": \"d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db\",\n  \"decision_source\": \"sources/decision-v2.md\",\n  \"decision_sha256\": \"d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862\",\n  \"network_called\": false,\n  \"shared_scope\": \"Selected article texts and editor decisions only\"\n}\n"
+    },
+    {
+      "phase": "request_execution",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "add-revision",
+        "--project",
+        "shared-draft",
+        "--source",
+        "<SYNTHETIC_RUN>/receiver/wechat/shared-draft/sources/article-v2.md",
+        "--id",
+        "article-v2-import",
+        "--kind",
+        "text",
+        "--version",
+        "2-import",
+        "--status",
+        "baseline",
+        "--based-on",
+        "article-v1"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"id\": \"article-v2-import\",\n  \"kind\": \"text\",\n  \"version\": \"2-import\",\n  \"status\": \"baseline\",\n  \"chapter_id\": null,\n  \"parent_plan_id\": null,\n  \"based_on\": \"article-v1\",\n  \"path\": \"版本记录/content/article-v2-import.md\",\n  \"sha256\": \"be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "add-revision",
+        "--project",
+        "shared-draft",
+        "--source",
+        "<SYNTHETIC_RUN>/receiver/wechat/shared-draft/sources/article-v2.md",
+        "--id",
+        "article-v2-confirmed",
+        "--kind",
+        "text",
+        "--version",
+        "2-confirmed",
+        "--status",
+        "accepted",
+        "--based-on",
+        "article-v2-import",
+        "--decision-file",
+        "<SYNTHETIC_RUN>/receiver/wechat/shared-draft/sources/decision-v2.md"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"id\": \"article-v2-confirmed\",\n  \"kind\": \"text\",\n  \"version\": \"2-confirmed\",\n  \"status\": \"accepted\",\n  \"chapter_id\": null,\n  \"parent_plan_id\": null,\n  \"based_on\": \"article-v2-import\",\n  \"path\": \"版本记录/content/article-v2-confirmed.md\",\n  \"sha256\": \"be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537\",\n  \"decision_path\": \"决策记录/article-v2-confirmed.md\",\n  \"decision_sha256\": \"d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "resume",
+        "--project",
+        "shared-draft"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"state\": {\n    \"schema_version\": 1,\n    \"project_id\": \"shared-draft\",\n    \"title\": \"合成文章·未定意见\",\n    \"book_plan\": null,\n    \"chapters\": [],\n    \"next_action\": null,\n    \"latest_text\": \"article-v2-confirmed\"\n  },\n  \"selected_chapter\": null,\n  \"active_task\": null,\n  \"task_precedence\": \"Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.\",\n  \"material_maps\": [],\n  \"read_full_text\": [\n    {\n      \"id\": \"article-v2-confirmed\",\n      \"role\": \"article_text\",\n      \"path\": \"<SYNTHETIC_RUN>/receiver/wechat/shared-draft/版本记录/content/article-v2-confirmed.md\",\n      \"status\": \"accepted\",\n      \"version\": \"2-confirmed\",\n      \"sha256\": \"be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537\",\n      \"excerpt\": \"# 把未定意见留在草稿里（v2）\\n\\n协作写作最费力的，常常不是一句话写得好不好，而是不知道这句话到底定了没有。\\n\\n每个人都能修改，不等于每个人都能替大家确认。待审稿里保留分歧，共同稿里写清采用了哪一版。下一位接手的人需要的是一个可靠起点，不是对修改时间的猜测。\\n\\n这会多留下一份记录，却能少一次把讨论当成决定的返工。\\n\",\n      \"excerpt_is_full_read\": false\n    }\n  ],\n  \"rules_path\": null,\n  \"open_issues_path\": null,\n  \"workspace\": \"<SYNTHETIC_RUN>/receiver\",\n  \"project_path\": \"<SYNTHETIC_RUN>/receiver/wechat/shared-draft\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/receiver",
+        "validate",
+        "--project",
+        "shared-draft"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "<REPO>/scripts/writing_workspace.py",
+        "--workspace",
+        "<SYNTHETIC_RUN>/contributor",
+        "validate",
+        "--project",
+        "shared-draft"
+      ],
+      "cwd": "<SYNTHETIC_RUN>",
+      "returncode": 0,
+      "stdout": "{\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "request_execution",
+      "action": "external_write_not_attempted",
+      "reason": "Request only imports an exact approved synthetic version; no publishing or cloud write authorized.",
+      "network_called": false,
+      "remote_receipt_created": false
+    }
+  ]
+}

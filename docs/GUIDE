@@ -1,11 +1,17 @@
-# v2.1 使用指南
+# v2.2 使用指南
 
-先在 Codex 打开完整项目。公众号请求交给 touge-wechat-writing，小说请求交给 touge-novel-writing；原交流、Reboot、产品问答与内容交付由根 SKILL 路由。
+在 Codex 打开完整能力项目。公众号请求交给 touge-wechat-writing，小说请求交给 touge-novel-writing；原交流、Reboot、产品问答与内容交付由根 SKILL 路由。
 
-第一次使用：阅读 docs/installation.md，init 建立自己的本地 workspace。
-已有作品：writing_workspace.py resume 展示方案、内容版本和当前任务；读取返回的真实文件，不只看节选。
+第一次使用：阅读 docs/installation.md，init 显式指定 ~/.touge-writing/workspace 或自己的目录，创建作品。推荐位置由文档和 Skill 显式传入，旧 CLI 的相对默认值保留。
+
+已有作品：先按 docs/migration-v2.2.md 迁移或明确沿用旧路径；不要初始化空目录替代旧资料。writing_workspace.py resume 展示实际路径、方案、内容版本和当前任务，宿主继续读取真实文件，不只看节选。
+
 找素材：material_index.py search 再 read，清单显式指定，旧章号不能自动决定当前章。
-多步任务：按 docs/runs.md 创建 run，保存正文、审稿和修订；实际接受后追加内容版本。
-发布准备：本地稿件、外部草稿、公开发布分别处理，MCP 只连接服务。
 
-docs/cli.md 为命令参考，docs/testing.md 说明公共自检与私人发布验收的差别。产品升级不自动执行书稿的审方案或续写任务。
+多步任务：按 docs/runs.md 创建 run，保存正文、审稿和修订；有实际确认后才追加 accepted 内容版本。
+
+合作：按 docs/collaboration.md 各自保留私人 workspace，腾讯文档只交换选定方案与稿件，负责人汇总；远端最新不等于定稿。
+
+发布准备：本地稿件、外部草稿、公开发布分别处理，MCP 只连接服务。存储加密由系统或加密卷提供，工作区和备份没有应用层加密。
+
+docs/cli.md 为命令参考，docs/testing.md 说明公共自检与私人发布验收的差别。产品升级只验证资料迁移和能力，不自动执行书稿的审方案或续写任务。

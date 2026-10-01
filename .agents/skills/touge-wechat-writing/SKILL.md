@@ -3,13 +3,15 @@ name: touge-wechat-writing
 description: 创作、改写和审阅头哥风格的微信公众号单篇文章，管理素材、文章版本、运行记录与发布准备；用于公众号、推文、单篇文章任务。
 ---
 
-# 公众号写作（短篇、单篇）· v2.1
+# 公众号写作（短篇、单篇）· v2.2
 
-项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)，用本地 `workspace/catalog.json` 定位文章；没有作品时可用 `writing_workspace.py init --id <ID> --title <标题> --type wechat` 新建。默认不搜索其他私人作品。
+项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)。用户明确的工作区优先；否则推荐 `~/.touge-writing/workspace`。执行每个工作区命令都显式传入同一个 `--workspace`，通过该目录的 `catalog.json` 定位作品；CLI 省略参数仍保留旧的当前目录 `workspace` 行为。
+
+首次使用外部位置前检查其索引及项目内旧 `workspace/catalog.json`。外部缺失而旧位置有作品时，先说明迁移路径并沿用已明确的选择，不创建空库掩盖旧作品；两处都有同名作品且去向未明确时先厘清，不能自动合并。已经确认的迁移目的地或本轮路径持续有效，不重复询问。脚本使用项目根下的实际路径，不能假设终端当前目录。新建与迁移见 [安装](../../../docs/installation.md)和 [工作区](../../../docs/workspace.md)。
 
 ## 从任务与材料开始
 
-已有作品运行 `writing_workspace.py resume --project <ID>`，读实际正文和有效决定。本轮明确任务优先于旧的下一步建议。先明确读者、要表达的判断、范围与素材；用户要求直接成稿就交正文，不额外要求提纲审批。
+已有作品运行 `writing_workspace.py --workspace <本轮工作区> resume --project <ID>`，读实际正文和有效决定。本轮明确任务优先于旧的下一步建议。先明确读者、要表达的判断、范围与素材；用户要求直接成稿就交正文，不额外要求提纲审批。
 
 按 [组合指南](references/recipes.md)选择 [原子能力](../../../capabilities/README.md)，不每次全跑。需要旧文时用 `private_retriever.py --manifest <明确授权的清单> --query <事件或主题>`，继续阅读命中全文。JSON 与 JSONL 均支持；索引命中不代表已读或事实核实，空记录不当来源。来源与主题映射见 [素材说明](../../../docs/materials.md)。
 
@@ -28,3 +30,7 @@ description: 创作、改写和审阅头哥风格的微信公众号单篇文章�
 Markdown 是创作源稿；HTML、排版和平台字段为可重建派生物。按需阅读 [公众号连接](../../../docs/external-services/wechat.md)或 [腾讯文档](../../../docs/external-services/tencent-docs.md)。Codex 管理 MCP，Skill 不启动服务。微信公众号沿用用户约定：建立能力与接入说明，真实账号和发文未实测、不纳入验收。
 
 定稿、同步草稿、公开发布是不同操作。沿用已明确账号、版本和操作授权；外部结果不明先对账，不能因本地任务完成自动发布。
+
+## 合作作品
+
+有合作请求时读 [协作约定](../../../docs/collaboration.md)，按作品的实际分工、共用方案和定稿权限执行。各自保留私人 workspace，只交换明确选定的材料；不要同步个人语料和完整过程档案。腾讯文档最新内容不是已确认稿，导入可先登记 baseline/draft；accepted 要引用实际有权确认者的决定及对应版本，小说仍须保持方案继承。共同稿由约定负责人汇总写回，远端基准变化先交付差异，不自动覆盖或合并；宿主回执与本地内容登记各自保存。

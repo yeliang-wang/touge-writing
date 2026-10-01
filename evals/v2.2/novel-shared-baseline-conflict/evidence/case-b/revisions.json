@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "book-v1",
+      "kind": "book_plan",
+      "version": "1",
+      "status": "accepted",
+      "chapter_id": null,
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/book-v1.md",
+      "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901",
+      "decision_path": "决策记录/book-v1.md",
+      "decision_sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+    },
+    {
+      "id": "night-plan-v1",
+      "kind": "chapter_plan",
+      "version": "1",
+      "status": "accepted",
+      "chapter_id": "night",
+      "parent_plan_id": "book-v1",
+      "based_on": null,
+      "path": "版本记录/content/night-plan-v1.md",
+      "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5",
+      "decision_path": "决策记录/night-plan-v1.md",
+      "decision_sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+    },
+    {
+      "id": "night-text-v1",
+      "kind": "text",
+      "version": "1",
+      "status": "accepted",
+      "chapter_id": "night",
+      "parent_plan_id": "night-plan-v1",
+      "based_on": null,
+      "path": "版本记录/content/night-text-v1.md",
+      "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2",
+      "decision_path": "决策记录/night-text-v1.md",
+      "decision_sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+    }
+  ]
+}

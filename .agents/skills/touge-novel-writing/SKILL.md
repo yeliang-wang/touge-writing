@@ -3,13 +3,15 @@ name: touge-novel-writing
 description: 规划、续写、修改和审阅长篇小说或连载作品，管理全书与章节方案继承、素材、连续性和历史版本；用于写书、小说、章节任务。
 ---
 
-# 小说写作（长篇、连载）· v2.1
+# 小说写作（长篇、连载）· v2.2
 
-项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)，通过本地 `workspace/catalog.json` 定位作品；书中人物、事实、篇幅配额和虚构权限只属于该作品。
+项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)。用户明确的工作区优先；否则推荐 `~/.touge-writing/workspace`。执行每个工作区命令都显式传入同一个 `--workspace`，通过该目录的 `catalog.json` 定位作品；CLI 省略参数仍保留旧的当前目录 `workspace` 行为。
+
+首次使用外部位置前检查其索引及项目内旧 `workspace/catalog.json`。外部缺失而旧位置有作品时，先说明迁移路径并沿用已明确的选择，不创建空库掩盖旧作品；两处都有同名作品且去向未明确时先厘清，不能自动合并。已经确认的迁移目的地或本轮路径持续有效，不重复询问。脚本使用项目根下的实际路径，不能假设终端当前目录。新建与迁移见 [安装](../../../docs/installation.md)和 [工作区](../../../docs/workspace.md)。
 
 ## 恢复本次任务
 
-运行 `python3 scripts/writing_workspace.py --workspace <本地工作区> resume --project <作品ID>`，明确指定章节时加 `--chapter <稳定ID>`。同时恢复有效方案与历史继承、已接受和最新内容、本轮任务阶段、差异及未决项。active_task 优先于旧 next_action；恢复已保存审方案阶段本身不等于要求执行审稿。
+运行 `python3 scripts/writing_workspace.py --workspace <本轮工作区> resume --project <作品ID>`，明确指定章节时加 `--chapter <稳定ID>`。同时恢复有效方案与历史继承、已接受和最新内容、本轮任务阶段、差异及未决项。active_task 优先于旧 next_action；恢复已保存审方案阶段本身不等于要求执行审稿。
 
 按返回路径阅读全文：目标章、需要处理衔接的邻章、有效规则与人物设定。摘要须绑定实际文本哈希；excerpt 是节选，不代表已读全文。baseline 不表示符合现行方案。远章先查职责与已用主题，命中后再展开历史。不能用版本名、mtime 或旧表中的“第三章”确定身份和事实。
 
@@ -30,3 +32,7 @@ description: 规划、续写、修改和审阅长篇小说或连载作品，管�
 需要多步恢复、素材冲突或试写留档时用 [run 记录](../../../docs/runs.md)锁定输入、方法与产物。小任务可直接交付，无需建所有目录。候选可只属于 run；采纳后 `writing_workspace.py add-revision` 或 `writing_run.py register` 创建新版本。accepted 必须引用实际作者决定；旧定稿、来源和历史方案不覆盖。完成试写不等于章节定稿。
 
 需要外部资料或交付时才用 [腾讯文档](../../../docs/external-services/tencent-docs.md)等宿主 MCP。离线写作正常继续，操作回执私有保存；同步和公开发布分别按已有授权执行。
+
+## 合作作品
+
+有合作请求时读 [协作约定](../../../docs/collaboration.md)，按作品的实际分工、共用方案和定稿权限执行。各自保留私人 workspace，只交换明确选定的材料；不要同步个人语料和完整过程档案。腾讯文档最新内容不是已确认稿，导入可先登记 baseline/draft；accepted 要引用实际有权确认者的决定及对应版本，小说仍须保持方案继承。共同稿由约定负责人汇总写回，远端基准变化先交付差异，不自动覆盖或合并；宿主回执与本地内容登记各自保存。

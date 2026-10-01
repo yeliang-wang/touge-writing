@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "ferry",
+  "title": "合成小说·渡口",
+  "type": "novel",
+  "chapters": [
+    {
+      "id": "night",
+      "title": "夜渡"
+    }
+  ]
+}

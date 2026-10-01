@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "source_id": "synthetic://articles/shared-draft",
+  "selected_version": "v2",
+  "selected_sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+  "latest_observed_version": "v3",
+  "latest_observed_sha256": "d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db",
+  "decision_source": "sources/decision-v2.md",
+  "decision_sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+  "network_called": false,
+  "shared_scope": "Selected article texts and editor decisions only"
+}

@@ -1,16 +1,22 @@
-# v2.1 实现范围
+# v2.2 实现范围
 
-本版本延续 v2.0 文件模型，并新增以下可检验模块；发布是否通过以验收报告为准。
+本版本沿用 v2.1 的写作方法、内容登记和 lifecycle，集中解决私人工作区与公共代码分离，以及按合作约定交换稿件。发布结果以实际验收报告为准。
 
 | 方案落点 | 实现 |
 |---|---|
-| 13 项方法及显式版本 | capabilities/registry.json、capability_catalog.py |
-| 两类写作入口与阶段定义 | .agents/skills 下的 Skill、lifecycle 与 recipes |
-| 多格式来源、读取范围、使用映射 | material_index.py，private_retriever.py 兼容入口 |
-| 任务、输入快照、候选与恢复 | writing_run.py；writing_workspace.py resume 展示当前任务 |
-| 内容登记唯一权威 | 既有 revisions.json；历史继承与接受依据不变 |
-| 公开上下文按需加载 | build_agent_context.py --phase/--capability |
-| 质量与兼容验证 | tests、evals/v2.1、acceptance.py 的公共／私人模式 |
-| 发行可核验 | build_release.py、独立作者包、公共链接检查 |
+| 推荐外部私人目录 | 两项 Skill、根路由及文档显式传 --workspace；不增加全局配置 |
+| 旧 CLI 兼容 | 省略参数仍用当前终端目录下 workspace |
+| 创建与恢复 | 沿用 writing_workspace.py init/resume；防止已有未登记作品被空索引掩盖 |
+| 当前定位可见 | resume 返回本次 workspace 和 project_path |
+| 全量迁移与回滚 | backup_workspace.py、迁移清单和本版私人验收；旧源和历史回执保留 |
+| 轻量合作 | templates/collaboration.md、docs/collaboration.md 和 Skill 流程 |
+| 外部共享 | 腾讯文档由宿主连接；读基准、汇总候选、实际确认、私有操作回执 |
+| 文档与格式 | README、安装、workspace 字段、CLI、模块说明和迁移指南同步 |
+| 验收 | configs/acceptance-v2.2.json；公共 B01–B07，完整 B01–B10 |
+| 发布 | 完整能力 ZIP、独立 1.0.0 作者包及公开边界检查 |
 
-不提供数据库服务、MCP 运行时或自动发布；不保证哈希相同的模型输出逐字重现。迁移与作品内容审阅分开，具体规则分流和源文件完整性回执留在私人 workspace。
+13 项原子能力、素材多对多映射、输入快照和恢复规则继续有效。方法卡、作者包和作品方案没有内容变化时不随产品升级升版。
+
+不新增 setup/status、环境变量优先级、workspace 共享、自动双向同步、多人自动合并或应用层加密。单机锁不承担云端并发控制，腾讯文档最新编辑不替代作者确认。真实作品迁移只核验完整性与恢复，不重写或审阅内容。
+
+[v2.2 迁移](migration-v2.2.md) · [合作](collaboration.md) · [架构](architecture.md) · [验收](testing.md)

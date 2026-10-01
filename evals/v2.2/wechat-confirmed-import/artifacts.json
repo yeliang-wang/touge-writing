@@ -1,0 +1,168 @@
+{
+  "case_id": "wechat-confirmed-import",
+  "synthetic": true,
+  "artifacts": [
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/contributor/book.yaml",
+      "sha256": "d97eec7f40b6f8098d44521f9c32d2c36f3d30bf8933e72fe32a5b50695aff20",
+      "bytes": 129
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/contributor/revisions.json",
+      "sha256": "00e7fe88760e3123499f96afc55f2627c0ab83ca27d7a8c6f09c8315102c757e",
+      "bytes": 519
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/contributor/state.json",
+      "sha256": "c73ea2aa311314322070e043132ab5ac7091289aeb5e1c1c133c1a651d6121d0",
+      "bytes": 192
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/contributor/决策记录/article-v1.md",
+      "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5",
+      "bytes": 233
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/contributor/版本记录/content/article-v1.md",
+      "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+      "bytes": 342
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/observed-state.json",
+      "sha256": "c767622dc72a47f125d96a40bd2608594f4bb57d6bb05cd512fb501a00d0aaa1",
+      "bytes": 4916
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/book.yaml",
+      "sha256": "d97eec7f40b6f8098d44521f9c32d2c36f3d30bf8933e72fe32a5b50695aff20",
+      "bytes": 129
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/import.json",
+      "sha256": "46ee2fb426f6ee7d08e493f2087b2069f2b0975608eb2ea947a6ad65d773c3ff",
+      "bytes": 557
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/revisions.json",
+      "sha256": "5997578a0cf7469807709cac8435afa72242176c0aa43816645d3a3394978703",
+      "bytes": 1401
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/state.json",
+      "sha256": "7d5ebf2d62b2cf49b7446fb0fd063a154478c4289b4cb3b45084050bb92d9fad",
+      "bytes": 202
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/决策记录/article-v1.md",
+      "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5",
+      "bytes": 233
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/决策记录/article-v2-confirmed.md",
+      "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+      "bytes": 466
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/版本记录/content/article-v1.md",
+      "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+      "bytes": 342
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/版本记录/content/article-v2-confirmed.md",
+      "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+      "bytes": 455
+    },
+    {
+      "role": "evidence",
+      "path": "evals/v2.2/wechat-confirmed-import/evidence/receiver/版本记录/content/article-v2-import.md",
+      "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+      "bytes": 455
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/article-v1.md",
+      "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+      "bytes": 342
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/article-v2.md",
+      "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+      "bytes": 455
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/cloud-current-v3.md",
+      "sha256": "d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db",
+      "bytes": 249
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/collaboration.md",
+      "sha256": "2a05685a4a32c43bcf07ffaa7bfe6806593bde769bb43c5840ecdb0b6e76058e",
+      "bytes": 474
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/decision-v1.md",
+      "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5",
+      "bytes": 233
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/decision-v2.md",
+      "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+      "bytes": 466
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/frozen.json",
+      "sha256": "ee84515507c351b370cdaa80b2bee5358da0047f792078d18657bf0afe4eba1b",
+      "bytes": 1339
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/private-contributor.md",
+      "sha256": "f350d88d1cb0fdf890f7928d57dd6e14370917447c770843d3e041fcbebd5d22",
+      "bytes": 99
+    },
+    {
+      "role": "input",
+      "path": "evals/v2.2/wechat-confirmed-import/inputs/task.md",
+      "sha256": "fce8cb4b11b74716d0794f08211cd722f5e52cf64fb659be3caed458fe6a12ea",
+      "bytes": 716
+    },
+    {
+      "role": "result",
+      "path": "evals/v2.2/wechat-confirmed-import/result.json",
+      "sha256": "5bab7a5a8403dd5965a2f2b1dd97efcb4bb4b08f3588d40059ed9cdd4644125b",
+      "bytes": 5532
+    },
+    {
+      "role": "result",
+      "path": "evals/v2.2/wechat-confirmed-import/result.md",
+      "sha256": "70553137aaa88a26ef195a3352130d2c4ac97c4713a91b3b7cc353a3b8b097ba",
+      "bytes": 2182
+    },
+    {
+      "role": "transcript",
+      "path": "evals/v2.2/wechat-confirmed-import/transcript.json",
+      "sha256": "2ef71e5f3c39f4d84aa5ab537326b1bab8ddfa3d7a758629497e0f8724a5aee9",
+      "bytes": 15368
+    }
+  ]
+}

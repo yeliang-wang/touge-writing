@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "article-v1",
+      "kind": "text",
+      "version": "1",
+      "status": "accepted",
+      "chapter_id": null,
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/article-v1.md",
+      "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+      "decision_path": "决策记录/article-v1.md",
+      "decision_sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5"
+    }
+  ]
+}

@@ -194,8 +194,8 @@ def run_legacy(workspace, output_dir=None, skill_receipt=None):
 
 
 def run(workspace, public_only=False):
-    from acceptance_v21 import run as run_v21
-    return run_v21(workspace, public_only)
+    from acceptance_v22 import run as run_v22
+    return run_v22(workspace, public_only)
 
 
 def main():
@@ -203,7 +203,7 @@ def main():
     p.add_argument('--public-only',action='store_true')
     p.add_argument('--legacy-v2',action='store_true',help='Read original v2 evidence; write a separate regression report')
     a=p.parse_args()
-    current_receipt=a.workspace/'acceptance-v2.1/skill-validation.json'
+    current_receipt=a.workspace/'acceptance-v2.2/skill-validation.json'
     r=run_legacy(a.workspace,a.workspace/'acceptance-v2-regression',current_receipt if current_receipt.exists() else None) if a.legacy_v2 else run(a.workspace,a.public_only)
     print('Acceptance: %s/%s in-scope checks passed' % (r['passed'],r['total']))
     raise SystemExit(0 if r['all_in_scope_passed'] else 1)

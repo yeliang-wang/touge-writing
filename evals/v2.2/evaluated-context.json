@@ -1,0 +1,38 @@
+{
+  "synthetic": true,
+  "scope": "Current public context hash at execution completion; no real workspace read",
+  "files": [
+    {
+      "path": ".agents/skills/touge-novel-writing/SKILL.md",
+      "sha256": "ae09cb1b117fadb558023a9ca8bcbdc5ae66235e94a29c317aa4faace604430d"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/SKILL.md",
+      "sha256": "5a75be3b5da3ebdd6d8806006825b033521a2195d68eabf9938c730ee38797cc"
+    },
+    {
+      "path": "docs/collaboration.md",
+      "sha256": "78d176617ded8702926a99779da0d417601266508b1d7f72fb71a62a767591b5"
+    },
+    {
+      "path": "docs/installation.md",
+      "sha256": "b72534ae9c641a9d6bc67c35c2b5c8b5ca519eb79f4f29628858342bb6fbe8c5"
+    },
+    {
+      "path": "shared/author-expression/PROFILE.md",
+      "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d"
+    },
+    {
+      "path": "capabilities/scene-design/1.0.0/CAPABILITY.md",
+      "sha256": "afc6e0364007cdfeab0ea40d9478f97eaeef65e81d0abcf6aa3229a55736d9e4"
+    },
+    {
+      "path": "capabilities/continuity-audit/1.0.0/CAPABILITY.md",
+      "sha256": "d68e291f20bd4fc47b49470b8a2cab18b65bc8e14c285fa523e6ca82b43cde91"
+    },
+    {
+      "path": "scripts/writing_workspace.py",
+      "sha256": "06ff5b6c4d7007b358cff6c878a2ce7db2f39572ad150e9b2fa46253221e1a08"
+    }
+  ]
+}

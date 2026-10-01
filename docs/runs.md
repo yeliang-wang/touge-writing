@@ -1,15 +1,15 @@
-# 写作运行记录 · v2.1
+# 写作运行记录 · v2.2
 
 run 保存一次作者任务的方法、输入和结果。`版本记录/revisions.json` 仍是正文及方案 accepted 状态的唯一依据。宿主生成文字、执行审读和持有作者授权；脚本不会调用模型或自动确认文学质量。
 
 ## 开始与恢复
 
-先用 `writing_workspace.py init` 初始化作品。复制 [请求模板](../templates/run-request.json)，填写真实任务和引用，所有私有输入使用作品目录内相对路径及 SHA-256。capabilities 必须写 `ID@版本`，不能浮动到 latest。
+本页演示已用 init 创建、ID 为 demo 的公众号作品；小说任务另用稳定章 ID。所有命令显式使用同一个 workspace，继续已有作品无需重新 init。先将下面的 request.json、draft.md 和 review.json 保存为私人任务文件，使用时传入实际路径；这些命令展示一次已有输入的运行流程，不会替你生成正文和审读。复制 [请求模板](../templates/run-request.json)，填写真实任务和引用，所有私有输入使用作品目录内相对路径及 SHA-256。capabilities 必须写 `ID@版本`，不能浮动到 latest。
 
 ```bash
-python3 scripts/writing_run.py --workspace workspace --project demo start --request request.json
-python3 scripts/writing_run.py --workspace workspace --project demo resume
-python3 scripts/writing_workspace.py --workspace workspace resume --project demo
+python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo start --request request.json
+python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo resume
+python3 scripts/writing_workspace.py --workspace "$HOME/.touge-writing/workspace" resume --project demo
 ```
 
 `start` 锁定所选能力、Skill、生命周期定义、作者表达包以及明确列入的作品输入。复制为 run 内不可变快照。工具同时自动固定作品元数据、内容登记、当前全书方案及目标和相邻章的现行方案／文本；任务额外材料仍需显式列入 inputs。引用全文时把实际源文件列入 inputs；清单本身的快照不等于锁定清单中全部正文。model/configuration 不可得时记 unknown。摘要由宿主阅读后填写，脚本绑定其输入哈希，不自动认证理解。
@@ -19,10 +19,10 @@ python3 scripts/writing_workspace.py --workspace workspace resume --project demo
 ## 产物、审稿、阶段
 
 ```bash
-python3 scripts/writing_run.py --workspace workspace --project demo artifact --run article-001 --operation-id save-text --source draft.md --id draft-1 --role text
-python3 scripts/writing_run.py --workspace workspace --project demo stage --run article-001 --operation-id to-review --stage review --reason '已交付待审正文'
-python3 scripts/writing_run.py --workspace workspace --project demo artifact --run article-001 --operation-id save-review --source review.json --id review-1 --role review
-python3 scripts/writing_run.py --workspace workspace --project demo stage --run article-001 --operation-id finish --stage completed --reason '本次任务已交付并审读' --review-id review-1
+python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo artifact --run article-001 --operation-id save-text --source draft.md --id draft-1 --role text
+python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo stage --run article-001 --operation-id to-review --stage review --reason '已交付待审正文'
+python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo artifact --run article-001 --operation-id save-review --source review.json --id review-1 --role review
+python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo stage --run article-001 --operation-id finish --stage completed --reason '本次任务已交付并审读' --review-id review-1
 ```
 
 review.json 参见 [模板](../templates/run-review.json)：scope、findings、result、unresolved_blockers、被审产物的 ID 与哈希。程序检查记录完整性和阻塞事项；评审文字必须由宿主实际阅读后填写。需要修订则 review → revise → review，增加新的产物 ID，保留失败稿与旧审稿。计划任务可 plan → review → completed；没有要求先写正文。完成不代表作者审美认可或平台发布。
@@ -38,3 +38,7 @@ review.json 参见 [模板](../templates/run-review.json)：scope、findings、r
 `resolve-issue --run ID --operation-id ID --issue-id ID --decision-ref 决策记录/resolve.md` 引用实际解决依据，不能凭检查通过把待核事实升级为真。
 
 公共上下文导出只读公共文件。run 含私人作品与授权信息，存于本地，不打包发布。
+
+## 合作输入
+
+合作约定、本轮共同方案、基准正文和确认依据均属于作品输入。按需将获准使用的快照列入 inputs，读取远端后不要无记录地更换正在执行任务的基准。任务结束与共同确认分别记录；导入腾讯文档最新稿不自动 accepted。详见 [合作流程](collaboration.md)。

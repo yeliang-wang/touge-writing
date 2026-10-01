@@ -1,0 +1,181 @@
+{
+  "synthetic": true,
+  "observations": [
+    {
+      "workspace": "case-a",
+      "project": "novels/ferry",
+      "registered_revision_ids": [
+        "book-v1",
+        "night-plan-v1",
+        "night-text-v1",
+        "night-candidate-v2",
+        "night-conflict-review"
+      ],
+      "accepted_revision_ids": [
+        "book-v1",
+        "night-plan-v1",
+        "night-text-v1"
+      ],
+      "registered_content_fingerprints_match": true,
+      "private_markers_found": {
+        "A_ONLY_REED_GLASS": true,
+        "B_ONLY_COPPER_KITE": false,
+        "C_ONLY_SILVER_ACORN": false
+      },
+      "inventory": [
+        {
+          "path": "START-HERE.md",
+          "sha256": "813ce1adb850ed031e429fe4ac57883dea888a0ed514cbceb0ec1ab2b2bf2ee3",
+          "bytes": 142
+        },
+        {
+          "path": "book.yaml",
+          "sha256": "7c878c8f78fa4917be2bc5e8bd17079a3466a05c6bb505f3b0e39c1e008fb6cc",
+          "bytes": 175
+        },
+        {
+          "path": "collaboration.md",
+          "sha256": "b1b12268f8c68b95cf0b419d3ed8b0daa1aa275efa791042bdbcb5f16ac2300a",
+          "bytes": 570
+        },
+        {
+          "path": "private/note.md",
+          "sha256": "5ad9d212bdc84482ce08dc9df23ee93598a3f7d0c20550ff80e81d5cbd8d044c",
+          "bytes": 111
+        },
+        {
+          "path": "state.json",
+          "sha256": "134f996e89ece11f8f3fcf41e73cbd35574c74a2b7697513f74203fba6200bae",
+          "bytes": 327
+        },
+        {
+          "path": "决策记录/book-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+          "bytes": 328
+        },
+        {
+          "path": "决策记录/night-plan-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+          "bytes": 328
+        },
+        {
+          "path": "决策记录/night-text-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+          "bytes": 328
+        },
+        {
+          "path": "版本记录/content/book-v1.md",
+          "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901",
+          "bytes": 272
+        },
+        {
+          "path": "版本记录/content/night-candidate-v2.md",
+          "sha256": "019033221546eeec9737493b24f6bd67009ac3913ae1a9d23489d9a5c8219e52",
+          "bytes": 779
+        },
+        {
+          "path": "版本记录/content/night-conflict-review.md",
+          "sha256": "7670630ab2fd58d1a97c1fa80824b8b679546bbb5e06bff3db419b0aab20b26b",
+          "bytes": 1117
+        },
+        {
+          "path": "版本记录/content/night-plan-v1.md",
+          "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5",
+          "bytes": 294
+        },
+        {
+          "path": "版本记录/content/night-text-v1.md",
+          "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2",
+          "bytes": 206
+        },
+        {
+          "path": "版本记录/revisions.json",
+          "sha256": "8ed4b18f91eacc947d5c2f756aa7cdae17a05917a2f2ae318f0257735b18424e",
+          "bytes": 2231
+        }
+      ]
+    },
+    {
+      "workspace": "case-b",
+      "project": "novels/ferry",
+      "registered_revision_ids": [
+        "book-v1",
+        "night-plan-v1",
+        "night-text-v1"
+      ],
+      "accepted_revision_ids": [
+        "book-v1",
+        "night-plan-v1",
+        "night-text-v1"
+      ],
+      "registered_content_fingerprints_match": true,
+      "private_markers_found": {
+        "A_ONLY_REED_GLASS": false,
+        "B_ONLY_COPPER_KITE": true,
+        "C_ONLY_SILVER_ACORN": false
+      },
+      "inventory": [
+        {
+          "path": "START-HERE.md",
+          "sha256": "813ce1adb850ed031e429fe4ac57883dea888a0ed514cbceb0ec1ab2b2bf2ee3",
+          "bytes": 142
+        },
+        {
+          "path": "book.yaml",
+          "sha256": "7c878c8f78fa4917be2bc5e8bd17079a3466a05c6bb505f3b0e39c1e008fb6cc",
+          "bytes": 175
+        },
+        {
+          "path": "collaboration.md",
+          "sha256": "b1b12268f8c68b95cf0b419d3ed8b0daa1aa275efa791042bdbcb5f16ac2300a",
+          "bytes": 570
+        },
+        {
+          "path": "private/note.md",
+          "sha256": "25fc60a89b2b87bdf2f9ed035c8e9864fb46e964653eb23328965b01de010b04",
+          "bytes": 112
+        },
+        {
+          "path": "state.json",
+          "sha256": "425d31e0b2107b43f4fd80892f31e81da39a827c4a9bbf9b7354d0224f00e218",
+          "bytes": 322
+        },
+        {
+          "path": "决策记录/book-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+          "bytes": 328
+        },
+        {
+          "path": "决策记录/night-plan-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+          "bytes": 328
+        },
+        {
+          "path": "决策记录/night-text-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+          "bytes": 328
+        },
+        {
+          "path": "版本记录/content/book-v1.md",
+          "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901",
+          "bytes": 272
+        },
+        {
+          "path": "版本记录/content/night-plan-v1.md",
+          "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5",
+          "bytes": 294
+        },
+        {
+          "path": "版本记录/content/night-text-v1.md",
+          "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2",
+          "bytes": 206
+        },
+        {
+          "path": "版本记录/revisions.json",
+          "sha256": "ce2317c4f6511acc2485965d80e3e241208c4a20eb7d4b7461e0212b08c831b7",
+          "bytes": 1507
+        }
+      ]
+    }
+  ]
+}

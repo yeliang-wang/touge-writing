@@ -1,0 +1,154 @@
+{
+  "synthetic": true,
+  "observations": [
+    {
+      "workspace": "receiver",
+      "project": "wechat/shared-draft",
+      "registered_revision_ids": [
+        "article-v1",
+        "article-v2-import",
+        "article-v2-confirmed"
+      ],
+      "accepted_revision_ids": [
+        "article-v1",
+        "article-v2-confirmed"
+      ],
+      "registered_content_fingerprints_match": true,
+      "private_markers_found": {
+        "A_ONLY_REED_GLASS": false,
+        "B_ONLY_COPPER_KITE": false,
+        "C_ONLY_SILVER_ACORN": false
+      },
+      "inventory": [
+        {
+          "path": "START-HERE.md",
+          "sha256": "4a6e14a330353e1e880e5741dd84d9a25c8db00fd78f0da58c18f8b535eaa9b0",
+          "bytes": 172
+        },
+        {
+          "path": "book.yaml",
+          "sha256": "d97eec7f40b6f8098d44521f9c32d2c36f3d30bf8933e72fe32a5b50695aff20",
+          "bytes": 129
+        },
+        {
+          "path": "collaboration.md",
+          "sha256": "2a05685a4a32c43bcf07ffaa7bfe6806593bde769bb43c5840ecdb0b6e76058e",
+          "bytes": 474
+        },
+        {
+          "path": "sources/article-v2.md",
+          "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+          "bytes": 455
+        },
+        {
+          "path": "sources/cloud-current-v3.md",
+          "sha256": "d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db",
+          "bytes": 249
+        },
+        {
+          "path": "sources/decision-v2.md",
+          "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+          "bytes": 466
+        },
+        {
+          "path": "sources/import.json",
+          "sha256": "46ee2fb426f6ee7d08e493f2087b2069f2b0975608eb2ea947a6ad65d773c3ff",
+          "bytes": 557
+        },
+        {
+          "path": "state.json",
+          "sha256": "7d5ebf2d62b2cf49b7446fb0fd063a154478c4289b4cb3b45084050bb92d9fad",
+          "bytes": 202
+        },
+        {
+          "path": "决策记录/article-v1.md",
+          "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5",
+          "bytes": 233
+        },
+        {
+          "path": "决策记录/article-v2-confirmed.md",
+          "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862",
+          "bytes": 466
+        },
+        {
+          "path": "版本记录/content/article-v1.md",
+          "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+          "bytes": 342
+        },
+        {
+          "path": "版本记录/content/article-v2-confirmed.md",
+          "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+          "bytes": 455
+        },
+        {
+          "path": "版本记录/content/article-v2-import.md",
+          "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537",
+          "bytes": 455
+        },
+        {
+          "path": "版本记录/revisions.json",
+          "sha256": "5997578a0cf7469807709cac8435afa72242176c0aa43816645d3a3394978703",
+          "bytes": 1401
+        }
+      ]
+    },
+    {
+      "workspace": "contributor",
+      "project": "wechat/shared-draft",
+      "registered_revision_ids": [
+        "article-v1"
+      ],
+      "accepted_revision_ids": [
+        "article-v1"
+      ],
+      "registered_content_fingerprints_match": true,
+      "private_markers_found": {
+        "A_ONLY_REED_GLASS": false,
+        "B_ONLY_COPPER_KITE": false,
+        "C_ONLY_SILVER_ACORN": true
+      },
+      "inventory": [
+        {
+          "path": "START-HERE.md",
+          "sha256": "4a6e14a330353e1e880e5741dd84d9a25c8db00fd78f0da58c18f8b535eaa9b0",
+          "bytes": 172
+        },
+        {
+          "path": "book.yaml",
+          "sha256": "d97eec7f40b6f8098d44521f9c32d2c36f3d30bf8933e72fe32a5b50695aff20",
+          "bytes": 129
+        },
+        {
+          "path": "collaboration.md",
+          "sha256": "2a05685a4a32c43bcf07ffaa7bfe6806593bde769bb43c5840ecdb0b6e76058e",
+          "bytes": 474
+        },
+        {
+          "path": "private/note.md",
+          "sha256": "f350d88d1cb0fdf890f7928d57dd6e14370917447c770843d3e041fcbebd5d22",
+          "bytes": 99
+        },
+        {
+          "path": "state.json",
+          "sha256": "c73ea2aa311314322070e043132ab5ac7091289aeb5e1c1c133c1a651d6121d0",
+          "bytes": 192
+        },
+        {
+          "path": "决策记录/article-v1.md",
+          "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5",
+          "bytes": 233
+        },
+        {
+          "path": "版本记录/content/article-v1.md",
+          "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204",
+          "bytes": 342
+        },
+        {
+          "path": "版本记录/revisions.json",
+          "sha256": "00e7fe88760e3123499f96afc55f2627c0ab83ca27d7a8c6f09c8315102c757e",
+          "bytes": 519
+        }
+      ]
+    }
+  ]
+}

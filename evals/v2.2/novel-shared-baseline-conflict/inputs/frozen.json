@@ -1,0 +1,58 @@
+{
+  "synthetic": true,
+  "network_called": false,
+  "real_author_approval": false,
+  "stage": "inputs_frozen_before_cli_execution",
+  "files": [
+    {
+      "path": "book-v1.md",
+      "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901",
+      "bytes": 272
+    },
+    {
+      "path": "cloud-before-submit.md",
+      "sha256": "0364b44e0c4a3c8eeb511279e9abc7169c9f46429af53fa4e7edb1579a2e69da",
+      "bytes": 377
+    },
+    {
+      "path": "cloud-initial.md",
+      "sha256": "d6b878eab7a6d3d0a4dde7a8c385ad8a9029ae1a289d0c4035944ba2496618ce",
+      "bytes": 325
+    },
+    {
+      "path": "collaboration.md",
+      "sha256": "b1b12268f8c68b95cf0b419d3ed8b0daa1aa275efa791042bdbcb5f16ac2300a",
+      "bytes": 570
+    },
+    {
+      "path": "decision-v1.md",
+      "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9",
+      "bytes": 328
+    },
+    {
+      "path": "night-plan-v1.md",
+      "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5",
+      "bytes": 294
+    },
+    {
+      "path": "night-text-v1.md",
+      "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2",
+      "bytes": 206
+    },
+    {
+      "path": "private-a.md",
+      "sha256": "5ad9d212bdc84482ce08dc9df23ee93598a3f7d0c20550ff80e81d5cbd8d044c",
+      "bytes": 111
+    },
+    {
+      "path": "private-b.md",
+      "sha256": "25fc60a89b2b87bdf2f9ed035c8e9864fb46e964653eb23328965b01de010b04",
+      "bytes": 112
+    },
+    {
+      "path": "task.md",
+      "sha256": "12bcda5fd88835a6308993ea38cb93d5ea29ab14f116b46285fa22313b6a205a",
+      "bytes": 997
+    }
+  ]
+}

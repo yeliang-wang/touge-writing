@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "version": "2.2.0",
+  "source": "independent_agent_forward_test_with_parent_review",
+  "relationship_disclosure": "A separate Agent designed and executed bounded synthetic tasks after reading current public instructions. The implementation author independently reread task inputs, actual command outputs, prose, decisions and registries and verified artifact hashes. Not a blind test or independent third-party certification.",
+  "live_cloud_tested": false,
+  "author_approval_claimed": false,
+  "evaluated_context": {
+    "path": "evaluated-context.json",
+    "sha256": "06b85bf8ab273a8f89a7b39993b5f3b12147c3ab6a28665d3bb8a69b0cce0a3f"
+  },
+  "cases": [
+    {
+      "id": "novel-shared-baseline-conflict",
+      "status": "passed",
+      "observations": [
+        "Parent reread the task, complete request transcript, adopted chapter plan, candidate, conflict note and registries. The candidate advances return-to-bank/rope repair within the fiction scope and remains draft.",
+        "A keeps night-text-v1 accepted with historical parent night-plan-v1. B retains its original three revisions. The pre-submission snapshots differ; a concrete diff and handoff note are delivered without a remote write.",
+        "Parent checked stored content/decision hashes and marker separation from the actual synthetic workspaces. No real manuscript acceptance is claimed."
+      ],
+      "unresolved_blockers": [],
+      "artifacts": [
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/artifacts.json",
+          "sha256": "f894d7d777a204d1ea3ef0c5bf460d6c527d37e76057bbc7be1b89ab39b087e6"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/candidate.md",
+          "sha256": "019033221546eeec9737493b24f6bd67009ac3913ae1a9d23489d9a5c8219e52"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/cloud-change.diff",
+          "sha256": "48a9d620155f7d1bb3d907e0f51624fa8c0ac72a5ebd93d15b50902515f537fa"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/conflict.md",
+          "sha256": "7670630ab2fd58d1a97c1fa80824b8b679546bbb5e06bff3db419b0aab20b26b"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/book.yaml",
+          "sha256": "7c878c8f78fa4917be2bc5e8bd17079a3466a05c6bb505f3b0e39c1e008fb6cc"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/revisions.json",
+          "sha256": "8ed4b18f91eacc947d5c2f756aa7cdae17a05917a2f2ae318f0257735b18424e"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/state.json",
+          "sha256": "134f996e89ece11f8f3fcf41e73cbd35574c74a2b7697513f74203fba6200bae"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/决策记录/book-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/决策记录/night-plan-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/决策记录/night-text-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/版本记录/content/book-v1.md",
+          "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/版本记录/content/night-candidate-v2.md",
+          "sha256": "019033221546eeec9737493b24f6bd67009ac3913ae1a9d23489d9a5c8219e52"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/版本记录/content/night-conflict-review.md",
+          "sha256": "7670630ab2fd58d1a97c1fa80824b8b679546bbb5e06bff3db419b0aab20b26b"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/版本记录/content/night-plan-v1.md",
+          "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-a/版本记录/content/night-text-v1.md",
+          "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/book.yaml",
+          "sha256": "7c878c8f78fa4917be2bc5e8bd17079a3466a05c6bb505f3b0e39c1e008fb6cc"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/revisions.json",
+          "sha256": "ce2317c4f6511acc2485965d80e3e241208c4a20eb7d4b7461e0212b08c831b7"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/state.json",
+          "sha256": "425d31e0b2107b43f4fd80892f31e81da39a827c4a9bbf9b7354d0224f00e218"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/决策记录/book-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/决策记录/night-plan-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/决策记录/night-text-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/版本记录/content/book-v1.md",
+          "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/版本记录/content/night-plan-v1.md",
+          "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/case-b/版本记录/content/night-text-v1.md",
+          "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2"
+        },
+        {
+          "role": "evidence",
+          "path": "novel-shared-baseline-conflict/evidence/observed-state.json",
+          "sha256": "168c07427bba20e1b2cff6889eba748f6d6ac3f7429a4b3c4d0e79eca618ff9d"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/book-v1.md",
+          "sha256": "f39d6343be5de624e33a272721fb32906941156f8e45900977bead1b28787901"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/cloud-before-submit.md",
+          "sha256": "0364b44e0c4a3c8eeb511279e9abc7169c9f46429af53fa4e7edb1579a2e69da"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/cloud-initial.md",
+          "sha256": "d6b878eab7a6d3d0a4dde7a8c385ad8a9029ae1a289d0c4035944ba2496618ce"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/collaboration.md",
+          "sha256": "b1b12268f8c68b95cf0b419d3ed8b0daa1aa275efa791042bdbcb5f16ac2300a"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/decision-v1.md",
+          "sha256": "033198d63a9826283bc35159c51f5e738b6cec921283928eaea0a549b7994cb9"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/frozen.json",
+          "sha256": "f64b4d2ed7f1f7faa206626af334740137d0bf4d8f0755c640bae0520c1defd2"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/night-plan-v1.md",
+          "sha256": "8daf321ff67113d22912fc7ea68ab6cab5305d6de12b24482e5266b6822635d5"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/night-text-v1.md",
+          "sha256": "15b0fe45e3209381245d80ae2ca98a7cdf8d1ce781b4e9f347e1ee7f27316cf2"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/private-a.md",
+          "sha256": "5ad9d212bdc84482ce08dc9df23ee93598a3f7d0c20550ff80e81d5cbd8d044c"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/private-b.md",
+          "sha256": "25fc60a89b2b87bdf2f9ed035c8e9864fb46e964653eb23328965b01de010b04"
+        },
+        {
+          "role": "input",
+          "path": "novel-shared-baseline-conflict/inputs/task.md",
+          "sha256": "12bcda5fd88835a6308993ea38cb93d5ea29ab14f116b46285fa22313b6a205a"
+        },
+        {
+          "role": "result",
+          "path": "novel-shared-baseline-conflict/result.json",
+          "sha256": "215f95686aad1724db01f52686be01c5af05cf1e7632b46c2a1a6d52be689b83"
+        },
+        {
+          "role": "result",
+          "path": "novel-shared-baseline-conflict/result.md",
+          "sha256": "4b792e352559c3c8045fe7268f47117a9457b333604f7571ad10817ce75db760"
+        },
+        {
+          "role": "transcript",
+          "path": "novel-shared-baseline-conflict/transcript.json",
+          "sha256": "152b01f1db7780e43030062e5578b1bbc3d3538c2d96f3cba526760e07074afa"
+        }
+      ]
+    },
+    {
+      "id": "wechat-confirmed-import",
+      "status": "passed",
+      "observations": [
+        "Parent reread the task, cooperation agreement, exact editor decision, full transcript and registries. The decision names the v2 SHA and explicitly excludes later unconfirmed v3.",
+        "Receiver imports v2 as baseline then accepted with the exact supplied synthetic decision. v1 and its decision remain unchanged; contributor stays at v1. No private marker is imported.",
+        "Parent checked content/decision hashes and source metadata. Local acceptance is a fixture action only; no publishing, account verification or cloud concurrency is claimed."
+      ],
+      "unresolved_blockers": [],
+      "artifacts": [
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/artifacts.json",
+          "sha256": "e14218bb5fe1acbf721cbdcf5937d96fdae41cf722987172d94aff705ca0bc0d"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/contributor/book.yaml",
+          "sha256": "d97eec7f40b6f8098d44521f9c32d2c36f3d30bf8933e72fe32a5b50695aff20"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/contributor/revisions.json",
+          "sha256": "00e7fe88760e3123499f96afc55f2627c0ab83ca27d7a8c6f09c8315102c757e"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/contributor/state.json",
+          "sha256": "c73ea2aa311314322070e043132ab5ac7091289aeb5e1c1c133c1a651d6121d0"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/contributor/决策记录/article-v1.md",
+          "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/contributor/版本记录/content/article-v1.md",
+          "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/observed-state.json",
+          "sha256": "c767622dc72a47f125d96a40bd2608594f4bb57d6bb05cd512fb501a00d0aaa1"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/book.yaml",
+          "sha256": "d97eec7f40b6f8098d44521f9c32d2c36f3d30bf8933e72fe32a5b50695aff20"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/import.json",
+          "sha256": "46ee2fb426f6ee7d08e493f2087b2069f2b0975608eb2ea947a6ad65d773c3ff"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/revisions.json",
+          "sha256": "5997578a0cf7469807709cac8435afa72242176c0aa43816645d3a3394978703"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/state.json",
+          "sha256": "7d5ebf2d62b2cf49b7446fb0fd063a154478c4289b4cb3b45084050bb92d9fad"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/决策记录/article-v1.md",
+          "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/决策记录/article-v2-confirmed.md",
+          "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/版本记录/content/article-v1.md",
+          "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/版本记录/content/article-v2-confirmed.md",
+          "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537"
+        },
+        {
+          "role": "evidence",
+          "path": "wechat-confirmed-import/evidence/receiver/版本记录/content/article-v2-import.md",
+          "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/article-v1.md",
+          "sha256": "51b5ec3cf4072318823605b224d5a54c75824242e2b0d211d1eaa6b579158204"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/article-v2.md",
+          "sha256": "be038c3cdc5cd674aa6c8aa58acc0ada429af94d8ae196f4d49020dfae747537"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/cloud-current-v3.md",
+          "sha256": "d5406371ea209a7d51d1488b949646eaa279ee0a2df57cf4bdfd2b196ba3b6db"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/collaboration.md",
+          "sha256": "2a05685a4a32c43bcf07ffaa7bfe6806593bde769bb43c5840ecdb0b6e76058e"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/decision-v1.md",
+          "sha256": "1c04447b34eaa1d0a1224fb6dee859b08afc4d9161db1bef1d1a194b239321d5"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/decision-v2.md",
+          "sha256": "d9b96c9358dc3f04f877e9f5f12ab8809664d7d5f51e53a2681c0e8af3cae862"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/frozen.json",
+          "sha256": "ee84515507c351b370cdaa80b2bee5358da0047f792078d18657bf0afe4eba1b"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/private-contributor.md",
+          "sha256": "f350d88d1cb0fdf890f7928d57dd6e14370917447c770843d3e041fcbebd5d22"
+        },
+        {
+          "role": "input",
+          "path": "wechat-confirmed-import/inputs/task.md",
+          "sha256": "fce8cb4b11b74716d0794f08211cd722f5e52cf64fb659be3caed458fe6a12ea"
+        },
+        {
+          "role": "result",
+          "path": "wechat-confirmed-import/result.json",
+          "sha256": "5bab7a5a8403dd5965a2f2b1dd97efcb4bb4b08f3588d40059ed9cdd4644125b"
+        },
+        {
+          "role": "result",
+          "path": "wechat-confirmed-import/result.md",
+          "sha256": "70553137aaa88a26ef195a3352130d2c4ac97c4713a91b3b7cc353a3b8b097ba"
+        },
+        {
+          "role": "transcript",
+          "path": "wechat-confirmed-import/transcript.json",
+          "sha256": "2ef71e5f3c39f4d84aa5ab537326b1bab8ddfa3d7a758629497e0f8724a5aee9"
+        }
+      ]
+    }
+  ]
+}
