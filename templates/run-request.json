@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "article-001",
+  "task": "根据明确提供的合成材料直接成稿",
+  "authorization_refs": ["本次实际用户请求的位置；使用时替换"],
+  "target": "article",
+  "mode": "draft",
+  "stage": "draft",
+  "fiction_policy": {"mode": "source-based", "scope": "本篇真实材料"},
+  "capabilities": ["reader-contract@1.0.0", "source-map@1.0.0", "editorial-review@1.0.0"],
+  "inputs": [],
+  "parameters": {"reader": "首次负责上线的工程师"},
+  "open_issues": [],
+  "model": {"id": "unknown", "configuration": "unknown"}
+}

@@ -1,4 +1,4 @@
-# Writing project
+# Writing project · v2.1
 
 This repository provides shared author expression, WeChat article writing and novel writing. Codex owns execution and external MCP connections. Keep private works under `workspace/`; public source is methods, templates, scripts and reviewed style abstractions.
 
@@ -15,10 +15,15 @@ Review authorization already given in the conversation remains valid. Do not ask
 
 Product upgrades and releases validate capabilities and migration integrity, not a manuscript's content. Restoring a saved chapter-review stage verifies recovery only; it is not an instruction to perform that review. Use synthetic materials for new writing evaluations. Review or resolve a real work's facts, plot, prose or chapter plans only in a separate writing task after release. Earlier test observations are not release blockers or author-approved editorial decisions.
 
+## Methods and task records
+Read only applicable versioned cards in `capabilities/registry.json`. An active run overrides legacy next-chapter advice; it snapshots task inputs, author expression, Skill, lifecycle and selected methods. Trial completion is not manuscript acceptance. `版本记录/revisions.json` alone owns content acceptance; lifecycle events own task execution; state files are derived.
+
+Materials are explicitly scoped. Source identity, read coverage, factual confidence and fiction authorization are separate. A timeline display chapter number does not establish chapter identity. Resolve facts only within the authorized writing task; product upgrades preserve the work.
+
 ## External tools
 MCP connects external services; it is not the writing runtime. Use host tools only when the task requires them. Keep credentials in the host's approved credential mechanism, never in repository/workspace files or output. Maintain concrete remote IDs and receipts privately. Read remote state before updates and verify afterwards; an ambiguous request must be reconciled before retrying. A local final draft does not imply public publishing.
 
-For v2.0, WeChat establishes capability and setup guidance only; account connection and live operations are excluded from acceptance by the user's explicit scope revision. Tencent Docs retains real read/write acceptance. Mark untested operations honestly.
+For v2.1, retain the explicit v2.0 scope: WeChat establishes capability and setup guidance only; account connection and live operations are excluded from acceptance by the user's explicit scope revision. Tencent Docs retains real read/write evidence. Revalidate existing receipts when the protocol is unchanged, and state that they are historical; changes to connection, target resolution, write or readback require affected live checks. Mark untested operations honestly.
 
 ## Validation
-Run `python3 -m unittest discover -s tests -v`, `python3 scripts/preflight_check.py`, and `python3 scripts/acceptance.py --workspace workspace`. Full acceptance includes external evidence; local unit tests alone cannot release v2.0.0. Do not copy private fixtures into public tests. Keep existing auxiliary capabilities compatible.
+Run `python3 -m unittest discover -s tests -v`, `python3 scripts/preflight_check.py`, and `python3 scripts/acceptance.py --workspace workspace`. Full acceptance includes external evidence; local unit tests alone cannot release v2.1.0. Public installs use `acceptance.py --public-only`; full A01–A13 results and legacy regression are separate, and historical v2.0 evidence must not be overwritten. Do not copy private fixtures into public tests. Keep existing auxiliary capabilities compatible.

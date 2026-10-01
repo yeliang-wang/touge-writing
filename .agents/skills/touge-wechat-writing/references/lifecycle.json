@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "kind": "wechat",
+  "transitions": {
+    "plan": [
+      "draft",
+      "review",
+      "paused"
+    ],
+    "draft": [
+      "review",
+      "paused"
+    ],
+    "review": [
+      "revise",
+      "completed",
+      "paused"
+    ],
+    "revise": [
+      "review",
+      "paused"
+    ],
+    "paused": [
+      "plan",
+      "draft",
+      "review",
+      "revise"
+    ],
+    "completed": []
+  },
+  "content_authority": "版本记录/revisions.json",
+  "completion": "Run task delivered and reviewed; never implicit manuscript acceptance or publishing",
+  "entry": "Start at the actual authorized task stage; no mandatory outline gate for direct article drafting",
+  "book_and_chapter": null
+}

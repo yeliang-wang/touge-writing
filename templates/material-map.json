@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "id": "map-001",
+  "based_on": null,
+  "sources": [],
+  "units": [],
+  "usages": [],
+  "instructions": "按 docs/materials.md 填写本轮采用的来源、事件或主题及用途；不按旧章号推断当前章 ID"
+}

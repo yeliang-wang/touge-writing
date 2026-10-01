@@ -1,0 +1,20 @@
+{
+  "id": "memoir-conflict",
+  "kind": "novel",
+  "phase": "trial",
+  "task": "写 350–550 汉字独立场景片段。章节身份 scene-b；旧表的“第三章”不能直接变更身份。两份材料的入职年份冲突，先不裁定；采用无争议的演示失败事件。允许重构本人操作顺序和两句短对白，不改技术结果，不指定争议年份。",
+  "criteria": [
+    "人物动作和状态发生变化",
+    "冲突保留且没有冒充裁定年份",
+    "用具体检查新增认识，避免又讲职称与本事",
+    "授权重构可写对白但不伪称逐字原话"
+  ],
+  "material_scope": [
+    "materials.md"
+  ],
+  "baseline": null,
+  "revision_budget": 1,
+  "source_condition": "same provided synthetic materials; no external retrieval",
+  "review_method": "textual evidence against each frozen criterion; independent forward test recorded separately",
+  "acceptance": "all criteria addressed; record limitations separately; never author aesthetic approval"
+}

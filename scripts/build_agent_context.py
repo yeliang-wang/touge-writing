@@ -2,6 +2,7 @@
 """Build an installable context package for embedding this skill into an AI Agent."""
 
 import argparse
+import json
 from pathlib import Path
 
 
@@ -96,9 +97,21 @@ def main():
     parser.add_argument("--channel", choices=sorted(CHANNEL_NOTES), default="generic")
     parser.add_argument("--agent-name", default="touge-writing-agent")
     parser.add_argument("--out", help="Write context to file instead of stdout")
+    parser.add_argument("--capability", action="append", default=[], help="Explicit method ID@version; repeat as needed")
+    parser.add_argument("--phase", choices=['plan', 'draft', 'review', 'revise', 'title'])
     args = parser.parse_args()
 
     paths = unique_paths(BASE_FILES + SCENARIO_FILES[args.scenario])
+    from capability_catalog import resolve
+    kind = args.scenario if args.scenario in {'wechat', 'novel'} else None
+    selected = list(args.capability)
+    if args.phase:
+        if not kind:
+            parser.error('--phase requires --scenario wechat or novel')
+        recipes = json.loads(read_file('.agents/skills/touge-' + kind + '-writing/references/recipes.json'))
+        selected += recipes[args.phase]
+    paths += [r['path'] for r in resolve(list(dict.fromkeys(selected)), kind)]
+    paths = unique_paths(paths)
 
     sections = [
         "# touge-writing-reboot-skill Agent Context",

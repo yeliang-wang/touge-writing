@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "capabilities": [
+    {
+      "id": "reader-contract",
+      "version": "1.0.0",
+      "path": "capabilities/reader-contract/1.0.0/CAPABILITY.md",
+      "sha256": "f95bc90dfb4381b6dbfd29c085dbeace9b44789ce8e3496fcf0748d937a49e75",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "读者与任务约定"
+    },
+    {
+      "id": "material-discovery",
+      "version": "1.0.0",
+      "path": "capabilities/material-discovery/1.0.0/CAPABILITY.md",
+      "sha256": "6a4465be8ac95d7977465f79e42ab9041433bed3a1d5bfc633e16bfce2ae2693",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "有边界的素材发现"
+    },
+    {
+      "id": "source-map",
+      "version": "1.0.0",
+      "path": "capabilities/source-map/1.0.0/CAPABILITY.md",
+      "sha256": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "说法、证据与授权"
+    },
+    {
+      "id": "structure-design",
+      "version": "1.0.0",
+      "path": "capabilities/structure-design/1.0.0/CAPABILITY.md",
+      "sha256": "b9021b21af91f301229557a8f9b39d569d70d32f5d9823843146912106e89dff",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "结构与职责"
+    },
+    {
+      "id": "scene-design",
+      "version": "1.0.0",
+      "path": "capabilities/scene-design/1.0.0/CAPABILITY.md",
+      "sha256": "afc6e0364007cdfeab0ea40d9478f97eaeef65e81d0abcf6aa3229a55736d9e4",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "场景的展开与压缩"
+    },
+    {
+      "id": "transition-design",
+      "version": "1.0.0",
+      "path": "capabilities/transition-design/1.0.0/CAPABILITY.md",
+      "sha256": "7b714224ba6780110e96f7a1a1e38821b4ed0f8d56e14ff9acfe9e98bf31fcad",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "可信的衔接"
+    },
+    {
+      "id": "reflection-shaping",
+      "version": "1.0.0",
+      "path": "capabilities/reflection-shaping/1.0.0/CAPABILITY.md",
+      "sha256": "6af8123def7afc61ba090285d4712466768b116337391af7afe4ce8e676cff75",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "有增量的回望"
+    },
+    {
+      "id": "background-weaving",
+      "version": "1.0.0",
+      "path": "capabilities/background-weaving/1.0.0/CAPABILITY.md",
+      "sha256": "f088abe2b8cc5705073e84e6bd6981b775854a6138da3b23d710813300300021",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "背景如何影响选择"
+    },
+    {
+      "id": "continuity-audit",
+      "version": "1.0.0",
+      "path": "capabilities/continuity-audit/1.0.0/CAPABILITY.md",
+      "sha256": "d68e291f20bd4fc47b49470b8a2cab18b65bc8e14c285fa523e6ca82b43cde91",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "连续性与语义重复审阅"
+    },
+    {
+      "id": "title-design",
+      "version": "1.0.0",
+      "path": "capabilities/title-design/1.0.0/CAPABILITY.md",
+      "sha256": "8e1c299bfeadbc261698e046303cee07e5d480a940a9534a71fbaa6539f30f60",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "从实际内容产生标题"
+    },
+    {
+      "id": "author-voice-review",
+      "version": "1.0.0",
+      "path": "capabilities/author-voice-review/1.0.0/CAPABILITY.md",
+      "sha256": "82e208f6a793f6ec811e13ed86f6b39496fd9a3761657f852118c20897bb0699",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "作者声音审阅"
+    },
+    {
+      "id": "prose-hygiene",
+      "version": "1.0.0",
+      "path": "capabilities/prose-hygiene/1.0.0/CAPABILITY.md",
+      "sha256": "14ab9234f007bbaee98a525c1779ee2bf98ac071e7fc365a976f957b67c0f1c4",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "可计算的文字卫生"
+    },
+    {
+      "id": "editorial-review",
+      "version": "1.0.0",
+      "path": "capabilities/editorial-review/1.0.0/CAPABILITY.md",
+      "sha256": "9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "以实际正文为对象的审稿"
+    }
+  ]
+}

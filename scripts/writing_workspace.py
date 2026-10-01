@@ -11,6 +11,8 @@ from private_retriever import tokenize, cosine, best_snippets
 
 def resolve_project(workspace, name):
     catalog = read_json(Path(workspace) / 'catalog.json')
+    if catalog.get('schema_version') != 1:
+        raise ValueError('Unsupported workspace catalog schema')
     matches = [x for x in catalog['projects'] if name in [x['id'], x['title'], *x.get('aliases', [])]]
     if len(matches) != 1:
         raise ValueError('Select exactly one known project')
@@ -19,7 +21,10 @@ def resolve_project(workspace, name):
 
 def derive_state(project):
     meta = read_json(project / 'book.yaml')  # JSON is also valid YAML; no runtime dependency.
-    records = read_json(project / '版本记录/revisions.json')['revisions']
+    manifest = read_json(project / '版本记录/revisions.json')
+    if meta.get('schema_version') != 1 or manifest.get('schema_version') != 1:
+        raise ValueError('Unsupported content schema; upgrade the tool before writing')
+    records = manifest['revisions']
     plans = [r for r in records if r['kind'] == 'book_plan' and r['status'] == 'accepted']
     result = {'schema_version': 1, 'project_id': meta['id'], 'title': meta['title'],
               'book_plan': plans[-1]['id'] if plans else None, 'chapters': [], 'next_action': None}
@@ -36,14 +41,17 @@ def derive_state(project):
             result['next_action'] = {'chapter_id': chapter['id'],
                                      'action': 'draft' if chapter_plans else 'review_chapter_plan'}
     if meta['type'] == 'wechat':
-        texts = [r for r in records if r['kind'] == 'text']
+        texts = [r for r in records if r['kind'] == 'text' and r['status'] in ('draft', 'baseline', 'accepted')]
         result['latest_text'] = texts[-1]['id'] if texts else None
     return result
 
 
 def validate(project):
     problems = []
-    records = read_json(project / '版本记录/revisions.json')['revisions']
+    manifest = read_json(project / '版本记录/revisions.json')
+    if manifest.get('schema_version') != 1 or read_json(project / 'book.yaml').get('schema_version') != 1:
+        return ['Unsupported content schema; refusing mutation']
+    records = manifest['revisions']
     by_id = {r['id']: r for r in records}
     if len(by_id) != len(records):
         problems.append('duplicate revision IDs')
@@ -97,7 +105,12 @@ def context(project, chapter_id=None):
         if rid and rid not in [x['id'] for x in selected]:
             selected.append(dict(by_id[rid], role=role))
     add(state.get('book_plan'), 'current_book_plan')
-    target = chapter_id or (state.get('next_action') or {}).get('chapter_id')
+    from writing_run import active_context
+    active = active_context(project)
+    current_target = active['state']['target'] if active else None
+    target = chapter_id or (current_target if current_target not in {'book', 'article'} else None)
+    if not target and not active:
+        target = (state.get('next_action') or {}).get('chapter_id')
     chapters = state['chapters']
     if target:
         indexes = [i for i, c in enumerate(chapters) if c['id'] == target]
@@ -110,12 +123,18 @@ def context(project, chapter_id=None):
                 add(c['plan'], 'chapter_plan')
                 if c['plan']:
                     add(by_id[c['plan']].get('parent_plan_id'), 'historical_inheritance')
+                if c['accepted_text'] != c['latest_text']:
+                    add(c['accepted_text'], 'accepted_text')
             add(c['latest_text'] if j == i else c['accepted_text'] or c['latest_text'], 'target_text' if j == i else 'neighbor_text')
     if state.get('latest_text'):
         add(state['latest_text'], 'article_text')
-    return {'state': state, 'selected_chapter': target,
+    return {'state': state, 'selected_chapter': target, 'active_task': active,
+            'task_precedence': 'Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.',
+            'material_maps': [str(p) for p in sorted((project / 'materials/maps').glob('*.json'))],
             'read_full_text': [{'id': r['id'], 'role': r['role'], 'path': str(scoped_path(project, r['path'])),
-                                'status': r['status'], 'version': r['version']} for r in selected],
+                                'status': r['status'], 'version': r['version'], 'sha256': r['sha256'],
+                                'excerpt': scoped_path(project, r['path']).read_text(encoding='utf-8')[:600],
+                                'excerpt_is_full_read': False} for r in selected],
             'rules_path': str(project / '全书方案/有效规则.md') if (project / '全书方案/有效规则.md').exists() else None,
             'open_issues_path': str(project / '决策记录/open-issues.json') if (project / '决策记录/open-issues.json').exists() else None}
 
@@ -198,6 +217,8 @@ def init_project(workspace, project_id, title, project_type):
         raise ValueError('Use a stable lowercase project ID')
     catalog_path = Path(workspace) / 'catalog.json'
     catalog = read_json(catalog_path) if catalog_path.exists() else {'schema_version': 1, 'projects': []}
+    if catalog.get('schema_version') != 1:
+        raise ValueError('Unsupported workspace catalog schema')
     if any(project_id == p['id'] or title in [p['title'], *p.get('aliases', [])] for p in catalog['projects']):
         raise ValueError('Project already exists')
     relative = ('novels/' if project_type == 'novel' else 'wechat/') + project_id
@@ -214,6 +235,9 @@ def init_project(workspace, project_id, title, project_type):
 
 @locked
 def set_chapters(project, chapters):
+    problems = validate(project)
+    if problems:
+        raise ValueError('; '.join(problems))
     meta = read_json(project / 'book.yaml')
     if meta['type'] != 'novel' or not isinstance(chapters, list):
         raise ValueError('Chapters must be an array for a novel')

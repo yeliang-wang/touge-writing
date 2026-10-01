@@ -29,6 +29,8 @@ def audit_public(root=ROOT):
     """Check the index AND public working candidates, including force-added files."""
     import subprocess
     root = Path(root).resolve()
+    if not (root / '.git').exists():
+        return audit_distribution(root)
     indexed = set(git_paths(root, '--cached'))
     paths = indexed | set(git_paths(root, '--others', '--exclude-standard'))
     errors = []
@@ -51,6 +53,67 @@ def audit_public(root=ROOT):
             if any(p.search(text) for p in SECRET_PATTERNS):
                 errors.append('sensitive text in ' + source + ': ' + rel)
     return errors
+
+
+def public_paths(root=ROOT):
+    root = Path(root)
+    if (root / '.git').exists():
+        return sorted(set(git_paths(root, '--cached')) | set(git_paths(root, '--others', '--exclude-standard')))
+    return [r['path'] for r in json.loads((root / 'release-manifest.json').read_text())['files']]
+
+
+def audit_distribution(root):
+    from workspace_lib import digest, scoped_path
+    try:
+        data = json.loads((root / 'release-manifest.json').read_text())
+        if data.get('schema_version') != 1:
+            return ['Unsupported release manifest']
+        errors = []
+        for row in data['files']:
+            relative = Path(row['path']); path = scoped_path(root, relative)
+            if relative.parts[0] in PRIVATE_ROOTS or any(x in FORBIDDEN_PATH_PARTS for x in relative.parts):
+                errors.append('Private release member: ' + str(relative))
+            elif not path.is_file() or digest(path) != row['sha256']:
+                errors.append('Changed release member: ' + str(relative))
+        return errors
+    except (OSError, ValueError, KeyError) as exc:
+        return ['Public package requires its generated release-manifest.json: ' + str(exc)]
+
+
+def link_errors(root=ROOT):
+    from urllib.parse import unquote, urlsplit
+    from workspace_lib import scoped_path
+    errors = []
+    for relative in public_paths(root):
+        path = Path(root) / relative
+        if path.suffix != '.md' or not path.is_file():
+            continue
+        text = re.sub(r'```.*?```', '', path.read_text(encoding='utf-8'), flags=re.S)
+        for target in re.findall(r'\]\(([^\s)]+)(?:\s+"[^"]*")?\)', text):
+            target = target.strip('<>')
+            if urlsplit(target).scheme or target.startswith('#'):
+                continue
+            local = unquote(target.split('#')[0])
+            resolved = (path.parent / local).resolve()
+            if not resolved.is_relative_to(Path(root).resolve()) or not resolved.exists():
+                errors.append(relative + ': ' + target)
+    return errors
+
+
+def check_v21():
+    from capability_catalog import catalog
+    from workspace_lib import read_json, digest
+    try:
+        if len(catalog()['capabilities']) != 13:
+            return fail('Expected 13 atomic capabilities')
+        protocol = read_json(ROOT / 'evals/v2.1/protocol.json')
+        for row in protocol['criteria_files']:
+            if digest(ROOT / 'evals/v2.1' / row['path']) != row['sha256']:
+                return fail('Frozen evaluation task changed: ' + row['path'])
+        errors = link_errors()
+        return fail('Broken local links: ' + '; '.join(errors[:25])) if errors else ok('versioned methods, frozen tasks and public local links valid')
+    except (ValueError, OSError) as exc:
+        return fail(str(exc))
 
 
 def fail(message):
@@ -165,6 +228,7 @@ def main():
         check_public_boundary(),
         check_evals(),
         check_capabilities(),
+        check_v21(),
     ]
     if all(checks):
         print("[OK] preflight passed")

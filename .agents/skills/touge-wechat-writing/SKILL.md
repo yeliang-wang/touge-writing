@@ -1,27 +1,30 @@
 ---
 name: touge-wechat-writing
-description: 创作、改写和审阅头哥风格的微信公众号单篇文章，管理文章版本、素材与发布准备；用于公众号、推文、单篇文章任务。
+description: 创作、改写和审阅头哥风格的微信公众号单篇文章，管理素材、文章版本、运行记录与发布准备；用于公众号、推文、单篇文章任务。
 ---
 
-# 公众号写作（短篇、单篇）
+# 公众号写作（短篇、单篇）· v2.1
 
-项目根目录为本文件向上三级目录。先读 [作者能力](../../../shared/author-expression/PROFILE.md)，按任务读 [公众号方法](../../../references/wechat-public-account-playbook.md)；标题任务另读 [标题方法](../../../references/title-patterns.md)。
+项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)，用本地 `workspace/catalog.json` 定位文章；没有作品时可用 `writing_workspace.py init --id <ID> --title <标题> --type wechat` 新建。默认不搜索其他私人作品。
 
-明确主题、读者、要表达的判断及已有素材，按需确定结构再写作；用户已明确要求直接成稿时，不额外增加固定审批阶段。已有稿优先保留作者观点和有辨识度的表达。
+## 从任务与材料开始
 
-## 资料与版本
-使用 `workspace/catalog.json` 识别文章。新文章可用 `python3 scripts/writing_workspace.py init --id <稳定英文标识> --title <标题> --type wechat` 建立独立目录。
+已有作品运行 `writing_workspace.py resume --project <ID>`，读实际正文和有效决定。本轮明确任务优先于旧的下一步建议。先明确读者、要表达的判断、范围与素材；用户要求直接成稿就交正文，不额外要求提纲审批。
 
-需要历史文章时，运行 `python3 scripts/private_retriever.py --manifest workspace/corpus/manifest.json --query <主题> --top-k 5`，从返回来源继续阅读相关原文。没有正文的记录不能被当作已阅读来源。书稿改编需要明确记录源章节；未经要求不改源书稿。
+按 [组合指南](references/recipes.md)选择 [原子能力](../../../capabilities/README.md)，不每次全跑。需要旧文时用 `private_retriever.py --manifest <明确授权的清单> --query <事件或主题>`，继续阅读命中全文。JSON 与 JSONL 均支持；索引命中不代表已读或事实核实，空记录不当来源。来源与主题映射见 [素材说明](../../../docs/materials.md)。
 
-草稿与定稿分别保存，使用 [文章模板](../../../templates/wechat-article.md)。通过 `writing_workspace.py add-revision` 注册版本。`accepted` 版本必须关联实际作者确认记录；不替作者写“已确认”。
+不得为真实自述添加未提供的私人经历、动作、收入或他人心理。虚构例子须符合本次授权并能与真实材料区分。已有稿优先保留作者观点与有辨识度的句子，书稿改编需说明来源章节，不修改源书稿。
 
 ## 写作与审稿
-正文使用可编辑 Markdown。按任务提供标题、摘要、正文及必要的来源说明。检查观点成立、例子有依据、语气自然、段落适合阅读。风格词库是参考，不机械堆词。为未提供的私人经历保留待补位置，不当作事实编写。
 
-审稿明确保留项、问题位置与修改理由。排版 HTML、配图和平台字段是按需生成的派生产物，不能覆盖创作源稿。
+根据任务交付标题、正文及必要摘要或说明。结构服务判断和阅读，不把每篇写成小说，不强迫处处冲突与升华。背景须帮助理解选择或代价，回望增加理解而非解释怎么编辑。作者声音来自判断、节奏和犹疑，词库不作口头禅配额。
 
-## 外部服务
-需要草稿箱、素材上传、发文时读 [公众号服务说明](../../../docs/external-services/wechat.md)；需要云端协作时读 [腾讯文档说明](../../../docs/external-services/tencent-docs.md)。Codex 连接并调用 MCP，Skill 不启动独立服务。v2.0 的公众号服务只建立能力，尚未进行真实账号验收。
+审阅给出保留项、问题位置和修改理由，检查相邻论点是否换词重复。`manuscript_check.py` 只查可计算线索；实际文字审阅不能被“文件齐全”“零告警”替代。质量不足继续修具体问题；不能只创建记录就声称已成稿。
 
-本地定稿、同步草稿和公开发布是不同动作。沿用已明确的账号、稿件版本和操作授权；如果版本或目的地改变，则重新明确对象。平台返回“提交成功”不等于“已发布”。
+## 保存与交付
+
+按 [文章生命周期](references/lifecycle.md)从实际阶段进入。需要恢复多步修改时用 [run 记录](../../../docs/runs.md)固定输入、方法版本、候选和审稿；简短任务不强制记录全部步骤。正文和审稿分开保存。accepted 只由内容登记和实际作者决定建立；脚本不能代替作者审美认可。
+
+Markdown 是创作源稿；HTML、排版和平台字段为可重建派生物。按需阅读 [公众号连接](../../../docs/external-services/wechat.md)或 [腾讯文档](../../../docs/external-services/tencent-docs.md)。Codex 管理 MCP，Skill 不启动服务。微信公众号沿用用户约定：建立能力与接入说明，真实账号和发文未实测、不纳入验收。
+
+定稿、同步草稿、公开发布是不同操作。沿用已明确账号、版本和操作授权；外部结果不明先对账，不能因本地任务完成自动发布。

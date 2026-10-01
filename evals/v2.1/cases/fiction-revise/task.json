@@ -1,0 +1,20 @@
+{
+  "id": "fiction-revise",
+  "kind": "novel",
+  "phase": "revise",
+  "task": "改写到 350–550 汉字。保留“他没有答应，也没有走。”这句。邻章已讲过逃跑并不能摆脱恐惧，本章应让两人协作关系发生变化，不再讲同一感悟。允许虚构。",
+  "criteria": [
+    "保留指定句子",
+    "指出并修正灯油连续性",
+    "以行动产生协作变化",
+    "删除与邻章同义的感悟，审稿列具体证据"
+  ],
+  "material_scope": [
+    "materials.md"
+  ],
+  "baseline": "baseline.md",
+  "revision_budget": 1,
+  "source_condition": "same provided synthetic materials; no external retrieval",
+  "review_method": "textual evidence against each frozen criterion; independent forward test recorded separately",
+  "acceptance": "all criteria addressed; record limitations separately; never author aesthetic approval"
+}

@@ -1,0 +1,9 @@
+{
+  "scope": "填写实际读到的任务、正文、来源和邻文范围",
+  "result": "needs_revision",
+  "findings": [{"location": "产物段落或锚点", "observation": "具体问题、保留项和理由", "resolution": "实际处理结果"}],
+  "unresolved_blockers": ["填写尚未解决且影响本次交付的问题"],
+  "artifacts": [{"id": "draft-1", "sha256": "替换为实际所审稿件哈希"}],
+  "reviewer_relationship": "填写自评或独立审阅；不得把自评标为盲评",
+  "author_aesthetic_approval": "not_requested"
+}

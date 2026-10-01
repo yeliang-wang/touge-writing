@@ -30,8 +30,10 @@ def payload(path):
     return result
 
 
-def run(workspace):
+def run_legacy(workspace, output_dir=None, skill_receipt=None):
     workspace = Path(workspace).resolve(); evidence = workspace / 'acceptance'; evidence.mkdir(parents=True, exist_ok=True)
+    output = Path(output_dir) if output_dir else evidence
+    output.mkdir(parents=True, exist_ok=True)
     config = read_json(ROOT / 'configs/acceptance.json')
     results = []
     def check(name, function):
@@ -45,8 +47,8 @@ def run(workspace):
     def command(args, log):
         proc = subprocess.run([sys.executable, *args], cwd=ROOT, capture_output=True, text=True)
         from workspace_lib import atomic_text
-        atomic_text(evidence / log, proc.stdout + proc.stderr)
-        require(proc.returncode == 0, 'See acceptance/' + log)
+        atomic_text(output / log, proc.stdout + proc.stderr)
+        require(proc.returncode == 0, 'See ' + str(output / log))
         return {'log': log, 'exit_code': proc.returncode}
 
     check('unit_tests', lambda: command(['-m', 'unittest', 'discover', '-s', 'tests', '-v'], 'unit-tests.txt'))
@@ -120,7 +122,7 @@ def run(workspace):
     check('context_and_retrieval', contexts)
 
     def skills():
-        receipt=read_json(evidence/'skill-validation.json')
+        receipt=read_json(skill_receipt or evidence/'skill-validation.json')
         require(len(receipt['skills'])==3,'Missing skill validation')
         for r in receipt['skills']:
             require(r['exit_code']==0 and digest(scoped_path(ROOT,r['file']))==r['sha256'],'Skill changed or failed validator')
@@ -187,13 +189,23 @@ def run(workspace):
     report={'schema_version':1,'checked_at':datetime.now(timezone.utc).isoformat(),'version':(ROOT/'VERSION').read_text().strip(),
             'passed':passed,'total':len(results),'all_in_scope_passed':passed==len(results),'results':results,
             'excluded_by_user':config['excluded_by_user'],'scope_notes':config['scope_notes']}
-    write_json(evidence/'report.json',report)
+    write_json(output/'report.json',report)
     return report
+
+
+def run(workspace, public_only=False):
+    from acceptance_v21 import run as run_v21
+    return run_v21(workspace, public_only)
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--workspace',type=Path,default=Path('workspace'))
-    a=p.parse_args();r=run(a.workspace);print('Acceptance: %s/%s in-scope checks passed' % (r['passed'],r['total']))
+    p.add_argument('--public-only',action='store_true')
+    p.add_argument('--legacy-v2',action='store_true',help='Read original v2 evidence; write a separate regression report')
+    a=p.parse_args()
+    current_receipt=a.workspace/'acceptance-v2.1/skill-validation.json'
+    r=run_legacy(a.workspace,a.workspace/'acceptance-v2-regression',current_receipt if current_receipt.exists() else None) if a.legacy_v2 else run(a.workspace,a.public_only)
+    print('Acceptance: %s/%s in-scope checks passed' % (r['passed'],r['total']))
     raise SystemExit(0 if r['all_in_scope_passed'] else 1)
 
 

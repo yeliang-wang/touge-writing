@@ -1,0 +1,84 @@
+{
+  "scope": {
+    "task": "inputs/task.json",
+    "sources": [
+      "inputs/materials.md",
+      "inputs/baseline.md"
+    ],
+    "read_text": "draft-1.md 全文",
+    "neighbor_read_scope": "仅任务或材料中明确给出的前幕/邻章设定，无其他全文。",
+    "excluded": "私人 workspace、原作者原作、外部资料、远端 MCP"
+  },
+  "result": "pass",
+  "findings": [
+    {
+      "criterion": "保留指定句子",
+      "location": "第 1 段第一句",
+      "evidence": "他没有答应，也没有走。",
+      "observation": "指定句逐字保留，以未明确同意的停顿接到后文交灯行动。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "指出并修正灯油连续性",
+      "location": "基线“举灯照了很久，直到桥上每块石头都亮了”，对照第 3、4、7、10 段",
+      "evidence": "没点燃的灯；到了再点；短短两闪之后，第三道光留得久些，然后熄了",
+      "observation": "基线长期照桥与只够发一次信号的油量冲突。新稿灯在过桥中不点，到岸仅发两短一长一次，随后灯黑，不加油、不无限照路。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "以行动产生协作变化",
+      "location": "第 3、6、9、10 段",
+      "evidence": "提柄朝向她；没有叫她回来；他把落到一半的脚移向左边；抓住她的手",
+      "observation": "唐野从拒绝探路到把稀缺灯交给阿栖、留岸等信号，再按她指路落脚并接受拉扶，协作变化由控制权和动作承载，不靠宣布两人理解勇气。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "删除与邻章同义的感悟，审稿列具体证据",
+      "location": "基线中间与末尾，对照新稿第 10 段",
+      "evidence": "基线“内心的恐惧总会跟随”“躲开海浪也躲不开自己”“只有勇敢面对才有明天”“真正的勇气”",
+      "observation": "前两句同义于给定邻章逃跑不能摆脱恐惧，后两句用勇气升华并未产生新事件；新稿四处全删，收在拉手跨缝，落点变为允许对方探路、听从对方指引。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    }
+  ],
+  "source_and_setting_review": [
+    {
+      "source": "inputs/materials.md 第 3 段，inputs/baseline.md 全文，inputs/task.json 的邻章结论",
+      "claim": "远岬岛石桥仅退潮可过；两短一长；灯油一次；唐野曾拒绝阿栖探路",
+      "use": "等末层水退后才走桥；交未点灯；到岸发一组信号；唐野让出桥头。",
+      "boundary": "石缝、松石、挡片和拉手为授权虚构细节；没有第二瓶油。未取得邻章全文，只按任务提供的结论做局部语义重复核对。"
+    }
+  ],
+  "textual_quality_review": {
+    "preserve": [
+      "指定首句的迟疑感。",
+      "“他把灯转了半圈，让提柄朝向她”把松动的态度写成动作。"
+    ],
+    "must_fix": [],
+    "optional": [
+      "松石让阿栖的路线经验能被唐野采用，属于新增有效动作；单场景没有引入额外岛屿机制。"
+    ],
+    "gain_loss": "删去基线感悟后不再直接解释勇气，损失的是明确命题陈述，获得的是角色互相依赖的可见变化。"
+  },
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "draft-1",
+      "sha256": "fd0e62386aa54b7c6fb02b9a63e0b2d0a0e304215a6b2f20682f647964a862ab"
+    }
+  ],
+  "reviewer_relationship": "本独立前向执行代理同时生成并自审这些文本；相对于实现工作独立，相对于稿件不是独立评审，也不是盲评。父任务后续审阅另行记录。",
+  "author_aesthetic_approval": "not_requested",
+  "counts": {
+    "body_han_characters": 377,
+    "count_convention": "仅计 U+4E00–U+9FFF，排除标题、标点与正文外说明"
+  },
+  "revision_budget": {
+    "limit": 1,
+    "used": 0,
+    "next": "不修订，初稿为本任务交付候选"
+  },
+  "limitations": [
+    "可见、冻结、合成案例；能力卡合成例子与部分任务重合，不是未见样本泛化证据。",
+    "没有材料增益，没有外部检索；不得与其他宿主作受控优越性比较。"
+  ]
+}

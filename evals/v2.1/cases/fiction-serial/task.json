@@ -1,0 +1,20 @@
+{
+  "id": "fiction-serial",
+  "kind": "novel",
+  "phase": "draft",
+  "task": "写 450–650 汉字纯虚构连载场景。允许自由创作对话、动作和新细节。林禾到值夜档案馆取母亲借阅记录，留下未解决但具体的下一步。不能全靠独白或先给大纲。",
+  "criteria": [
+    "可读完整场景有行动阻力和变化",
+    "不要求虚构每句有外部出处",
+    "守住钥匙、纸上姓名和机制边界",
+    "结尾具体下一步不是泛泛悬念"
+  ],
+  "material_scope": [
+    "materials.md"
+  ],
+  "baseline": null,
+  "revision_budget": 1,
+  "source_condition": "same provided synthetic materials; no external retrieval",
+  "review_method": "textual evidence against each frozen criterion; independent forward test recorded separately",
+  "acceptance": "all criteria addressed; record limitations separately; never author aesthetic approval"
+}

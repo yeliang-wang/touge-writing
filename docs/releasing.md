@@ -1,35 +1,16 @@
-# v2.0 发布流程
+# v2.1 发行流程
 
-面向有仓库发布权限的维护者。发布对象为公共能力代码、技术文档和作者能力包；私人工作区使用独立备份分发。
+发布完整公共能力包和独立作者表达包。私人 workspace、备份、评估原始会话和外部回执不分发。
 
-## 前置检查
-
-1. 确认 `VERSION`、变更记录、文档及预期标签一致。
-2. 获取远端状态，审阅待发布 diff；不覆盖其他人的新提交或重写远端历史。
-3. 运行单元测试、preflight 和完整 acceptance。后者依赖私人证据，执行结果不能上传原始回执。
-4. 在不含 workspace 的公共快照中检查链接、上下文导出和首次初始化；使用合成作品。
-5. 审阅暂存文件，确保 workspace、work、outputs、dist、私人语料及账号配置不在 Git 树中。
-
-## 构建与发布
-
-提交审阅后的公开文件，再基于该提交创建版本标签。只构建 Git 中的文件，例如：
+先核对 VERSION、CHANGELOG、文档及目标标签；运行公共测试和维护者完整验收。检查 Git 候选与暂存区，获取远端状态，不覆盖他人的提交。GitHub 自动源码包与本项目完整包不同：完整包含 release-manifest.json 和展开的兼容链接。
 
 ```bash
-git archive --format=tar.gz --prefix=touge-writing-reboot-skill-2.0.0/ --output=dist/touge-writing-reboot-skill-2.0.0.tar.gz HEAD
+python3 scripts/build_release.py --out dist/touge-writing-reboot-skill-2.1.0.zip
 python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
 ```
 
-先建立 `dist/`。导出器拒绝覆盖旧 ZIP，重复构建使用新的输出位置或核对既有文件。完整包中的相对符号链接指向仓库内共享资料；确认解压工具保留它们。作者包是8个普通文件的独立 ZIP。
+build_release 从经过公共边界检查的 Git 候选文件构建，固定 ZIP 时间戳，拒绝覆盖旧输出。最终发行前必须提交并确保候选与提交一致。每个成员在 release-manifest 中有 SHA-256；整个资产另算 SHA-256。在临时目录解压，确认初始没有 workspace，运行 preflight、公共自检及创建合成作品。
 
-列出每个包的成员，确认没有私人目录和绝对链接，再计算 SHA-256。包内初始不存在 workspace；在临时解压目录运行 `init` 后才会出现本地工作区。
+正式发布的提交、v2.1.0 标签、Release、完整包内容须一致。说明两类写作、13 项方法、运行恢复、本地 workspace，以及公众号未实测和腾讯既有证据复用范围。不要上传私人 acceptance/report 或云端对象 ID。
 
-推送提交和对应标签，使用明确的发布说明和上述公开资产创建 GitHub Release。说明必须写清：两类写作、独立作者能力、workspace 本地创建、MCP 外部连接，以及公众号不做真实验证的范围。不能上传本机 acceptance/report.json、云端回执或私人备份。
-
-## 发布后核对
-
-- 远端默认分支、标签和 Release 指向预期提交。
-- Release 为正式版本，资产名称、大小和 SHA-256 正确。
-- 下载资产与本地受检包一致，仓库工作树保持干净。
-- 发布凭证在本机保存；不以书稿内容审阅作为发布后必须执行的步骤。
-
-若验证失败，保留错误证据并修正；已公开标签和资产不能在未说明的情况下静默替换。后续修复应使用明确的新版本或更正流程。
+推送后核对默认分支、标签和资产列表；下载资产比对 SHA-256。已经公开的标签与资产不静默替换，修复用新版本或明确更正。产品发布完成后不自动开始真实小说的下一章。

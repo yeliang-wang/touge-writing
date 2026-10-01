@@ -1,59 +1,59 @@
-# 头哥写作工作台 · v2.0
+# 头哥写作工作台 · v2.1
 
-在 Codex 中写公众号文章和长篇小说，共享从头哥公众号历史文章中蒸馏的判断方式、表达风格与习惯性用词。项目提供两类写作 Skill、可独立分享的作者能力，以及管理本地作品的文件工具。
+在 Codex 中创作公众号单篇和长篇小说。两项写作 Skill 共享作者表达包和 13 项原子方法；每部作品在本地 workspace 保存自己的素材、方案、正文、决定与历史。
 
-| 能力 | 入口 | 用途 |
-|---|---|---|
-| 公众号写作（短篇、单篇） | [touge-wechat-writing](.agents/skills/touge-wechat-writing/README.md) | 选题、素材、结构、成稿、修改、审稿与发布准备 |
-| 小说写作（长篇、连载） | [touge-novel-writing](.agents/skills/touge-novel-writing/README.md) | 全书与章节方案、版本继承、叙事连续性和进度恢复 |
-| 共享作者能力 | [author-expression](shared/author-expression/README.md) | 判断方式、语言偏好、词库及不同文体的评价原则 |
+v2.1 增加事件与主题素材发现、多对多使用映射、方法版本锁定和可恢复的任务记录。写作时不仅保存来源，还要求交付有叙事或论证增量的正文，审查换词后的重复感悟，并按具体授权区分真实材料、小说化重构和纯虚构。
 
-旧入口 `touge-writing-reboot-skill` 保留路由，以及交流、Reboot、产品问答和内容交付包等[辅助能力](docs/auxiliary-guide.md)。
+| 入口 | 用途 |
+|---|---|
+| [公众号写作](.agents/skills/touge-wechat-writing/README.md) | 短篇、单篇；直接成稿、修改、审阅与发布准备 |
+| [小说写作](.agents/skills/touge-novel-writing/README.md) | 全书与章节规划、场景、连载、连续性及版本继承 |
+| [作者表达包](shared/author-expression/README.md) | 可独立分享的判断、语言与词汇偏好；仍为 1.0.0 |
+| [原子能力](capabilities/README.md) | 13 项按需组合的方法；不持有作品事实或定稿状态 |
 
-## 安装并创建本地作品
+原有交流、Reboot、产品问答、讲稿与内容交付入口保留，见 [辅助能力](docs/auxiliary-guide.md)。
 
-核心工具需要 macOS 或 Linux、Python 3.9+；Git 用于克隆与发布检查。PPT 和文章抓取的可选依赖见[安装说明](docs/installation.md)。
+## 安装和开始
+
+核心工具使用 Python 3.9+ 标准库，支持 macOS/Linux。Codex 执行写作与工具调用，本项目没有独立模型服务。
 
 ```bash
-git clone --branch v2.0.0 https://github.com/yeliang-wang/touge-writing-reboot-skill.git
+git clone --branch v2.1.0 https://github.com/yeliang-wang/touge-writing-reboot-skill.git
 cd touge-writing-reboot-skill
 python3 scripts/writing_workspace.py init --id my-novel --title "我的小说" --type novel
+python3 scripts/writing_workspace.py init --id first-article --title "第一篇文章" --type wechat
 python3 scripts/writing_workspace.py resume --project my-novel
 ```
 
-在 Codex 打开完整项目，可使用 `$touge-novel-writing` 或 `$touge-wechat-writing`，例如“为我的小说建立全书方案”或“根据这些材料写一篇公众号文章”。这些是安装后的使用任务，产品升级不会自动审阅已有书稿。
+在 Codex 打开完整目录，用 `$touge-novel-writing` 或 `$touge-wechat-writing` 提出任务。新书先建立自己的全书方案、章配置和设定；单篇可按请求直接成稿。已有授权继续有效，不因版本升级重走作者审批。
 
-**`workspace/` 不随仓库或 Release 分发。** 首次初始化会在本机创建作品目录与索引；已有作品通过私人迁移或备份恢复导入。安装不会自带作者原始语料、私人小说或账号连接。
+**workspace 在本地初始化，不随 GitHub 或发行包分发。** 安装没有私人书稿、历史原文或任何人的账号连接。可以用 `--workspace` 选择仓库外目录，详见 [安装](docs/installation.md)和 [工作区](docs/workspace.md)。
 
-## 架构与数据边界
+## 写作、记录与连接
 
-```text
-Codex 执行任务
-  ├─ 共享作者能力 + 公众号 Skill / 小说 Skill
-  ├─ 本地文件工具 → 私有 workspace
-  └─ 宿主 MCP 连接 → 微信公众号 / 腾讯文档 / 其他外部服务
+```mermaid
+flowchart TD
+    H[Codex 宿主] --> W[公众号 Skill / 小说 Skill]
+    W --> C[原子方法 + 作者表达 + 生命周期定义]
+    H --> T[本地文件工具]
+    T --> P[私人 workspace]
+    H --> M[宿主 MCP 连接]
+    M --> E[微信公众号 / 腾讯文档 / 后续服务]
 ```
 
-MCP 是外部服务连接能力。写作方法保存在 Skill 中，作品和版本状态保存在本地；本项目不提供独立 Agent 服务或 MCP 插件运行框架。详见[架构说明](docs/architecture.md)。
+正文是否 accepted 只看内容登记与实际作者决定。run 记录本次任务、输入快照、方法版本、审稿与候选产物；完成试写不改变章节定稿。来源、人物、时间线和配额只在相应作品内生效。方法与作者表达可复用，旧书事实不会自动带入新书。
 
-公开文件包括方法、模板、脚本、技术文档和经审阅的风格抽象。正文、素材、镜像、过程记录、备份及云端回执保持私有；授权密钥由宿主管理。
+[腾讯文档](docs/external-services/tencent-docs.md)沿用已经验证的读取、受控 Word 写入和回读协议；v2.1 对未变更协议核验既有证据，不冒称本轮重新实测。微信公众号只建立连接能力与使用约定，真实账号和发布操作未纳入验收。MCP 是外部服务连接，不是写作运行时。
 
-## 外部服务
-
-- [腾讯文档](docs/external-services/tencent-docs.md)：v2.0 已完成目标账号的真实读取、受控 Word 创建与更新、回读及操作记录验证。每次新安装需配置自己的连接。
-- [微信公众号](docs/external-services/wechat.md)：v2.0 建立能力与接入约定，按确认范围不做真实账号验证。服务实现与权限需在后续实际接入时确认。
-- [扩展其他服务](docs/external-services/adding-service.md)：接入宿主工具，补充能力说明与结果查询方式，复用本地操作记录。
-
-## 分享与验证
-
-作者能力来自既有的 370 条发表记录、352 条文章链接和 341 篇可用正文。公开包只包含蒸馏结果，统计为既有快照，不随安装自动更新。
+## 自检与文档
 
 ```bash
-python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
 python3 -m unittest discover -s tests -v
 python3 scripts/preflight_check.py
+python3 scripts/acceptance.py --public-only
+python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
 ```
 
-v2.0 的完整发布验收还要求迁移、独立行为及外部服务证据，不能用本地单元测试代替。[验收说明](docs/testing.md)区分公共可复现检查与私人迁移验收。
+公共自检不需要作者的私人档案。维护者完整验收另含迁移回归和腾讯文档证据；写作评测是有界合成案例的实际正文与审读，机器检查不代签作者审美认可。[测试与验收](docs/testing.md)
 
-[文档导航](docs/README.md) · [安装](docs/installation.md) · [使用指南](docs/GUIDE) · [命令参考](docs/cli.md) · [迁移](docs/migration-v2.md) · [发布流程](docs/releasing.md) · [变更记录](CHANGELOG.md)
+[文档导航](docs/README.md) · [命令参考](docs/cli.md) · [素材](docs/materials.md) · [运行恢复](docs/runs.md) · [迁移](docs/migration-v2.1.md) · [发布](docs/releasing.md) · [变更记录](CHANGELOG.md)

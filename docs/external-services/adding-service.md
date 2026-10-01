@@ -1,4 +1,4 @@
-# v2.0 接入其他外部服务
+# v2.1 扩展外部 MCP 服务
 
 面向宿主集成者。新增服务沿用 MCP 工具连接，不增加项目内的 Agent 或插件运行框架。
 
@@ -23,3 +23,7 @@
 ## 状态表达
 
 区分 documented、configured、authenticated、live_verified 与 blocked。它们是服务说明中的状态标签；本地操作记录另有 prepared/submitted/verified/failed/unknown/conflict 状态。不能用一个代替另一个。
+
+## 与运行记录结合
+
+把要交付的内容登记 ID 作为 prepare 输入，run 可保存交付说明并引用外部 operation_id。外部工具失败不丢失本地正文，也不重跑全部写作阶段。新增服务一般只补服务文档和宿主连接，不改能力卡、内容登记或生命周期引擎；若变更公共写入协议则增加受影响操作的真实测试。

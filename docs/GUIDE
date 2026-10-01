@@ -1,57 +1,11 @@
-# v2.0 使用指南
+# v2.1 使用指南
 
-本指南适用于安装后的写作任务。首次使用先完成 [安装与初始化](installation.md)。产品升级和发布不会自动执行本文中的作品内容审阅。
+先在 Codex 打开完整项目。公众号请求交给 touge-wechat-writing，小说请求交给 touge-novel-writing；原交流、Reboot、产品问答与内容交付由根 SKILL 路由。
 
-## 公众号写作
+第一次使用：阅读 docs/installation.md，init 建立自己的本地 workspace。
+已有作品：writing_workspace.py resume 展示方案、内容版本和当前任务；读取返回的真实文件，不只看节选。
+找素材：material_index.py search 再 read，清单显式指定，旧章号不能自动决定当前章。
+多步任务：按 docs/runs.md 创建 run，保存正文、审稿和修订；实际接受后追加内容版本。
+发布准备：本地稿件、外部草稿、公开发布分别处理，MCP 只连接服务。
 
-在 Codex 中使用 `$touge-wechat-writing`，提供主题、读者和已有素材；也可直接指定改稿、标题或审稿任务。任务明确要求直接成稿时，不额外强制先审批提纲。
-
-1. 建立或定位本地文章。
-2. 按需检索历史文章，并继续阅读命中原文。
-3. 形成结构或正文，保持观点和事实来源可追溯。
-4. 审稿后按真实作者决定登记版本。
-5. 只有需要平台操作时，才连接外部服务并明确目标版本。
-
-```bash
-python3 scripts/writing_workspace.py init --id career-article --title "职业选择" --type wechat
-python3 scripts/writing_workspace.py resume --project career-article
-```
-
-私人语料不随安装提供。自行导入后，可使用 `private_retriever.py` 查询 JSON 数组格式的文章清单；详情见[语料格式](workspace.md)。文章定稿、平台草稿和公开发布是不同操作。
-
-## 小说写作
-
-使用 `$touge-novel-writing`，先建立独立的全书方案、章节配置与材料。书名、视角、人物、时间线和虚构授权只属于当前作品。
-
-```bash
-python3 scripts/writing_workspace.py resume --project my-novel
-python3 scripts/writing_workspace.py resume --project my-novel --chapter ch01
-```
-
-读取恢复结果中的版本路径和作品约定，再执行当前任务。返回的 `review_chapter_plan` 表示该作品保存的阶段；只有用户发起写作任务时才进入方案审阅。旧基线不是已确认的新方案。
-
-全书方案与章节方案分别登记。章方案指向明确的全书版本，正文定稿指向同章已确认方案；更换父版本须在新方案中说明。CLI 不会自动审批稿件，也不会自动维护人物和时间线资料。
-
-## 保存与检查
-
-将正文、方案、审稿保存为不同条目。`add-revision` 使用新的 ID 和源文件，确认条目还需真实的作者决定文件。完整示例见[命令参考](cli.md)。
-
-```bash
-python3 scripts/writing_workspace.py validate --project my-novel
-python3 scripts/writing_workspace.py rebuild-state --project my-novel
-python3 scripts/writing_workspace.py search --project my-novel --query "灯塔"
-python3 scripts/writing_workspace.py search --project my-novel --query "灯塔" --history
-```
-
-默认检索现行登记版本；`--history` 加入登记历史，未登记的镜像从本地档案索引另行查阅。修改已登记正文会触发哈希不匹配，应恢复原件并建立新版本。
-
-`manuscript_check.py` 扫描重复窗口、结构词和破折号密度；`style_eval.py` 提供公众号风格的启发式评分。结果都需结合文体判断，不能直接视为小说事实或文学质量验收。
-
-## 同步、分享与恢复
-
-- 云端协作：[腾讯文档](external-services/tencent-docs.md)；平台草稿与发布：[微信公众号](external-services/wechat.md)。
-- 单独分享作者风格：[作者能力模块](../shared/author-expression/README.md)。
-- 搬迁私人作品：使用[备份与恢复命令](cli.md)，备份存放在工作区之外，恢复到新目录。
-- 交流、Reboot、PPT、产品问答：[辅助能力指南](auxiliary-guide.md)。
-
-保留作者已明确的授权与决定，不重复索取同一批准；没有明确的发文任务时，稿件保持本地交付。
+docs/cli.md 为命令参考，docs/testing.md 说明公共自检与私人发布验收的差别。产品升级不自动执行书稿的审方案或续写任务。

@@ -1,0 +1,29 @@
+{
+  "plan": [
+    "reader-contract@1.0.0",
+    "material-discovery@1.0.0",
+    "source-map@1.0.0",
+    "structure-design@1.0.0"
+  ],
+  "draft": [
+    "source-map@1.0.0",
+    "structure-design@1.0.0",
+    "reflection-shaping@1.0.0",
+    "author-voice-review@1.0.0"
+  ],
+  "review": [
+    "continuity-audit@1.0.0",
+    "author-voice-review@1.0.0",
+    "prose-hygiene@1.0.0",
+    "editorial-review@1.0.0"
+  ],
+  "revise": [
+    "source-map@1.0.0",
+    "continuity-audit@1.0.0",
+    "reflection-shaping@1.0.0",
+    "editorial-review@1.0.0"
+  ],
+  "title": [
+    "title-design@1.0.0"
+  ]
+}

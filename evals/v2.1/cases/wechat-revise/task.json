@@ -1,0 +1,19 @@
+{
+  "id": "wechat-revise",
+  "kind": "wechat",
+  "phase": "revise",
+  "task": "同材料改写到 300–500 汉字，保留作者直率和犹疑，删夸张成功学与重复说理。列出保留项及两处修改理由。",
+  "criteria": [
+    "保留“图省事”和拿不准",
+    "区分时长变化与效果证据",
+    "文本审阅指出同义重复而非只做字面检查"
+  ],
+  "material_scope": [
+    "materials.md"
+  ],
+  "baseline": "baseline.md",
+  "revision_budget": 1,
+  "source_condition": "same provided synthetic materials; no external retrieval",
+  "review_method": "textual evidence against each frozen criterion; independent forward test recorded separately",
+  "acceptance": "all criteria addressed; record limitations separately; never author aesthetic approval"
+}

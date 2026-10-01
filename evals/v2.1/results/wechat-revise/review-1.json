@@ -1,0 +1,77 @@
+{
+  "scope": {
+    "task": "inputs/task.json",
+    "sources": [
+      "inputs/materials.md",
+      "inputs/baseline.md"
+    ],
+    "read_text": "draft-1.md 全文",
+    "neighbor_read_scope": "仅任务或材料中明确给出的前幕/邻章设定，无其他全文。",
+    "excluded": "私人 workspace、原作者原作、外部资料、远端 MCP"
+  },
+  "result": "pass",
+  "findings": [
+    {
+      "criterion": "保留“图省事”和拿不准",
+      "location": "第 1、5 段",
+      "evidence": "我当时确实图省事。；每类议题究竟该留多久，我现在也拿不准。",
+      "observation": "保留自我暴露与不确定，没有改成后来已经掌握最佳会长的成功叙事。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "区分时长变化与效果证据",
+      "location": "第 2–3 段",
+      "evidence": "这次延期不能证明短会一定不好，同样，少开三十五分钟也不能证明生产率提高了。我没做过这样的统计。",
+      "observation": "区分事实、因果与缺乏的效果证据；不以一次延期反向证明所有短会无效。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "文本审阅指出同义重复而非只做字面检查",
+      "location": "基线第 1 段末部，对照新稿第 3–4 段",
+      "evidence": "基线：“少开会才是真本事，缩短会议才有生产力。”",
+      "observation": "两分句用“真本事”和“生产力”重复为缩短会长背书，和前句“管理的终极秘诀”同一无依据结论；新稿删去三处，改为责任人、遗留问题和下一项确认事项的交接判断。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    }
+  ],
+  "source_and_setting_review": [
+    {
+      "source": "inputs/materials.md 第 3 段和 inputs/baseline.md 全文",
+      "claim": "六十到二十五分钟、接口问题转两人会、会后确认负责人、两周后一次接口延期、无生产率统计",
+      "use": "第 1–3 段完整保留；“挺得意”来自 baseline 而非新添心理。",
+      "boundary": "“我会先问”是本次改写的候选判断，不声称曾实行并获得收益；两人会耗时未知，正文明确不把它算成节约。"
+    }
+  ],
+  "textual_quality_review": {
+    "preserve": [
+      "指定直率句与拿不准。",
+      "基线中“我还挺得意”的自嘲。"
+    ],
+    "must_fix": [],
+    "optional": [
+      "第 2 段“事情却没有跟着提前完成”指这次接口交付，读者不应据此推及全部工作；第 3 段已经限制该推断。"
+    ],
+    "gain_loss": "删掉终极秘诀、真本事、必然生产力的夸张后，力度来自承认判断超前和责任交接；少了响亮断言，保住了可信的犹疑。"
+  },
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "draft-1",
+      "sha256": "edcc9a2cbabb7cfccc5ca3cad829c78ef23c1ca403fea0788c8e42797d3b9c58"
+    }
+  ],
+  "reviewer_relationship": "本独立前向执行代理同时生成并自审这些文本；相对于实现工作独立，相对于稿件不是独立评审，也不是盲评。父任务后续审阅另行记录。",
+  "author_aesthetic_approval": "not_requested",
+  "counts": {
+    "body_han_characters": 368,
+    "count_convention": "仅计 U+4E00–U+9FFF，排除标题、标点与正文外说明"
+  },
+  "revision_budget": {
+    "limit": 1,
+    "used": 0,
+    "next": "不修订，初稿为本任务交付候选"
+  },
+  "limitations": [
+    "可见、冻结、合成案例；能力卡合成例子与部分任务重合，不是未见样本泛化证据。",
+    "没有材料增益，没有外部检索；不得与其他宿主作受控优越性比较。"
+  ]
+}

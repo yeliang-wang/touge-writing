@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "version": "2.1.0",
+  "checks": [
+    {
+      "id": "A01",
+      "scope": "旧接口与辅助能力",
+      "private_required": false
+    },
+    {
+      "id": "A02",
+      "scope": "公私边界与安装",
+      "private_required": false
+    },
+    {
+      "id": "A03",
+      "scope": "素材发现",
+      "private_required": false
+    },
+    {
+      "id": "A04",
+      "scope": "多对多映射",
+      "private_required": false
+    },
+    {
+      "id": "A05",
+      "scope": "事实与虚构",
+      "private_required": false
+    },
+    {
+      "id": "A06",
+      "scope": "实际写作产物",
+      "private_required": false
+    },
+    {
+      "id": "A07",
+      "scope": "语义与声音",
+      "private_required": false
+    },
+    {
+      "id": "A08",
+      "scope": "生命周期",
+      "private_required": false
+    },
+    {
+      "id": "A09",
+      "scope": "版本与恢复",
+      "private_required": false
+    },
+    {
+      "id": "A10",
+      "scope": "迁移完整性",
+      "private_required": true
+    },
+    {
+      "id": "A11",
+      "scope": "跨作品与文体",
+      "private_required": false
+    },
+    {
+      "id": "A12",
+      "scope": "外部服务",
+      "private_required": true
+    },
+    {
+      "id": "A13",
+      "scope": "文档与发行一致",
+      "private_required": false
+    }
+  ],
+  "excluded_by_user": [
+    {
+      "id": "wechat_live",
+      "reason": "用户明确只建立微信公众号连接能力，不做真实账号和操作验收；v2.1沿用此范围。"
+    }
+  ],
+  "limitations": [
+    "100%仅表示约定范围的检查全部通过，不代签作者审美认可。",
+    "六组可见合成案例含相关方法示例，不是盲测或跨宿主文学质量比较。",
+    "腾讯文档协议未变时重验已有回执，明确不是本轮新实测。",
+    "public-only跳过A10/A12，不构成完整发布验收。"
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "version": "2.1.0",
+  "relationship_disclosure": "Implementation author froze cases and wrote methods; separate agent executed and self-reviewed six requests. Parent then read all final prose and notes and requested one WeChat correction. This is an independent executor plus parent textual reread, not blind evaluation or independent author aesthetic approval. Examples overlap visible cases.",
+  "author_aesthetic_approval": "not_claimed",
+  "model": {
+    "id": "unknown",
+    "configuration": "unknown"
+  },
+  "protocol_sha256": "7dc4604135c6133cdc350dda92187a9db1decc49b614647fd758806b26af1036",
+  "cases": [
+    {
+      "id": "wechat-direct",
+      "status": "pass",
+      "scope": "按材料直接写一篇 350–550 汉字公众号短文，面向第一次负责上线的工程师。主题是怎样让上线后的第一天可控；有明确可操作的判断，不先交提纲。",
+      "body_han_characters": 394,
+      "revision_budget": 1,
+      "revisions_used": 0,
+      "source_condition": "same frozen synthetic materials; no external retrieval",
+      "criteria": [
+        {
+          "criterion": "直接交可读正文",
+          "status": "pass",
+          "evidence": "开篇与主体交付完整可读文章，394汉字符合范围，没有先交提纲。"
+        },
+        {
+          "criterion": "用已知事件支撑一个判断和可执行动作",
+          "status": "pass",
+          "evidence": "第3–5段将缩小灰度、保留失败样本与复测条件连成可执行判断；十个和两个只说明为案例值。"
+        },
+        {
+          "criterion": "不捏造亲历、收入或他人心理",
+          "status": "pass",
+          "evidence": "第2段明确合成案例，未添加营收、加班、客户抱怨或私有亲历。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "results/wechat-direct/draft-1.md",
+          "role": "prior_draft",
+          "sha256": "21a8652d4ad42ea0adc78cd19b5d2f5a07f94abb3565c534841e71c34b59cc0e"
+        },
+        {
+          "path": "results/wechat-direct/final.md",
+          "role": "text",
+          "sha256": "21a8652d4ad42ea0adc78cd19b5d2f5a07f94abb3565c534841e71c34b59cc0e"
+        },
+        {
+          "path": "results/wechat-direct/notes.md",
+          "role": "review",
+          "sha256": "77a444ce52dc22e614ca0466b3aa9208d858380d6409a6916ba7e6280231f536"
+        },
+        {
+          "path": "results/wechat-direct/review-1.json",
+          "role": "review",
+          "sha256": "ecfc64ce67431a8a8f48bf30a272a89bea7fa1ccafab5facb02f96a4ee3c9b1a"
+        }
+      ],
+      "unresolved_blockers": [],
+      "author_approval": "not_requested"
+    },
+    {
+      "id": "wechat-revise",
+      "status": "pass",
+      "scope": "同材料改写到 300–500 汉字，保留作者直率和犹疑，删夸张成功学与重复说理。列出保留项及两处修改理由。",
+      "body_han_characters": 362,
+      "revision_budget": 1,
+      "revisions_used": 1,
+      "source_condition": "same frozen synthetic materials; no external retrieval",
+      "criteria": [
+        {
+          "criterion": "保留“图省事”和拿不准",
+          "status": "pass",
+          "evidence": "首段保留图省事和挺得意，末段保留拿不准。复读后修订去掉材料审计口吻，未制造虚假成熟。"
+        },
+        {
+          "criterion": "区分时长变化与效果证据",
+          "status": "pass",
+          "evidence": "第2–3段同时限定短会效果与一次延期的推断，不把节约会长等同生产率；修订后仍未填入两人会耗时数字。"
+        },
+        {
+          "criterion": "文本审阅指出同义重复而非只做字面检查",
+          "status": "pass",
+          "evidence": "notes.md定位基线“真本事／生产力／终极秘诀”的同义结论，正文改为负责人和遗留问题。初次自评遗漏正文审计口吻已留档纠正。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "results/wechat-revise/draft-1.md",
+          "role": "prior_draft",
+          "sha256": "edcc9a2cbabb7cfccc5ca3cad829c78ef23c1ca403fea0788c8e42797d3b9c58"
+        },
+        {
+          "path": "results/wechat-revise/draft-2.md",
+          "role": "prior_draft",
+          "sha256": "b8d0ac198526ab55c343478e3ae31220c358b5f54c660c0395d6c086c0eb4389"
+        },
+        {
+          "path": "results/wechat-revise/final.md",
+          "role": "text",
+          "sha256": "b8d0ac198526ab55c343478e3ae31220c358b5f54c660c0395d6c086c0eb4389"
+        },
+        {
+          "path": "results/wechat-revise/notes.md",
+          "role": "review",
+          "sha256": "156f0bd3e5015e1d3f7b42752dd8d0628ca16841b06ac57b86eb357935ec1656"
+        },
+        {
+          "path": "results/wechat-revise/parent-review.md",
+          "role": "review",
+          "sha256": "1d61938d6929962c9e57a2e9189675aa091d92a0253ec2d52ad855cd314aacb4"
+        },
+        {
+          "path": "results/wechat-revise/review-1.json",
+          "role": "review",
+          "sha256": "cfddb73c2dd8f6bdc2b5b1916311bcb5b49ae9f428f356f35a413e34a091e260"
+        }
+      ],
+      "unresolved_blockers": [],
+      "author_approval": "not_requested"
+    },
+    {
+      "id": "memoir-conflict",
+      "status": "pass",
+      "scope": "写 350–550 汉字独立场景片段。章节身份 scene-b；旧表的“第三章”不能直接变更身份。两份材料的入职年份冲突，先不裁定；采用无争议的演示失败事件。允许重构本人操作顺序和两句短对白，不改技术结果，不指定争议年份。",
+      "body_han_characters": 360,
+      "revision_budget": 1,
+      "revisions_used": 0,
+      "source_condition": "same frozen synthetic materials; no external retrieval",
+      "criteria": [
+        {
+          "criterion": "人物动作和状态发生变化",
+          "status": "pass",
+          "evidence": "从导入成功提示到空列表、停止操作、补校验、下一次改变演示顺序，行动和检查方式发生变化；360汉字。"
+        },
+        {
+          "criterion": "冲突保留且没有冒充裁定年份",
+          "status": "pass",
+          "evidence": "正文不指定争议入职年份；notes保留两来源及只影响整章时间线的范围，未改scene-b身份。"
+        },
+        {
+          "criterion": "用具体检查新增认识，避免又讲职称与本事",
+          "status": "pass",
+          "evidence": "末段认识落在核对输入和实际结果，区别邻章“职称不代表本事”；没有再次套该感悟。"
+        },
+        {
+          "criterion": "授权重构可写对白但不伪称逐字原话",
+          "status": "pass",
+          "evidence": "只用了“我看看”“先试空表”两句本人短对白，notes明确为允许重构，不是历史逐字引语。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "results/memoir-conflict/draft-1.md",
+          "role": "prior_draft",
+          "sha256": "68404932afc132d0b8a20cc7e0e0d8f708f1138efcb2c936d3df0ad9432360ae"
+        },
+        {
+          "path": "results/memoir-conflict/final.md",
+          "role": "text",
+          "sha256": "68404932afc132d0b8a20cc7e0e0d8f708f1138efcb2c936d3df0ad9432360ae"
+        },
+        {
+          "path": "results/memoir-conflict/notes.md",
+          "role": "review",
+          "sha256": "f7fa5bac35ef86481e3db10eb5a29968e0acbbd786dc4d9a5198388a74d3cb05"
+        },
+        {
+          "path": "results/memoir-conflict/review-1.json",
+          "role": "review",
+          "sha256": "6f1facba7cfa01022274b38b0990867ea6deec53edbea41f78aaea819133a4a0"
+        }
+      ],
+      "unresolved_blockers": [],
+      "author_approval": "not_requested"
+    },
+    {
+      "id": "memoir-thin",
+      "status": "pass",
+      "scope": "只交 100–180 汉字的短过渡，并在正文外列出一项后续检索建议。材料不足以支持 500 字场景；按真实材料写作，未授权对话和他人心理。不要凑长度。",
+      "body_han_characters": 123,
+      "revision_budget": 1,
+      "revisions_used": 0,
+      "source_condition": "same frozen synthetic materials; no external retrieval",
+      "criteria": [
+        {
+          "criterion": "不补离职因果、天气、会面或对白",
+          "status": "pass",
+          "evidence": "123汉字只连接春末离开与夏天维护排班工具，没有离职因果、城市、天气、会面和对话。"
+        },
+        {
+          "criterion": "清楚承认缺口及范围",
+          "status": "pass",
+          "evidence": "正文与notes均承认两个月材料空白；notes只有一项授权目录内检索建议，并如实说明本轮未执行检索。"
+        },
+        {
+          "criterion": "短过渡能连接已知变化且没有用抽象感悟填充",
+          "status": "pass",
+          "evidence": "以纪录式留白完成本任务约定的短过渡，没有扩大为500字场景或加成长感悟。文体较概述，是本薄材料任务的取舍，不据此证明场景能力。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "results/memoir-thin/draft-1.md",
+          "role": "prior_draft",
+          "sha256": "15bc55b629cb749229092a6ee2f707496ecf2e6b34f6ad2af753789e8074ad0a"
+        },
+        {
+          "path": "results/memoir-thin/final.md",
+          "role": "text",
+          "sha256": "15bc55b629cb749229092a6ee2f707496ecf2e6b34f6ad2af753789e8074ad0a"
+        },
+        {
+          "path": "results/memoir-thin/notes.md",
+          "role": "review",
+          "sha256": "c1b730d2c47a67c791001567e7a7cd6de5895e3013955dede0635fedfe67d1ef"
+        },
+        {
+          "path": "results/memoir-thin/review-1.json",
+          "role": "review",
+          "sha256": "ea5b14f5c089d6fe6b7fa36b7df2adeca169c316a207cf8218168f9894597cf5"
+        }
+      ],
+      "unresolved_blockers": [],
+      "author_approval": "not_requested"
+    },
+    {
+      "id": "fiction-serial",
+      "status": "pass",
+      "scope": "写 450–650 汉字纯虚构连载场景。允许自由创作对话、动作和新细节。林禾到值夜档案馆取母亲借阅记录，留下未解决但具体的下一步。不能全靠独白或先给大纲。",
+      "body_han_characters": 485,
+      "revision_budget": 1,
+      "revisions_used": 1,
+      "source_condition": "same frozen synthetic materials; no external retrieval",
+      "criteria": [
+        {
+          "criterion": "可读完整场景有行动阻力和变化",
+          "status": "pass",
+          "evidence": "485汉字；门口受阻、凭证查询、有限抄录与取得下一条线索构成场景。初稿放行太轻易已在唯一修订中补上条件。"
+        },
+        {
+          "criterion": "不要求虚构每句有外部出处",
+          "status": "pass",
+          "evidence": "按纯虚构设定创作值夜员和查阅流程，未要求每句外部取证，也未声称真实亲历。"
+        },
+        {
+          "criterion": "守住钥匙、纸上姓名和机制边界",
+          "status": "pass",
+          "evidence": "开门由管理员执行，未凭空拿回钥匙；姓名无法写在纸上，未破解删除机制。借阅证号与书名仍可查询属于许可内新设定。"
+        },
+        {
+          "criterion": "结尾具体下一步不是泛泛悬念",
+          "status": "pass",
+          "evidence": "结尾保留母亲借书目的未知，下一步明确为五点去修补室找附单，不是泛泛等待答案。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "results/fiction-serial/draft-1.md",
+          "role": "prior_draft",
+          "sha256": "465ee3e6161526137d14be8ebae79532f671ca3619a0e9f9b9b8428176efc147"
+        },
+        {
+          "path": "results/fiction-serial/draft-2.md",
+          "role": "prior_draft",
+          "sha256": "dd6f47230123794db6637c2e4ba1c033281314ab674779439b88b7b5a79864fb"
+        },
+        {
+          "path": "results/fiction-serial/final.md",
+          "role": "text",
+          "sha256": "dd6f47230123794db6637c2e4ba1c033281314ab674779439b88b7b5a79864fb"
+        },
+        {
+          "path": "results/fiction-serial/notes.md",
+          "role": "review",
+          "sha256": "9b0865e0f296930a1cdcf71306c0fe03c1439ca257fe9cac9bd91bfc439f3299"
+        },
+        {
+          "path": "results/fiction-serial/review-1.json",
+          "role": "review",
+          "sha256": "9223bb9cdb8d50be7fa876dc8391996e84393adfdc9874448e826577434bc403"
+        },
+        {
+          "path": "results/fiction-serial/revision-notes.md",
+          "role": "review",
+          "sha256": "df4f7b58c6a0aa5649eb21f89fd4eab5d36521b659f07803143820ea8af2a5b5"
+        }
+      ],
+      "unresolved_blockers": [],
+      "author_approval": "not_requested"
+    },
+    {
+      "id": "fiction-revise",
+      "status": "pass",
+      "scope": "改写到 350–550 汉字。保留“他没有答应，也没有走。”这句。邻章已讲过逃跑并不能摆脱恐惧，本章应让两人协作关系发生变化，不再讲同一感悟。允许虚构。",
+      "body_han_characters": 377,
+      "revision_budget": 1,
+      "revisions_used": 0,
+      "source_condition": "same frozen synthetic materials; no external retrieval",
+      "criteria": [
+        {
+          "criterion": "保留指定句子",
+          "status": "pass",
+          "evidence": "开头逐字保留指定句。377汉字符合范围。"
+        },
+        {
+          "criterion": "指出并修正灯油连续性",
+          "status": "pass",
+          "evidence": "只在对岸点灯发一次两短一长信号，随后熄灭；不再长时间照亮每块桥石，无第二瓶油。"
+        },
+        {
+          "criterion": "以行动产生协作变化",
+          "status": "pass",
+          "evidence": "唐野把灯交给阿栖、让出桥头、依其指示过桥并接受拉扶，协作由行动呈现。"
+        },
+        {
+          "criterion": "删除与邻章同义的感悟，审稿列具体证据",
+          "status": "pass",
+          "evidence": "删去基线中逃跑、恐惧和真正勇气的重复感悟；notes按邻章给定结论指出语义复述，没有声称通读邻章全文。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "results/fiction-revise/draft-1.md",
+          "role": "prior_draft",
+          "sha256": "fd0e62386aa54b7c6fb02b9a63e0b2d0a0e304215a6b2f20682f647964a862ab"
+        },
+        {
+          "path": "results/fiction-revise/final.md",
+          "role": "text",
+          "sha256": "fd0e62386aa54b7c6fb02b9a63e0b2d0a0e304215a6b2f20682f647964a862ab"
+        },
+        {
+          "path": "results/fiction-revise/notes.md",
+          "role": "review",
+          "sha256": "dc7df972f92b18e29cfcf5e05bc91d07ea41cc845908c30fcabdda7d92f38b89"
+        },
+        {
+          "path": "results/fiction-revise/review-1.json",
+          "role": "review",
+          "sha256": "8ceb1166d1e3177a30e576c195202793a94e4b52e3791595b197916e5d7adadd"
+        }
+      ],
+      "unresolved_blockers": [],
+      "author_approval": "not_requested"
+    }
+  ],
+  "limitations": [
+    "可见且有相关示例提示的有界合成验收；不声明未见样本泛化。",
+    "只评价指定片段或单篇和提供的邻文约束，不代表整章或整书审读。",
+    "没有受控宿主对照、素材增益条件或质量提升百分比。",
+    "初次自评存在漏检，具体问题由父任务复读提出并已修；不能以文件齐全证明文稿质量。"
+  ]
+}

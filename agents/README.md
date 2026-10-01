@@ -1,7 +1,5 @@
-# v2.0 入口元数据
+# 宿主界面元信息 · v2.1
 
-[openai.yaml](openai.yaml) 描述根 Skill 的显示名称、简介和默认提示。两个主 Skill 各自的 agents/openai.yaml 位于 `.agents/skills/<名称>/`。
+openai.yaml 及两项 Skill 的 agents/openai.yaml 保留界面名称和入口提示。它们不启动 Agent 服务、不存储密钥、不替代宿主权限配置。方法正文在 Skill，执行由 Codex 承担。
 
-interface 用于入口展示，真正的任务边界由对应 SKILL.md 与项目指令约定。根文件中的 integration 是本项目保留的描述性元数据，指向上下文构建器和集成说明；它不会注册在线服务或自动执行连接。
-
-修改名称和描述时与[能力清单](../configs/capabilities.json)保持一致，不把某一本书设置成所有用户的默认内容任务。
+[根 Skill](../SKILL.md) · [架构](../docs/architecture.md)

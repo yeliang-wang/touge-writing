@@ -1,21 +1,9 @@
-# v2.0 文件工具
+# 确定性文件工具 · v2.1
 
-本目录提供可独立运行的 Python CLI。核心工具使用标准库，适用于 macOS/Linux；不调用模型，也不建立 MCP 服务。所有参数见[命令参考](../docs/cli.md)。
+writing_workspace 管内容与继承；material_index 适配素材清单并记录映射；writing_run 管任务、快照和恢复；capability_catalog 解析显式方法版本。它们使用标准库及 workspace_lib，不调用模型。
 
-| 工具组 | 文件 | 职责 |
-|---|---|---|
-| 作品与文件 | writing_workspace.py、workspace_lib.py | 初始化、定位、版本登记、历史继承、状态恢复、写锁和不可覆盖复制 |
-| 迁移与恢复 | migrate_workspace.py、backup_workspace.py | 冻结清单复制、哈希校验、完整备份与独立恢复 |
-| 来源检索 | private_retriever.py | 对文章 JSON 数组清单做词频/余弦检索 |
-| 资料导入 | ingest_corpus.py、fetch_wechat_articles.py | 私有 JSONL 整理；可选公开文章链接抓取 |
-| 上下文 | build_agent_context.py、build_robot_prompt.py | 将方法和可选检索结果组成宿主输入，不执行生成 |
-| 检查 | manuscript_check.py、style_eval.py | 结构/重复提示与公众号风格启发式评分 |
-| 外部连接配套 | configure_tencent_docs.py、external_operations.py | 宿主配置辅助和私人操作凭证；实际调用由宿主执行 |
-| 交付与分享 | export_author_profile.py、build_content_deck.py | 作者规则包；可选 PPT 与讲稿 |
-| 反馈与验证 | record_feedback.py、preflight_check.py、acceptance.py | 私人反馈、公共边界与本次完整迁移验收 |
+private_retriever 保留旧命令并支持两种清单；build_agent_context 增加按阶段加载公共方法。manuscript_check 只产出文字卫生线索。backup_workspace、export_author_profile、build_release 分别处理私人备份、作者包和完整公共发行。acceptance 区分公共自检、v2.0 回归和 v2.1 检查。
 
-`writing_workspace.py` 使用命令执行目录下的 workspace，或显式 `--workspace`。不要从任意目录运行相对脚本路径。输入文件、输出目录和副作用范围由调用者提供。
+旧抓取、摄入、提示构建、内容交付、反馈和风格扫描脚本保持辅助用途；external_operations 只记账，configure_tencent_docs 只配置宿主。
 
-缺少作品、来源变化、重复版本或确认依据不足时应处理错误，不能删除校验逻辑或改旧稿来取得成功输出。工具的机械检查不代替作者内容决定。
-
-[数据格式](../docs/workspace.md) · [测试](../docs/testing.md) · [开发](../docs/development.md)
+[CLI](../docs/cli.md) · [运行](../docs/runs.md) · [辅助功能](../docs/auxiliary-guide.md)

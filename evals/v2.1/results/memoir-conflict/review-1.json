@@ -1,0 +1,83 @@
+{
+  "scope": {
+    "task": "inputs/task.json",
+    "sources": [
+      "inputs/materials.md"
+    ],
+    "read_text": "draft-1.md 全文",
+    "neighbor_read_scope": "仅任务或材料中明确给出的前幕/邻章设定，无其他全文。",
+    "excluded": "私人 workspace、原作者原作、外部资料、远端 MCP"
+  },
+  "result": "pass",
+  "findings": [
+    {
+      "criterion": "人物动作和状态发生变化",
+      "location": "第 1、3、4、5、7 段",
+      "evidence": "点了导入 → 核对列表 → 重开空表 → 补上空表校验 → 下次先试空表",
+      "observation": "人物由顺着成功提示演示，转为停下核对输入和结果，再把检查前移；操作顺序与注意对象都有可观察变化。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "冲突保留且没有冒充裁定年份",
+      "location": "全篇及 request.json open_issues entry-year",
+      "evidence": "正文无 2012、2013 或入职年份；目标稳定 ID 为 scene-b",
+      "observation": "甲乙的年份冲突保持未决，不拿旧表“第三章”变更目标身份。不依赖争议年份的独立事件可以交付。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "用具体检查新增认识，避免又讲职称与本事",
+      "location": "第 7 段，对照材料给出的邻章结论",
+      "evidence": "输入里究竟有没有数据，导入后又多了什么，都得对得上。",
+      "observation": "新增认识落在输入—结果核对及演示检查顺序，区别于邻章“职称不代表本事”；全文没有再以头衔或能力评价收口。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "授权重构可写对白但不伪称逐字原话",
+      "location": "第 2、6 段及正文外交付说明",
+      "evidence": "“我看看。”；“先试空表。”",
+      "observation": "恰好两句本人短对白，均按任务重构，交付说明明确不是史料逐字引语；未写客户对白与心理。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    }
+  ],
+  "source_and_setting_review": [
+    {
+      "source": "inputs/materials.md 第 3 段",
+      "claim": "来源甲入职 2012；乙 2013；第一次演示空表却成功、无数据、本人补校验、下次先试空表",
+      "use": "只采用两来源一致的事件链，年份与来源身份记在正文外。",
+      "boundary": "选表、切页、重开和暂停是获准的本人操作重构；不添加客户反应、地点、收入或确定年代；下次演示只写检查顺序，不虚构客户认可或演示大获成功。"
+    }
+  ],
+  "textual_quality_review": {
+    "preserve": [
+      "“两处页面摆在同一个流程里，却没有说同一件事”连接现场与技术矛盾。",
+      "末段保留具体输入/结果检查。"
+    ],
+    "must_fix": [],
+    "optional": [
+      "第 3–4 段空表出现次数较多，但用途依次是核验、复现和校验，不是同义感悟重复。"
+    ],
+    "gain_loss": "采用极有限操作重构形成场景，没有客户表情或外部环境，场景更克制；两句对白不承载额外事实。"
+  },
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "draft-1",
+      "sha256": "68404932afc132d0b8a20cc7e0e0d8f708f1138efcb2c936d3df0ad9432360ae"
+    }
+  ],
+  "reviewer_relationship": "本独立前向执行代理同时生成并自审这些文本；相对于实现工作独立，相对于稿件不是独立评审，也不是盲评。父任务后续审阅另行记录。",
+  "author_aesthetic_approval": "not_requested",
+  "counts": {
+    "body_han_characters": 360,
+    "count_convention": "仅计 U+4E00–U+9FFF，排除标题、标点与正文外说明"
+  },
+  "revision_budget": {
+    "limit": 1,
+    "used": 0,
+    "next": "不修订，初稿为本任务交付候选"
+  },
+  "limitations": [
+    "可见、冻结、合成案例；能力卡合成例子与部分任务重合，不是未见样本泛化证据。",
+    "没有材料增益，没有外部检索；不得与其他宿主作受控优越性比较。"
+  ]
+}

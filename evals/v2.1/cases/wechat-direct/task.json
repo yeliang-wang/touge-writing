@@ -1,0 +1,19 @@
+{
+  "id": "wechat-direct",
+  "kind": "wechat",
+  "phase": "draft",
+  "task": "按材料直接写一篇 350–550 汉字公众号短文，面向第一次负责上线的工程师。主题是怎样让上线后的第一天可控；有明确可操作的判断，不先交提纲。",
+  "criteria": [
+    "直接交可读正文",
+    "用已知事件支撑一个判断和可执行动作",
+    "不捏造亲历、收入或他人心理"
+  ],
+  "material_scope": [
+    "materials.md"
+  ],
+  "baseline": null,
+  "revision_budget": 1,
+  "source_condition": "same provided synthetic materials; no external retrieval",
+  "review_method": "textual evidence against each frozen criterion; independent forward test recorded separately",
+  "acceptance": "all criteria addressed; record limitations separately; never author aesthetic approval"
+}

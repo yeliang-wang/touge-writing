@@ -1,13 +1,7 @@
-# v2.0 写作模板
+# 按需模板 · v2.1
 
-模板为人工可编辑的 Markdown 起点，没有模板渲染引擎，也不会自动登记版本。
+book-plan、chapter-plan、wechat-article 帮助组织作品方案，字段按真实任务取舍。run-request、run-review 和 material-map 是脚本输入形状；替换占位说明和实际哈希，不把模板当作作者决定。
 
-| 模板 | 用途 |
-|---|---|
-| [wechat-article.md](wechat-article.md) | 文章目标、材料与交付记录 |
-| [book-plan.md](book-plan.md) | 新小说的全书方案 |
-| [chapter-plan.md](chapter-plan.md) | 章级命题、结构、素材、继承及连续性 |
+每个方案继承明确版本，正文与编辑说明分开。参数来自作品，不能默认复制另一部小说配额。
 
-将模板复制到当前私人作品，按任务填写；确认后通过 `writing_workspace.py add-revision` 登记新版本和实际决定。模板中的空项不是已确认事实。具体书籍的角色、配额和虚构授权不能写回公共模板。
-
-[作品格式](../docs/workspace.md) · [使用指南](../docs/GUIDE)
+[全书](book-plan.md) · [章节](chapter-plan.md) · [文章](wechat-article.md) · [运行请求](run-request.json) · [审稿](run-review.json) · [映射](material-map.json)

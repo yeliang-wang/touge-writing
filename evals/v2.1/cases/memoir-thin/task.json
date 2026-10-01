@@ -1,0 +1,19 @@
+{
+  "id": "memoir-thin",
+  "kind": "novel",
+  "phase": "transition",
+  "task": "只交 100–180 汉字的短过渡，并在正文外列出一项后续检索建议。材料不足以支持 500 字场景；按真实材料写作，未授权对话和他人心理。不要凑长度。",
+  "criteria": [
+    "不补离职因果、天气、会面或对白",
+    "清楚承认缺口及范围",
+    "短过渡能连接已知变化且没有用抽象感悟填充"
+  ],
+  "material_scope": [
+    "materials.md"
+  ],
+  "baseline": null,
+  "revision_budget": 1,
+  "source_condition": "same provided synthetic materials; no external retrieval",
+  "review_method": "textual evidence against each frozen criterion; independent forward test recorded separately",
+  "acceptance": "all criteria addressed; record limitations separately; never author aesthetic approval"
+}

@@ -1,0 +1,76 @@
+{
+  "scope": {
+    "task": "inputs/task.json",
+    "sources": [
+      "inputs/materials.md"
+    ],
+    "read_text": "draft-1.md 全文",
+    "neighbor_read_scope": "仅任务或材料中明确给出的前幕/邻章设定，无其他全文。",
+    "excluded": "私人 workspace、原作者原作、外部资料、远端 MCP"
+  },
+  "result": "pass",
+  "findings": [
+    {
+      "criterion": "直接交可读正文",
+      "location": "正文第 1–5 段",
+      "evidence": "第一次负责上线，别把“已经放出去了”当成交差。",
+      "observation": "交付完整短文，开头直接给判断，中段案例，后两段操作，未以提纲代替正文。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "用已知事件支撑一个判断和可执行动作",
+      "location": "第 2、4、5 段",
+      "evidence": "出现连续失败时由谁把范围收回；把失败样本带回测试，核对日期格式和导出内容",
+      "observation": "案例有放量、连续失败、缩回、留样、修复五个已知事件，判断集中于控制影响和核验结果。执行建议明确到谁看、谁收范围、用何样本复测；十与二明确不是通用配额。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "不捏造亲历、收入或他人心理",
+      "location": "第 2 段及全篇叙述人称",
+      "evidence": "看一个合成案例。",
+      "observation": "事实归属青禾合成团队；没有“我曾经”式冒充亲历，没有收入、加班、客户抱怨或他人心理。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    }
+  ],
+  "source_and_setting_review": [
+    {
+      "source": "inputs/materials.md 第 3 段（唯一实质材料段）",
+      "claim": "四人团队、周四、十个账号中三个连续失败、收回两个、保留样本、次日修日期格式",
+      "use": "正文第 2 段均逐项覆盖；此前只测可下载、未测日期格式亦保留。",
+      "boundary": "第 4–5 段是面向读者的候选建议，未写成青禾已做事实；没有推断两个账号均成功。"
+    }
+  ],
+  "textual_quality_review": {
+    "preserve": [
+      "第 1 段把交差与实际核验接起来。",
+      "第 4 段“你得按自己的验证能力定范围”限制数字的适用性。"
+    ],
+    "must_fix": [],
+    "optional": [
+      "第 5 段重述三类动作是简短执行性收束，与第 4 段职责分配有轻微回响；未增加独立口号。"
+    ],
+    "gain_loss": "事实段较紧，保留了小团队可执行的尺度；没有新增现场对白，损失的是戏剧感，但这不是场景任务。"
+  },
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "draft-1",
+      "sha256": "21a8652d4ad42ea0adc78cd19b5d2f5a07f94abb3565c534841e71c34b59cc0e"
+    }
+  ],
+  "reviewer_relationship": "本独立前向执行代理同时生成并自审这些文本；相对于实现工作独立，相对于稿件不是独立评审，也不是盲评。父任务后续审阅另行记录。",
+  "author_aesthetic_approval": "not_requested",
+  "counts": {
+    "body_han_characters": 394,
+    "count_convention": "仅计 U+4E00–U+9FFF，排除标题、标点与正文外说明"
+  },
+  "revision_budget": {
+    "limit": 1,
+    "used": 0,
+    "next": "不修订，初稿为本任务交付候选"
+  },
+  "limitations": [
+    "可见、冻结、合成案例；能力卡合成例子与部分任务重合，不是未见样本泛化证据。",
+    "没有材料增益，没有外部检索；不得与其他宿主作受控优越性比较。"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "scope": {
+    "task": "inputs/task.json",
+    "sources": [
+      "inputs/materials.md"
+    ],
+    "read_text": "draft-1.md 全文",
+    "neighbor_read_scope": "仅任务或材料中明确给出的前幕/邻章设定，无其他全文。",
+    "excluded": "私人 workspace、原作者原作、外部资料、远端 MCP"
+  },
+  "result": "pass",
+  "findings": [
+    {
+      "criterion": "不补离职因果、天气、会面或对白",
+      "location": "唯一正文段落全篇",
+      "evidence": "春末，他离开了原公司。等记录接到夏天，他已经在新团队开始维护排班工具。",
+      "observation": "只连接提供的两项事件，未补离职因果、城市、天气、会面细节、对白和他人心理。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "清楚承认缺口及范围",
+      "location": "段落中部和结尾",
+      "evidence": "入职前后两个月没有日志；这一段暂时留空。",
+      "observation": "缺口及具体未知项明确；留白不伪装时间线完整，没有把同一合成作者的未提供目录当成已检索材料。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    },
+    {
+      "criterion": "短过渡能连接已知变化且没有用抽象感悟填充",
+      "location": "全段，正文汉字数见计数",
+      "evidence": "能够接续下去的，是他在夏天承担的这项工作",
+      "observation": "从离开旧公司接到承担新任务；正文 123 汉字，未扩成 500 字，不用成长、命运、勇气等抽象判断填充。",
+      "resolution": "初稿保留；未改变冻结标准。"
+    }
+  ],
+  "source_and_setting_review": [
+    {
+      "source": "inputs/materials.md 第 3 段",
+      "claim": "春末离开；夏天维护排班工具；入职前后两个月日志缺失；未知原因/城市/面试/初见",
+      "use": "正文全部事实都对应这条记录，保留未知状态。",
+      "boundary": "授权目录的清单或文件未随本案提供；遵守冻结 material_scope，未执行外部或私人目录检索，后续建议只列一项。"
+    }
+  ],
+  "textual_quality_review": {
+    "preserve": [
+      "用春末、夏天两时间锚点衔接实际工作变化。"
+    ],
+    "must_fix": [],
+    "optional": [
+      "这一过渡带材料留白的叙述口吻，文学展开有限，符合“不要凑长度”的任务约定。"
+    ],
+    "gain_loss": "保留缺口，牺牲场景饱满度；没有用未经授权的面试场景伪造连续性。"
+  },
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "draft-1",
+      "sha256": "15bc55b629cb749229092a6ee2f707496ecf2e6b34f6ad2af753789e8074ad0a"
+    }
+  ],
+  "reviewer_relationship": "本独立前向执行代理同时生成并自审这些文本；相对于实现工作独立，相对于稿件不是独立评审，也不是盲评。父任务后续审阅另行记录。",
+  "author_aesthetic_approval": "not_requested",
+  "counts": {
+    "body_han_characters": 123,
+    "count_convention": "仅计 U+4E00–U+9FFF，排除标题、标点与正文外说明"
+  },
+  "revision_budget": {
+    "limit": 1,
+    "used": 0,
+    "next": "不修订，初稿为本任务交付候选"
+  },
+  "limitations": [
+    "可见、冻结、合成案例；能力卡合成例子与部分任务重合，不是未见样本泛化证据。",
+    "没有材料增益，没有外部检索；不得与其他宿主作受控优越性比较。"
+  ]
+}

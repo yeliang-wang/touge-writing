@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "version": "2.1.0",
+  "frozen_before_implementation": true,
+  "cases": [
+    "wechat-direct",
+    "wechat-revise",
+    "memoir-conflict",
+    "memoir-thin",
+    "fiction-serial",
+    "fiction-revise"
+  ],
+  "minimum": 6,
+  "comparison": "These are bounded synthetic acceptance cases, not controlled evidence of superiority over another host. Same inputs and one revision budget within each case. Material-gain comparisons must be reported separately.",
+  "model": "host model; exact identifier/config recorded by evaluator if available, otherwise unknown",
+  "criteria_files": [
+    {
+      "path": "cases/fiction-revise/baseline.md",
+      "sha256": "99e0fbc0bb5930e8ef11debb550e786ae4d2450d43b662253498251e9d1fee00"
+    },
+    {
+      "path": "cases/fiction-revise/materials.md",
+      "sha256": "994dbf3fab2d21dd378466f2ca42de673f5483f3f4082c5485085f4c19e9c580"
+    },
+    {
+      "path": "cases/fiction-revise/task.json",
+      "sha256": "eff66226af223e7f4e432f7ad6d452cc151de3b9a5f2170ffc52db06b62408d8"
+    },
+    {
+      "path": "cases/fiction-serial/materials.md",
+      "sha256": "dc017f39f405d142d12476d1bc383bc8174405c0869adbffcb08d93a5075efab"
+    },
+    {
+      "path": "cases/fiction-serial/task.json",
+      "sha256": "4246873ab0edc6998acc4b92d231df4d1d02a756db2d4d7432a79f43d6738a62"
+    },
+    {
+      "path": "cases/memoir-conflict/materials.md",
+      "sha256": "a3cb17189a9eb42a8a87b37909e8031dd1b8e1a49e0a4e537c4373c7699ba284"
+    },
+    {
+      "path": "cases/memoir-conflict/task.json",
+      "sha256": "5c5b8ba3cd992027f1b371bb24682cffa4bf96f8961e11ee065963d1b80c0610"
+    },
+    {
+      "path": "cases/memoir-thin/materials.md",
+      "sha256": "8654fd304090512e7338ac1febdc9150d9ad8d8e7918da6509c231d17f478aa2"
+    },
+    {
+      "path": "cases/memoir-thin/task.json",
+      "sha256": "f82e0d5fa67a4866b727c5353d4d26a49228f211d9549b66166411dbf20fbb26"
+    },
+    {
+      "path": "cases/wechat-direct/materials.md",
+      "sha256": "b9d7f19ad85eea4597a658c45fd05e662d31e3504aa96f21192b821936184c9c"
+    },
+    {
+      "path": "cases/wechat-direct/task.json",
+      "sha256": "b5b70815ebb087cb3bef5133c44d3bbe0b70923b67fc76f2c5842736351ff43e"
+    },
+    {
+      "path": "cases/wechat-revise/baseline.md",
+      "sha256": "b5d909a882ce0ebaa9e25d4f2eaba889f13fe0a492c7f43c9e53959989d207d3"
+    },
+    {
+      "path": "cases/wechat-revise/materials.md",
+      "sha256": "247f1d215af2836320056bee744fecd274a8e5283b6758327e9d98855c32d8ba"
+    },
+    {
+      "path": "cases/wechat-revise/task.json",
+      "sha256": "aecba91e73ea504b0dd2f5198cf9ce1ee6682bcff35885d1d0d6542305889b50"
+    }
+  ]
+}

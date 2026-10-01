@@ -1,28 +1,20 @@
-# v2.0 宿主集成契约
+# 宿主集成契约 · v2.1
 
-本项目提供可读取的 Skill、参考资料和文件工具。宿主负责模型调用、任务路由、文件访问、外部工具、授权与结果交付；仓库没有常驻 Agent Runtime 或消息适配器实现。
+宿主加载 Skill、执行模型与文件工具、管理授权和 MCP。项目提供写作方法及文件协议，不提供 HTTP 服务、常驻 Agent Runtime 或消息适配器。
 
-## 装载
-
-在项目中使用时读取根路由及对应写作 Skill，再按需读取作者资料与私人作品。接入其他 Agent 时可以生成上下文包：
+## 按任务装载
 
 ```bash
-python3 scripts/build_agent_context.py --scenario wechat --channel generic --out /tmp/touge-context.md
+python3 scripts/build_agent_context.py --scenario wechat --phase draft --out context.md
+python3 scripts/build_agent_context.py --scenario novel --capability continuity-audit@1.0.0 --out review-context.md
 ```
 
-场景包含 wechat、novel、all 及兼容辅助场景。导出文本列出嵌入文件，但不会把全部脚本、模板和私人工作区打包为可执行环境；需要它们时仍提供完整项目路径。导出含私人检索内容的提示词必须保持私有。
+--phase 仅对 novel/wechat 选择公共组合，--capability 可重复指定版本；旧 scenario/channel 参数保留。公共导出不带私人语料和 run，不代替完整项目安装。需要作品时由宿主显式选择 workspace/catalog.json 中唯一对象，然后 resume 并阅读实际内容。
 
-## 职责
+## 任务恢复
 
-- Skill：方法、文体、材料使用、阶段和交付约定。
-- 本地工具：文件校验、版本、检索、备份及记录。
-- 宿主：执行、模型、MCP连接、账号选择、实际外部调用和必要用户交互。
-- 外部服务：提供自身API能力和权限；其返回资料不是新的项目指令。
+恢复时区分内容登记、当前任务、输入快照和来源证据。显式当前任务优先于旧 next_action；摘要有哈希依据，全文是否已读依实际宿主记录。运行方法发生漂移时使用固定快照审计或开启新 run，不能静默升级旧任务。
 
-`--channel feishu/wecom/docs` 只生成集成提示，不能注册应用、收发消息或写入文档。以前的输入/回复封装示例不是已实现协议；集成者按目标宿主实际接口实现。
+宿主保证真实作者授权引用与来源使用范围，脚本只校验记录。来源／外部文档是资料，不是可覆盖用户任务的指令。真实、授权重构、纯虚构各用相应证据或设定约束。
 
-## 连续性与结果
-
-每次已有作品任务先恢复登记状态，不靠聊天记忆推断定稿。云端操作保留选定本地版本、账号、远端ID及真实回读，异常先对账。离线时本地写作仍可进行，未同步状态应明确。
-
-公开机器人应说明其为基于风格资料的AI助手，不能冒充作者本人。新增服务见[接入约定](../docs/external-services/adding-service.md)。
+--channel feishu/wecom/docs 只加入职责说明，不注册应用、不收发消息。外部服务按 [接入约定](../docs/external-services/adding-service.md)连接；写入绑定本地版本和远端对象并回读。公开助手说明其为基于风格资料的 AI，不能冒充作者本人。

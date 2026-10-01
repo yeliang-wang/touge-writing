@@ -1,4 +1,4 @@
-# v2.0 腾讯文档连接与操作
+# 腾讯文档连接与操作 · v2.1
 
 面向需要云端协作的使用者。官方 MCP 地址为 [docs.qq.com/openapi/mcp](https://docs.qq.com/openapi/mcp)，个人授权入口为[腾讯文档授权页](https://docs.qq.com/open/auth/mcp.html)。每次新安装使用自己的宿主授权。
 
@@ -14,7 +14,11 @@ python3 scripts/configure_tencent_docs.py
 
 写入配置不等于运行中的宿主已加载连接。由宿主重新连接后检查工具列表、账号和目标权限；脚本自身不进行联网验收。
 
-## 已验证范围
+## 证据范围与版本沿用
+
+v2.1 未更改 configure_tencent_docs.py 或 external_operations.py；完整验收重新核对既有真实回执、源内容与读回指纹。这是历史证据回归，不是本轮重新连接或实测。新账号、凭据、工具 schema 或调用协议改变时，使用独立测试对象验证受影响操作。
+
+### v2.0 已验证操作
 
 v2.0 私人验收已使用新授权验证：既有 Word 与目录表读取、空间目录遍历、`doc.create_with_markdown`、写入前 `doc.resolve_document_structure`、带基准版本的 `doc.find_and_replace`、完整 `get_content` 回读，以及本地操作记录。试验仅写入专用测试文档。
 
