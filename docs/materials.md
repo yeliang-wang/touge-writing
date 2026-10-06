@@ -1,4 +1,4 @@
-# 素材发现与使用映射 · v2.2
+# 素材发现与使用映射 · v2.3
 
 下例路径位于推荐私人工作区，运行前需有自己的素材清单；init 不会附赠 corpus。清单仅覆盖调用者明确选择的 corpus；工具不遍历其他作品。两种输入可直接读取：旧 JSON 数组以 id/markdown 定位正文；新 JSONL 以 id/text_path 定位，source_id 是集合名。正文为空的条目保留在索引中但不当作可用材料。来源路径须位于清单目录内，旧绝对路径若越界需显式重定基准或建立独立清单，不能静默跨作品读取。
 
@@ -32,4 +32,4 @@ python3 scripts/material_index.py map --project-path "$HOME/.touge-writing/works
 
 查询已采用版本的关系：`python3 scripts/material_index.py relations --project-path "$HOME/.touge-writing/workspace/novels/demo" --mapping map-001 --chapter scene-a`。可用 --unit 按事件／主题筛选；查询校验当前源锚点，漂移时报错，不自动改历史映射。
 
-合作时只导入获准共享的材料，并保存实际来源和使用限制。另一作者的私人素材库不会因共享文档而自动成为检索范围。迁移工作区保留历史来源与哈希；仍指向旧位置的引用先盘点，不批量改写原回执。[合作](collaboration.md) · [迁移](migration-v2.2.md)
+合作时只导入获准共享的材料，并保存实际来源和使用限制。另一作者的私人素材库不会因共享文档或获得仓库权限而自动扩大本轮任务的检索范围。迁移工作区保留历史来源与哈希；仍指向旧位置的引用先盘点，不批量改写原回执。[合作](collaboration.md) · [迁移](migration-v2.3.md)

@@ -1,4 +1,4 @@
-# CLI 参考 · v2.2
+# CLI 参考 · v2.3
 
 在项目根运行，核心 Python 3.9+。`--help` 显示当前参数，所有路径使用自己的本地目录。脚本不调用模型、不自动连接账号。下例显式使用推荐外部工作区；自定义时替换全部相关路径。脚本省略 --workspace 仍沿用当前终端目录下的 workspace，没有全局配置或自动回退。
 
@@ -51,6 +51,22 @@ python3 scripts/manuscript_check.py draft.md --out scan.json
 
 只检查文字数量、逐字重复和标点/工作标记等线索。可选 --dash-limit 来自具体作品，不是公共审美配额。
 
+## 私有 Git 候选协作
+
+workspace 必须自身是独立 Git 根。命令不创建远端仓库、不推送、不创建 PR，也不自动登记或接受正文。以下示例中的提交 SHA、作品与文件须已存在：
+
+```bash
+python3 scripts/git_collaboration.py --workspace /path/to/private-workspace package --project demo --chapter scene-a --base <完整提交SHA> --file /path/to/local-process/draft.md --review /path/to/local-process/review.md --id candidate-1
+python3 scripts/git_collaboration.py --workspace /path/to/private-workspace guard --base <完整提交SHA>
+python3 scripts/git_collaboration.py --workspace /path/to/private-workspace verify --package contributions/candidate-1 --base <此次审阅确认的共同基准SHA>
+```
+
+`--file` 可重复，`--review` 可与正文同时或单独提供；至少选入一份内容。`--chapter article` 表示公众号，`book` 表示全书，其余值使用稳定章 ID。package 创建 `contributions/<id>/manifest.json` 与 `files/`，固定基准提交、登记文件哈希、相关方案和正文版本。manifest.sha256 用于完整性检查，不是作者身份签名。
+
+guard 检查相对共同基准的分支、索引及工作树，允许完整的新候选包，拒绝修改正式登记、事件链或其他正式文件。verify 同时检查包完整性、当前基准及整个贡献变更集；可显式传 `--base` 核对期望基准。若基准变化，重新阅读并生成新包，不修改旧包绕过漂移检查。工具只读本地 Git，不执行 fetch，未拉取的远端变化不会被检测；主编须先取得并核对正式分支，再指定已确认基准。
+
+主编整合沿用 add-revision，或在自己的 run 中 register；没有自动 integrate/accept 命令。贡献者个人运行在另一个本地过程副本，不能将其登记和链文件提交回正式分支。[完整流程](collaboration.md)
+
 ## 外部记录、备份与发行
 
 external_operations.py 的 prepare/record 对已有作品和远端操作记账，参数以 --help 为准。它不执行网络调用，不保证服务幂等；submitted/unknown 要先对账再重试。[外部服务](external-services/README.md)
@@ -59,7 +75,7 @@ external_operations.py 的 prepare/record 对已有作品和远端操作记账�
 python3 scripts/backup_workspace.py create --workspace "$HOME/.touge-writing/workspace" --out "$HOME/.touge-writing/backups/snapshot.tar.gz"
 python3 scripts/backup_workspace.py restore --archive "$HOME/.touge-writing/backups/snapshot.tar.gz" --destination "$HOME/.touge-writing/restores/snapshot"
 python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
-python3 scripts/build_release.py --out dist/touge-writing-reboot-skill-2.2.0.zip
+python3 scripts/build_release.py --out dist/touge-writing-reboot-skill-2.3.0.zip
 python3 scripts/acceptance.py --public-only
 python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 ```

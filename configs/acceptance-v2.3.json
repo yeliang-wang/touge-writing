@@ -1,0 +1,31 @@
+{
+  "version": "2.3.0",
+  "checks": [
+    {"id": "C01", "name": "既有能力与私有 Git 协作测试"},
+    {"id": "C02", "name": "公共文件与发行边界"},
+    {"id": "C03", "name": "干净安装、外部工作区和旧默认兼容"},
+    {"id": "C04", "name": "13 项公共方法与作者表达包保持"},
+    {"id": "C05", "name": "独立克隆的实际 Git 合作演练"},
+    {"id": "C06", "name": "v2.1 与 v2.2 历史评测证据完整性"},
+    {"id": "C07", "name": "版本、文档链接与三个 Skill 元数据"},
+    {"id": "C08", "name": "作品范围迁移、原件与全量备份恢复", "private_required": true},
+    {"id": "C09", "name": "腾讯文档当前读取与历史连接证据", "private_required": true},
+    {"id": "C10", "name": "真实私有仓库可见性与重新克隆恢复", "private_required": true}
+  ],
+  "historical_evidence": {
+    "v21_review_sha256": "23e41f26d83a48e403cb88242f30ed1b20be9417e227a9226ca13ba42cd799d7",
+    "v22_review_sha256": "1946b8c10a544e83c3f7c662017121c6ce5e9326512e0ae6573a64b44c76d699"
+  },
+  "unchanged_external_protocols": {
+    "scripts/configure_tencent_docs.py": "de05916a1ae278f0cc98dc34e4c71673c9ebe12e821efc2a073a2f04810de57b",
+    "scripts/external_operations.py": "bf8b09bba0d1b16648f4c614e4bd3511ad65cbec17073cf8c04cee13fd17ad26"
+  },
+  "excluded_by_user": ["微信公众号真实账号连接与发文验收"],
+  "limitations": [
+    "公共合作演练是同宿主本地 bare 仓库与独立克隆，不代表两个真实 GitHub 账号测试",
+    "guard 与 verify 检查提交边界，不是本地命令角色权限或远端分支保护的替代",
+    "私有仓库限制访问，不提供应用层端到端加密，也不能收回他人已有克隆",
+    "腾讯文档本轮只新增读取验证，历史写入回执不冒充本轮写入测试",
+    "迁移与状态验收不代替作者对小说内容的认可"
+  ]
+}

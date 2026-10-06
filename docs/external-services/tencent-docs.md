@@ -1,6 +1,6 @@
-# 腾讯文档连接与操作 · v2.2
+# 腾讯文档连接与操作 · v2.3
 
-面向需要云端协作的使用者。官方 MCP 地址为 [docs.qq.com/openapi/mcp](https://docs.qq.com/openapi/mcp)，个人授权入口为[腾讯文档授权页](https://docs.qq.com/open/auth/mcp.html)。每次新安装使用自己的宿主授权。
+腾讯文档是可选的资料导入、外部审阅、导出阅读和历史参考渠道。使用独立私有 Git workspace 时，不要求腾讯文档作为终稿存储。本页面向仍需该服务的使用者。官方 MCP 地址为 [docs.qq.com/openapi/mcp](https://docs.qq.com/openapi/mcp)，个人授权入口为[腾讯文档授权页](https://docs.qq.com/open/auth/mcp.html)。每次新安装使用自己的宿主授权。
 
 ## 配置
 
@@ -16,7 +16,7 @@ python3 scripts/configure_tencent_docs.py
 
 ## 证据范围与版本沿用
 
-v2.2 沿用 configure_tencent_docs.py 和 external_operations.py 的既有连接与写回协议；完整验收核对未变更范围、历史真实回执、源内容与读回指纹。这是历史证据回归，不是本轮重新连接或实测。新账号、凭据、工具 schema 或调用协议改变时，使用独立测试对象验证受影响操作。
+v2.3 沿用 configure_tencent_docs.py 和 external_operations.py 的既有连接与写回协议；未变更范围核对历史真实回执、源内容与读回指纹。这是历史证据回归，不是本轮重新实测写入。迁移已有云端作品时另行执行当前读取与本地版本核对，该证据只覆盖实际读取对象。新账号、凭据、工具 schema 或调用协议改变时，使用独立测试对象验证受影响操作。
 
 ### v2.0 已验证操作
 
@@ -34,8 +34,10 @@ v2.0 私人验收已使用新授权验证：既有 Word 与目录表读取、空
 
 回执使用[外部记录工具](../cli.md)留在本地。账号被识别、工具可见、HTTP 成功与正文正确是不同证据，应逐层核对。
 
-## 两位作者的独立工作区
+## 可选云端协作与迁出
 
-合作双方各自授权宿主，保留自己的 workspace，使用 [合作约定](../../templates/collaboration.md) 选定共享材料和汇总负责人。本地调用 external_operations.py 时显式传入本人的 --workspace；记录只在本地，不能锁住远端。
+继续云端审阅时，各人使用自己的宿主授权，使用 [合作约定](../../templates/collaboration.md) 选定共享材料、用途和汇总负责人。本地调用 external_operations.py 时显式传入本人的 --workspace；记录只在本地，不能锁住远端。
 
 负责人读基准后汇总写回，其他人提供候选和差异。远端基准变化时先停止覆盖并处理差异；新内容须有明确的共同确认依据才能导入为 accepted。历史单次操作回执与本版合成演练不能证明真实多人并发写入或自动合并已验收。[完整合作流程](../collaboration.md)
+
+迁入私有 Git 前读取实际远端目录和全部已选正文，核对本地登记并保存差异。切换后在私人作品约定中标明正式仓库，保留旧文档作历史参考或按具体授权处理；迁移不自动删除云端原件。[迁移指南](../migration-v2.3.md)

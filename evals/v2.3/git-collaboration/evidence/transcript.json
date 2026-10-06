@@ -1,0 +1,985 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--bare",
+      "--initial-branch=main",
+      "<EVAL>/shared.git"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "Initialized empty Git repository in <EVAL>/shared.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "clone",
+      "<EVAL>/shared.git",
+      "<EVAL>/editor"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '<EVAL>/editor'...\nwarning: You appear to have cloned an empty repository.\ndone.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "config",
+      "user.name",
+      "Synthetic Editor"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "config",
+      "user.email",
+      "editor@example.invalid"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "init",
+      "--id",
+      "clock-story",
+      "--title",
+      "合成修钟小说",
+      "--type",
+      "novel"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "\"<EVAL>/editor/novels/clock-story\"\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "set-chapters",
+      "--project",
+      "clock-story",
+      "--file",
+      "<EVAL>/fixtures/chapters.json"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"schema_version\": 1,\n  \"id\": \"clock-story\",\n  \"title\": \"合成修钟小说\",\n  \"type\": \"novel\",\n  \"chapters\": [\n    {\n      \"id\": \"ch01\",\n      \"title\": \"合成第一章\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "add-revision",
+      "--project",
+      "clock-story",
+      "--source",
+      "<EVAL>/fixtures/baseline.md",
+      "--id",
+      "book-1",
+      "--kind",
+      "book_plan",
+      "--version",
+      "1",
+      "--status",
+      "accepted",
+      "--decision-file",
+      "<EVAL>/fixtures/baseline-decision.md"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"id\": \"book-1\",\n  \"kind\": \"book_plan\",\n  \"version\": \"1\",\n  \"status\": \"accepted\",\n  \"chapter_id\": null,\n  \"parent_plan_id\": null,\n  \"based_on\": null,\n  \"path\": \"版本记录/content/book-1.md\",\n  \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n  \"decision_path\": \"决策记录/book-1.md\",\n  \"decision_sha256\": \"94c95a429b9f59a728f62ced632e35673a8f7096c7c958c9e5562da0be2cd25b\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "add-revision",
+      "--project",
+      "clock-story",
+      "--source",
+      "<EVAL>/fixtures/baseline.md",
+      "--id",
+      "plan-1",
+      "--kind",
+      "chapter_plan",
+      "--version",
+      "1",
+      "--status",
+      "accepted",
+      "--decision-file",
+      "<EVAL>/fixtures/baseline-decision.md",
+      "--chapter",
+      "ch01",
+      "--parent-plan",
+      "book-1"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"id\": \"plan-1\",\n  \"kind\": \"chapter_plan\",\n  \"version\": \"1\",\n  \"status\": \"accepted\",\n  \"chapter_id\": \"ch01\",\n  \"parent_plan_id\": \"book-1\",\n  \"based_on\": null,\n  \"path\": \"版本记录/content/plan-1.md\",\n  \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n  \"decision_path\": \"决策记录/plan-1.md\",\n  \"decision_sha256\": \"94c95a429b9f59a728f62ced632e35673a8f7096c7c958c9e5562da0be2cd25b\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "add-revision",
+      "--project",
+      "clock-story",
+      "--source",
+      "<EVAL>/fixtures/baseline.md",
+      "--id",
+      "text-1",
+      "--kind",
+      "text",
+      "--version",
+      "1",
+      "--status",
+      "accepted",
+      "--decision-file",
+      "<EVAL>/fixtures/baseline-decision.md",
+      "--chapter",
+      "ch01",
+      "--parent-plan",
+      "plan-1"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"id\": \"text-1\",\n  \"kind\": \"text\",\n  \"version\": \"1\",\n  \"status\": \"accepted\",\n  \"chapter_id\": \"ch01\",\n  \"parent_plan_id\": \"plan-1\",\n  \"based_on\": null,\n  \"path\": \"版本记录/content/text-1.md\",\n  \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n  \"decision_path\": \"决策记录/text-1.md\",\n  \"decision_sha256\": \"94c95a429b9f59a728f62ced632e35673a8f7096c7c958c9e5562da0be2cd25b\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "--project",
+      "clock-story",
+      "start",
+      "--request",
+      "<EVAL>/fixtures/initial-run.json"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"run\": {\n    \"schema_version\": 1,\n    \"id\": \"initial-run\",\n    \"request\": {\n      \"schema_version\": 1,\n      \"id\": \"initial-run\",\n      \"task\": \"Synthetic clock-story evaluation\",\n      \"authorization_refs\": [\n        \"Synthetic test protocol; not real author approval\"\n      ],\n      \"target\": \"ch01\",\n      \"mode\": \"revise\",\n      \"stage\": \"revise\",\n      \"fiction_policy\": {\n        \"mode\": \"fiction\",\n        \"scope\": \"Synthetic clock-story only\",\n        \"authorization_ref\": \"Synthetic evaluation fixture\"\n      },\n      \"capabilities\": [\n        \"editorial-review@1.0.0\"\n      ],\n      \"inputs\": [],\n      \"open_issues\": [],\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"request_sha256\": \"11bd219376f32ea9ce0921c918269de480da6ae4c40c8a08d703c952c1eb7205\",\n    \"pins\": [\n      {\n        \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"origin\": \"public\",\n        \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"snapshot\": \"inputs/000.md\",\n        \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"snapshot\": \"inputs/001.md\",\n        \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"snapshot\": \"inputs/002.json\",\n        \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/PROFILE.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/PROFILE.md\",\n        \"snapshot\": \"inputs/003.md\",\n        \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/expression-evidence.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/expression-evidence.md\",\n        \"snapshot\": \"inputs/004.md\",\n        \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/judgment.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/judgment.md\",\n        \"snapshot\": \"inputs/005.md\",\n        \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/language.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/language.md\",\n        \"snapshot\": \"inputs/006.md\",\n        \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/lexicon.yaml\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/lexicon.yaml\",\n        \"snapshot\": \"inputs/007.yaml\",\n        \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/rubric.md\",\n        \"snapshot\": \"inputs/008.md\",\n        \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/wechat-rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/wechat-rubric.md\",\n        \"snapshot\": \"inputs/009.md\",\n        \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/manifest.json\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/manifest.json\",\n        \"snapshot\": \"inputs/010.json\",\n        \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"book.yaml\",\n        \"origin\": \"project\",\n        \"source\": \"book.yaml\",\n        \"snapshot\": \"inputs/011.yaml\",\n        \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/revisions.json\",\n        \"snapshot\": \"inputs/012.json\",\n        \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/book-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/book-1.md\",\n        \"snapshot\": \"inputs/013.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/plan-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/plan-1.md\",\n        \"snapshot\": \"inputs/014.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/text-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/text-1.md\",\n        \"snapshot\": \"inputs/015.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      }\n    ],\n    \"author_profile_version\": \"1.0.0\",\n    \"model\": {\n      \"id\": \"synthetic-cli-fixture\",\n      \"configuration\": \"no LLM call\"\n    }\n  },\n  \"state\": {\n    \"run_id\": \"initial-run\",\n    \"stage\": \"revise\",\n    \"mode\": \"revise\",\n    \"target\": \"ch01\",\n    \"artifacts\": [],\n    \"registered_versions\": [],\n    \"resolved_issues\": []\n  },\n  \"drift\": [],\n  \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "add",
+      "."
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "commit",
+      "-m",
+      "Synthetic accepted baseline"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "[main (root-commit) f85d19a] Synthetic accepted baseline\n 31 files changed, 1415 insertions(+)\n create mode 100644 .gitignore\n create mode 100644 catalog.json\n create mode 100644 novels/clock-story/START-HERE.md\n create mode 100644 novels/clock-story/book.yaml\n create mode 100644 novels/clock-story/lifecycle/events/00000001.json\n create mode 100644 novels/clock-story/lifecycle/state.json\n create mode 100644 novels/clock-story/runs/initial-run/inputs/000.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/001.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/002.json\n create mode 100644 novels/clock-story/runs/initial-run/inputs/003.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/004.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/005.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/006.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/007.yaml\n create mode 100644 novels/clock-story/runs/initial-run/inputs/008.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/009.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/010.json\n create mode 100644 novels/clock-story/runs/initial-run/inputs/011.yaml\n create mode 100644 novels/clock-story/runs/initial-run/inputs/012.json\n create mode 100644 novels/clock-story/runs/initial-run/inputs/013.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/014.md\n create mode 100644 novels/clock-story/runs/initial-run/inputs/015.md\n create mode 100644 novels/clock-story/runs/initial-run/run.json\n create mode 100644 novels/clock-story/state.json\n create mode 100644 \"novels/clock-story/\\345\\206\\263\\347\\255\\226\\350\\256\\260\\345\\275\\225/book-1.md\"\n create mode 100644 \"novels/clock-story/\\345\\206\\263\\347\\255\\226\\350\\256\\260\\345\\275\\225/plan-1.md\"\n create mode 100644 \"novels/clock-story/\\345\\206\\263\\347\\255\\226\\350\\256\\260\\345\\275\\225/text-1.md\"\n create mode 100644 \"novels/clock-story/\\347\\211\\210\\346\\234\\254\\350\\256\\260\\345\\275\\225/content/book-1.md\"\n create mode 100644 \"novels/clock-story/\\347\\211\\210\\346\\234\\254\\350\\256\\260\\345\\275\\225/content/plan-1.md\"\n create mode 100644 \"novels/clock-story/\\347\\211\\210\\346\\234\\254\\350\\256\\260\\345\\275\\225/content/text-1.md\"\n create mode 100644 \"novels/clock-story/\\347\\211\\210\\346\\234\\254\\350\\256\\260\\345\\275\\225/revisions.json\"\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "f85d19a1740aa9ba93c553446af32387b1eb4085\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "push",
+      "-u",
+      "origin",
+      "main"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "branch 'main' set up to track 'origin/main'.\n",
+    "stderr": "To <EVAL>/shared.git\n * [new branch]      main -> main\n"
+  },
+  {
+    "argv": [
+      "git",
+      "clone",
+      "<EVAL>/shared.git",
+      "<EVAL>/contributor"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '<EVAL>/contributor'...\ndone.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "config",
+      "user.name",
+      "Synthetic Contributor"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "config",
+      "user.email",
+      "contributor@example.invalid"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "resume",
+      "--project",
+      "clock-story",
+      "--chapter",
+      "ch01"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"state\": {\n    \"schema_version\": 1,\n    \"project_id\": \"clock-story\",\n    \"title\": \"合成修钟小说\",\n    \"book_plan\": \"book-1\",\n    \"chapters\": [\n      {\n        \"id\": \"ch01\",\n        \"title\": \"合成第一章\",\n        \"plan\": \"plan-1\",\n        \"accepted_text\": \"text-1\",\n        \"latest_text\": \"text-1\"\n      }\n    ],\n    \"next_action\": null\n  },\n  \"selected_chapter\": \"ch01\",\n  \"active_task\": {\n    \"run\": {\n      \"schema_version\": 1,\n      \"id\": \"initial-run\",\n      \"request\": {\n        \"schema_version\": 1,\n        \"id\": \"initial-run\",\n        \"task\": \"Synthetic clock-story evaluation\",\n        \"authorization_refs\": [\n          \"Synthetic test protocol; not real author approval\"\n        ],\n        \"target\": \"ch01\",\n        \"mode\": \"revise\",\n        \"stage\": \"revise\",\n        \"fiction_policy\": {\n          \"mode\": \"fiction\",\n          \"scope\": \"Synthetic clock-story only\",\n          \"authorization_ref\": \"Synthetic evaluation fixture\"\n        },\n        \"capabilities\": [\n          \"editorial-review@1.0.0\"\n        ],\n        \"inputs\": [],\n        \"open_issues\": [],\n        \"model\": {\n          \"id\": \"synthetic-cli-fixture\",\n          \"configuration\": \"no LLM call\"\n        }\n      },\n      \"request_sha256\": \"11bd219376f32ea9ce0921c918269de480da6ae4c40c8a08d703c952c1eb7205\",\n      \"pins\": [\n        {\n          \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"origin\": \"public\",\n          \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"snapshot\": \"inputs/000.md\",\n          \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"snapshot\": \"inputs/001.md\",\n          \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"snapshot\": \"inputs/002.json\",\n          \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/PROFILE.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/PROFILE.md\",\n          \"snapshot\": \"inputs/003.md\",\n          \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/expression-evidence.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/expression-evidence.md\",\n          \"snapshot\": \"inputs/004.md\",\n          \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/judgment.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/judgment.md\",\n          \"snapshot\": \"inputs/005.md\",\n          \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/language.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/language.md\",\n          \"snapshot\": \"inputs/006.md\",\n          \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/lexicon.yaml\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/lexicon.yaml\",\n          \"snapshot\": \"inputs/007.yaml\",\n          \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/rubric.md\",\n          \"snapshot\": \"inputs/008.md\",\n          \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/wechat-rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/wechat-rubric.md\",\n          \"snapshot\": \"inputs/009.md\",\n          \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/manifest.json\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/manifest.json\",\n          \"snapshot\": \"inputs/010.json\",\n          \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"book.yaml\",\n          \"origin\": \"project\",\n          \"source\": \"book.yaml\",\n          \"snapshot\": \"inputs/011.yaml\",\n          \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/revisions.json\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/revisions.json\",\n          \"snapshot\": \"inputs/012.json\",\n          \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/book-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/book-1.md\",\n          \"snapshot\": \"inputs/013.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/plan-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/plan-1.md\",\n          \"snapshot\": \"inputs/014.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/text-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/text-1.md\",\n          \"snapshot\": \"inputs/015.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        }\n      ],\n      \"author_profile_version\": \"1.0.0\",\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"state\": {\n      \"run_id\": \"initial-run\",\n      \"stage\": \"revise\",\n      \"mode\": \"revise\",\n      \"target\": \"ch01\",\n      \"artifacts\": [],\n      \"registered_versions\": [],\n      \"resolved_issues\": []\n    },\n    \"drift\": [],\n    \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n  },\n  \"task_precedence\": \"Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.\",\n  \"material_maps\": [],\n  \"read_full_text\": [\n    {\n      \"id\": \"book-1\",\n      \"role\": \"current_book_plan\",\n      \"path\": \"<EVAL>/contributor/novels/clock-story/版本记录/content/book-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"plan-1\",\n      \"role\": \"chapter_plan\",\n      \"path\": \"<EVAL>/contributor/novels/clock-story/版本记录/content/plan-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"text-1\",\n      \"role\": \"target_text\",\n      \"path\": \"<EVAL>/contributor/novels/clock-story/版本记录/content/text-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    }\n  ],\n  \"rules_path\": null,\n  \"open_issues_path\": null,\n  \"workspace\": \"<EVAL>/contributor\",\n  \"project_path\": \"<EVAL>/contributor/novels/clock-story\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "switch",
+      "-c",
+      "candidate/clock-revision"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Switched to a new branch 'candidate/clock-revision'\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "package",
+      "--project",
+      "clock-story",
+      "--chapter",
+      "ch01",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085",
+      "--file",
+      "<EVAL>/fixtures/candidate.md",
+      "--review",
+      "<EVAL>/fixtures/review.md",
+      "--id",
+      "clock-candidate"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"package\": \"contributions/clock-candidate\",\n  \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n  \"manifest_sha256\": \"48ede3a413852b9a456cf7d97512ed6b539dd6ee1104028543cb08909d367a85\",\n  \"files\": [\n    {\n      \"path\": \"files/001-candidate.md\",\n      \"role\": \"candidate\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"bytes\": 136\n    },\n    {\n      \"path\": \"files/002-review.md\",\n      \"role\": \"review\",\n      \"sha256\": \"3da4b32ec20dc782e452cd9309dca22246d0686642f0a4a95726f830d86f31f9\",\n      \"bytes\": 106\n    }\n  ],\n  \"content_registered\": false,\n  \"content_accepted\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "guard",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n  \"packages\": [\n    \"clock-candidate\"\n  ],\n  \"changed_paths\": [\n    \"contributions/clock-candidate/files/001-candidate.md\",\n    \"contributions/clock-candidate/files/002-review.md\",\n    \"contributions/clock-candidate/manifest.json\",\n    \"contributions/clock-candidate/manifest.sha256\"\n  ],\n  \"accepted_content_changed\": false,\n  \"scope\": \"Local Git boundary and integrity checks; not remote access control or author approval.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "add",
+      "contributions/clock-candidate"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "commit",
+      "-m",
+      "Synthetic candidate and review"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "[candidate/clock-revision a69348d] Synthetic candidate and review\n 4 files changed, 87 insertions(+)\n create mode 100644 contributions/clock-candidate/files/001-candidate.md\n create mode 100644 contributions/clock-candidate/files/002-review.md\n create mode 100644 contributions/clock-candidate/manifest.json\n create mode 100644 contributions/clock-candidate/manifest.sha256\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "a69348da9c310d8cd6fd2cd05e5d591c21c5f515\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "guard",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n  \"packages\": [\n    \"clock-candidate\"\n  ],\n  \"changed_paths\": [\n    \"contributions/clock-candidate/files/001-candidate.md\",\n    \"contributions/clock-candidate/files/002-review.md\",\n    \"contributions/clock-candidate/manifest.json\",\n    \"contributions/clock-candidate/manifest.sha256\"\n  ],\n  \"accepted_content_changed\": false,\n  \"scope\": \"Local Git boundary and integrity checks; not remote access control or author approval.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "push",
+      "-u",
+      "origin",
+      "candidate/clock-revision"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "branch 'candidate/clock-revision' set up to track 'origin/candidate/clock-revision'.\n",
+    "stderr": "To <EVAL>/shared.git\n * [new branch]      candidate/clock-revision -> candidate/clock-revision\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "fetch",
+      "origin",
+      "candidate/clock-revision"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "From <EVAL>/shared\n * branch            candidate/clock-revision -> FETCH_HEAD\n * [new branch]      candidate/clock-revision -> origin/candidate/clock-revision\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "switch",
+      "-c",
+      "review/clock-candidate",
+      "origin/candidate/clock-revision"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "branch 'review/clock-candidate' set up to track 'origin/candidate/clock-revision'.\n",
+    "stderr": "Switched to a new branch 'review/clock-candidate'\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "verify",
+      "--package",
+      "contributions/clock-candidate",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"package\": \"contributions/clock-candidate\",\n  \"project_id\": \"clock-story\",\n  \"chapter_id\": \"ch01\",\n  \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n  \"files\": [\n    {\n      \"path\": \"files/001-candidate.md\",\n      \"role\": \"candidate\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"bytes\": 136\n    },\n    {\n      \"path\": \"files/002-review.md\",\n      \"role\": \"review\",\n      \"sha256\": \"3da4b32ec20dc782e452cd9309dca22246d0686642f0a4a95726f830d86f31f9\",\n      \"bytes\": 106\n    }\n  ],\n  \"baseline\": {\n    \"registration_files\": {\n      \"catalog.json\": \"78170d9414e121318e232e35b84e04c82f5599fe765d6acb1607c44b67ac96ce\",\n      \"novels/clock-story/book.yaml\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n      \"novels/clock-story/版本记录/revisions.json\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\"\n    },\n    \"project_tree_sha256\": \"c80ecbc5f176b2b27c99a8ea650c0aaaa106bf1936bf1041521d391bd98471d5\",\n    \"selected_versions\": [\n      {\n        \"role\": \"book_plan\",\n        \"id\": \"book-1\",\n        \"kind\": \"book_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/book-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": null,\n        \"based_on\": null\n      },\n      {\n        \"role\": \"chapter_plan\",\n        \"id\": \"plan-1\",\n        \"kind\": \"chapter_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/plan-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"book-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"accepted_text\",\n        \"id\": \"text-1\",\n        \"kind\": \"text\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/text-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"plan-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"latest_text\",\n        \"id\": \"text-1\",\n        \"kind\": \"text\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/text-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"plan-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"inherited_book_plan\",\n        \"id\": \"book-1\",\n        \"kind\": \"book_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/book-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": null,\n        \"based_on\": null\n      }\n    ]\n  },\n  \"guard\": {\n    \"ok\": true,\n    \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n    \"packages\": [\n      \"clock-candidate\"\n    ],\n    \"changed_paths\": [\n      \"contributions/clock-candidate/files/001-candidate.md\",\n      \"contributions/clock-candidate/files/002-review.md\",\n      \"contributions/clock-candidate/manifest.json\",\n      \"contributions/clock-candidate/manifest.sha256\"\n    ],\n    \"accepted_content_changed\": false,\n    \"scope\": \"Local Git boundary and integrity checks; not remote access control or author approval.\"\n  },\n  \"content_registered\": false,\n  \"content_accepted\": false,\n  \"next_step\": \"The designated editor reviews the candidate and uses writing_workspace.py add-revision. Accepted status requires the actual author decision; no merge or registration was performed.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "verify",
+      "--package",
+      "contributions/clock-candidate",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: Contribution file checksum/size mismatch: files/001-candidate.md\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "verify",
+      "--package",
+      "contributions/clock-candidate",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"package\": \"contributions/clock-candidate\",\n  \"project_id\": \"clock-story\",\n  \"chapter_id\": \"ch01\",\n  \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n  \"files\": [\n    {\n      \"path\": \"files/001-candidate.md\",\n      \"role\": \"candidate\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"bytes\": 136\n    },\n    {\n      \"path\": \"files/002-review.md\",\n      \"role\": \"review\",\n      \"sha256\": \"3da4b32ec20dc782e452cd9309dca22246d0686642f0a4a95726f830d86f31f9\",\n      \"bytes\": 106\n    }\n  ],\n  \"baseline\": {\n    \"registration_files\": {\n      \"catalog.json\": \"78170d9414e121318e232e35b84e04c82f5599fe765d6acb1607c44b67ac96ce\",\n      \"novels/clock-story/book.yaml\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n      \"novels/clock-story/版本记录/revisions.json\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\"\n    },\n    \"project_tree_sha256\": \"c80ecbc5f176b2b27c99a8ea650c0aaaa106bf1936bf1041521d391bd98471d5\",\n    \"selected_versions\": [\n      {\n        \"role\": \"book_plan\",\n        \"id\": \"book-1\",\n        \"kind\": \"book_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/book-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": null,\n        \"based_on\": null\n      },\n      {\n        \"role\": \"chapter_plan\",\n        \"id\": \"plan-1\",\n        \"kind\": \"chapter_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/plan-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"book-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"accepted_text\",\n        \"id\": \"text-1\",\n        \"kind\": \"text\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/text-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"plan-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"latest_text\",\n        \"id\": \"text-1\",\n        \"kind\": \"text\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/text-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"plan-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"inherited_book_plan\",\n        \"id\": \"book-1\",\n        \"kind\": \"book_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/book-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": null,\n        \"based_on\": null\n      }\n    ]\n  },\n  \"guard\": {\n    \"ok\": true,\n    \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n    \"packages\": [\n      \"clock-candidate\"\n    ],\n    \"changed_paths\": [\n      \"contributions/clock-candidate/files/001-candidate.md\",\n      \"contributions/clock-candidate/files/002-review.md\",\n      \"contributions/clock-candidate/manifest.json\",\n      \"contributions/clock-candidate/manifest.sha256\"\n    ],\n    \"accepted_content_changed\": false,\n    \"scope\": \"Local Git boundary and integrity checks; not remote access control or author approval.\"\n  },\n  \"content_registered\": false,\n  \"content_accepted\": false,\n  \"next_step\": \"The designated editor reviews the candidate and uses writing_workspace.py add-revision. Accepted status requires the actual author decision; no merge or registration was performed.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "switch",
+      "main"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "Your branch is up to date with 'origin/main'.\n",
+    "stderr": "Switched to branch 'main'\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "merge",
+      "--ff-only",
+      "review/clock-candidate"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "Updating f85d19a..a69348d\nFast-forward\n .../clock-candidate/files/001-candidate.md         |  1 +\n contributions/clock-candidate/files/002-review.md  |  1 +\n contributions/clock-candidate/manifest.json        | 84 ++++++++++++++++++++++\n contributions/clock-candidate/manifest.sha256      |  1 +\n 4 files changed, 87 insertions(+)\n create mode 100644 contributions/clock-candidate/files/001-candidate.md\n create mode 100644 contributions/clock-candidate/files/002-review.md\n create mode 100644 contributions/clock-candidate/manifest.json\n create mode 100644 contributions/clock-candidate/manifest.sha256\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "--project",
+      "clock-story",
+      "start",
+      "--request",
+      "<EVAL>/fixtures/editor-integration.json"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"run\": {\n    \"schema_version\": 1,\n    \"id\": \"editor-integration\",\n    \"request\": {\n      \"schema_version\": 1,\n      \"id\": \"editor-integration\",\n      \"task\": \"Synthetic clock-story evaluation\",\n      \"authorization_refs\": [\n        \"Synthetic test protocol; not real author approval\"\n      ],\n      \"target\": \"ch01\",\n      \"mode\": \"revise\",\n      \"stage\": \"revise\",\n      \"fiction_policy\": {\n        \"mode\": \"fiction\",\n        \"scope\": \"Synthetic clock-story only\",\n        \"authorization_ref\": \"Synthetic evaluation fixture\"\n      },\n      \"capabilities\": [\n        \"editorial-review@1.0.0\"\n      ],\n      \"inputs\": [],\n      \"open_issues\": [],\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"request_sha256\": \"f6a93a69dbe6ddd9fd974969e0af376194039abe665773cb3572d263e25121f1\",\n    \"pins\": [\n      {\n        \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"origin\": \"public\",\n        \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"snapshot\": \"inputs/000.md\",\n        \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"snapshot\": \"inputs/001.md\",\n        \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"snapshot\": \"inputs/002.json\",\n        \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/PROFILE.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/PROFILE.md\",\n        \"snapshot\": \"inputs/003.md\",\n        \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/expression-evidence.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/expression-evidence.md\",\n        \"snapshot\": \"inputs/004.md\",\n        \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/judgment.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/judgment.md\",\n        \"snapshot\": \"inputs/005.md\",\n        \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/language.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/language.md\",\n        \"snapshot\": \"inputs/006.md\",\n        \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/lexicon.yaml\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/lexicon.yaml\",\n        \"snapshot\": \"inputs/007.yaml\",\n        \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/rubric.md\",\n        \"snapshot\": \"inputs/008.md\",\n        \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/wechat-rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/wechat-rubric.md\",\n        \"snapshot\": \"inputs/009.md\",\n        \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/manifest.json\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/manifest.json\",\n        \"snapshot\": \"inputs/010.json\",\n        \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"book.yaml\",\n        \"origin\": \"project\",\n        \"source\": \"book.yaml\",\n        \"snapshot\": \"inputs/011.yaml\",\n        \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/revisions.json\",\n        \"snapshot\": \"inputs/012.json\",\n        \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/book-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/book-1.md\",\n        \"snapshot\": \"inputs/013.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/plan-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/plan-1.md\",\n        \"snapshot\": \"inputs/014.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/text-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/text-1.md\",\n        \"snapshot\": \"inputs/015.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      }\n    ],\n    \"author_profile_version\": \"1.0.0\",\n    \"model\": {\n      \"id\": \"synthetic-cli-fixture\",\n      \"configuration\": \"no LLM call\"\n    }\n  },\n  \"state\": {\n    \"run_id\": \"editor-integration\",\n    \"stage\": \"revise\",\n    \"mode\": \"revise\",\n    \"target\": \"ch01\",\n    \"artifacts\": [],\n    \"registered_versions\": [],\n    \"resolved_issues\": []\n  },\n  \"drift\": [],\n  \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "--project",
+      "clock-story",
+      "artifact",
+      "--run",
+      "editor-integration",
+      "--operation-id",
+      "attach-candidate",
+      "--source",
+      "<EVAL>/editor/contributions/clock-candidate/files/001-candidate.md",
+      "--id",
+      "integrated-text",
+      "--role",
+      "text"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"schema_version\": 1,\n  \"sequence\": 3,\n  \"run_id\": \"editor-integration\",\n  \"operation_id\": \"attach-candidate\",\n  \"payload\": {\n    \"action\": \"artifact\",\n    \"artifact\": {\n      \"id\": \"integrated-text\",\n      \"path\": \"artifacts/integrated-text.md\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"role\": \"text\"\n    }\n  },\n  \"payload_sha256\": \"95b8d4920f10e68340dca8869c0276b8b5bfb8dfc5c99d8b415c88a452f7bf38\",\n  \"previous\": \"4bc21ab787aea562d86c10c169c35133adb39477f30180d2b8ead9da263b3c37\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "--project",
+      "clock-story",
+      "register",
+      "--run",
+      "editor-integration",
+      "--operation-id",
+      "register-accepted",
+      "--artifact-id",
+      "integrated-text",
+      "--revision",
+      "<EVAL>/fixtures/integrated-revision.json"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"schema_version\": 1,\n  \"sequence\": 4,\n  \"run_id\": \"editor-integration\",\n  \"operation_id\": \"register-accepted\",\n  \"payload\": {\n    \"action\": \"register\",\n    \"revision_id\": \"text-2\",\n    \"artifact_id\": \"integrated-text\",\n    \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n    \"revision\": {\n      \"revision_id\": \"text-2\",\n      \"kind\": \"text\",\n      \"version\": \"2\",\n      \"status\": \"accepted\",\n      \"chapter_id\": \"ch01\",\n      \"parent_plan_id\": \"plan-1\",\n      \"based_on\": \"text-1\",\n      \"decision_file\": \"<EVAL>/editor/novels/clock-story/decisions/integrated.md\"\n    },\n    \"decision_sha256\": \"7143dfdaf426d3fd8fea47fe7604118c7a8b417070ce2593c2c9cc60371ac9c7\"\n  },\n  \"payload_sha256\": \"cd788d7e046bc1b0f568113799c6d184fd30ef738eeb9d5f1b8506c29e4a4b88\",\n  \"previous\": \"6c9cebd6268d72d1c3437103aa7486cf04721d648d5ffc82e090d114afb4b665\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "validate",
+      "--project",
+      "clock-story"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "--project",
+      "clock-story",
+      "verify",
+      "--run",
+      "editor-integration"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"run\": {\n    \"schema_version\": 1,\n    \"id\": \"editor-integration\",\n    \"request\": {\n      \"schema_version\": 1,\n      \"id\": \"editor-integration\",\n      \"task\": \"Synthetic clock-story evaluation\",\n      \"authorization_refs\": [\n        \"Synthetic test protocol; not real author approval\"\n      ],\n      \"target\": \"ch01\",\n      \"mode\": \"revise\",\n      \"stage\": \"revise\",\n      \"fiction_policy\": {\n        \"mode\": \"fiction\",\n        \"scope\": \"Synthetic clock-story only\",\n        \"authorization_ref\": \"Synthetic evaluation fixture\"\n      },\n      \"capabilities\": [\n        \"editorial-review@1.0.0\"\n      ],\n      \"inputs\": [],\n      \"open_issues\": [],\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"request_sha256\": \"f6a93a69dbe6ddd9fd974969e0af376194039abe665773cb3572d263e25121f1\",\n    \"pins\": [\n      {\n        \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"origin\": \"public\",\n        \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"snapshot\": \"inputs/000.md\",\n        \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"snapshot\": \"inputs/001.md\",\n        \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"snapshot\": \"inputs/002.json\",\n        \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/PROFILE.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/PROFILE.md\",\n        \"snapshot\": \"inputs/003.md\",\n        \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/expression-evidence.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/expression-evidence.md\",\n        \"snapshot\": \"inputs/004.md\",\n        \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/judgment.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/judgment.md\",\n        \"snapshot\": \"inputs/005.md\",\n        \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/language.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/language.md\",\n        \"snapshot\": \"inputs/006.md\",\n        \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/lexicon.yaml\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/lexicon.yaml\",\n        \"snapshot\": \"inputs/007.yaml\",\n        \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/rubric.md\",\n        \"snapshot\": \"inputs/008.md\",\n        \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/wechat-rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/wechat-rubric.md\",\n        \"snapshot\": \"inputs/009.md\",\n        \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/manifest.json\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/manifest.json\",\n        \"snapshot\": \"inputs/010.json\",\n        \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"book.yaml\",\n        \"origin\": \"project\",\n        \"source\": \"book.yaml\",\n        \"snapshot\": \"inputs/011.yaml\",\n        \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/revisions.json\",\n        \"snapshot\": \"inputs/012.json\",\n        \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/book-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/book-1.md\",\n        \"snapshot\": \"inputs/013.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/plan-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/plan-1.md\",\n        \"snapshot\": \"inputs/014.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/text-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/text-1.md\",\n        \"snapshot\": \"inputs/015.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      }\n    ],\n    \"author_profile_version\": \"1.0.0\",\n    \"model\": {\n      \"id\": \"synthetic-cli-fixture\",\n      \"configuration\": \"no LLM call\"\n    }\n  },\n  \"state\": {\n    \"run_id\": \"editor-integration\",\n    \"stage\": \"revise\",\n    \"mode\": \"revise\",\n    \"target\": \"ch01\",\n    \"artifacts\": [\n      {\n        \"id\": \"integrated-text\",\n        \"path\": \"artifacts/integrated-text.md\",\n        \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n        \"role\": \"text\"\n      }\n    ],\n    \"registered_versions\": [\n      \"text-2\"\n    ],\n    \"resolved_issues\": []\n  },\n  \"drift\": [\n    {\n      \"label\": \"版本记录/revisions.json\",\n      \"origin\": \"project\",\n      \"snapshot_usable\": true\n    }\n  ],\n  \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "resume",
+      "--project",
+      "clock-story",
+      "--chapter",
+      "ch01"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"state\": {\n    \"schema_version\": 1,\n    \"project_id\": \"clock-story\",\n    \"title\": \"合成修钟小说\",\n    \"book_plan\": \"book-1\",\n    \"chapters\": [\n      {\n        \"id\": \"ch01\",\n        \"title\": \"合成第一章\",\n        \"plan\": \"plan-1\",\n        \"accepted_text\": \"text-2\",\n        \"latest_text\": \"text-2\"\n      }\n    ],\n    \"next_action\": null\n  },\n  \"selected_chapter\": \"ch01\",\n  \"active_task\": {\n    \"run\": {\n      \"schema_version\": 1,\n      \"id\": \"editor-integration\",\n      \"request\": {\n        \"schema_version\": 1,\n        \"id\": \"editor-integration\",\n        \"task\": \"Synthetic clock-story evaluation\",\n        \"authorization_refs\": [\n          \"Synthetic test protocol; not real author approval\"\n        ],\n        \"target\": \"ch01\",\n        \"mode\": \"revise\",\n        \"stage\": \"revise\",\n        \"fiction_policy\": {\n          \"mode\": \"fiction\",\n          \"scope\": \"Synthetic clock-story only\",\n          \"authorization_ref\": \"Synthetic evaluation fixture\"\n        },\n        \"capabilities\": [\n          \"editorial-review@1.0.0\"\n        ],\n        \"inputs\": [],\n        \"open_issues\": [],\n        \"model\": {\n          \"id\": \"synthetic-cli-fixture\",\n          \"configuration\": \"no LLM call\"\n        }\n      },\n      \"request_sha256\": \"f6a93a69dbe6ddd9fd974969e0af376194039abe665773cb3572d263e25121f1\",\n      \"pins\": [\n        {\n          \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"origin\": \"public\",\n          \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"snapshot\": \"inputs/000.md\",\n          \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"snapshot\": \"inputs/001.md\",\n          \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"snapshot\": \"inputs/002.json\",\n          \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/PROFILE.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/PROFILE.md\",\n          \"snapshot\": \"inputs/003.md\",\n          \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/expression-evidence.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/expression-evidence.md\",\n          \"snapshot\": \"inputs/004.md\",\n          \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/judgment.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/judgment.md\",\n          \"snapshot\": \"inputs/005.md\",\n          \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/language.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/language.md\",\n          \"snapshot\": \"inputs/006.md\",\n          \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/lexicon.yaml\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/lexicon.yaml\",\n          \"snapshot\": \"inputs/007.yaml\",\n          \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/rubric.md\",\n          \"snapshot\": \"inputs/008.md\",\n          \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/wechat-rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/wechat-rubric.md\",\n          \"snapshot\": \"inputs/009.md\",\n          \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/manifest.json\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/manifest.json\",\n          \"snapshot\": \"inputs/010.json\",\n          \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"book.yaml\",\n          \"origin\": \"project\",\n          \"source\": \"book.yaml\",\n          \"snapshot\": \"inputs/011.yaml\",\n          \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/revisions.json\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/revisions.json\",\n          \"snapshot\": \"inputs/012.json\",\n          \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/book-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/book-1.md\",\n          \"snapshot\": \"inputs/013.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/plan-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/plan-1.md\",\n          \"snapshot\": \"inputs/014.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/text-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/text-1.md\",\n          \"snapshot\": \"inputs/015.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        }\n      ],\n      \"author_profile_version\": \"1.0.0\",\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"state\": {\n      \"run_id\": \"editor-integration\",\n      \"stage\": \"revise\",\n      \"mode\": \"revise\",\n      \"target\": \"ch01\",\n      \"artifacts\": [\n        {\n          \"id\": \"integrated-text\",\n          \"path\": \"artifacts/integrated-text.md\",\n          \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n          \"role\": \"text\"\n        }\n      ],\n      \"registered_versions\": [\n        \"text-2\"\n      ],\n      \"resolved_issues\": []\n    },\n    \"drift\": [\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"snapshot_usable\": true\n      }\n    ],\n    \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n  },\n  \"task_precedence\": \"Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.\",\n  \"material_maps\": [],\n  \"read_full_text\": [\n    {\n      \"id\": \"book-1\",\n      \"role\": \"current_book_plan\",\n      \"path\": \"<EVAL>/editor/novels/clock-story/版本记录/content/book-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"plan-1\",\n      \"role\": \"chapter_plan\",\n      \"path\": \"<EVAL>/editor/novels/clock-story/版本记录/content/plan-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"text-2\",\n      \"role\": \"target_text\",\n      \"path\": \"<EVAL>/editor/novels/clock-story/版本记录/content/text-2.md\",\n      \"status\": \"accepted\",\n      \"version\": \"2\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"excerpt\": \"合成候选稿：旧钟停在三点。他先扶稳钟摆，她才从齿轮间抽出断裂的铜丝。两人约好周五再来检查。\\n\",\n      \"excerpt_is_full_read\": false\n    }\n  ],\n  \"rules_path\": null,\n  \"open_issues_path\": null,\n  \"workspace\": \"<EVAL>/editor\",\n  \"project_path\": \"<EVAL>/editor/novels/clock-story\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "add",
+      "."
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "commit",
+      "-m",
+      "Synthetic editor acceptance and sequential registration"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "[main 3e733c0] Synthetic editor acceptance and sequential registration\n 27 files changed, 1384 insertions(+), 3 deletions(-)\n create mode 100644 novels/clock-story/decisions/integrated.md\n create mode 100644 novels/clock-story/lifecycle/events/00000002.json\n create mode 100644 novels/clock-story/lifecycle/events/00000003.json\n create mode 100644 novels/clock-story/lifecycle/events/00000004.json\n create mode 100644 novels/clock-story/runs/editor-integration/artifacts/integrated-text.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/000.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/001.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/002.json\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/003.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/004.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/005.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/006.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/007.yaml\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/008.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/009.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/010.json\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/011.yaml\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/012.json\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/013.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/014.md\n create mode 100644 novels/clock-story/runs/editor-integration/inputs/015.md\n create mode 100644 novels/clock-story/runs/editor-integration/run.json\n create mode 100644 \"novels/clock-story/\\345\\206\\263\\347\\255\\226\\350\\256\\260\\345\\275\\225/text-2.md\"\n create mode 100644 \"novels/clock-story/\\347\\211\\210\\346\\234\\254\\350\\256\\260\\345\\275\\225/content/text-2.md\"\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "3e733c0278c7f5928ba4d6d25a195fe1d550ef35\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/editor",
+      "push",
+      "origin",
+      "main"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "To <EVAL>/shared.git\n   f85d19a..3e733c0  main -> main\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "verify",
+      "--package",
+      "contributions/clock-candidate",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: Registration/configuration differs from the declared base commit: novels/clock-story/版本记录/revisions.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "switch",
+      "-c",
+      "unsafe/local-run",
+      "a69348da9c310d8cd6fd2cd05e5d591c21c5f515"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Switched to a new branch 'unsafe/local-run'\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "verify",
+      "--package",
+      "contributions/clock-candidate",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"package\": \"contributions/clock-candidate\",\n  \"project_id\": \"clock-story\",\n  \"chapter_id\": \"ch01\",\n  \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n  \"files\": [\n    {\n      \"path\": \"files/001-candidate.md\",\n      \"role\": \"candidate\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"bytes\": 136\n    },\n    {\n      \"path\": \"files/002-review.md\",\n      \"role\": \"review\",\n      \"sha256\": \"3da4b32ec20dc782e452cd9309dca22246d0686642f0a4a95726f830d86f31f9\",\n      \"bytes\": 106\n    }\n  ],\n  \"baseline\": {\n    \"registration_files\": {\n      \"catalog.json\": \"78170d9414e121318e232e35b84e04c82f5599fe765d6acb1607c44b67ac96ce\",\n      \"novels/clock-story/book.yaml\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n      \"novels/clock-story/版本记录/revisions.json\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\"\n    },\n    \"project_tree_sha256\": \"c80ecbc5f176b2b27c99a8ea650c0aaaa106bf1936bf1041521d391bd98471d5\",\n    \"selected_versions\": [\n      {\n        \"role\": \"book_plan\",\n        \"id\": \"book-1\",\n        \"kind\": \"book_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/book-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": null,\n        \"based_on\": null\n      },\n      {\n        \"role\": \"chapter_plan\",\n        \"id\": \"plan-1\",\n        \"kind\": \"chapter_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/plan-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"book-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"accepted_text\",\n        \"id\": \"text-1\",\n        \"kind\": \"text\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/text-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"plan-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"latest_text\",\n        \"id\": \"text-1\",\n        \"kind\": \"text\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/text-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": \"plan-1\",\n        \"based_on\": null\n      },\n      {\n        \"role\": \"inherited_book_plan\",\n        \"id\": \"book-1\",\n        \"kind\": \"book_plan\",\n        \"status\": \"accepted\",\n        \"path\": \"版本记录/content/book-1.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"parent_plan_id\": null,\n        \"based_on\": null\n      }\n    ]\n  },\n  \"guard\": {\n    \"ok\": true,\n    \"base_commit\": \"f85d19a1740aa9ba93c553446af32387b1eb4085\",\n    \"packages\": [\n      \"clock-candidate\"\n    ],\n    \"changed_paths\": [\n      \"contributions/clock-candidate/files/001-candidate.md\",\n      \"contributions/clock-candidate/files/002-review.md\",\n      \"contributions/clock-candidate/manifest.json\",\n      \"contributions/clock-candidate/manifest.sha256\"\n    ],\n    \"accepted_content_changed\": false,\n    \"scope\": \"Local Git boundary and integrity checks; not remote access control or author approval.\"\n  },\n  \"content_registered\": false,\n  \"content_accepted\": false,\n  \"next_step\": \"The designated editor reviews the candidate and uses writing_workspace.py add-revision. Accepted status requires the actual author decision; no merge or registration was performed.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "--project",
+      "clock-story",
+      "start",
+      "--request",
+      "<EVAL>/fixtures/contributor-local-run.json"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"run\": {\n    \"schema_version\": 1,\n    \"id\": \"contributor-local-run\",\n    \"request\": {\n      \"schema_version\": 1,\n      \"id\": \"contributor-local-run\",\n      \"task\": \"Synthetic clock-story evaluation\",\n      \"authorization_refs\": [\n        \"Synthetic test protocol; not real author approval\"\n      ],\n      \"target\": \"ch01\",\n      \"mode\": \"revise\",\n      \"stage\": \"revise\",\n      \"fiction_policy\": {\n        \"mode\": \"fiction\",\n        \"scope\": \"Synthetic clock-story only\",\n        \"authorization_ref\": \"Synthetic evaluation fixture\"\n      },\n      \"capabilities\": [\n        \"editorial-review@1.0.0\"\n      ],\n      \"inputs\": [],\n      \"open_issues\": [],\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"request_sha256\": \"a6bc192ff54d64b98dd9d98d2cf36ea84d40ed9fe4a725ea86657075dc10566b\",\n    \"pins\": [\n      {\n        \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"origin\": \"public\",\n        \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"snapshot\": \"inputs/000.md\",\n        \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"snapshot\": \"inputs/001.md\",\n        \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"snapshot\": \"inputs/002.json\",\n        \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/PROFILE.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/PROFILE.md\",\n        \"snapshot\": \"inputs/003.md\",\n        \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/expression-evidence.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/expression-evidence.md\",\n        \"snapshot\": \"inputs/004.md\",\n        \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/judgment.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/judgment.md\",\n        \"snapshot\": \"inputs/005.md\",\n        \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/language.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/language.md\",\n        \"snapshot\": \"inputs/006.md\",\n        \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/lexicon.yaml\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/lexicon.yaml\",\n        \"snapshot\": \"inputs/007.yaml\",\n        \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/rubric.md\",\n        \"snapshot\": \"inputs/008.md\",\n        \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/wechat-rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/wechat-rubric.md\",\n        \"snapshot\": \"inputs/009.md\",\n        \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/manifest.json\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/manifest.json\",\n        \"snapshot\": \"inputs/010.json\",\n        \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"book.yaml\",\n        \"origin\": \"project\",\n        \"source\": \"book.yaml\",\n        \"snapshot\": \"inputs/011.yaml\",\n        \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/revisions.json\",\n        \"snapshot\": \"inputs/012.json\",\n        \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/book-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/book-1.md\",\n        \"snapshot\": \"inputs/013.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/plan-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/plan-1.md\",\n        \"snapshot\": \"inputs/014.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/text-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/text-1.md\",\n        \"snapshot\": \"inputs/015.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      }\n    ],\n    \"author_profile_version\": \"1.0.0\",\n    \"model\": {\n      \"id\": \"synthetic-cli-fixture\",\n      \"configuration\": \"no LLM call\"\n    }\n  },\n  \"state\": {\n    \"run_id\": \"contributor-local-run\",\n    \"stage\": \"revise\",\n    \"mode\": \"revise\",\n    \"target\": \"ch01\",\n    \"artifacts\": [],\n    \"registered_versions\": [],\n    \"resolved_issues\": []\n  },\n  \"drift\": [],\n  \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "add-revision",
+      "--project",
+      "clock-story",
+      "--source",
+      "<EVAL>/fixtures/candidate.md",
+      "--id",
+      "local-text-2",
+      "--kind",
+      "text",
+      "--version",
+      "2-local",
+      "--status",
+      "draft",
+      "--chapter",
+      "ch01",
+      "--parent-plan",
+      "plan-1",
+      "--based-on",
+      "text-1"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"id\": \"local-text-2\",\n  \"kind\": \"text\",\n  \"version\": \"2-local\",\n  \"status\": \"draft\",\n  \"chapter_id\": \"ch01\",\n  \"parent_plan_id\": \"plan-1\",\n  \"based_on\": \"text-1\",\n  \"path\": \"版本记录/content/local-text-2.md\",\n  \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "guard",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: Protected workspace change or base drift; contributor changes must only add packages: unstaged M novels/clock-story/lifecycle/state.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "add",
+      "."
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "guard",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: Protected workspace change or base drift; contributor changes must only add packages: staged A novels/clock-story/lifecycle/events/00000002.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/contributor",
+      "commit",
+      "-m",
+      "Synthetic unsafe local official-state edits"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "[unsafe/local-run 0efba2a] Synthetic unsafe local official-state edits\n 22 files changed, 1327 insertions(+), 2 deletions(-)\n create mode 100644 novels/clock-story/lifecycle/events/00000002.json\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/000.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/001.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/002.json\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/003.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/004.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/005.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/006.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/007.yaml\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/008.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/009.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/010.json\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/011.yaml\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/012.json\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/013.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/014.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/inputs/015.md\n create mode 100644 novels/clock-story/runs/contributor-local-run/run.json\n create mode 100644 \"novels/clock-story/\\347\\211\\210\\346\\234\\254\\350\\256\\260\\345\\275\\225/content/local-text-2.md\"\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "guard",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: Protected workspace change or base drift; contributor changes must only add packages: committed A novels/clock-story/lifecycle/events/00000002.json\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/git_collaboration.py",
+      "--workspace",
+      "<EVAL>/contributor",
+      "verify",
+      "--package",
+      "contributions/clock-candidate",
+      "--base",
+      "f85d19a1740aa9ba93c553446af32387b1eb4085"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: Registration/configuration differs from the declared base commit: novels/clock-story/版本记录/revisions.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "clone",
+      "<EVAL>/shared.git",
+      "<EVAL>/recovery"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '<EVAL>/recovery'...\ndone.\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/recovery",
+      "validate",
+      "--project",
+      "clock-story"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_run.py",
+      "--workspace",
+      "<EVAL>/recovery",
+      "--project",
+      "clock-story",
+      "verify",
+      "--run",
+      "editor-integration"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"run\": {\n    \"schema_version\": 1,\n    \"id\": \"editor-integration\",\n    \"request\": {\n      \"schema_version\": 1,\n      \"id\": \"editor-integration\",\n      \"task\": \"Synthetic clock-story evaluation\",\n      \"authorization_refs\": [\n        \"Synthetic test protocol; not real author approval\"\n      ],\n      \"target\": \"ch01\",\n      \"mode\": \"revise\",\n      \"stage\": \"revise\",\n      \"fiction_policy\": {\n        \"mode\": \"fiction\",\n        \"scope\": \"Synthetic clock-story only\",\n        \"authorization_ref\": \"Synthetic evaluation fixture\"\n      },\n      \"capabilities\": [\n        \"editorial-review@1.0.0\"\n      ],\n      \"inputs\": [],\n      \"open_issues\": [],\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"request_sha256\": \"f6a93a69dbe6ddd9fd974969e0af376194039abe665773cb3572d263e25121f1\",\n    \"pins\": [\n      {\n        \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"origin\": \"public\",\n        \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n        \"snapshot\": \"inputs/000.md\",\n        \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n        \"snapshot\": \"inputs/001.md\",\n        \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"origin\": \"public\",\n        \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n        \"snapshot\": \"inputs/002.json\",\n        \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/PROFILE.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/PROFILE.md\",\n        \"snapshot\": \"inputs/003.md\",\n        \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/expression-evidence.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/expression-evidence.md\",\n        \"snapshot\": \"inputs/004.md\",\n        \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/judgment.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/judgment.md\",\n        \"snapshot\": \"inputs/005.md\",\n        \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/language.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/language.md\",\n        \"snapshot\": \"inputs/006.md\",\n        \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/lexicon.yaml\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/lexicon.yaml\",\n        \"snapshot\": \"inputs/007.yaml\",\n        \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/rubric.md\",\n        \"snapshot\": \"inputs/008.md\",\n        \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/wechat-rubric.md\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/wechat-rubric.md\",\n        \"snapshot\": \"inputs/009.md\",\n        \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"shared/author-expression/manifest.json\",\n        \"origin\": \"public\",\n        \"source\": \"shared/author-expression/manifest.json\",\n        \"snapshot\": \"inputs/010.json\",\n        \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"book.yaml\",\n        \"origin\": \"project\",\n        \"source\": \"book.yaml\",\n        \"snapshot\": \"inputs/011.yaml\",\n        \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/revisions.json\",\n        \"snapshot\": \"inputs/012.json\",\n        \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/book-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/book-1.md\",\n        \"snapshot\": \"inputs/013.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/plan-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/plan-1.md\",\n        \"snapshot\": \"inputs/014.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      },\n      {\n        \"label\": \"版本记录/content/text-1.md\",\n        \"origin\": \"project\",\n        \"source\": \"版本记录/content/text-1.md\",\n        \"snapshot\": \"inputs/015.md\",\n        \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n        \"summary\": null,\n        \"summary_basis_sha256\": null\n      }\n    ],\n    \"author_profile_version\": \"1.0.0\",\n    \"model\": {\n      \"id\": \"synthetic-cli-fixture\",\n      \"configuration\": \"no LLM call\"\n    }\n  },\n  \"state\": {\n    \"run_id\": \"editor-integration\",\n    \"stage\": \"revise\",\n    \"mode\": \"revise\",\n    \"target\": \"ch01\",\n    \"artifacts\": [\n      {\n        \"id\": \"integrated-text\",\n        \"path\": \"artifacts/integrated-text.md\",\n        \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n        \"role\": \"text\"\n      }\n    ],\n    \"registered_versions\": [\n      \"text-2\"\n    ],\n    \"resolved_issues\": []\n  },\n  \"drift\": [\n    {\n      \"label\": \"版本记录/revisions.json\",\n      \"origin\": \"project\",\n      \"snapshot_usable\": true\n    }\n  ],\n  \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/recovery",
+      "resume",
+      "--project",
+      "clock-story",
+      "--chapter",
+      "ch01"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"state\": {\n    \"schema_version\": 1,\n    \"project_id\": \"clock-story\",\n    \"title\": \"合成修钟小说\",\n    \"book_plan\": \"book-1\",\n    \"chapters\": [\n      {\n        \"id\": \"ch01\",\n        \"title\": \"合成第一章\",\n        \"plan\": \"plan-1\",\n        \"accepted_text\": \"text-2\",\n        \"latest_text\": \"text-2\"\n      }\n    ],\n    \"next_action\": null\n  },\n  \"selected_chapter\": \"ch01\",\n  \"active_task\": {\n    \"run\": {\n      \"schema_version\": 1,\n      \"id\": \"editor-integration\",\n      \"request\": {\n        \"schema_version\": 1,\n        \"id\": \"editor-integration\",\n        \"task\": \"Synthetic clock-story evaluation\",\n        \"authorization_refs\": [\n          \"Synthetic test protocol; not real author approval\"\n        ],\n        \"target\": \"ch01\",\n        \"mode\": \"revise\",\n        \"stage\": \"revise\",\n        \"fiction_policy\": {\n          \"mode\": \"fiction\",\n          \"scope\": \"Synthetic clock-story only\",\n          \"authorization_ref\": \"Synthetic evaluation fixture\"\n        },\n        \"capabilities\": [\n          \"editorial-review@1.0.0\"\n        ],\n        \"inputs\": [],\n        \"open_issues\": [],\n        \"model\": {\n          \"id\": \"synthetic-cli-fixture\",\n          \"configuration\": \"no LLM call\"\n        }\n      },\n      \"request_sha256\": \"f6a93a69dbe6ddd9fd974969e0af376194039abe665773cb3572d263e25121f1\",\n      \"pins\": [\n        {\n          \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"origin\": \"public\",\n          \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"snapshot\": \"inputs/000.md\",\n          \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"snapshot\": \"inputs/001.md\",\n          \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"snapshot\": \"inputs/002.json\",\n          \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/PROFILE.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/PROFILE.md\",\n          \"snapshot\": \"inputs/003.md\",\n          \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/expression-evidence.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/expression-evidence.md\",\n          \"snapshot\": \"inputs/004.md\",\n          \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/judgment.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/judgment.md\",\n          \"snapshot\": \"inputs/005.md\",\n          \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/language.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/language.md\",\n          \"snapshot\": \"inputs/006.md\",\n          \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/lexicon.yaml\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/lexicon.yaml\",\n          \"snapshot\": \"inputs/007.yaml\",\n          \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/rubric.md\",\n          \"snapshot\": \"inputs/008.md\",\n          \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/wechat-rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/wechat-rubric.md\",\n          \"snapshot\": \"inputs/009.md\",\n          \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/manifest.json\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/manifest.json\",\n          \"snapshot\": \"inputs/010.json\",\n          \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"book.yaml\",\n          \"origin\": \"project\",\n          \"source\": \"book.yaml\",\n          \"snapshot\": \"inputs/011.yaml\",\n          \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/revisions.json\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/revisions.json\",\n          \"snapshot\": \"inputs/012.json\",\n          \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/book-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/book-1.md\",\n          \"snapshot\": \"inputs/013.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/plan-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/plan-1.md\",\n          \"snapshot\": \"inputs/014.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/text-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/text-1.md\",\n          \"snapshot\": \"inputs/015.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        }\n      ],\n      \"author_profile_version\": \"1.0.0\",\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"state\": {\n      \"run_id\": \"editor-integration\",\n      \"stage\": \"revise\",\n      \"mode\": \"revise\",\n      \"target\": \"ch01\",\n      \"artifacts\": [\n        {\n          \"id\": \"integrated-text\",\n          \"path\": \"artifacts/integrated-text.md\",\n          \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n          \"role\": \"text\"\n        }\n      ],\n      \"registered_versions\": [\n        \"text-2\"\n      ],\n      \"resolved_issues\": []\n    },\n    \"drift\": [\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"snapshot_usable\": true\n      }\n    ],\n    \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n  },\n  \"task_precedence\": \"Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.\",\n  \"material_maps\": [],\n  \"read_full_text\": [\n    {\n      \"id\": \"book-1\",\n      \"role\": \"current_book_plan\",\n      \"path\": \"<EVAL>/recovery/novels/clock-story/版本记录/content/book-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"plan-1\",\n      \"role\": \"chapter_plan\",\n      \"path\": \"<EVAL>/recovery/novels/clock-story/版本记录/content/plan-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"text-2\",\n      \"role\": \"target_text\",\n      \"path\": \"<EVAL>/recovery/novels/clock-story/版本记录/content/text-2.md\",\n      \"status\": \"accepted\",\n      \"version\": \"2\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"excerpt\": \"合成候选稿：旧钟停在三点。他先扶稳钟摆，她才从齿轮间抽出断裂的铜丝。两人约好周五再来检查。\\n\",\n      \"excerpt_is_full_read\": false\n    }\n  ],\n  \"rules_path\": null,\n  \"open_issues_path\": null,\n  \"workspace\": \"<EVAL>/recovery\",\n  \"project_path\": \"<EVAL>/recovery/novels/clock-story\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "<PUBLIC>/scripts/writing_workspace.py",
+      "--workspace",
+      "<EVAL>/editor",
+      "resume",
+      "--project",
+      "clock-story",
+      "--chapter",
+      "ch01"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "{\n  \"state\": {\n    \"schema_version\": 1,\n    \"project_id\": \"clock-story\",\n    \"title\": \"合成修钟小说\",\n    \"book_plan\": \"book-1\",\n    \"chapters\": [\n      {\n        \"id\": \"ch01\",\n        \"title\": \"合成第一章\",\n        \"plan\": \"plan-1\",\n        \"accepted_text\": \"text-2\",\n        \"latest_text\": \"text-2\"\n      }\n    ],\n    \"next_action\": null\n  },\n  \"selected_chapter\": \"ch01\",\n  \"active_task\": {\n    \"run\": {\n      \"schema_version\": 1,\n      \"id\": \"editor-integration\",\n      \"request\": {\n        \"schema_version\": 1,\n        \"id\": \"editor-integration\",\n        \"task\": \"Synthetic clock-story evaluation\",\n        \"authorization_refs\": [\n          \"Synthetic test protocol; not real author approval\"\n        ],\n        \"target\": \"ch01\",\n        \"mode\": \"revise\",\n        \"stage\": \"revise\",\n        \"fiction_policy\": {\n          \"mode\": \"fiction\",\n          \"scope\": \"Synthetic clock-story only\",\n          \"authorization_ref\": \"Synthetic evaluation fixture\"\n        },\n        \"capabilities\": [\n          \"editorial-review@1.0.0\"\n        ],\n        \"inputs\": [],\n        \"open_issues\": [],\n        \"model\": {\n          \"id\": \"synthetic-cli-fixture\",\n          \"configuration\": \"no LLM call\"\n        }\n      },\n      \"request_sha256\": \"f6a93a69dbe6ddd9fd974969e0af376194039abe665773cb3572d263e25121f1\",\n      \"pins\": [\n        {\n          \"label\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"origin\": \"public\",\n          \"source\": \"capabilities/editorial-review/1.0.0/CAPABILITY.md\",\n          \"snapshot\": \"inputs/000.md\",\n          \"sha256\": \"9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/SKILL.md\",\n          \"snapshot\": \"inputs/001.md\",\n          \"sha256\": \"23fc39758b8edcf0cbae9cea2603091efa68e55e98d5c739c70152936c002a12\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"origin\": \"public\",\n          \"source\": \".agents/skills/touge-novel-writing/references/lifecycle.json\",\n          \"snapshot\": \"inputs/002.json\",\n          \"sha256\": \"a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/PROFILE.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/PROFILE.md\",\n          \"snapshot\": \"inputs/003.md\",\n          \"sha256\": \"45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/expression-evidence.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/expression-evidence.md\",\n          \"snapshot\": \"inputs/004.md\",\n          \"sha256\": \"463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/judgment.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/judgment.md\",\n          \"snapshot\": \"inputs/005.md\",\n          \"sha256\": \"f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/language.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/language.md\",\n          \"snapshot\": \"inputs/006.md\",\n          \"sha256\": \"08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/lexicon.yaml\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/lexicon.yaml\",\n          \"snapshot\": \"inputs/007.yaml\",\n          \"sha256\": \"09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/rubric.md\",\n          \"snapshot\": \"inputs/008.md\",\n          \"sha256\": \"68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/wechat-rubric.md\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/wechat-rubric.md\",\n          \"snapshot\": \"inputs/009.md\",\n          \"sha256\": \"6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"shared/author-expression/manifest.json\",\n          \"origin\": \"public\",\n          \"source\": \"shared/author-expression/manifest.json\",\n          \"snapshot\": \"inputs/010.json\",\n          \"sha256\": \"73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"book.yaml\",\n          \"origin\": \"project\",\n          \"source\": \"book.yaml\",\n          \"snapshot\": \"inputs/011.yaml\",\n          \"sha256\": \"88c9d8311ae2c310552685b5aa940da68266e067ebc5cdf2d93c60422c304a36\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/revisions.json\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/revisions.json\",\n          \"snapshot\": \"inputs/012.json\",\n          \"sha256\": \"ebb36a9c101145eb96578a34db84654f0481315516aba74ee9a9e31e29da5e64\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/book-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/book-1.md\",\n          \"snapshot\": \"inputs/013.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/plan-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/plan-1.md\",\n          \"snapshot\": \"inputs/014.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        },\n        {\n          \"label\": \"版本记录/content/text-1.md\",\n          \"origin\": \"project\",\n          \"source\": \"版本记录/content/text-1.md\",\n          \"snapshot\": \"inputs/015.md\",\n          \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n          \"summary\": null,\n          \"summary_basis_sha256\": null\n        }\n      ],\n      \"author_profile_version\": \"1.0.0\",\n      \"model\": {\n        \"id\": \"synthetic-cli-fixture\",\n        \"configuration\": \"no LLM call\"\n      }\n    },\n    \"state\": {\n      \"run_id\": \"editor-integration\",\n      \"stage\": \"revise\",\n      \"mode\": \"revise\",\n      \"target\": \"ch01\",\n      \"artifacts\": [\n        {\n          \"id\": \"integrated-text\",\n          \"path\": \"artifacts/integrated-text.md\",\n          \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n          \"role\": \"text\"\n        }\n      ],\n      \"registered_versions\": [\n        \"text-2\"\n      ],\n      \"resolved_issues\": []\n    },\n    \"drift\": [\n      {\n        \"label\": \"版本记录/revisions.json\",\n        \"origin\": \"project\",\n        \"snapshot_usable\": true\n      }\n    ],\n    \"reproduction\": \"Locked inputs support audit, not deterministic model regeneration\"\n  },\n  \"task_precedence\": \"Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.\",\n  \"material_maps\": [],\n  \"read_full_text\": [\n    {\n      \"id\": \"book-1\",\n      \"role\": \"current_book_plan\",\n      \"path\": \"<EVAL>/editor/novels/clock-story/版本记录/content/book-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"plan-1\",\n      \"role\": \"chapter_plan\",\n      \"path\": \"<EVAL>/editor/novels/clock-story/版本记录/content/plan-1.md\",\n      \"status\": \"accepted\",\n      \"version\": \"1\",\n      \"sha256\": \"8e3c1cb0c730ad4393de76990ef22abe493b9850b9a07ac9106b3275074d7d1c\",\n      \"excerpt\": \"合成原稿：两人约定周五检查旧钟。他们先停下钟摆，再取出卡住的齿轮。\\n\",\n      \"excerpt_is_full_read\": false\n    },\n    {\n      \"id\": \"text-2\",\n      \"role\": \"target_text\",\n      \"path\": \"<EVAL>/editor/novels/clock-story/版本记录/content/text-2.md\",\n      \"status\": \"accepted\",\n      \"version\": \"2\",\n      \"sha256\": \"847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce\",\n      \"excerpt\": \"合成候选稿：旧钟停在三点。他先扶稳钟摆，她才从齿轮间抽出断裂的铜丝。两人约好周五再来检查。\\n\",\n      \"excerpt_is_full_read\": false\n    }\n  ],\n  \"rules_path\": null,\n  \"open_issues_path\": null,\n  \"workspace\": \"<EVAL>/editor\",\n  \"project_path\": \"<EVAL>/editor/novels/clock-story\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "<EVAL>/recovery",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "<EVAL>",
+    "exit_code": 0,
+    "stdout": "3e733c0278c7f5928ba4d6d25a195fe1d550ef35\n",
+    "stderr": ""
+  }
+]

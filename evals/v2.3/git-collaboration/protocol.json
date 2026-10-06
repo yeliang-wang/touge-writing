@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "v2.3-private-git-collaboration",
+  "source": "independent_agent_forward_test",
+  "material_scope": "newly authored synthetic novel only",
+  "execution_scope": "one local bare Git repository, independent editor and contributor clones, and a fresh recovery clone on the same host",
+  "excluded_claims": [
+    "Two real GitHub accounts or real GitHub permission enforcement",
+    "Private production workspace migration",
+    "Live Tencent Docs or WeChat operations",
+    "Encryption or protection against an authorized repository reader",
+    "Real author approval or literary quality"
+  ],
+  "cases": [
+    {"id": "initial-clone", "expected": "The contributor clone restores the synthetic accepted baseline and matching registered content hashes."},
+    {"id": "candidate-integration", "expected": "The contributor can submit a candidate and review. Only the editor registers the integrated result after an explicitly synthetic decision fixture."},
+    {"id": "stale-baseline", "expected": "A package bound to an older official baseline is rejected after the baseline changes, without updating the official registry or lifecycle."},
+    {"id": "package-tampering", "expected": "Changing a package member after packaging is rejected, without updating the official registry or lifecycle."},
+    {"id": "concurrent-official-write", "expected": "A contributor branch containing local lifecycle or official-registry changes is rejected by the collaboration guard. Existing writing commands may still create those local changes; they must not be accepted into the editor's official chain."},
+    {"id": "recovery-clone", "expected": "A fresh clone restores the accepted version identity, ancestry, content hashes, and valid sequential lifecycle."}
+  ]
+}

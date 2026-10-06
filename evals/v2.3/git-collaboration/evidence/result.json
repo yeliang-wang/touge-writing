@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "source": "independent_agent_forward_test",
+  "all_in_scope_passed": true,
+  "same_host_local_git_only": true,
+  "live_github_accounts_tested": false,
+  "live_cloud_tested": false,
+  "real_author_approval_claimed": false,
+  "cases": [
+    {
+      "id": "initial-clone",
+      "status": "passed",
+      "observations": {
+        "base_commit": "f85d19a1740aa9ba93c553446af32387b1eb4085",
+        "registered_content_and_lifecycle_identical": true,
+        "accepted_text": "text-1"
+      }
+    },
+    {
+      "id": "package-tampering",
+      "status": "passed",
+      "observations": {
+        "altered_member_detected": true,
+        "official_files_unchanged": true
+      }
+    },
+    {
+      "id": "candidate-integration",
+      "status": "passed",
+      "observations": {
+        "candidate_commit": "a69348da9c310d8cd6fd2cd05e5d591c21c5f515",
+        "integrated_commit": "3e733c0278c7f5928ba4d6d25a195fe1d550ef35",
+        "candidate_sha256": "847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce",
+        "review_sha256": "3da4b32ec20dc782e452cd9309dca22246d0686642f0a4a95726f830d86f31f9",
+        "accepted_text": "text-2",
+        "verified_on_review_branch_before_main_merge": true,
+        "author_decision_is_synthetic": true,
+        "registry_and_lifecycle_verified": true
+      }
+    },
+    {
+      "id": "stale-baseline",
+      "status": "passed",
+      "observations": {
+        "old_base_commit": "f85d19a1740aa9ba93c553446af32387b1eb4085",
+        "new_commit": "3e733c0278c7f5928ba4d6d25a195fe1d550ef35",
+        "rejected_without_official_changes": true
+      }
+    },
+    {
+      "id": "concurrent-official-write",
+      "status": "passed",
+      "observations": {
+        "real_writing_commands_executed": true,
+        "unstaged_staged_and_committed_changes_rejected": true,
+        "valid_package_cannot_conceal_official_changes": true,
+        "same_event_sequence_has_different_hashes": true,
+        "editor_official_files_unchanged": true,
+        "scope": "submission guard, not a local-command authorization system"
+      }
+    },
+    {
+      "id": "recovery-clone",
+      "status": "passed",
+      "observations": {
+        "restored_commit": "3e733c0278c7f5928ba4d6d25a195fe1d550ef35",
+        "accepted_text": "text-2",
+        "accepted_sha256": "847b9df11cf825dcb93e708ab03a77d5456f6e0b5ef932f3f51cce0d32f2cbce",
+        "all_official_file_hashes_match": true,
+        "state_and_ancestry_match": true
+      }
+    }
+  ],
+  "evaluated_files": [
+    {
+      "path": "scripts/git_collaboration.py",
+      "sha256": "87952e3a567d05464ae79fd36c81f6050fb368c5690d70cc7a5bd7d15783285e"
+    },
+    {
+      "path": "scripts/writing_workspace.py",
+      "sha256": "06ff5b6c4d7007b358cff6c878a2ce7db2f39572ad150e9b2fa46253221e1a08"
+    },
+    {
+      "path": "scripts/writing_run.py",
+      "sha256": "b45180645f62dae14468b52e78555b764282d92c46723b8f836ff367144a4d26"
+    },
+    {
+      "path": "scripts/workspace_lib.py",
+      "sha256": "72a7a375375a78ba8eadfe33148cbd20c927030b03d8bf33a967a7bd884457ec"
+    },
+    {
+      "path": "evals/v2.3/git-collaboration/protocol.json",
+      "sha256": "75ddee2c8b7d27a0b0520c3f82e73f14ae31567dd6058878293f616bdb74cf06"
+    },
+    {
+      "path": "evals/v2.3/git-collaboration/run_evaluation.py",
+      "sha256": "b5a96d113f5da1cdafe8c307030682efad75e8d3325e4b66ad3197832c8ca4ed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "transcript.json",
+      "sha256": "7b68c30c4b78c500d3567b02e95dc619b56e9bec0cf548a08ddce65ca74bbc7d"
+    },
+    {
+      "path": "official-inventory.json",
+      "sha256": "90ccb4423c83a591ca19b53bfd9127b29308b20ce129ab9397db74759dcbba3c"
+    },
+    {
+      "path": "accepted-state.json",
+      "sha256": "25b97b2bf0674fe76ed60d438c3d236fa6b0ad53d964e6ba9a9af4d055543539"
+    }
+  ]
+}

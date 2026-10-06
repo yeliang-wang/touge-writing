@@ -1,4 +1,4 @@
-# 宿主集成契约 · v2.2
+# 宿主集成契约 · v2.3
 
 宿主加载 Skill、执行模型与文件工具、管理授权和 MCP。项目提供写作方法及文件协议，不提供 HTTP 服务、常驻 Agent Runtime 或消息适配器。
 
@@ -21,4 +21,6 @@ python3 scripts/build_agent_context.py --scenario novel --capability continuity-
 
 ## 工作区与合作
 
-推荐位置为 `~/.touge-writing/workspace/`。宿主向全部作品命令传同一显式 `--workspace`；省略参数仍为旧的当前目录 `workspace`。首次使用外部目录前先识别旧作品，不能靠初始化空目录绕过迁移。合作双方各用自己的目录，按作品约定引用授权共享的腾讯文档；外部最新稿不等于 accepted，跨工作区导入要有实际确认和本地继承依据。见 [安装](../docs/installation.md) 与 [协作](../docs/collaboration.md)。
+推荐位置为 `~/.touge-writing/workspace/`。宿主向全部作品命令传同一显式 `--workspace`；省略参数仍为旧的当前目录 `workspace`。首次使用外部目录前先识别旧作品，不能靠初始化空目录绕过迁移。作品可放入独立私有 Git 仓库，与公共能力项目分开更新。合作时按共同提交取得基准，贡献者在本地过程副本执行任务；候选包提交到干净贡献分支，主编先获取远端正式分支再核对包并顺序登记。个人 run/lifecycle 不合并到正式链，Git 合并不建立内容接受状态。
+
+package/guard/verify 由本地脚本完成；Git/GitHub CLI 管理克隆、分支和远端，不要求 GitHub MCP。guard/verify 仅检查本地状态，不能证明未拉取的远端没有变化。腾讯文档按作品约定作为可选导入、审阅、导出和历史入口。云端最新稿与 PR 合并均不等于 accepted，正式接受必须保留实际决定和本地继承依据。见 [安装](../docs/installation.md) 与 [协作](../docs/collaboration.md)。

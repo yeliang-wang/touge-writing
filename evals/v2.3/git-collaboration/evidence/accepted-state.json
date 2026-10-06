@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "project_id": "clock-story",
+  "title": "合成修钟小说",
+  "book_plan": "book-1",
+  "chapters": [
+    {
+      "id": "ch01",
+      "title": "合成第一章",
+      "plan": "plan-1",
+      "accepted_text": "text-2",
+      "latest_text": "text-2"
+    }
+  ],
+  "next_action": null
+}
