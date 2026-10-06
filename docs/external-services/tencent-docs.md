@@ -1,4 +1,4 @@
-# 腾讯文档连接与操作 · v2.3
+# 腾讯文档连接与操作 · v2.3.1
 
 腾讯文档是可选的资料导入、外部审阅、导出阅读和历史参考渠道。使用独立私有 Git workspace 时，不要求腾讯文档作为终稿存储。本页面向仍需该服务的使用者。官方 MCP 地址为 [docs.qq.com/openapi/mcp](https://docs.qq.com/openapi/mcp)，个人授权入口为[腾讯文档授权页](https://docs.qq.com/open/auth/mcp.html)。每次新安装使用自己的宿主授权。
 

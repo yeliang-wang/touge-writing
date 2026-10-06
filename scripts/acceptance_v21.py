@@ -39,7 +39,7 @@ def textual_evidence():
 
 
 def clean_install():
-    from build_release import build
+    from build_release import build, distribution_directory
     from export_author_profile import export
     from build_agent_context import SCENARIO_FILES
     with tempfile.TemporaryDirectory() as tmp:
@@ -47,7 +47,7 @@ def clean_install():
         with zipfile.ZipFile(package) as archive:
             require(not any('/workspace/' in n or '/work/' in n for n in archive.namelist()), 'Private folder in release')
             archive.extractall(tmp / 'install')
-        installed = tmp / 'install' / ('touge-writing-reboot-skill-' + (ROOT / 'VERSION').read_text().strip())
+        installed = tmp / 'install' / distribution_directory((ROOT / 'VERSION').read_text().strip())
         require(not (installed / 'workspace').exists(), 'Package includes workspace')
         commands = [['scripts/preflight_check.py'],
                     ['scripts/writing_workspace.py', 'init', '--id', 'fresh-novel', '--title', '合成小说', '--type', 'novel'],

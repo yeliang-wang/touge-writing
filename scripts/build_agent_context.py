@@ -114,7 +114,7 @@ def main():
     paths = unique_paths(paths)
 
     sections = [
-        "# touge-writing-reboot-skill Agent Context",
+        "# touge-writing Agent Context",
         "",
         f"Agent name: {args.agent_name}",
         f"Scenario: {args.scenario}",

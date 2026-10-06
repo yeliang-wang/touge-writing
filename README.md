@@ -1,8 +1,10 @@
-# 头哥写作工作台 · v2.3
+# 头哥写作工作台 · v2.3.1
 
 在 Codex 中创作公众号单篇和长篇小说。两项写作 Skill 共享作者表达包和 13 项原子方法；作品的素材、方案、正文、决定与历史保存在独立的私人 workspace。
 
-v2.3 支持 **公开能力仓库＋独立私有作品仓库**：能力项目单独升级，workspace 可以只在本地使用，也可以按作品或相同权限的团队建立私有 Git 仓库。Git 保存共同版本，指定主编顺序整合和登记；腾讯文档保留为可选导入、审阅和导出渠道。[迁移到私有 Git](docs/migration-v2.3.md)
+**`touge-writing` 提供公共写作能力，`touge-writing-workspace` 可作为独立私有工作区名称。** 一个 workspace 可以同时管理多部小说和公众号单篇，各作品通过 `catalog.json` 定位。能力项目单独升级，工作区持续保存创作资料；也可以只在本地使用。v2.3.1 更新项目名称与入口，已有作品格式和写作方法保持兼容。[更名与升级](docs/rename-v2.3.1.md)
+
+Git 保存共同版本，指定主编顺序整合和登记；腾讯文档保留为可选导入、审阅和导出渠道。多人访问范围不同时，按权限建立独立仓库；文件夹不能限制仓库成员的读取范围。[迁移到私有 Git](docs/migration-v2.3.md)
 
 | 入口 | 用途 |
 |---|---|
@@ -60,4 +62,4 @@ python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.
 
 公共自检不需要作者的私人档案。真实迁移、私有远端权限和克隆恢复应另行核验；合成协作演练不代签作者审美认可，也不证明真实多人并发编辑已经验证。[测试与验收](docs/testing.md)
 
-[文档导航](docs/README.md) · [命令参考](docs/cli.md) · [素材](docs/materials.md) · [运行恢复](docs/runs.md) · [合作](docs/collaboration.md) · [迁移](docs/migration-v2.3.md) · [发布](docs/releasing.md) · [变更记录](CHANGELOG.md)
+[文档导航](docs/README.md) · [命令参考](docs/cli.md) · [素材](docs/materials.md) · [运行恢复](docs/runs.md) · [合作](docs/collaboration.md) · [更名](docs/rename-v2.3.1.md) · [发布](docs/releasing.md) · [变更记录](CHANGELOG.md)

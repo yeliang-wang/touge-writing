@@ -1,4 +1,4 @@
-# 按需模板 · v2.3
+# 按需模板 · v2.3.1
 
 book-plan、chapter-plan、wechat-article 帮助组织作品方案，字段按真实任务取舍。run-request、run-review 和 material-map 是脚本输入形状；替换占位说明和实际哈希，不把模板当作作者决定。
 

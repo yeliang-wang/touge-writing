@@ -12,7 +12,7 @@ from workspace_lib import read_json, write_json, atomic_text, digest, scoped_pat
 
 
 def clean_install():
-    from build_release import build
+    from build_release import build, distribution_directory
     from export_author_profile import export
     from build_agent_context import SCENARIO_FILES
     with tempfile.TemporaryDirectory() as tmp:
@@ -21,7 +21,7 @@ def clean_install():
             members = [Path(n).parts[1:] for n in archive.namelist()]
             require(all(p and p[0] not in {'workspace', 'work', 'dist', 'outputs'} for p in members), 'Private root in release')
             archive.extractall(tmp/'install')
-        installed = tmp/'install'/('touge-writing-reboot-skill-' + (ROOT/'VERSION').read_text().strip())
+        installed = tmp/'install'/distribution_directory((ROOT/'VERSION').read_text().strip())
         private = tmp/'private work'; other_cwd = tmp/'another cwd'; other_cwd.mkdir()
         script = str(installed/'scripts/writing_workspace.py')
         count = 0

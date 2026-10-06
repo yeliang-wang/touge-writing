@@ -1,4 +1,4 @@
-# 测试与验收 · v2.3
+# 测试与验收 · v2.3.1
 
 程序完整性检查、写作方法评审、协作行为和作者审美认可分别报告。脚本成功不等于文学质量认可，合成材料也不替作者接受自己的书稿。
 
@@ -20,7 +20,7 @@ python3 scripts/acceptance.py --public-only
 python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 ```
 
-实际选定其他私有目录时替换参数。公共报告写到 `work/acceptance-public-v2.3`，完整报告写到所选 workspace 的 `acceptance-v2.3`。定义见 [acceptance-v2.3.json](../configs/acceptance-v2.3.json)；本版 C01–C10 单独统计，公共模式检查 C01–C07，C08–C10 需要真实私有迁移与远端证据。报告中的实际结果才是通过依据。
+实际选定其他私有目录时替换参数。v2.3.1 公共报告写到 `work/acceptance-public-v2.3.1`，完整报告写到所选 workspace 的 `acceptance-v2.3.1`。定义仍见 [acceptance-v2.3.json](../configs/acceptance-v2.3.json)，版本从 VERSION 派生；C01–C10 范围不变，公共模式检查 C01–C07，C08–C10 需要真实私有迁移与远端证据。报告中的实际结果才是通过依据。
 
 | ID | 验收范围 |
 |---|---|
@@ -32,10 +32,10 @@ python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 | C06 | 先前冻结写作评测的历史完整性回归 |
 | C07 | 版本、当前文档、链接和 Skills 一致性 |
 | C08 | 私有共享范围迁移、全量个人备份及恢复 |
-| C09 | 当前腾讯文档读取与本地版本核对 |
+| C09 | 腾讯文档来源读取与本地版本核对的证据完整性 |
 | C10 | 私有远端可见性与干净克隆完整性 |
 
-历史 v2.0、v2.1、v2.2 验收定义和回执保留，不改名为 v2.3 结果。新版本可核验旧证据的哈希与适用范围，不能将核验写成重新实测。
+历史 v2.0、v2.1、v2.2、v2.3.0 验收定义和回执保留，不改名为本次结果。v2.3.0 的报告仍位于 `acceptance-v2.3`。v2.3.1 仅更名与调整工作区定位，C09 核验迁移时已保存的腾讯文档读取归档和既有写入证据，没有重新调用腾讯文档；不能将证据核验写成重新实测。C10 则核验更名后的私有远端和新克隆。
 
 ## Git 合作与写作证据
 

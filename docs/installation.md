@@ -1,14 +1,14 @@
-# 安装与首次初始化 · v2.3
+# 安装与首次初始化 · v2.3.1
 
 需要 macOS/Linux、Python 3.9+；核心使用标准库，单机文件锁依赖 fcntl，未声明原生 Windows 支持。Git 用于能力更新和可选私有作品协作；GitHub CLI 可选，GitHub MCP 不必需。Codex 执行写作与 MCP。可选抓取使用 lxml；旧 PPT 生成使用 Pillow 和 macOS 字体，按需安装，不是写作核心依赖。
 
 ## 取得完整能力项目
 
-可以克隆项目，或从 [Releases](https://github.com/yeliang-wang/touge-writing-reboot-skill/releases) 选择实际已发布的完整能力 ZIP。克隆默认分支可能包含尚未发布的改动；需要固定版本时选择已存在的对应标签，不将本页标题作为发布证明。
+可以克隆项目，或从 [Releases](https://github.com/yeliang-wang/touge-writing/releases) 选择实际已发布的完整能力 ZIP。克隆默认分支可能包含尚未发布的改动；需要固定版本时选择已存在的对应标签，不将本页标题作为发布证明。
 
 ```bash
-git clone https://github.com/yeliang-wang/touge-writing-reboot-skill.git
-cd touge-writing-reboot-skill
+git clone https://github.com/yeliang-wang/touge-writing.git
+cd touge-writing
 python3 scripts/acceptance.py --public-only
 ```
 
@@ -39,9 +39,11 @@ resume 的 workspace 和 project_path 字段显示本次实际路径。成功时
 
 ## 使用已有私有作品仓库
 
-先取得完整能力项目，再将获准访问的私有作品仓库克隆到另一个独立目录。对该目录使用同一个显式 `--workspace`，通过 catalog 中的稳定 ID 恢复作品；不要重新 init 同一部书。可以在作品 README 中记录配套能力版本，帮助协作者使用一致的方法。
+先取得完整能力项目，再将获准访问的私有工作区仓库克隆到另一个独立目录，例如 `touge-writing-workspace`。一个工作区可以容纳多部小说和公众号单篇。对该目录使用同一个显式 `--workspace`，通过 catalog 中的稳定 ID 恢复作品；不要重新 init 已有作品。可以在工作区 README 中记录配套能力版本，帮助协作者使用一致的方法。
 
 私有仓库不会自动获得公共能力代码，也无需将代码复制进 workspace。日常更新分别在各自仓库执行；将本地旧资料首次入库前按 [v2.3 迁移](migration-v2.3.md) 清点范围、完整备份、核对源文档和克隆恢复。
+
+从旧公共项目名称升级时，按 [v2.3.1 更名说明](rename-v2.3.1.md) 更新 remote、本地路径及当前使用入口；历史方案与运行快照保留原名，不为更名重建作品。
 
 ## 连接和协作
 

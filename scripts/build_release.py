@@ -8,6 +8,11 @@ from workspace_lib import digest
 from preflight_check import ROOT, audit_public, public_paths
 
 
+def distribution_directory(version):
+    """Canonical extracted directory for current public releases."""
+    return 'touge-writing-' + version
+
+
 def build(output, root=ROOT):
     root = Path(root); output = Path(output)
     errors = audit_public(root)
@@ -28,7 +33,7 @@ def build(output, root=ROOT):
                 'workspace_included': False, 'author_profile_version': '1.0.0'}
     contents['release-manifest.json'] = (json.dumps(manifest, ensure_ascii=False, indent=2) + '\n').encode()
     output.parent.mkdir(parents=True, exist_ok=True)
-    prefix = 'touge-writing-reboot-skill-' + version + '/'
+    prefix = distribution_directory(version) + '/'
     with zipfile.ZipFile(output, 'x', zipfile.ZIP_DEFLATED) as archive:
         for relative, body in sorted(contents.items()):
             info = zipfile.ZipInfo(prefix + relative, (2026, 1, 1, 0, 0, 0))

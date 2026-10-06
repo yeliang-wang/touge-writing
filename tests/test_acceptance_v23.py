@@ -100,6 +100,24 @@ class AcceptanceV23Test(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Private acceptance scope'):
             acceptance.acceptance_config(self.root)
 
+    def test_patch_evidence_is_isolated_and_initial_release_keeps_legacy_directory(self):
+        version = self.root / 'VERSION'
+        workspace = self.root / 'workspace'
+        old_report = workspace / 'acceptance-v2.3/report.json'
+        write_json(old_report, {'version': '2.3.0', 'historical': True})
+        old_hash = digest(old_report)
+        for value, suffix in [('2.3.0', 'v2.3'), ('2.3.1', 'v2.3.1'), ('2.3.12', 'v2.3.12')]:
+            with self.subTest(version=value):
+                version.write_text(value + '\n')
+                self.assertEqual(acceptance.receipt_directory(workspace, self.root), workspace / ('acceptance-' + suffix))
+                self.assertEqual(acceptance.output_directory(workspace, True, self.root),
+                                 self.root / 'work' / ('acceptance-public-' + suffix))
+        self.assertEqual(digest(old_report), old_hash)
+        for invalid in ['2.3.01', '2.4.0', '../../outside']:
+            version.write_text(invalid)
+            with self.assertRaisesRegex(ValueError, 'release version'):
+                acceptance.output_directory(workspace, root=self.root)
+
     def synthetic_migration(self):
         source, destination = self.root / 'owner-workspace', self.root / 'shared-workspace'
         project = init_project(source, 'synthetic-clock', '合成修钟小说', 'novel')
@@ -134,7 +152,7 @@ class AcceptanceV23Test(unittest.TestCase):
                    'source_retained': True, 'source_original_inventory': originals, 'selected_files': selected,
                    'selected_source_ids': ['source-1'], 'backup': backup, 'source_state': derive_state(project),
                    'source_registry_sha256': digest(project / '版本记录/revisions.json')}
-        write_json(destination / 'acceptance-v2.3/migration.json', receipt)
+        write_json(acceptance.receipt_directory(destination) / 'migration.json', receipt)
         (source / 'MIGRATED.md').write_text('Synthetic new pointer; original files remain unchanged.\n')
         return source, destination
 
@@ -148,7 +166,7 @@ class AcceptanceV23Test(unittest.TestCase):
 
     def test_selected_material_ids_must_match_real_manifest(self):
         _, destination = self.synthetic_migration()
-        path = destination / 'acceptance-v2.3/migration.json'; receipt = read_json(path)
+        path = acceptance.receipt_directory(destination) / 'migration.json'; receipt = read_json(path)
         receipt['selected_source_ids'] = ['invented-source']; write_json(path, receipt)
         with self.assertRaisesRegex(ValueError, 'actual corpus manifest'):
             acceptance.migration(destination)
@@ -156,7 +174,7 @@ class AcceptanceV23Test(unittest.TestCase):
     def test_public_repository_receipt_is_rejected_before_network_read(self):
         receipt = {'repo': {'nameWithOwner': 'synthetic/clock', 'url': 'https://github.com/synthetic/clock',
                             'isPrivate': False, 'visibility': 'PUBLIC'}, 'commit': 'a' * 40}
-        write_json(self.root / 'acceptance-v2.3/git-remote.json', receipt)
+        write_json(acceptance.receipt_directory(self.root) / 'git-remote.json', receipt)
         with patch.object(acceptance.subprocess, 'run') as network:
             with self.assertRaisesRegex(ValueError, 'private repository'):
                 acceptance.private_git_evidence(self.root)

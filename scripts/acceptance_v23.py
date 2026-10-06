@@ -15,9 +15,26 @@ from workspace_lib import read_json, write_json, atomic_text, digest, scoped_pat
 
 GIT_CASES = {'initial-clone', 'candidate-integration', 'stale-baseline',
              'package-tampering', 'concurrent-official-write', 'recovery-clone'}
-SKILLS = {'SKILL.md': 'touge-writing-reboot-skill',
+SKILLS = {'SKILL.md': 'touge-writing',
           '.agents/skills/touge-novel-writing/SKILL.md': 'touge-novel-writing',
           '.agents/skills/touge-wechat-writing/SKILL.md': 'touge-wechat-writing'}
+
+
+def evidence_suffix(root=ROOT):
+    """Preserve the original v2.3 receipt folder; isolate every patch release."""
+    version = (Path(root) / 'VERSION').read_text().strip()
+    require(re.fullmatch(r'2\.3\.(?:0|[1-9][0-9]*)', version), 'Expected a v2.3 release version')
+    return 'v2.3' if version == '2.3.0' else 'v' + version
+
+
+def receipt_directory(workspace, root=ROOT):
+    return Path(workspace) / ('acceptance-' + evidence_suffix(root))
+
+
+def output_directory(workspace, public_only=False, root=ROOT):
+    if public_only:
+        return Path(root) / 'work' / ('acceptance-public-' + evidence_suffix(root))
+    return receipt_directory(workspace, root)
 
 
 def acceptance_config(root=ROOT):
@@ -187,13 +204,13 @@ def documentation():
 
 def clean_install():
     from acceptance_v22 import clean_install as previous_install
-    from build_release import build
+    from build_release import build, distribution_directory
     result = previous_install()
     with tempfile.TemporaryDirectory() as temporary:
         temporary = Path(temporary); archive = temporary / 'public.zip'; build(archive)
         with zipfile.ZipFile(archive) as zipped:
             zipped.extractall(temporary / 'install')
-        installed = temporary / 'install' / ('touge-writing-reboot-skill-' + (ROOT / 'VERSION').read_text().strip())
+        installed = temporary / 'install' / distribution_directory((ROOT / 'VERSION').read_text().strip())
         process = subprocess.run([sys.executable, str(installed / 'scripts/git_collaboration.py'), '--help'],
                                  cwd=temporary, capture_output=True, text=True)
         require(process.returncode == 0 and all(x in process.stdout for x in ['package', 'guard', 'verify']), 'Installed Git collaboration CLI unavailable')
@@ -214,7 +231,7 @@ def shared_methods():
 def migration(workspace):
     from backup_workspace import inventory
     from writing_workspace import resolve_project, validate, derive_state
-    workspace = Path(workspace).resolve(); receipt = read_json(workspace / 'acceptance-v2.3/migration.json')
+    workspace = Path(workspace).resolve(); receipt = read_json(receipt_directory(workspace) / 'migration.json')
     require(Path(receipt['destination']).resolve() == workspace, 'Migration receipt belongs to another target')
     source = Path(receipt['source']).resolve()
     require(source != workspace and receipt.get('source_retained') is True, 'Original workspace must be retained separately')
@@ -278,7 +295,7 @@ def mcp_payload(receipt):
 
 
 def tencent_evidence(workspace, expected_documents=31):
-    workspace = Path(workspace); receipt = read_json(workspace / 'acceptance-v2.3/tencent-read.json')
+    workspace = Path(workspace); receipt = read_json(receipt_directory(workspace) / 'tencent-read.json')
     require(receipt.get('source') == 'live_host_mcp' and receipt.get('recorded_at'), 'Missing current live MCP read provenance')
     require(receipt.get('wechat_live') == 'excluded_by_authorized_scope', 'WeChat live scope changed')
     require(receipt.get('write_scope') == 'historical_evidence_only; no new cloud write during storage cutover', 'Historical writes must not be claimed as new')
@@ -341,7 +358,7 @@ def tencent_evidence(workspace, expected_documents=31):
 
 
 def private_git_evidence(workspace):
-    workspace = Path(workspace); receipt = read_json(workspace / 'acceptance-v2.3/git-remote.json')
+    workspace = Path(workspace); receipt = read_json(receipt_directory(workspace) / 'git-remote.json')
     repo = receipt['repo']; name = repo['nameWithOwner']; url = repo['url']; commit = receipt['commit']
     require(re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', name) and url == 'https://github.com/' + name,
             'Expected a canonical GitHub repository identity without credentials')
@@ -395,7 +412,7 @@ def private_git_evidence(workspace):
         offset += 1
     require(offset == len(blobs.stdout), 'Unexpected trailing committed content')
     from writing_workspace import resolve_project, validate, derive_state
-    migration_receipt = read_json(workspace / 'acceptance-v2.3/migration.json')
+    migration_receipt = read_json(receipt_directory(workspace) / 'migration.json')
     project = resolve_project(clone, migration_receipt['source_state']['project_id'])
     require(not validate(project) and derive_state(project) == migration_receipt['source_state'], 'Cloned accepted state/ancestry differs')
     require(digest(project / '版本记录/revisions.json') == migration_receipt['source_registry_sha256'], 'Cloned registered versions differ')
@@ -407,7 +424,7 @@ def private_git_evidence(workspace):
 
 def run(workspace, public_only=False):
     workspace = Path(workspace).expanduser().resolve()
-    output = ROOT / 'work/acceptance-public-v2.3' if public_only else workspace / 'acceptance-v2.3'
+    output = output_directory(workspace, public_only)
     output.mkdir(parents=True, exist_ok=True)
     config = acceptance_config(); results = []
     def check(ident, function):

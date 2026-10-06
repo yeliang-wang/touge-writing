@@ -1,4 +1,4 @@
-# CLI 参考 · v2.3
+# CLI 参考 · v2.3.1
 
 在项目根运行，核心 Python 3.9+。`--help` 显示当前参数，所有路径使用自己的本地目录。脚本不调用模型、不自动连接账号。下例显式使用推荐外部工作区；自定义时替换全部相关路径。脚本省略 --workspace 仍沿用当前终端目录下的 workspace，没有全局配置或自动回退。
 
@@ -75,7 +75,7 @@ external_operations.py 的 prepare/record 对已有作品和远端操作记账�
 python3 scripts/backup_workspace.py create --workspace "$HOME/.touge-writing/workspace" --out "$HOME/.touge-writing/backups/snapshot.tar.gz"
 python3 scripts/backup_workspace.py restore --archive "$HOME/.touge-writing/backups/snapshot.tar.gz" --destination "$HOME/.touge-writing/restores/snapshot"
 python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
-python3 scripts/build_release.py --out dist/touge-writing-reboot-skill-2.3.0.zip
+python3 scripts/build_release.py --out dist/touge-writing-2.3.1.zip
 python3 scripts/acceptance.py --public-only
 python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 ```

@@ -1,9 +1,9 @@
 ---
-name: touge-writing-reboot-skill
+name: touge-writing
 description: 为头哥的写作任务选择公众号文章或长篇小说工作流，复用作者风格；兼容原有交流、复盘、产品问答与内容交付请求。
 ---
 
-# 头哥写作 · v2.3
+# 头哥写作 · v2.3.1
 
 从用户的作品和任务开始，按需读取一个入口：
 
@@ -21,6 +21,8 @@ description: 为头哥的写作任务选择公众号文章或长篇小说工作�
 作品名称与旧专家别名在本轮明确工作区的 `catalog.json` 解析。推荐 `~/.touge-writing/workspace`，每次命令显式传入 `--workspace`；旧 CLI 默认值不变。首次切换检查旧目录，遵守已确认迁移去向，不自动回退或合并。使用者没有指定作品且存在多个候选时，先澄清作品，不混合人物与事实。
 
 作者资料只有一份：[PROFILE.md](shared/author-expression/PROFILE.md)。作品存放在私有 workspace。Codex 提供文件与 MCP 工具，Skill 只规定方法和使用约定。已确认的正文及历史方案保留原样，后续修改产生新版本。
+
+`touge-writing` 是公共能力项目；统一私有工作区可命名为 `touge-writing-workspace`，同时保存多部小说和公众号单篇。按 catalog 中的作品 ID 路由，不把工作区仓库名称当作唯一作品。跨作品素材使用仍须明确范围。
 
 原有命令见 [docs/GUIDE](docs/GUIDE)；外部服务使用说明见 [docs/external-services/adding-service.md](docs/external-services/adding-service.md)。
 

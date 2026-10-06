@@ -3,9 +3,9 @@ name: touge-wechat-writing
 description: 创作、改写和审阅头哥风格的微信公众号单篇文章，管理素材、文章版本、运行记录与发布准备；用于公众号、推文、单篇文章任务。
 ---
 
-# 公众号写作（短篇、单篇）· v2.3
+# 公众号写作（短篇、单篇）· v2.3.1
 
-项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)。用户明确的工作区优先；否则推荐 `~/.touge-writing/workspace`。执行每个工作区命令都显式传入同一个 `--workspace`，通过该目录的 `catalog.json` 定位作品；CLI 省略参数仍保留旧的当前目录 `workspace` 行为。
+项目根为本文件向上三级。读 [作者表达包](../../../shared/author-expression/PROFILE.md)。用户明确的工作区优先；否则推荐 `~/.touge-writing/workspace`。执行每个工作区命令都显式传入同一个 `--workspace`，一个工作区可包含多部小说与公众号单篇，通过该目录的 `catalog.json` 及稳定作品 ID 定位本次作品；CLI 省略参数仍保留旧的当前目录 `workspace` 行为。
 
 首次使用外部位置前检查其索引及项目内旧 `workspace/catalog.json`。外部缺失而旧位置有作品时，先说明迁移路径并沿用已明确的选择，不创建空库掩盖旧作品；两处都有同名作品且去向未明确时先厘清，不能自动合并。已经确认的迁移目的地或本轮路径持续有效，不重复询问。脚本使用项目根下的实际路径，不能假设终端当前目录。新建与迁移见 [安装](../../../docs/installation.md)和 [工作区](../../../docs/workspace.md)。
 
