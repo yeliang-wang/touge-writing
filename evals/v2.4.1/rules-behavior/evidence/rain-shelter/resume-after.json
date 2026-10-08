@@ -1,0 +1,37 @@
+{
+  "state": {
+    "schema_version": 1,
+    "project_id": "rain-shelter",
+    "title": "雨棚下的等候",
+    "book_plan": null,
+    "chapters": [],
+    "next_action": null,
+    "latest_text": "article-draft-1.0"
+  },
+  "selected_chapter": null,
+  "active_task": null,
+  "task_precedence": "Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.",
+  "material_maps": [],
+  "read_full_text": [
+    {
+      "id": "article-draft-1.0",
+      "role": "article_text",
+      "path": "<EVAL>/workspace/wechat/rain-shelter/版本记录/content/article-draft-1.0.md",
+      "status": "draft",
+      "version": "1.0",
+      "sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "excerpt": "雨下大的时候，我把包放到雨棚里侧。旁边的人也挪了一点，给后来的人留出位置。谁都没有主持这件事，空隙却一点点变大。\n\n我原先怕让路会把自己挤出去，后来才发现，大家站得松一点，反而都能避雨。\n",
+      "excerpt_is_full_read": false
+    }
+  ],
+  "rules_path": null,
+  "rule_context": {
+    "enabled": false,
+    "project_id": "rain-shelter",
+    "notice": "Rules manifest not enabled; legacy rule loading remains manual."
+  },
+  "rules_read_full_text": [],
+  "open_issues_path": null,
+  "workspace": "<EVAL>/workspace",
+  "project_path": "<EVAL>/workspace/wechat/rain-shelter"
+}

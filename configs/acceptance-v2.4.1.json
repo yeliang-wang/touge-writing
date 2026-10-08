@@ -1,0 +1,58 @@
+{
+  "version": "2.4.1",
+  "checks": [
+    {
+      "id": "D01",
+      "name": "单元回归、公共边界、文档和Skill"
+    },
+    {
+      "id": "D02",
+      "name": "干净安装、兼容行为及共享作者包"
+    },
+    {
+      "id": "D03",
+      "name": "规则流程测试、新Git协作演练与历史证据保护"
+    },
+    {
+      "id": "D04",
+      "name": "私有规则依赖、离线恢复与原稿保护",
+      "private_required": true
+    },
+    {
+      "id": "D05",
+      "name": "新Skill独立合成行为演练"
+    },
+    {
+      "id": "D06",
+      "name": "公共发布与私有远端克隆验证",
+      "private_required": true
+    }
+  ],
+  "excluded_by_user": [
+    "微信公众号真实账号连接与发文验收"
+  ],
+  "limitations": [
+    "哈希和规则覆盖记录不自动证明文学质量、事实真实或作者采纳",
+    "Git协作合成测试不代表真实多账号并发",
+    "外部MCP协议未变，本版不将历史回执称为新实测",
+    "产品升级期间不改写或重新评判真实作品正文"
+  ],
+  "behavior_case_ids": [
+    "novel-expansion",
+    "wechat-rhythm",
+    "draft-confirmation"
+  ],
+  "behavior_required_files": [
+    "capabilities/registry.json",
+    "capabilities/scene-design/1.0.1/CAPABILITY.md",
+    "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+    "capabilities/editorial-review/1.0.1/CAPABILITY.md",
+    ".agents/skills/touge-novel-writing/references/recipes.json",
+    ".agents/skills/touge-wechat-writing/references/recipes.json",
+    ".agents/skills/touge-novel-writing/references/recipes.md",
+    ".agents/skills/touge-novel-writing/references/lifecycle.md",
+    ".agents/skills/touge-wechat-writing/references/recipes.md",
+    ".agents/skills/touge-wechat-writing/references/lifecycle.md",
+    "docs/rules.md"
+  ]
+}

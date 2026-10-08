@@ -1,0 +1,143 @@
+{
+  "state": {
+    "schema_version": 1,
+    "project_id": "risk-table",
+    "title": "那张没填满的表",
+    "book_plan": null,
+    "chapters": [],
+    "next_action": null,
+    "latest_text": null
+  },
+  "selected_chapter": null,
+  "active_task": null,
+  "task_precedence": "Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.",
+  "material_maps": [],
+  "read_full_text": [],
+  "rules_path": "<EVAL>/workspace/wechat/risk-table/rules-v1.md",
+  "rule_context": {
+    "enabled": true,
+    "schema_version": 1,
+    "project_id": "risk-table",
+    "target": "article",
+    "mode": "revise",
+    "manifest": {
+      "id": "risk-table-rules-v1",
+      "path": "rules-manifest-v1.json",
+      "sha256": "ee656e0115ba7c9c6311c86db1071f94cb9fe3be0a35e169175fa2100ab05744"
+    },
+    "files": [
+      {
+        "path": "rules-v1.md",
+        "sha256": "30822f37e9eae8972a03cad351842730e0a340b94a1048528bf13e809eb537fb",
+        "role": "rule_body"
+      },
+      {
+        "path": "inputs/request.md",
+        "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff",
+        "role": "synthetic_request_source"
+      }
+    ],
+    "rules": [
+      {
+        "id": "facts-voice",
+        "path": "rules-v1.md",
+        "anchor": "r-facts-voice",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise",
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "rhythm-scope",
+        "path": "rules-v1.md",
+        "anchor": "r-rhythm-scope",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise",
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "keep-ending",
+        "path": "rules-v1.md",
+        "anchor": "r-keep-ending",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise",
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "candidate-only",
+        "path": "rules-v1.md",
+        "anchor": "r-candidate-only",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise",
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      }
+    ],
+    "rule_set_sha256": "fb293f0185b41e3be98740392e6528b657c9e362fc60bee119bc507bff6680d4"
+  },
+  "rules_read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/wechat/risk-table/rules-manifest-v1.json",
+      "sha256": "ee656e0115ba7c9c6311c86db1071f94cb9fe3be0a35e169175fa2100ab05744",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/wechat/risk-table/rules-v1.md",
+      "sha256": "30822f37e9eae8972a03cad351842730e0a340b94a1048528bf13e809eb537fb",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/wechat/risk-table/inputs/request.md",
+      "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff",
+      "read_state": "not_attested"
+    }
+  ],
+  "open_issues_path": null,
+  "workspace": "<EVAL>/workspace",
+  "project_path": "<EVAL>/workspace/wechat/risk-table"
+}

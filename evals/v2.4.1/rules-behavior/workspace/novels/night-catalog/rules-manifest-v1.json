@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "night-catalog-rules-v1",
+  "project_id": "night-catalog",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "04bade8f16e3f212af6b0c582b2f2a4f2cad46a62fb51ed3847ef76fe881f521",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a",
+      "role": "synthetic_request_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "keep-chain",
+      "path": "rules-v1.md",
+      "anchor": "r-keep-chain",
+      "kind": "required",
+      "targets": [
+        "lights-out"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "source-boundary",
+      "path": "rules-v1.md",
+      "anchor": "r-source-boundary",
+      "kind": "required",
+      "targets": [
+        "lights-out"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "useful-expansion",
+      "path": "rules-v1.md",
+      "anchor": "r-useful-expansion",
+      "kind": "required",
+      "targets": [
+        "lights-out"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "rhythm-reflection",
+      "path": "rules-v1.md",
+      "anchor": "r-rhythm-reflection",
+      "kind": "required",
+      "targets": [
+        "lights-out"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "two-takeaways",
+      "path": "rules-v1.md",
+      "anchor": "r-two-takeaways",
+      "kind": "required",
+      "targets": [
+        "lights-out"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "candidate-only",
+      "path": "rules-v1.md",
+      "anchor": "r-candidate-only",
+      "kind": "required",
+      "targets": [
+        "lights-out"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    }
+  ]
+}

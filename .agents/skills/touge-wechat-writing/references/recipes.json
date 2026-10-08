@@ -8,20 +8,20 @@
   "draft": [
     "source-map@1.0.0",
     "structure-design@1.0.0",
-    "reflection-shaping@1.0.0",
+    "reflection-shaping@1.0.1",
     "author-voice-review@1.0.0"
   ],
   "review": [
     "continuity-audit@1.0.0",
     "author-voice-review@1.0.0",
     "prose-hygiene@1.0.0",
-    "editorial-review@1.0.0"
+    "editorial-review@1.0.1"
   ],
   "revise": [
     "source-map@1.0.0",
     "continuity-audit@1.0.0",
-    "reflection-shaping@1.0.0",
-    "editorial-review@1.0.0"
+    "reflection-shaping@1.0.1",
+    "editorial-review@1.0.1"
   ],
   "title": [
     "title-design@1.0.0"

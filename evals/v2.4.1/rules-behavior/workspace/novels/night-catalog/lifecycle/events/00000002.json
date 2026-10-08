@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "run_id": "novel-expansion-001",
+  "operation_id": "save-candidate-v1",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "candidate-v1",
+      "path": "artifacts/candidate-v1.md",
+      "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+      "role": "text"
+    }
+  },
+  "payload_sha256": "c53288ddad6290e340ce5ae41dd996400f533ac91e890f66dec98a403ebe6dff",
+  "previous": "d71ea3d8aebe3291eeb48a79b711b90ddfffc4c9539ea75f2a75ad98562b643d"
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "path": ".agents/skills/touge-novel-writing/SKILL.md",
+    "sha256": "73aedbac9f6ae31cd5471c099c30f42c4a832f9c31ee18c40fe2da0156fdeb5e"
+  },
+  {
+    "path": ".agents/skills/touge-wechat-writing/SKILL.md",
+    "sha256": "d507d2a666591bb4d60282a0ad1e606a0fe294d160b5da715264f81a8adc0067"
+  },
+  {
+    "path": "scripts/writing_rules.py",
+    "sha256": "12e5deeeb6eb28aa645d3462c4d3d57176313e82d2dfdecb29d40788946f958d"
+  },
+  {
+    "path": "scripts/writing_workspace.py",
+    "sha256": "b5347408c922d6f0735950af78d4463731d583226fc9e4a70fe793e2afdcfd69"
+  },
+  {
+    "path": "scripts/writing_run.py",
+    "sha256": "d75713c356c1adf1a9acddd88ef9c7cecfe48c32145bec4e6fa16f96abb1b16e"
+  },
+  {
+    "path": "configs/acceptance-v2.4.1.json",
+    "sha256": "43df740d0c3be4501a1499965cdc9b8813c62906f8364d8c97d1a7346d1d9a8a"
+  },
+  {
+    "path": "capabilities/registry.json",
+    "sha256": "a585c6ac69522507538021398117121682f36d70ea0be55cbb2407f633d7c49a"
+  },
+  {
+    "path": "capabilities/scene-design/1.0.1/CAPABILITY.md",
+    "sha256": "bec3d5640bd1dd867dea4ace828234ba99696b83536b5dc03efbb3f9d825ee53"
+  },
+  {
+    "path": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+    "sha256": "18c089960b28818d3bcda24089958bc3f3073c04b692d6d83709b0ab663d2ca2"
+  },
+  {
+    "path": "capabilities/editorial-review/1.0.1/CAPABILITY.md",
+    "sha256": "5459e8b08ce055ca36c79945daffaba5caf012bf66ef31c463ca85f0dac03ab3"
+  },
+  {
+    "path": ".agents/skills/touge-novel-writing/references/recipes.json",
+    "sha256": "cfecf4a84310955cb28a1706a022ae1ad3d2133aa180cc36fdd8f6302a0cea15"
+  },
+  {
+    "path": ".agents/skills/touge-wechat-writing/references/recipes.json",
+    "sha256": "46a8645ddab026c5f55ca0c2b4af895a6c4825b2d602d9387b4f4904c75a3339"
+  },
+  {
+    "path": ".agents/skills/touge-novel-writing/references/recipes.md",
+    "sha256": "231b2f6233c0b4aad05c94bddf006602fa052029a310a3a9f31a6ae6e78c90a4"
+  },
+  {
+    "path": ".agents/skills/touge-novel-writing/references/lifecycle.md",
+    "sha256": "bc40ced03b1df09b67540b3cc4e545af126d695a2722c97934443edd58a62d56"
+  },
+  {
+    "path": ".agents/skills/touge-wechat-writing/references/recipes.md",
+    "sha256": "231b2f6233c0b4aad05c94bddf006602fa052029a310a3a9f31a6ae6e78c90a4"
+  },
+  {
+    "path": ".agents/skills/touge-wechat-writing/references/lifecycle.md",
+    "sha256": "bc40ced03b1df09b67540b3cc4e545af126d695a2722c97934443edd58a62d56"
+  },
+  {
+    "path": "docs/rules.md",
+    "sha256": "12f0f83d1531ca7a9092853f30cd16a10d52e2d90d59f4c8bf44aaa5414288db"
+  }
+]

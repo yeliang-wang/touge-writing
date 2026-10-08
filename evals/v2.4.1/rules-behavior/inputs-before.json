@@ -1,0 +1,14 @@
+[
+  {
+    "path": "inputs/confirmation-request.md",
+    "sha256": "8c75235024f0ec54dfaea8f58b8424642f80302e709320d3217f2ac5653b75ba"
+  },
+  {
+    "path": "inputs/novel-request.md",
+    "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a"
+  },
+  {
+    "path": "inputs/wechat-request.md",
+    "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff"
+  }
+]

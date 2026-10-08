@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "source": "independent_agent_forward_test",
+  "all_in_scope_passed": true,
+  "independence": {
+    "execution": "agent separate from product implementation",
+    "inputs": "synthetic requests supplied by parent task; not blind",
+    "semantic_review": "self_review"
+  },
+  "cases": [
+    {
+      "id": "novel-expansion",
+      "status": "passed",
+      "reviewer_relationship": "self_review",
+      "task_result": "completed",
+      "manuscript_result": "meets_rules",
+      "observations": [
+        "读完整原章、全部补充资料和所提供邻章末尾节选，按当前 Skill 与方法实际扩写。",
+        "候选保留事件链，新增处境、查证条件、未决交接和次日核对；末尾交付两点有条件的收获。",
+        "首稿自审发现两处资料外后续做法断言，保留 needs_revision 记录后修订为 v2。",
+        "原文、邻章节选及空内容登记哈希未变；run completed 没有产生正文接受或登记。"
+      ],
+      "final_artifact": "workspace/novels/night-catalog/outputs/candidate-v2.md"
+    },
+    {
+      "id": "wechat-rhythm",
+      "status": "passed",
+      "reviewer_relationship": "self_review",
+      "task_result": "completed",
+      "manuscript_result": "meets_rules",
+      "observations": [
+        "直接交付完整候选，删除两句重复解释并按事件与回望调整段落。",
+        "指定尾句逐字保留；除被删除两句及空白外全文与原稿一致，没有新事实或编号教程。",
+        "保存轻量语义审阅与规则证据，不建立完整 run，不登记候选。"
+      ],
+      "final_artifact": "workspace/wechat/risk-table/outputs/candidate.md"
+    },
+    {
+      "id": "draft-confirmation",
+      "status": "passed",
+      "reviewer_relationship": "self_review",
+      "task_result": "completed",
+      "manuscript_result": "not_assessed",
+      "observations": [
+        "通过现有 CLI 建立唯一 article-draft-1.0 / v1.0 draft 合成基线，先读登记和正文并核验实际哈希。",
+        "将合成“初稿完成，待精修”请求绑定既有 revision ID 和正文 SHA；正文及 revisions.json 字节不变，仍只有一条 draft。",
+        "未复制相同正文、未追加正文版本、未改 accepted，清单只计唯一登记正文。",
+        "没有专用里程碑 CLI；依 Skill 由执行宿主保存决定、更新入口和实际清单，未声称自动集成。"
+      ],
+      "final_artifact": "workspace/wechat/rain-shelter/当前清单.md"
+    }
+  ],
+  "findings": [
+    {
+      "case_id": "novel-expansion",
+      "status": "resolved",
+      "kind": "candidate_self_review",
+      "description": "首稿包含两处未由材料支持的后续做法断言；实际自审标 needs_revision 后已在 candidate-v2.md 删除，历史首稿和审阅未覆盖。",
+      "product_implementation_defect": false
+    }
+  ],
+  "limitations": [
+    "不是盲测，任务输入由主任务提供，执行和语义审阅由同一独立 Agent 完成。",
+    "文学质量判断限本次合成请求，不表示作者审美认可、真实事实核验或受众实测。",
+    "只获得小说邻章末尾节选，不能声称已读邻章全文或审阅全书主题。",
+    "只分发选定合成证据，完整 run 输入快照在本地保留但未纳入 artifacts；run 清单保留真实来源及哈希。",
+    "阶段里程碑由宿主保存决定与清单，现有 CLI resume 仍呈现 draft，未宣称自动聚合阶段。",
+    "未执行公共整体验收、真实账户或外部服务测试；这些不属于本 Agent 的三项评估范围。"
+  ],
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "b4a1b6aaec270eff620c6b4f1d1dbad3342194aa5504942728a257b23f543ef4"
+    },
+    {
+      "path": "descriptive-statistics.json",
+      "sha256": "8ac896fded240cfd347b0cccc77280fc5a3a39707b867fafc4ee7e154c56d891"
+    },
+    {
+      "path": "evaluated-files-final.json",
+      "sha256": "c4978611fce842ab54e7ab9172b11e703935d9dcc2e4f56c4a3b450a4a711c29"
+    },
+    {
+      "path": "evaluated-files-start.json",
+      "sha256": "c4978611fce842ab54e7ab9172b11e703935d9dcc2e4f56c4a3b450a4a711c29"
+    },
+    {
+      "path": "evidence/night-catalog/after.json",
+      "sha256": "9e98cb1045d10f788c826c81193a17147bfcfe5d1c9450398364a12d0b9f1cf2"
+    },
+    {
+      "path": "evidence/night-catalog/before.json",
+      "sha256": "1eab61251d87f147451bf661e8c3458201c5724ea6eb19081fbf845d7c6269e5"
+    },
+    {
+      "path": "evidence/night-catalog/completion-cli.json",
+      "sha256": "54c03a4b9ca0a6fc0af9a2aec062e2f025ba4bdf1f06d3246e8fb7454b4f27e7"
+    },
+    {
+      "path": "evidence/night-catalog/empty-registration.json",
+      "sha256": "20e1a7e626cadb76f5e9d72daad4bbfeb0a5765b9d5e4ac9514301b36cd4a3dd"
+    },
+    {
+      "path": "evidence/night-catalog/mechanical-final.json",
+      "sha256": "d5c653df6023a22dcfa6afabe566a45a41146f16d9291fa25a65e78f34667b9b"
+    },
+    {
+      "path": "evidence/night-catalog/mechanical.json",
+      "sha256": "365e273d071219544f395fcb47f739855e1dd2e7ab74544ff3a328e9c9df59a2"
+    },
+    {
+      "path": "evidence/night-catalog/resume-before.json",
+      "sha256": "cbbc77579d885254a66e7a8f8d1181a698d47b7631e8f8c0b2f0cdc1062d62e7"
+    },
+    {
+      "path": "evidence/night-catalog/revisions-after.json",
+      "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+    },
+    {
+      "path": "evidence/night-catalog/revisions-before.json",
+      "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+    },
+    {
+      "path": "evidence/night-catalog/rule-context.json",
+      "sha256": "9b60328665976c1bbd1caad769f9ee46e09c96924dabf1c305d7accda14e1360"
+    },
+    {
+      "path": "evidence/night-catalog/rule-review-cli.json",
+      "sha256": "23112addfea1025dae4a60e48a6d3fdcc4171bc84edd96aeb02c2300be86a462"
+    },
+    {
+      "path": "evidence/night-catalog/run-start.json",
+      "sha256": "ce18bf0c4b80bd109d20a5bfcab9c0626b973bc035a89f9526ff7c7cc7765e0f"
+    },
+    {
+      "path": "evidence/night-catalog/run-verify.json",
+      "sha256": "3f5f727967b619bf41aa9ca4dd43469f30935c47aefe258906be858d6037a94c"
+    },
+    {
+      "path": "evidence/night-catalog/validate-final.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/rain-shelter/START-HERE-before.md",
+      "sha256": "895c65750eda5b2a6ddc4048a36dbfe67fc98ebea748288b7bee42ba346d4c8c"
+    },
+    {
+      "path": "evidence/rain-shelter/after.json",
+      "sha256": "0f90b2e596b5f397903051ba3a2dd4392d3670302fbbe9809647eb49b80dba95"
+    },
+    {
+      "path": "evidence/rain-shelter/baseline-cli.json",
+      "sha256": "d25b29180de744e5e1f10bf10dfedcd01c605be21e5bb2250ea63cfaab304619"
+    },
+    {
+      "path": "evidence/rain-shelter/before.json",
+      "sha256": "28a9ddce3aef711f9f8e5a3469635e2ff8c41e50e3b11e624c9a8f74130662df"
+    },
+    {
+      "path": "evidence/rain-shelter/confirmation-verification.json",
+      "sha256": "577fc5718155fc98ecf47e8822bd5de56d6481fd10d53fc1488d1f387d0c6c37"
+    },
+    {
+      "path": "evidence/rain-shelter/empty-registration.json",
+      "sha256": "bd8350432fae623fe094156debad459f92e4a310cb588235ee942316a648c840"
+    },
+    {
+      "path": "evidence/rain-shelter/entry-change.diff",
+      "sha256": "952949b3976f6c373f96461a4c167a86949e4763b7cb918c43120dd99983b585"
+    },
+    {
+      "path": "evidence/rain-shelter/resume-after.json",
+      "sha256": "e570881a99ad457747424035644466fbc6b0a4d34414febefb9b2bd77ab377e4"
+    },
+    {
+      "path": "evidence/rain-shelter/resume-before.json",
+      "sha256": "e570881a99ad457747424035644466fbc6b0a4d34414febefb9b2bd77ab377e4"
+    },
+    {
+      "path": "evidence/rain-shelter/revisions-after.json",
+      "sha256": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb"
+    },
+    {
+      "path": "evidence/rain-shelter/revisions-before.json",
+      "sha256": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb"
+    },
+    {
+      "path": "evidence/rain-shelter/validate-final.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/rain-shelter/validate.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/risk-table/after.json",
+      "sha256": "865b2467b098afcb582387c4190d6e4687091d624ac38f2702292131aac9f5a1"
+    },
+    {
+      "path": "evidence/risk-table/before.json",
+      "sha256": "20a05f8dbb1f66fc105f9d7f98e6168273183e310ad9b3e0c54727967dd12a38"
+    },
+    {
+      "path": "evidence/risk-table/empty-registration.json",
+      "sha256": "2478506f6881be5a4f201344a0eae69a59dddf814d3cc7eef4d90752827d53f2"
+    },
+    {
+      "path": "evidence/risk-table/mechanical.json",
+      "sha256": "8a2f8d588c16712edd37ce817e0e3bf14a5bf2b814c163013b01b459199bc19c"
+    },
+    {
+      "path": "evidence/risk-table/resume-before.json",
+      "sha256": "148ea3c780cbe078e82222f1b7d6faf3733e5082f3da1cdc801d480885337f66"
+    },
+    {
+      "path": "evidence/risk-table/revisions-after.json",
+      "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+    },
+    {
+      "path": "evidence/risk-table/revisions-before.json",
+      "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+    },
+    {
+      "path": "evidence/risk-table/rule-context.json",
+      "sha256": "5779870ff0fb4d46b235e57131d48a8ed0d080eb185977564d27d04dade61e3d"
+    },
+    {
+      "path": "evidence/risk-table/rule-review-cli.json",
+      "sha256": "23112addfea1025dae4a60e48a6d3fdcc4171bc84edd96aeb02c2300be86a462"
+    },
+    {
+      "path": "evidence/risk-table/validate-final.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence_tools.py",
+      "sha256": "75358a79ff6c1f6a455499311c35c2458ff6d0efabcb8875d73103118da57040"
+    },
+    {
+      "path": "inputs/confirmation-request.md",
+      "sha256": "8c75235024f0ec54dfaea8f58b8424642f80302e709320d3217f2ac5653b75ba"
+    },
+    {
+      "path": "inputs/novel-request.md",
+      "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a"
+    },
+    {
+      "path": "inputs/wechat-request.md",
+      "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff"
+    },
+    {
+      "path": "inputs-after.json",
+      "sha256": "f9a6ac1bbb123c07dd9ea0049c874d0f2f7bf691444e54c111f0a0e04c49c5d4"
+    },
+    {
+      "path": "inputs-before.json",
+      "sha256": "f9a6ac1bbb123c07dd9ea0049c874d0f2f7bf691444e54c111f0a0e04c49c5d4"
+    },
+    {
+      "path": "protected-files-verification.json",
+      "sha256": "ee63cd3aaec3ca163dfb1e655276ec29ff1232852d6bf8404436dfeed96d1099"
+    },
+    {
+      "path": "transcript.jsonl",
+      "sha256": "55c4029541df8be7961f03683390a9fce17c784c66a3d88f8dc92e554e0351f2"
+    },
+    {
+      "path": "workspace/catalog.json",
+      "sha256": "2a057999cdc71170b716c0fa8e7a625586d773ffcad65411462b512c44364c4b"
+    },
+    {
+      "path": "workspace/novels/night-catalog/START-HERE.md",
+      "sha256": "e8bd000dbec6df9c6678b2187c9b55eb680d7e20c47e5b2d0023ac1873a591b0"
+    },
+    {
+      "path": "workspace/novels/night-catalog/book.yaml",
+      "sha256": "9661282c9ba693bf0448adde45e10a6a909eb22c8341876dc35e2deebf857535"
+    },
+    {
+      "path": "workspace/novels/night-catalog/chapters.json",
+      "sha256": "d7ec185adb75237c5dd1bb50654b2e8a09fa57f984f20f169171c11d74078f36"
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/materials.md",
+      "sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16"
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/neighbor-excerpt.md",
+      "sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5"
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/original.md",
+      "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610"
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/request.md",
+      "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000001.json",
+      "sha256": "a9d5810cf91cbae9b82008fee98f2388994d443de092ff4bf993a04c82fab6d5"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000002.json",
+      "sha256": "8baaa8059f3c16cb5e777fb75cec3efc065ff2ceeaddb0d5ea4ec82c535a4bda"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000003.json",
+      "sha256": "1ba299dba1ba3713070577523b5ab64ffd5c681a7c2113ecb19b653e588d6c0f"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000004.json",
+      "sha256": "d97489f619113122601781fde9aebf2d057370e6d2297adf6ca06e0f11885aee"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000005.json",
+      "sha256": "b6c6567b5b43931fbfa15b89c494e6787b4a71a7c0f9072319301e1328039208"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000006.json",
+      "sha256": "b12c603ee19bf59ce771df6515197e68515ec260a46898451fac9d3b3ff97797"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000007.json",
+      "sha256": "64f6362d92fac659b10327ad4b7d1e4242dd5f25ba6d5937029d5fdc0623af73"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000008.json",
+      "sha256": "ff00ef882fbc2c9d9627e86ab171b6042ec92e47b22cb4646c5da389dd007cf7"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000009.json",
+      "sha256": "7c28cb9208a25422af965deb41c1471a0b9e2f9d3902995831eda995d9b60a34"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/events/00000010.json",
+      "sha256": "54c03a4b9ca0a6fc0af9a2aec062e2f025ba4bdf1f06d3246e8fb7454b4f27e7"
+    },
+    {
+      "path": "workspace/novels/night-catalog/lifecycle/state.json",
+      "sha256": "cbff916b187e2b334d65627c934cb10a7ac86507255fdcd3cb1bc3009e9d221a"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/artifacts.json",
+      "sha256": "c4a2bfc1958a5de8ec2aed9abadfa3f1d711f2158a34bdcee557612dc569c936"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/candidate-v2.md",
+      "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/candidate.md",
+      "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/change.diff",
+      "sha256": "1ab0cb6e1be1438b6dd5e2e364261832d12ece911740a2abcaa6965d8a81ee5e"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/delivery.md",
+      "sha256": "9ae4dcb1599e5d83b810ccbb2cc153786cf211d87281ded983d8e0cb2fc1a964"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/final-change.diff",
+      "sha256": "56dd8a66eb384b664f76d2593400e5a70f2810aef9164ae399f23fccd90294ff"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/reading-record.json",
+      "sha256": "adda4a7445d1045a1a0687c651d6e77bae2e8d7eb74dac943c43691ef32481fd"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/review-final.md",
+      "sha256": "7abbf65c29c9c64d09f7581cde4ee0d9555cf84fbb8a1b934696afe364ded861"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/review-v1.json",
+      "sha256": "951aca1fc91b56e745ef778716c16ca31f3264edd9e48630ffd27198a2703f4c"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/revision-v1-v2.diff",
+      "sha256": "d34a4d37d24ce3769aa7ac8d63ebba90ac1e7087b5be0cf9cb113658c4a5fbcc"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/rule-review-final.json",
+      "sha256": "c180f132a588d8b921e2568fe49770d0dd226555063ba0619ce0c38dfcf097b9"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/source-map.md",
+      "sha256": "90046c586aeee3023f11d3cd7c18c7272989710985422caa03ccc811dff6d1bb"
+    },
+    {
+      "path": "workspace/novels/night-catalog/outputs/task-note.md",
+      "sha256": "eb266e223bd9b36135af4bd06352d8905b59cbb610a51d19bf3993540b499aec"
+    },
+    {
+      "path": "workspace/novels/night-catalog/request.json",
+      "sha256": "0972a0049c7623f3c274cc34679ef28ceaa63054fe80566b7f34351ba4fc34e2"
+    },
+    {
+      "path": "workspace/novels/night-catalog/rules-manifest-v1.json",
+      "sha256": "b01cbbf546b64614a40b4ef2367311eca6a5637f65cb1d122a680174574c7c42"
+    },
+    {
+      "path": "workspace/novels/night-catalog/rules-v1.md",
+      "sha256": "04bade8f16e3f212af6b0c582b2f2a4f2cad46a62fb51ed3847ef76fe881f521"
+    },
+    {
+      "path": "workspace/novels/night-catalog/runs/novel-expansion-001/artifacts/candidate-v1.md",
+      "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59"
+    },
+    {
+      "path": "workspace/novels/night-catalog/runs/novel-expansion-001/artifacts/candidate-v2.md",
+      "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4"
+    },
+    {
+      "path": "workspace/novels/night-catalog/runs/novel-expansion-001/artifacts/human-review-final.md",
+      "sha256": "7abbf65c29c9c64d09f7581cde4ee0d9555cf84fbb8a1b934696afe364ded861"
+    },
+    {
+      "path": "workspace/novels/night-catalog/runs/novel-expansion-001/artifacts/review-final.json",
+      "sha256": "c180f132a588d8b921e2568fe49770d0dd226555063ba0619ce0c38dfcf097b9"
+    },
+    {
+      "path": "workspace/novels/night-catalog/runs/novel-expansion-001/artifacts/review-v1.json",
+      "sha256": "951aca1fc91b56e745ef778716c16ca31f3264edd9e48630ffd27198a2703f4c"
+    },
+    {
+      "path": "workspace/novels/night-catalog/runs/novel-expansion-001/run.json",
+      "sha256": "36346313f54bb23b2b80bec914059fdc59572d356ac7290a7ede1c85fecd835e"
+    },
+    {
+      "path": "workspace/novels/night-catalog/state.json",
+      "sha256": "54cdd205b9a30c366a57f53e2e776e2c5d2b8feb18626a1e74842b198c50df77"
+    },
+    {
+      "path": "workspace/novels/night-catalog/版本记录/revisions.json",
+      "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/START-HERE.md",
+      "sha256": "0905c458d50ff408d26a536704a6312578d3e62c2cd806ea80986f5dbc3a49fe"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/book.yaml",
+      "sha256": "06ce27f2e5ddbad9f8a04bedfbd92b466dc81b43b43ef4f659f22afabfeeb4f3"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/inputs/original.md",
+      "sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/inputs/request.md",
+      "sha256": "8c75235024f0ec54dfaea8f58b8424642f80302e709320d3217f2ac5653b75ba"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/outputs/reading-record.json",
+      "sha256": "66d9e694de571739d7f273bef9ed75725daac487b74cc88b677388ab45911a9d"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/outputs/review-confirmation.md",
+      "sha256": "ea11f5dbd6ce84bc090fde0fa10c417e1088c1afd4c8c4f13ebef346022bd822"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/state.json",
+      "sha256": "c147b9b88b2f98884b35bc456e9a7a27fb2bfa6d731e49c94bc659aaf41096de"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/决策记录/draft-milestone-article-draft-1.0.json",
+      "sha256": "f8c372e779c7c633bcf548d883a221e6cce9d33e60f03531f6ec93fae8cf7e64"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/决策记录/draft-milestone-article-draft-1.0.md",
+      "sha256": "f889b06a13b033dddefc92ab4306e05d19ef4cb436c5ac749137af6c05d85fe1"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/当前清单.json",
+      "sha256": "31231970647a1c9240301e7e9cbf29422288285c402316afd88f34ab169f2882"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/当前清单.md",
+      "sha256": "4432b30328152598070908b72f467d57c140dcb49c49a914db20fd98e2357d4d"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/版本记录/content/article-draft-1.0.md",
+      "sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4"
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/版本记录/revisions.json",
+      "sha256": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb"
+    },
+    {
+      "path": "workspace/wechat/risk-table/START-HERE.md",
+      "sha256": "7dbeee3f96f91af4134ba6bb8a5c96f82937123a4db75140d4dac5af4f1a2f82"
+    },
+    {
+      "path": "workspace/wechat/risk-table/book.yaml",
+      "sha256": "d095e3c2bc5884602132d0ee03d3dad2dc3c222368c7101b58dd49e178b8c0d4"
+    },
+    {
+      "path": "workspace/wechat/risk-table/inputs/original.md",
+      "sha256": "54b19a6efbc8013d079a2bbc2b7650fa1870f661d6d32df1ae39c3f856bffd32"
+    },
+    {
+      "path": "workspace/wechat/risk-table/inputs/request.md",
+      "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/artifacts.json",
+      "sha256": "407854d46b2d5c815d41b0c23db021d17e2f30c57acf71f72271da71b110fc13"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/candidate.md",
+      "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/change.diff",
+      "sha256": "6a5aa280b064fb304d39069173ef8ad9a68740be565ca3b2dac2cf80cb4b8648"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/delivery.md",
+      "sha256": "978d8d0a6daa6146c5104ff0175d67bc57ceb03656a27b8f04104af2aeaec9a0"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/reading-record.json",
+      "sha256": "fff64362e9c510dc1273fc073e2c6e5654e4fe324b71a6d123f4efcb6c88ab3d"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/review-final.md",
+      "sha256": "7a528bd32f8a8a01464a480534d1a0ee0b8389825dc088ee6b1b065a8cfe2b39"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/rule-review-final.json",
+      "sha256": "73f1096a05bbc36006c5a0662e889d3da6e962e70dc213585480408c95436dde"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/scope-check.json",
+      "sha256": "fe56604a58ccfeec4d3843f62fc22fadd05175f7ef788ba3d0960915bf5736d2"
+    },
+    {
+      "path": "workspace/wechat/risk-table/outputs/task-note.md",
+      "sha256": "b079fe1aa3f0e9a4dbd3b9e01e1092485d27494e8fc0d18d62ab0a041a06362c"
+    },
+    {
+      "path": "workspace/wechat/risk-table/rules-manifest-v1.json",
+      "sha256": "ee656e0115ba7c9c6311c86db1071f94cb9fe3be0a35e169175fa2100ab05744"
+    },
+    {
+      "path": "workspace/wechat/risk-table/rules-v1.md",
+      "sha256": "30822f37e9eae8972a03cad351842730e0a340b94a1048528bf13e809eb537fb"
+    },
+    {
+      "path": "workspace/wechat/risk-table/state.json",
+      "sha256": "d27cef4b3d2a9f9403311a27c44e104d72552cc074a9b7d1303a3281cbcf62f5"
+    },
+    {
+      "path": "workspace/wechat/risk-table/版本记录/revisions.json",
+      "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+    }
+  ],
+  "evaluated_files": [
+    {
+      "path": ".agents/skills/touge-novel-writing/SKILL.md",
+      "sha256": "73aedbac9f6ae31cd5471c099c30f42c4a832f9c31ee18c40fe2da0156fdeb5e"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/SKILL.md",
+      "sha256": "d507d2a666591bb4d60282a0ad1e606a0fe294d160b5da715264f81a8adc0067"
+    },
+    {
+      "path": "scripts/writing_rules.py",
+      "sha256": "12e5deeeb6eb28aa645d3462c4d3d57176313e82d2dfdecb29d40788946f958d"
+    },
+    {
+      "path": "scripts/writing_workspace.py",
+      "sha256": "b5347408c922d6f0735950af78d4463731d583226fc9e4a70fe793e2afdcfd69"
+    },
+    {
+      "path": "scripts/writing_run.py",
+      "sha256": "d75713c356c1adf1a9acddd88ef9c7cecfe48c32145bec4e6fa16f96abb1b16e"
+    },
+    {
+      "path": "configs/acceptance-v2.4.1.json",
+      "sha256": "43df740d0c3be4501a1499965cdc9b8813c62906f8364d8c97d1a7346d1d9a8a"
+    },
+    {
+      "path": "capabilities/registry.json",
+      "sha256": "a585c6ac69522507538021398117121682f36d70ea0be55cbb2407f633d7c49a"
+    },
+    {
+      "path": "capabilities/scene-design/1.0.1/CAPABILITY.md",
+      "sha256": "bec3d5640bd1dd867dea4ace828234ba99696b83536b5dc03efbb3f9d825ee53"
+    },
+    {
+      "path": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+      "sha256": "18c089960b28818d3bcda24089958bc3f3073c04b692d6d83709b0ab663d2ca2"
+    },
+    {
+      "path": "capabilities/editorial-review/1.0.1/CAPABILITY.md",
+      "sha256": "5459e8b08ce055ca36c79945daffaba5caf012bf66ef31c463ca85f0dac03ab3"
+    },
+    {
+      "path": ".agents/skills/touge-novel-writing/references/recipes.json",
+      "sha256": "cfecf4a84310955cb28a1706a022ae1ad3d2133aa180cc36fdd8f6302a0cea15"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/references/recipes.json",
+      "sha256": "46a8645ddab026c5f55ca0c2b4af895a6c4825b2d602d9387b4f4904c75a3339"
+    },
+    {
+      "path": ".agents/skills/touge-novel-writing/references/recipes.md",
+      "sha256": "231b2f6233c0b4aad05c94bddf006602fa052029a310a3a9f31a6ae6e78c90a4"
+    },
+    {
+      "path": ".agents/skills/touge-novel-writing/references/lifecycle.md",
+      "sha256": "bc40ced03b1df09b67540b3cc4e545af126d695a2722c97934443edd58a62d56"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/references/recipes.md",
+      "sha256": "231b2f6233c0b4aad05c94bddf006602fa052029a310a3a9f31a6ae6e78c90a4"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/references/lifecycle.md",
+      "sha256": "bc40ced03b1df09b67540b3cc4e545af126d695a2722c97934443edd58a62d56"
+    },
+    {
+      "path": "docs/rules.md",
+      "sha256": "12f0f83d1531ca7a9092853f30cd16a10d52e2d90d59f4c8bf44aaa5414288db"
+    }
+  ],
+  "real_manuscripts_modified": false,
+  "author_approval_claimed": false
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 10,
+  "run_id": "novel-expansion-001",
+  "operation_id": "complete-delivery",
+  "payload": {
+    "action": "stage",
+    "stage": "completed",
+    "reason": "实际候选与逐项自审均已交付；不表示正式登记或作者接受",
+    "review_id": "review-final"
+  },
+  "payload_sha256": "58b5734d44b3acd1ec173c530d4c5abfdef7fac3a642176dbcec29a8d0c1d77a",
+  "previous": "d221f256061a0734ec3a3f85b1ed22c01dc4503f99956aab3b44b27d35f24804"
+}

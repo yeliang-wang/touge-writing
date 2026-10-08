@@ -87,7 +87,7 @@ external_operations.py 的 prepare/record 对已有作品和远端操作记账�
 python3 scripts/backup_workspace.py create --workspace "$HOME/.touge-writing/workspace" --out "$HOME/.touge-writing/backups/snapshot.tar.gz"
 python3 scripts/backup_workspace.py restore --archive "$HOME/.touge-writing/backups/snapshot.tar.gz" --destination "$HOME/.touge-writing/restores/snapshot"
 python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
-python3 scripts/build_release.py --out dist/touge-writing-2.4.0.zip
+python3 scripts/build_release.py --out dist/touge-writing-2.4.1.zip
 python3 scripts/acceptance.py --public-only
 python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 ```

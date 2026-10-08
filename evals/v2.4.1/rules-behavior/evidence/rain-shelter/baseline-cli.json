@@ -1,0 +1,11 @@
+{
+  "id": "article-draft-1.0",
+  "kind": "text",
+  "version": "1.0",
+  "status": "draft",
+  "chapter_id": null,
+  "parent_plan_id": null,
+  "based_on": null,
+  "path": "版本记录/content/article-draft-1.0.md",
+  "sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4"
+}

@@ -1,0 +1,87 @@
+{
+  "scope": "完整候选、实际请求、原文与适用规则；小说另含全部补充资料和邻章末尾节选，非邻章全文。",
+  "task_result": "completed",
+  "manuscript_result": "meets_rules",
+  "rule_set_sha256": "fb293f0185b41e3be98740392e6528b657c9e362fc60bee119bc507bff6680d4",
+  "findings": [
+    {
+      "location": "L3–L9",
+      "observation": "周会、茶水间、次日改表、排期后移和仍会报喜的犹疑逐字保留；删去两句重复说理外未改句子。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "L3→L5→L7→L9",
+      "observation": "按事件时间与回望分段，动作及其结果仍连续；不加教程编号，不扩写事实。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "L11",
+      "observation": "指定尾句逐字保留并仍在全文末尾。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "全文；正文登记前后快照",
+      "observation": "完整文章已保存，未建 run、未登记，轻量核对符合当前任务。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "candidate-1",
+      "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "facts-voice",
+      "status": "satisfied",
+      "reason": "周会、茶水间、次日改表、排期后移和仍会报喜的犹疑逐字保留；删去两句重复说理外未改句子。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-1",
+          "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a",
+          "location": "L3–L9"
+        }
+      ]
+    },
+    {
+      "rule_id": "rhythm-scope",
+      "status": "satisfied",
+      "reason": "按事件时间与回望分段，动作及其结果仍连续；不加教程编号，不扩写事实。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-1",
+          "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a",
+          "location": "L3→L5→L7→L9"
+        }
+      ]
+    },
+    {
+      "rule_id": "keep-ending",
+      "status": "satisfied",
+      "reason": "指定尾句逐字保留并仍在全文末尾。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-1",
+          "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a",
+          "location": "L11"
+        }
+      ]
+    },
+    {
+      "rule_id": "candidate-only",
+      "status": "satisfied",
+      "reason": "完整文章已保存，未建 run、未登记，轻量核对符合当前任务。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-1",
+          "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a",
+          "location": "全文；正文登记前后快照"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

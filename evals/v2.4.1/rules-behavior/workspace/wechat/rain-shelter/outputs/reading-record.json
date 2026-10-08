@@ -1,0 +1,23 @@
+{
+  "reader": "independent forward evaluation agent",
+  "relationship": "self_review",
+  "reading": "All listed files read in full; neighbor is only the supplied excerpt, not the full chapter. Hashes bind files, do not certify understanding.",
+  "files": [
+    {
+      "path": "inputs/request.md",
+      "sha256": "8c75235024f0ec54dfaea8f58b8424642f80302e709320d3217f2ac5653b75ba",
+      "coverage": "full_file"
+    },
+    {
+      "path": "inputs/original.md",
+      "sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "coverage": "full_file"
+    },
+    {
+      "path": "版本记录/content/article-draft-1.0.md",
+      "sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "coverage": "full_file"
+    }
+  ],
+  "fact_confidence": "Bound to synthetic supplied material, not externally verified."
+}

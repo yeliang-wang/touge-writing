@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "run_id": "novel-expansion-001",
+  "operation_id": "start",
+  "payload": {
+    "action": "start",
+    "request_sha256": "f0d856f56968fbe151beb2f23194d2c47de399c22f16eb1578b477353ce7ba35",
+    "mode": "revise",
+    "target": "lights-out",
+    "stage": "revise",
+    "manifest_sha256": "36346313f54bb23b2b80bec914059fdc59572d356ac7290a7ede1c85fecd835e"
+  },
+  "payload_sha256": "1263deadfd961a9caefc7614d3fb68d37c18de90aaeed6484caae6090101f29b",
+  "previous": null
+}

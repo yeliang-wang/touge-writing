@@ -104,7 +104,7 @@ def check_v21():
     from capability_catalog import catalog
     from workspace_lib import read_json, digest
     try:
-        if len(catalog()['capabilities']) != 13:
+        if len({row['id'] for row in catalog()['capabilities']}) != 13:
             return fail('Expected 13 atomic capabilities')
         protocol = read_json(ROOT / 'evals/v2.1/protocol.json')
         for row in protocol['criteria_files']:

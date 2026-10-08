@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 5,
+  "run_id": "novel-expansion-001",
+  "operation_id": "revise-source-claims",
+  "payload": {
+    "action": "stage",
+    "stage": "revise",
+    "reason": "自审发现两处资料外后续做法断言，删除并压缩重复回望",
+    "review_id": null
+  },
+  "payload_sha256": "a2b9567b25edd7aef32c7d854c40adc2f9b588778df9e7c2b5d90ba3b72e89b7",
+  "previous": "8fa03dcd86acae86185a4110f41555c3bd845233f59986756792749a70039cce"
+}

@@ -1,0 +1,431 @@
+{
+  "run": {
+    "schema_version": 1,
+    "id": "novel-expansion-001",
+    "request": {
+      "schema_version": 1,
+      "id": "novel-expansion-001",
+      "task": "按本轮合成请求有据扩写关灯之前，保留主线，只交未登记候选并审阅",
+      "authorization_refs": [
+        "inputs/request.md（合成评估请求，非真人作品授权）"
+      ],
+      "target": "lights-out",
+      "mode": "revise",
+      "stage": "revise",
+      "fiction_policy": {
+        "mode": "source-based",
+        "scope": "仅原章与明确新增合成资料；不补对白、分钟数、责任人"
+      },
+      "capabilities": [
+        "source-map@1.0.0",
+        "scene-design@1.0.1",
+        "reflection-shaping@1.0.1",
+        "editorial-review@1.0.1"
+      ],
+      "inputs": [
+        {
+          "path": "inputs/request.md",
+          "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a"
+        },
+        {
+          "path": "inputs/original.md",
+          "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610"
+        },
+        {
+          "path": "inputs/materials.md",
+          "sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16"
+        },
+        {
+          "path": "inputs/neighbor-excerpt.md",
+          "sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5"
+        },
+        {
+          "path": "outputs/task-note.md",
+          "sha256": "eb266e223bd9b36135af4bd06352d8905b59cbb610a51d19bf3993540b499aec"
+        }
+      ],
+      "parameters": {
+        "reader": "本章读者",
+        "delivery": "完整候选，结尾两点收获；不登记"
+      },
+      "open_issues": [
+        {
+          "id": "unremembered-detail",
+          "impact": "门卫原话、等待时长和原始责任人未知；这些细节全部不写，不影响有据扩写交付。",
+          "blocks_completion": false
+        }
+      ],
+      "model": {
+        "id": "unknown",
+        "configuration": "unknown"
+      }
+    },
+    "request_sha256": "f0d856f56968fbe151beb2f23194d2c47de399c22f16eb1578b477353ce7ba35",
+    "pins": [
+      {
+        "label": "capabilities/source-map/1.0.0/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/source-map/1.0.0/CAPABILITY.md",
+        "snapshot": "inputs/000.md",
+        "sha256": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "capabilities/scene-design/1.0.1/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/scene-design/1.0.1/CAPABILITY.md",
+        "snapshot": "inputs/001.md",
+        "sha256": "bec3d5640bd1dd867dea4ace828234ba99696b83536b5dc03efbb3f9d825ee53",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+        "snapshot": "inputs/002.md",
+        "sha256": "18c089960b28818d3bcda24089958bc3f3073c04b692d6d83709b0ab663d2ca2",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "capabilities/editorial-review/1.0.1/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/editorial-review/1.0.1/CAPABILITY.md",
+        "snapshot": "inputs/003.md",
+        "sha256": "5459e8b08ce055ca36c79945daffaba5caf012bf66ef31c463ca85f0dac03ab3",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": ".agents/skills/touge-novel-writing/SKILL.md",
+        "origin": "public",
+        "source": ".agents/skills/touge-novel-writing/SKILL.md",
+        "snapshot": "inputs/004.md",
+        "sha256": "73aedbac9f6ae31cd5471c099c30f42c4a832f9c31ee18c40fe2da0156fdeb5e",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": ".agents/skills/touge-novel-writing/references/lifecycle.json",
+        "origin": "public",
+        "source": ".agents/skills/touge-novel-writing/references/lifecycle.json",
+        "snapshot": "inputs/005.json",
+        "sha256": "a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/PROFILE.md",
+        "origin": "public",
+        "source": "shared/author-expression/PROFILE.md",
+        "snapshot": "inputs/006.md",
+        "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/expression-evidence.md",
+        "origin": "public",
+        "source": "shared/author-expression/expression-evidence.md",
+        "snapshot": "inputs/007.md",
+        "sha256": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/judgment.md",
+        "origin": "public",
+        "source": "shared/author-expression/judgment.md",
+        "snapshot": "inputs/008.md",
+        "sha256": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/language.md",
+        "origin": "public",
+        "source": "shared/author-expression/language.md",
+        "snapshot": "inputs/009.md",
+        "sha256": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/lexicon.yaml",
+        "origin": "public",
+        "source": "shared/author-expression/lexicon.yaml",
+        "snapshot": "inputs/010.yaml",
+        "sha256": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/rubric.md",
+        "origin": "public",
+        "source": "shared/author-expression/rubric.md",
+        "snapshot": "inputs/011.md",
+        "sha256": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/wechat-rubric.md",
+        "origin": "public",
+        "source": "shared/author-expression/wechat-rubric.md",
+        "snapshot": "inputs/012.md",
+        "sha256": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/manifest.json",
+        "origin": "public",
+        "source": "shared/author-expression/manifest.json",
+        "snapshot": "inputs/013.json",
+        "sha256": "73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "inputs/request.md",
+        "origin": "project",
+        "source": "inputs/request.md",
+        "snapshot": "inputs/014.md",
+        "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "inputs/original.md",
+        "origin": "project",
+        "source": "inputs/original.md",
+        "snapshot": "inputs/015.md",
+        "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "inputs/materials.md",
+        "origin": "project",
+        "source": "inputs/materials.md",
+        "snapshot": "inputs/016.md",
+        "sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "inputs/neighbor-excerpt.md",
+        "origin": "project",
+        "source": "inputs/neighbor-excerpt.md",
+        "snapshot": "inputs/017.md",
+        "sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "outputs/task-note.md",
+        "origin": "project",
+        "source": "outputs/task-note.md",
+        "snapshot": "inputs/018.md",
+        "sha256": "eb266e223bd9b36135af4bd06352d8905b59cbb610a51d19bf3993540b499aec",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "book.yaml",
+        "origin": "project",
+        "source": "book.yaml",
+        "snapshot": "inputs/019.yaml",
+        "sha256": "9661282c9ba693bf0448adde45e10a6a909eb22c8341876dc35e2deebf857535",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "版本记录/revisions.json",
+        "origin": "project",
+        "source": "版本记录/revisions.json",
+        "snapshot": "inputs/020.json",
+        "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "rules-manifest-v1.json",
+        "origin": "project",
+        "source": "rules-manifest-v1.json",
+        "snapshot": "inputs/021.json",
+        "sha256": "b01cbbf546b64614a40b4ef2367311eca6a5637f65cb1d122a680174574c7c42",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "rules-v1.md",
+        "origin": "project",
+        "source": "rules-v1.md",
+        "snapshot": "inputs/022.md",
+        "sha256": "04bade8f16e3f212af6b0c582b2f2a4f2cad46a62fb51ed3847ef76fe881f521",
+        "summary": null,
+        "summary_basis_sha256": null
+      }
+    ],
+    "author_profile_version": "1.0.0",
+    "model": {
+      "id": "unknown",
+      "configuration": "unknown"
+    },
+    "rule_context": {
+      "enabled": true,
+      "schema_version": 1,
+      "project_id": "night-catalog",
+      "target": "lights-out",
+      "mode": "revise",
+      "manifest": {
+        "id": "night-catalog-rules-v1",
+        "path": "rules-manifest-v1.json",
+        "sha256": "b01cbbf546b64614a40b4ef2367311eca6a5637f65cb1d122a680174574c7c42"
+      },
+      "files": [
+        {
+          "path": "rules-v1.md",
+          "sha256": "04bade8f16e3f212af6b0c582b2f2a4f2cad46a62fb51ed3847ef76fe881f521",
+          "role": "rule_body"
+        },
+        {
+          "path": "inputs/request.md",
+          "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a",
+          "role": "synthetic_request_source"
+        }
+      ],
+      "rules": [
+        {
+          "id": "keep-chain",
+          "path": "rules-v1.md",
+          "anchor": "r-keep-chain",
+          "kind": "required",
+          "targets": [
+            "lights-out"
+          ],
+          "modes": [
+            "revise",
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            }
+          ]
+        },
+        {
+          "id": "source-boundary",
+          "path": "rules-v1.md",
+          "anchor": "r-source-boundary",
+          "kind": "required",
+          "targets": [
+            "lights-out"
+          ],
+          "modes": [
+            "revise",
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            }
+          ]
+        },
+        {
+          "id": "useful-expansion",
+          "path": "rules-v1.md",
+          "anchor": "r-useful-expansion",
+          "kind": "required",
+          "targets": [
+            "lights-out"
+          ],
+          "modes": [
+            "revise",
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            }
+          ]
+        },
+        {
+          "id": "rhythm-reflection",
+          "path": "rules-v1.md",
+          "anchor": "r-rhythm-reflection",
+          "kind": "required",
+          "targets": [
+            "lights-out"
+          ],
+          "modes": [
+            "revise",
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            }
+          ]
+        },
+        {
+          "id": "two-takeaways",
+          "path": "rules-v1.md",
+          "anchor": "r-two-takeaways",
+          "kind": "required",
+          "targets": [
+            "lights-out"
+          ],
+          "modes": [
+            "revise",
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            }
+          ]
+        },
+        {
+          "id": "candidate-only",
+          "path": "rules-v1.md",
+          "anchor": "r-candidate-only",
+          "kind": "required",
+          "targets": [
+            "lights-out"
+          ],
+          "modes": [
+            "revise",
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            }
+          ]
+        }
+      ],
+      "rule_set_sha256": "ae57c0bbd96308b1cc2b72a7cb026f59f2d30e92947b231c45ed06b653a9f54f"
+    }
+  },
+  "state": {
+    "run_id": "novel-expansion-001",
+    "stage": "revise",
+    "mode": "revise",
+    "target": "lights-out",
+    "artifacts": [],
+    "registered_versions": [],
+    "resolved_issues": []
+  },
+  "drift": [],
+  "reproduction": "Locked inputs support audit, not deterministic model regeneration"
+}

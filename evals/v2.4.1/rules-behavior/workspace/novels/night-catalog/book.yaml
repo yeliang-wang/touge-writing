@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "night-catalog",
+  "title": "关灯之前",
+  "type": "novel",
+  "chapters": [
+    {
+      "id": "handover",
+      "title": "邻章末尾（只读参照节选）"
+    },
+    {
+      "id": "lights-out",
+      "title": "关灯之前"
+    }
+  ],
+  "rules_file": "rules-v1.md",
+  "rules_manifest": "rules-manifest-v1.json"
+}

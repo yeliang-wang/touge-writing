@@ -1,0 +1,26 @@
+[
+  {
+    "path": "workspace/novels/night-catalog/版本记录/revisions.json",
+    "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+  },
+  {
+    "path": "workspace/novels/night-catalog/state.json",
+    "sha256": "54cdd205b9a30c366a57f53e2e776e2c5d2b8feb18626a1e74842b198c50df77"
+  },
+  {
+    "path": "workspace/novels/night-catalog/inputs/materials.md",
+    "sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16"
+  },
+  {
+    "path": "workspace/novels/night-catalog/inputs/neighbor-excerpt.md",
+    "sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5"
+  },
+  {
+    "path": "workspace/novels/night-catalog/inputs/original.md",
+    "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610"
+  },
+  {
+    "path": "workspace/novels/night-catalog/inputs/request.md",
+    "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a"
+  }
+]

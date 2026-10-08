@@ -1,0 +1,43 @@
+{
+  "reader": "independent forward evaluation agent",
+  "relationship": "self_review",
+  "reading": "All listed files read in full; neighbor is only the supplied excerpt, not the full chapter. Hashes bind files, do not certify understanding.",
+  "files": [
+    {
+      "path": "inputs/request.md",
+      "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a",
+      "coverage": "full_file"
+    },
+    {
+      "path": "inputs/original.md",
+      "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610",
+      "coverage": "full_file"
+    },
+    {
+      "path": "inputs/materials.md",
+      "sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16",
+      "coverage": "full_file"
+    },
+    {
+      "path": "inputs/neighbor-excerpt.md",
+      "sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5",
+      "coverage": "full_file"
+    },
+    {
+      "path": "rules-v1.md",
+      "sha256": "04bade8f16e3f212af6b0c582b2f2a4f2cad46a62fb51ed3847ef76fe881f521",
+      "coverage": "full_file"
+    },
+    {
+      "path": "outputs/candidate.md",
+      "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+      "coverage": "full_file"
+    },
+    {
+      "path": "outputs/candidate-v2.md",
+      "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+      "coverage": "full_file"
+    }
+  ],
+  "fact_confidence": "Bound to synthetic supplied material, not externally verified."
+}

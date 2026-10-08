@@ -1,0 +1,18 @@
+[
+  {
+    "path": "workspace/wechat/risk-table/版本记录/revisions.json",
+    "sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438"
+  },
+  {
+    "path": "workspace/wechat/risk-table/state.json",
+    "sha256": "d27cef4b3d2a9f9403311a27c44e104d72552cc074a9b7d1303a3281cbcf62f5"
+  },
+  {
+    "path": "workspace/wechat/risk-table/inputs/original.md",
+    "sha256": "54b19a6efbc8013d079a2bbc2b7650fa1870f661d6d32df1ae39c3f856bffd32"
+  },
+  {
+    "path": "workspace/wechat/risk-table/inputs/request.md",
+    "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff"
+  }
+]

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "risk-table-rules-v1",
+  "project_id": "risk-table",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "30822f37e9eae8972a03cad351842730e0a340b94a1048528bf13e809eb537fb",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff",
+      "role": "synthetic_request_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "facts-voice",
+      "path": "rules-v1.md",
+      "anchor": "r-facts-voice",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "rhythm-scope",
+      "path": "rules-v1.md",
+      "anchor": "r-rhythm-scope",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "keep-ending",
+      "path": "rules-v1.md",
+      "anchor": "r-keep-ending",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "candidate-only",
+      "path": "rules-v1.md",
+      "anchor": "r-candidate-only",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    }
+  ]
+}

@@ -221,7 +221,7 @@ def clean_install():
 def shared_methods():
     from capability_catalog import catalog
     from export_author_profile import export
-    require(len(catalog()['capabilities']) == 13, 'Method registry changed')
+    require(len({row['id'] for row in catalog()['capabilities']}) == 13, 'Method registry changed')
     with tempfile.TemporaryDirectory() as temporary:
         result = export(ROOT / 'shared/author-expression', Path(temporary) / 'author.zip')
     require(result['sha256'] == 'aea0138e25a141295214cd3b47ef17324d1ff30ab03d27d78af9685cec67ebcb', 'Author package changed without a new version')

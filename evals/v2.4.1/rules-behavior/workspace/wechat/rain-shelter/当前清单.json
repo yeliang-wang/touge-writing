@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source": "registered_revision_and_synthetic_decision",
+  "project_id": "rain-shelter",
+  "items": [
+    {
+      "title": "雨棚下的等候",
+      "author": "林原（合成人物）",
+      "revision_id": "article-draft-1.0",
+      "version": "1.0",
+      "status": "draft",
+      "milestone": "初稿完成，待精修",
+      "content_path": "版本记录/content/article-draft-1.0.md",
+      "content_sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "decision_path": "决策记录/draft-milestone-article-draft-1.0.json",
+      "decision_sha256": "f8c372e779c7c633bcf548d883a221e6cce9d33e60f03531f6ec93fae8cf7e64",
+      "chinese_characters": 81,
+      "paragraphs": 2
+    }
+  ],
+  "current_text_count": 1,
+  "total_chinese_characters": 81,
+  "counting_rule": "仅当前登记正文的 U+4E00–U+9FFF 汉字，不含标题、标点、空白、决定、清单、输入副本或历史稿。",
+  "author_approval_claimed": false
+}

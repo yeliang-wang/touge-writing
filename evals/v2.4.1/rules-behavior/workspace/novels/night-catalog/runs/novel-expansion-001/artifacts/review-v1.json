@@ -1,0 +1,123 @@
+{
+  "scope": "已阅读全文候选 v1、原稿、新材料和邻章末尾节选；机械无告警后仍作来源与语义审阅。",
+  "task_result": "in_progress",
+  "manuscript_result": "needs_revision",
+  "rule_set_sha256": "ae57c0bbd96308b1cc2b72a7cb026f59f2d30e92947b231c45ed06b653a9f54f",
+  "findings": [
+    {
+      "location": "L3–L17",
+      "observation": "原主线与当夜未决、次日核对的补充时间线均保留。",
+      "resolution": "保留"
+    },
+    {
+      "location": "L17、L19",
+      "observation": "L17 末句把未决事项是否计入完成量写成后来实际做法，材料只说单列；L19 又把两点办法统称后来用过，超出来源明确支持。需删除这些额外断言。",
+      "resolution": "需修订"
+    },
+    {
+      "location": "L3、L9–L17",
+      "observation": "新增工作量习惯和位置线索有作用，但 L17 末句继续解释同一件事，未增加可靠处境或后果。",
+      "resolution": "需修订"
+    },
+    {
+      "location": "L17–L23",
+      "observation": "场景推进顺畅，L17–L23 收束仍有重复解释，先删 L17 末句并改 L19。",
+      "resolution": "需修订"
+    },
+    {
+      "location": "L21–L23",
+      "observation": "结尾确有保留冲突和交代未决两点；L21“换一本归还册”略有歧义，改成“对照”。",
+      "resolution": "保留"
+    },
+    {
+      "location": "全文；revisions-before.json",
+      "observation": "只是候选文件，未调用任何登记候选命令。",
+      "resolution": "保留"
+    }
+  ],
+  "unresolved_blockers": [
+    "删除未由资料支持的后续做法断言后再交付。"
+  ],
+  "artifacts": [
+    {
+      "id": "candidate-v1",
+      "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "keep-chain",
+      "status": "satisfied",
+      "reason": "原主线与当夜未决、次日核对的补充时间线均保留。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v1",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "location": "L3–L17"
+        }
+      ]
+    },
+    {
+      "rule_id": "source-boundary",
+      "status": "partial",
+      "reason": "L17 末句把未决事项是否计入完成量写成后来实际做法，材料只说单列；L19 又把两点办法统称后来用过，超出来源明确支持。需删除这些额外断言。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v1",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "location": "L17、L19"
+        }
+      ]
+    },
+    {
+      "rule_id": "useful-expansion",
+      "status": "partial",
+      "reason": "新增工作量习惯和位置线索有作用，但 L17 末句继续解释同一件事，未增加可靠处境或后果。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v1",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "location": "L3、L9–L17"
+        }
+      ]
+    },
+    {
+      "rule_id": "rhythm-reflection",
+      "status": "partial",
+      "reason": "场景推进顺畅，L17–L23 收束仍有重复解释，先删 L17 末句并改 L19。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v1",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "location": "L17–L23"
+        }
+      ]
+    },
+    {
+      "rule_id": "two-takeaways",
+      "status": "satisfied",
+      "reason": "结尾确有保留冲突和交代未决两点；L21“换一本归还册”略有歧义，改成“对照”。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v1",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "location": "L21–L23"
+        }
+      ]
+    },
+    {
+      "rule_id": "candidate-only",
+      "status": "satisfied",
+      "reason": "只是候选文件，未调用任何登记候选命令。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v1",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "location": "全文；revisions-before.json"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

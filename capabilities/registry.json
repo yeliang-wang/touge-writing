@@ -143,6 +143,39 @@
         "novel"
       ],
       "summary": "以实际正文为对象的审稿"
+    },
+    {
+      "id": "scene-design",
+      "version": "1.0.1",
+      "path": "capabilities/scene-design/1.0.1/CAPABILITY.md",
+      "sha256": "bec3d5640bd1dd867dea4ace828234ba99696b83536b5dc03efbb3f9d825ee53",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "场景的展开与压缩"
+    },
+    {
+      "id": "reflection-shaping",
+      "version": "1.0.1",
+      "path": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+      "sha256": "18c089960b28818d3bcda24089958bc3f3073c04b692d6d83709b0ab663d2ca2",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "有增量的回望"
+    },
+    {
+      "id": "editorial-review",
+      "version": "1.0.1",
+      "path": "capabilities/editorial-review/1.0.1/CAPABILITY.md",
+      "sha256": "5459e8b08ce055ca36c79945daffaba5caf012bf66ef31c463ca85f0dac03ab3",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "以实际正文为对象的审稿"
     }
   ]
 }

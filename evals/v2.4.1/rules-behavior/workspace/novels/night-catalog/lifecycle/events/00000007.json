@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 7,
+  "run_id": "novel-expansion-001",
+  "operation_id": "review-final-stage",
+  "payload": {
+    "action": "stage",
+    "stage": "review",
+    "reason": "v2 删除超出材料的断言，阅读全文复审",
+    "review_id": null
+  },
+  "payload_sha256": "8bf60292b71957445385ad03ac0b1d32a62ce21126d35a5f19b379c93bed12a9",
+  "previous": "d043ef3dffd3fec6de41bd6f743cd141c0f0272e26c8c5d7dd877488dc2db5a8"
+}

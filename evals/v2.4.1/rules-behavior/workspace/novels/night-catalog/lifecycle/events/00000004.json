@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "run_id": "novel-expansion-001",
+  "operation_id": "save-review-v1",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "review-v1",
+      "path": "artifacts/review-v1.json",
+      "sha256": "951aca1fc91b56e745ef778716c16ca31f3264edd9e48630ffd27198a2703f4c",
+      "role": "review"
+    }
+  },
+  "payload_sha256": "2f8b30d742635dac3d518c0d1218272a69b92d7718cebb2af642102c0f2cd562",
+  "previous": "11266d0e12307446e60e9b0a2bc52414078afa307b9a50115379a53a6df2a020"
+}

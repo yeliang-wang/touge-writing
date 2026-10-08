@@ -1,0 +1,17 @@
+{
+  "revision_count_before": 1,
+  "revision_count_after": 1,
+  "registration_sha256_before": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb",
+  "registration_sha256_after": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb",
+  "registration_bytes_unchanged": true,
+  "content_sha256_before": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+  "content_sha256_after": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+  "status_before": "draft",
+  "status_after": "draft",
+  "new_text_revision_count": 0,
+  "accepted_count": 0,
+  "decision_bound_to_existing_id_and_hash": true,
+  "milestone_recorded": "初稿完成，待精修",
+  "prose_review": "not_assessed",
+  "real_author_approval_claimed": false
+}

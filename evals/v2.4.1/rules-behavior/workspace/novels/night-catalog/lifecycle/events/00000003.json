@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "run_id": "novel-expansion-001",
+  "operation_id": "review-v1-stage",
+  "payload": {
+    "action": "stage",
+    "stage": "review",
+    "reason": "候选 v1 已交付，实际阅读全文进行自审",
+    "review_id": null
+  },
+  "payload_sha256": "da5d16f3e7e466a6329de58f602ab46e102eb130bd434d33ee349e4748fa7ab1",
+  "previous": "9ce223d32dcb325b7bc693d82b3a32d2c257197df5d679f55eb6252b2d577d81"
+}

@@ -1,0 +1,96 @@
+{
+  "all_unchanged": true,
+  "files": [
+    {
+      "path": "workspace/novels/night-catalog/版本记录/revisions.json",
+      "before_sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438",
+      "after_sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/novels/night-catalog/state.json",
+      "before_sha256": "54cdd205b9a30c366a57f53e2e776e2c5d2b8feb18626a1e74842b198c50df77",
+      "after_sha256": "54cdd205b9a30c366a57f53e2e776e2c5d2b8feb18626a1e74842b198c50df77",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/materials.md",
+      "before_sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16",
+      "after_sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/neighbor-excerpt.md",
+      "before_sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5",
+      "after_sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/original.md",
+      "before_sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610",
+      "after_sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/novels/night-catalog/inputs/request.md",
+      "before_sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a",
+      "after_sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/risk-table/版本记录/revisions.json",
+      "before_sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438",
+      "after_sha256": "45b6c359ce6bfd9e3de9f7e28be38785808de015a86716c6820e3fd4f92ed438",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/risk-table/state.json",
+      "before_sha256": "d27cef4b3d2a9f9403311a27c44e104d72552cc074a9b7d1303a3281cbcf62f5",
+      "after_sha256": "d27cef4b3d2a9f9403311a27c44e104d72552cc074a9b7d1303a3281cbcf62f5",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/risk-table/inputs/original.md",
+      "before_sha256": "54b19a6efbc8013d079a2bbc2b7650fa1870f661d6d32df1ae39c3f856bffd32",
+      "after_sha256": "54b19a6efbc8013d079a2bbc2b7650fa1870f661d6d32df1ae39c3f856bffd32",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/risk-table/inputs/request.md",
+      "before_sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff",
+      "after_sha256": "35cfbc8ecb46fb9cf9daef45b76175f81abccac7c4ff359a958a4ad6f9d6d2ff",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/版本记录/revisions.json",
+      "before_sha256": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb",
+      "after_sha256": "4612dde4c634b35ee090bce241b80aff67923cb6b7154718a21de5b7475aaffb",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/state.json",
+      "before_sha256": "c147b9b88b2f98884b35bc456e9a7a27fb2bfa6d731e49c94bc659aaf41096de",
+      "after_sha256": "c147b9b88b2f98884b35bc456e9a7a27fb2bfa6d731e49c94bc659aaf41096de",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/inputs/original.md",
+      "before_sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "after_sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/inputs/request.md",
+      "before_sha256": "8c75235024f0ec54dfaea8f58b8424642f80302e709320d3217f2ac5653b75ba",
+      "after_sha256": "8c75235024f0ec54dfaea8f58b8424642f80302e709320d3217f2ac5653b75ba",
+      "unchanged": true
+    },
+    {
+      "path": "workspace/wechat/rain-shelter/版本记录/content/article-draft-1.0.md",
+      "before_sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "after_sha256": "af89b20f1180d12fc2930c638a52055546ee8972ba979842c55fda46a0e827e4",
+      "unchanged": true
+    }
+  ],
+  "notes": "Originals, neighbor excerpt, registered text, registries and content-derived state are unchanged. Novel/article rule metadata was configured during fixture setup; rain entry and inventory were intentionally updated."
+}

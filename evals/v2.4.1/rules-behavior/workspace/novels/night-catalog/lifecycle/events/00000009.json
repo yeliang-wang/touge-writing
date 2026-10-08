@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 9,
+  "run_id": "novel-expansion-001",
+  "operation_id": "save-human-review",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "human-review-final",
+      "path": "artifacts/human-review-final.md",
+      "sha256": "7abbf65c29c9c64d09f7581cde4ee0d9555cf84fbb8a1b934696afe364ded861",
+      "role": "delivery"
+    }
+  },
+  "payload_sha256": "2483260172fc96cda56a60aac82d74b928fbb8de478529c2899bb81db5225a30",
+  "previous": "b02458e5810e94add109f0d8df17f744cb6b2d39f14e650afcbabb430ba40ad8"
+}

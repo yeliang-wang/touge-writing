@@ -8,7 +8,7 @@ import subprocess
 from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from acceptance_v24 import config, independent_behavior, publication_evidence
+from acceptance_v24 import config, independent_behavior, publication_evidence, output_directory
 from workspace_lib import write_json, digest
 
 
@@ -41,6 +41,50 @@ class AcceptanceV24Test(unittest.TestCase):
     def test_config_version_matches_product(self):
         (self.root/'VERSION').write_text('2.4.1\n')
         with self.assertRaisesRegex(ValueError,'Version/config'): config(self.root)
+
+    def test_patch_has_separate_config_behavior_and_outputs(self):
+        workspace = self.root / 'private'
+        self.assertEqual(output_directory(workspace, root=self.root), workspace/'acceptance-v2.4.0')
+        (self.root/'VERSION').write_text('2.4.1\n')
+        cfg = json.loads((ROOT/'configs/acceptance-v2.4.1.json').read_text())
+        write_json(self.root/'configs/acceptance-v2.4.1.json', cfg)
+        self.assertEqual(config(self.root)['version'], '2.4.1')
+        self.assertEqual(output_directory(workspace, root=self.root), workspace/'acceptance-v2.4.1')
+        self.assertEqual(output_directory(workspace, True, self.root), self.root/'work/acceptance-public-v2.4.1')
+        # A prior release's evidence cannot satisfy the patch.
+        write_json(self.root/'evals/v2.4/rules-behavior/result.json', {'all_in_scope_passed': True})
+        with self.assertRaises(FileNotFoundError): independent_behavior(self.root)
+
+    def test_patch_requires_affected_method_pins_and_all_cases(self):
+        (self.root/'VERSION').write_text('2.4.1\n')
+        cfg = json.loads((ROOT/'configs/acceptance-v2.4.1.json').read_text())
+        write_json(self.root/'configs/acceptance-v2.4.1.json', cfg)
+        folder=self.root/'evals/v2.4.1/rules-behavior'
+        report={'source':'independent_agent_forward_test','all_in_scope_passed':True,
+                'cases':[{'id':i,'status':'passed','observations':['Synthetic execution']} for i in cfg['behavior_case_ids']],
+                'artifacts':[], 'evaluated_files':[], 'real_manuscripts_modified':False,'author_approval_claimed':False}
+        write_json(folder/'result.json', report)
+        (folder/'actual.md').write_text('A synthetic saved result.\n')
+        report['artifacts']=[{'path':'actual.md','sha256':digest(folder/'actual.md')}]
+        base=['.agents/skills/touge-novel-writing/SKILL.md','.agents/skills/touge-wechat-writing/SKILL.md',
+              'scripts/writing_rules.py','scripts/writing_workspace.py','scripts/writing_run.py']
+        for relative in base+cfg['behavior_required_files']:
+            path=self.root/relative; path.parent.mkdir(parents=True,exist_ok=True); path.write_text('Synthetic implementation\n')
+        report['evaluated_files']=[{'path':p,'sha256':digest(self.root/p)} for p in base]
+        write_json(folder/'result.json', report)
+        with self.assertRaisesRegex(ValueError,'implementation identity'): independent_behavior(self.root)
+        report['evaluated_files'] += [{'path':p,'sha256':digest(self.root/p)} for p in cfg['behavior_required_files']]
+        write_json(folder/'result.json', report)
+        self.assertEqual(independent_behavior(self.root)['cases'],3)
+        (self.root/cfg['behavior_required_files'][1]).write_text('Changed method\n')
+        with self.assertRaisesRegex(ValueError,'older implementation'): independent_behavior(self.root)
+        report['cases'].pop(); write_json(folder/'result.json', report)
+        with self.assertRaisesRegex(ValueError,'scope missing'): independent_behavior(self.root)
+
+    def test_release_version_cannot_select_arbitrary_paths(self):
+        for version in ['2.4.01','2.5.0','../../other']:
+            (self.root/'VERSION').write_text(version+'\n')
+            with self.assertRaisesRegex(ValueError,'Unsupported'): config(self.root)
 
     def publication_fixture(self):
         repos = {}

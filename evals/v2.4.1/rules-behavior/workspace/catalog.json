@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "id": "night-catalog",
+      "title": "关灯之前",
+      "type": "novel",
+      "path": "novels/night-catalog",
+      "aliases": []
+    },
+    {
+      "id": "risk-table",
+      "title": "那张没填满的表",
+      "type": "wechat",
+      "path": "wechat/risk-table",
+      "aliases": []
+    },
+    {
+      "id": "rain-shelter",
+      "title": "雨棚下的等候",
+      "type": "wechat",
+      "path": "wechat/rain-shelter",
+      "aliases": []
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "novel-expansion-001",
+  "task": "按本轮合成请求有据扩写关灯之前，保留主线，只交未登记候选并审阅",
+  "authorization_refs": [
+    "inputs/request.md（合成评估请求，非真人作品授权）"
+  ],
+  "target": "lights-out",
+  "mode": "revise",
+  "stage": "revise",
+  "fiction_policy": {
+    "mode": "source-based",
+    "scope": "仅原章与明确新增合成资料；不补对白、分钟数、责任人"
+  },
+  "capabilities": [
+    "source-map@1.0.0",
+    "scene-design@1.0.1",
+    "reflection-shaping@1.0.1",
+    "editorial-review@1.0.1"
+  ],
+  "inputs": [
+    {
+      "path": "inputs/request.md",
+      "sha256": "b7f55ab275f12d1cf8663f0328f9c6f031282f149e03329b3416fde59409310a"
+    },
+    {
+      "path": "inputs/original.md",
+      "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610"
+    },
+    {
+      "path": "inputs/materials.md",
+      "sha256": "af0374a1edae86b820c0977e3454df344e4889a1831512d645b753a53596db16"
+    },
+    {
+      "path": "inputs/neighbor-excerpt.md",
+      "sha256": "9d945709b5cde6875c32198cd0cf13ce9bdbbabcbfa87af723a354c7b84d92f5"
+    },
+    {
+      "path": "outputs/task-note.md",
+      "sha256": "eb266e223bd9b36135af4bd06352d8905b59cbb610a51d19bf3993540b499aec"
+    }
+  ],
+  "parameters": {
+    "reader": "本章读者",
+    "delivery": "完整候选，结尾两点收获；不登记"
+  },
+  "open_issues": [
+    {
+      "id": "unremembered-detail",
+      "impact": "门卫原话、等待时长和原始责任人未知；这些细节全部不写，不影响有据扩写交付。",
+      "blocks_completion": false
+    }
+  ],
+  "model": {
+    "id": "unknown",
+    "configuration": "unknown"
+  }
+}

@@ -44,10 +44,18 @@ class V21Test(unittest.TestCase):
         return p
 
     def test_catalog_explicit_version_and_scope(self):
-        self.assertEqual(len(catalog()['capabilities']),13)
+        self.assertEqual(len({row['id'] for row in catalog()['capabilities']}),13)
         self.assertEqual(resolve(['scene-design@1.0.0'],'novel')[0]['version'],'1.0.0')
         for specs in [['scene-design'],['scene-design@99.0.0'],['scene-design@1.0.0']*2]:
             with self.assertRaises(ValueError):resolve(specs)
+
+    def test_method_successors_do_not_replace_pinned_versions(self):
+        for ident in ['scene-design','reflection-shaping','editorial-review']:
+            for kind in ['novel','wechat']:
+                old,new=resolve([ident+'@1.0.0',ident+'@1.0.1'],kind)
+                self.assertNotEqual(old['path'],new['path'])
+                self.assertNotEqual(old['sha256'],new['sha256'])
+                self.assertEqual(resolve([ident+'@1.0.0'],kind),[old])
 
     def test_both_manifest_formats_and_document_identity(self):
         for fmt in ['json','jsonl']:

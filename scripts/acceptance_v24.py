@@ -13,8 +13,18 @@ from acceptance import ROOT, require
 from workspace_lib import read_json, write_json, atomic_text, digest, scoped_path
 
 
+def release_version(root=ROOT):
+    version = (Path(root) / 'VERSION').read_text().strip()
+    require(re.fullmatch(r'2\.4\.(?:0|[1-9]\d*)', version), 'Unsupported v2.4 release version')
+    return version
+
+
 def config(root=ROOT):
-    data = read_json(Path(root) / 'configs/acceptance-v2.4.json')
+    version = release_version(root)
+    suffix = '2.4' if version == '2.4.0' else version
+    path = Path(root) / ('configs/acceptance-v' + suffix + '.json')
+    require(path.is_file(), 'Version/config missing: ' + path.name)
+    data = read_json(path)
     rows = data['checks']
     require(len(rows) == 6 and {r['id'] for r in rows} == {'D%02d' % i for i in range(1, 7)}, 'Expected six distinct v2.4 checks')
     require({r['id'] for r in rows if r.get('private_required')} == {'D04', 'D06'}, 'Private checks must remain scoped')
@@ -22,14 +32,23 @@ def config(root=ROOT):
     return data
 
 
+def output_directory(workspace, public_only=False, root=ROOT):
+    version = release_version(root)
+    return (Path(root) / 'work' / ('acceptance-public-v' + version) if public_only
+            else Path(workspace) / ('acceptance-v' + version))
+
+
 def independent_behavior(root=ROOT):
-    root = Path(root); folder = root / 'evals/v2.4/rules-behavior'
+    root = Path(root); cfg = config(root)
+    suffix = '2.4' if cfg['version'] == '2.4.0' else cfg['version']
+    folder = root / ('evals/v' + suffix + '/rules-behavior')
     receipt = read_json(folder / 'result.json')
     require(receipt.get('source') == 'independent_agent_forward_test', 'Independent execution missing')
     require(receipt.get('all_in_scope_passed') is True, 'Behavior evaluation did not pass')
     cases = receipt['cases']
     require(len(cases) >= 2 and len({r['id'] for r in cases}) == len(cases), 'Distinct behavioral cases required')
     require(all(r.get('status') == 'passed' and r.get('observations') for r in cases), 'Behavioral observations missing')
+    require(set(cfg.get('behavior_case_ids', [])) <= {r['id'] for r in cases}, 'Patch behavioral scope missing')
     rows = receipt.get('artifacts', [])
     require(rows and len({r['path'] for r in rows}) == len(rows), 'Artifact inventory missing/duplicated')
     for row in rows:
@@ -37,6 +56,8 @@ def independent_behavior(root=ROOT):
     pins = receipt.get('evaluated_files', [])
     required = {'.agents/skills/touge-novel-writing/SKILL.md', '.agents/skills/touge-wechat-writing/SKILL.md',
                 'scripts/writing_rules.py', 'scripts/writing_workspace.py', 'scripts/writing_run.py'}
+    required.update(cfg.get('behavior_required_files', []))
+    require(len({r['path'] for r in pins}) == len(pins), 'Duplicate evaluated implementation identity')
     require(required <= {r['path'] for r in pins}, 'Evaluated implementation identity missing')
     for row in pins:
         require(digest(scoped_path(root, row['path'])) == row['sha256'], 'Behavior evaluated an older implementation: ' + row['path'])
@@ -157,7 +178,7 @@ def publication_evidence(workspace, output):
 
 def run(workspace, public_only=False):
     workspace = Path(workspace).expanduser().resolve(); cfg = config()
-    output = ROOT / 'work/acceptance-public-v2.4.0' if public_only else workspace / 'acceptance-v2.4.0'
+    output = output_directory(workspace, public_only)
     output.mkdir(parents=True, exist_ok=True); results = []
     def command(args, filename):
         p = subprocess.run([sys.executable, *args], cwd=ROOT, capture_output=True, text=True)

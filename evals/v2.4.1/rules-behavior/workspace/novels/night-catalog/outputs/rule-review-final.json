@@ -1,0 +1,121 @@
+{
+  "scope": "完整候选、实际请求、原文与适用规则；小说另含全部补充资料和邻章末尾节选，非邻章全文。",
+  "task_result": "completed",
+  "manuscript_result": "meets_rules",
+  "rule_set_sha256": "ae57c0bbd96308b1cc2b72a7cb026f59f2d30e92947b231c45ed06b653a9f54f",
+  "findings": [
+    {
+      "location": "L3–L17",
+      "observation": "原来的录卡、重号、门卫、暂停保存、求助查册、交接和次日核对顺序保留；当夜只记录未决的更正由新资料明确给出。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "L7、L9、L13、L15；全文",
+      "observation": "无新人物对白、分钟数、责任人或未知经过；新增铅笔改动、缺失字段、翌日复看均可定位。v1 两处越界说法已删除。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "L3、L9–L17",
+      "observation": "新材料分别补工作量习惯、系统局限、核对线索、未决交接与次日后果，未靠重复认真延长正文。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "L5→L7→L9；L11→L13→L15；L17→L23",
+      "observation": "门卫短段形成动作停顿，后段连续翻册；当夜与次日明确转场。沿途认识与结尾两点承担不同用途，少量复述用于建议落回本事件。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "L21、L23",
+      "observation": "第一点保留冲突并找可核对材料，第二点交代未决及下一步；均有正文动作支撑，不承诺一定成功。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    },
+    {
+      "location": "全文；正文登记前后快照",
+      "observation": "最终候选完整交付并留 run，不调用候选 add-revision/register，两个原输入保持不变。",
+      "resolution": "已在本候选落实；细节与代价见 review-final.md"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "candidate-v2",
+      "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "keep-chain",
+      "status": "satisfied",
+      "reason": "原来的录卡、重号、门卫、暂停保存、求助查册、交接和次日核对顺序保留；当夜只记录未决的更正由新资料明确给出。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v2",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "location": "L3–L17"
+        }
+      ]
+    },
+    {
+      "rule_id": "source-boundary",
+      "status": "satisfied",
+      "reason": "无新人物对白、分钟数、责任人或未知经过；新增铅笔改动、缺失字段、翌日复看均可定位。v1 两处越界说法已删除。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v2",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "location": "L7、L9、L13、L15；全文"
+        }
+      ]
+    },
+    {
+      "rule_id": "useful-expansion",
+      "status": "satisfied",
+      "reason": "新材料分别补工作量习惯、系统局限、核对线索、未决交接与次日后果，未靠重复认真延长正文。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v2",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "location": "L3、L9–L17"
+        }
+      ]
+    },
+    {
+      "rule_id": "rhythm-reflection",
+      "status": "satisfied",
+      "reason": "门卫短段形成动作停顿，后段连续翻册；当夜与次日明确转场。沿途认识与结尾两点承担不同用途，少量复述用于建议落回本事件。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v2",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "location": "L5→L7→L9；L11→L13→L15；L17→L23"
+        }
+      ]
+    },
+    {
+      "rule_id": "two-takeaways",
+      "status": "satisfied",
+      "reason": "第一点保留冲突并找可核对材料，第二点交代未决及下一步；均有正文动作支撑，不承诺一定成功。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v2",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "location": "L21、L23"
+        }
+      ]
+    },
+    {
+      "rule_id": "candidate-only",
+      "status": "satisfied",
+      "reason": "最终候选完整交付并留 run，不调用候选 add-revision/register，两个原输入保持不变。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v2",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "location": "全文；正文登记前后快照"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

@@ -1,0 +1,64 @@
+{
+  "counting_rule": "正文不含 Markdown 标题；汉字按 U+4E00–U+9FFF，段长按去空白 Unicode 字符（含标点）统计。",
+  "literary_quality_inferred_from_counts": false,
+  "cases": [
+    {
+      "project_id": "night-catalog",
+      "original": {
+        "sha256": "0bec130b986b0d6f992af4feeff885585d50bfdb69f067cc1a60a2512d114610",
+        "chinese_characters": 373,
+        "body_characters_without_whitespace": 412,
+        "paragraphs": 2,
+        "paragraph_characters_without_whitespace": [
+          209,
+          203
+        ]
+      },
+      "candidate": {
+        "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+        "chinese_characters": 745,
+        "body_characters_without_whitespace": 834,
+        "paragraphs": 11,
+        "paragraph_characters_without_whitespace": [
+          85,
+          120,
+          27,
+          121,
+          76,
+          54,
+          88,
+          63,
+          15,
+          93,
+          92
+        ]
+      }
+    },
+    {
+      "project_id": "risk-table",
+      "original": {
+        "sha256": "54b19a6efbc8013d079a2bbc2b7650fa1870f661d6d32df1ae39c3f856bffd32",
+        "chinese_characters": 322,
+        "body_characters_without_whitespace": 362,
+        "paragraphs": 2,
+        "paragraph_characters_without_whitespace": [
+          200,
+          162
+        ]
+      },
+      "candidate": {
+        "sha256": "31fcc2de8d5e2acc872476d2b0f91b70a6c238574a5b731bee230d513d799c4a",
+        "chinese_characters": 298,
+        "body_characters_without_whitespace": 335,
+        "paragraphs": 5,
+        "paragraph_characters_without_whitespace": [
+          96,
+          77,
+          87,
+          59,
+          16
+        ]
+      }
+    }
+  ]
+}

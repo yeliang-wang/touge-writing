@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "active_run": null,
+  "runs": {
+    "novel-expansion-001": {
+      "run_id": "novel-expansion-001",
+      "stage": "completed",
+      "mode": "revise",
+      "target": "lights-out",
+      "artifacts": [
+        {
+          "id": "candidate-v1",
+          "path": "artifacts/candidate-v1.md",
+          "sha256": "2e171e405fa7fcac75a8f4524f8fd1f1d6e4b85f9d4636e494532256b0b4bc59",
+          "role": "text"
+        },
+        {
+          "id": "review-v1",
+          "path": "artifacts/review-v1.json",
+          "sha256": "951aca1fc91b56e745ef778716c16ca31f3264edd9e48630ffd27198a2703f4c",
+          "role": "review"
+        },
+        {
+          "id": "candidate-v2",
+          "path": "artifacts/candidate-v2.md",
+          "sha256": "96a497d4c03cb798356c5e9bee03f09c2b7b4d9c81a98d221f27d6ca57adf3b4",
+          "role": "text"
+        },
+        {
+          "id": "review-final",
+          "path": "artifacts/review-final.json",
+          "sha256": "c180f132a588d8b921e2568fe49770d0dd226555063ba0619ce0c38dfcf097b9",
+          "role": "review"
+        },
+        {
+          "id": "human-review-final",
+          "path": "artifacts/human-review-final.md",
+          "sha256": "7abbf65c29c9c64d09f7581cde4ee0d9555cf84fbb8a1b934696afe364ded861",
+          "role": "delivery"
+        }
+      ],
+      "registered_versions": [],
+      "resolved_issues": []
+    }
+  }
+}
