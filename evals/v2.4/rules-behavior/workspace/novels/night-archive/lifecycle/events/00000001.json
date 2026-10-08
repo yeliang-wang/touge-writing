@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "run_id": "novel-review-001",
+  "operation_id": "start",
+  "payload": {
+    "action": "start",
+    "request_sha256": "5709f66a24eec714d30be620cad92f4e3c58eeb6c422c7944b2aae9c1eb35132",
+    "mode": "review",
+    "target": "archive-door",
+    "stage": "review",
+    "manifest_sha256": "7980f4899b2268891d8a794237b0f514ff54f7588afd57c44502ac55a95290db"
+  },
+  "payload_sha256": "dc462875892c87c47473507ade23488ace7c19583d66e40b114e220cadb4e58e",
+  "previous": null
+}

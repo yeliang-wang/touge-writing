@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "project_id": "night-archive",
+  "title": "夜班档案（合成）",
+  "book_plan": null,
+  "chapters": [
+    {
+      "id": "key-kept",
+      "title": "留钥匙",
+      "plan": null,
+      "accepted_text": null,
+      "latest_text": "neighbor-v1"
+    },
+    {
+      "id": "archive-door",
+      "title": "库门",
+      "plan": null,
+      "accepted_text": null,
+      "latest_text": "chapter-v1"
+    }
+  ],
+  "next_action": {
+    "chapter_id": "key-kept",
+    "action": "review_chapter_plan"
+  }
+}

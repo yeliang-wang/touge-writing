@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "id": "night-archive-rules-v1",
+  "project_id": "night-archive",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+      "role": "synthetic_task_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "review-scope",
+      "path": "rules-v1.md",
+      "anchor": "review-scope",
+      "kind": "required",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "source-boundary",
+      "path": "rules-v1.md",
+      "anchor": "source-boundary",
+      "kind": "required",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "scope"
+        }
+      ]
+    },
+    {
+      "id": "key-continuity",
+      "path": "rules-v1.md",
+      "anchor": "key-continuity",
+      "kind": "required",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "hesitation",
+      "path": "rules-v1.md",
+      "anchor": "hesitation",
+      "kind": "guidance",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "path": "rules-v1.md",
+      "anchor": "theme",
+      "kind": "guidance",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    }
+  ]
+}

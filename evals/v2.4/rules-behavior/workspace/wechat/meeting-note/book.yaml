@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "id": "meeting-note",
+  "title": "散会之前（合成）",
+  "type": "wechat",
+  "chapters": [],
+  "rules_file": "rules-v1.md",
+  "rules_manifest": "rules-manifest-v1.json"
+}

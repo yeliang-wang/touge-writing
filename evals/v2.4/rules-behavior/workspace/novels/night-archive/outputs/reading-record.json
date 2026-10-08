@@ -1,0 +1,34 @@
+{
+  "reading_method": "Agent全文阅读后作出下列内容判断；hash只定位本轮输入",
+  "files": [
+    {
+      "path": "版本记录/content/neighbor-v1.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+      "coverage": "full"
+    },
+    {
+      "path": "版本记录/content/chapter-v1.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+      "coverage": "full"
+    },
+    {
+      "path": "inputs/materials.md",
+      "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919",
+      "coverage": "full"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+      "coverage": "full"
+    },
+    {
+      "path": "rules-v1.md",
+      "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+      "coverage": "full"
+    }
+  ],
+  "not_read": [
+    "后续章节或任何私人workspace"
+  ],
+  "author_approval": "not_requested"
+}

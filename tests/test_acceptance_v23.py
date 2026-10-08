@@ -20,6 +20,14 @@ class AcceptanceV23Test(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name).resolve()
+        # Historical v2.3 checks run against their version context, not the current product version.
+        legacy = self.root / 'legacy-runtime'
+        legacy.mkdir()
+        (legacy / 'VERSION').write_text('2.3.1\n')
+        original = acceptance.evidence_suffix
+        patcher = patch.object(acceptance, 'evidence_suffix',
+                               side_effect=lambda root=ROOT: original(legacy if Path(root) == ROOT else root))
+        patcher.start(); self.addCleanup(patcher.stop)
 
     def public_git_evidence(self):
         folder = self.root / 'evals/v2.3/git-collaboration'
@@ -28,7 +36,8 @@ class AcceptanceV23Test(unittest.TestCase):
         for row in report['evaluated_files']:
             target = self.root / row['path']
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(ROOT / row['path'], target)
+            frozen = ROOT / 'evals/v2.3/git-collaboration/source-snapshot' / row['path']
+            shutil.copyfile(frozen if frozen.exists() else ROOT / row['path'], target)
         return folder / 'evidence'
 
     def repin(self, evidence, name):

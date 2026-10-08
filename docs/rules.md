@@ -1,0 +1,73 @@
+# 作品规则的读取、继承与审阅 · v2.4
+
+本页用于已有小说或公众号作品。作品规则来自其全书方案、作者决定或已确认的写作约定，保存在私人 workspace；公共模板只规定格式。规则不因被索引而获得作者授权，也不能把某部作品的内容约束变成公共风格。
+
+## 一个正文入口，一个可选索引
+
+`book.yaml.rules_file` 指向作品内的规则 Markdown，作为人和 Agent 的统一入口。复杂作品可增加 `book.yaml.rules_manifest`，指向机器可读 JSON 索引。Markdown 保留规则的完整措辞、理由、继承与例外；JSON 记录身份、位置和检查要求，不复制另一套完整规则正文。
+
+索引 `schema_version` 为 1，有独立 `id` 和作品 `project_id`。`files` 列出所有被引用文件的作品内相对 `path`、实际 `sha256` 和非空 `role`。每条规则包含：
+
+| 字段 | 用途 |
+|---|---|
+| `id` | 在本作品内稳定且唯一的规则身份 |
+| `path`、`anchor` | 规则正文位置；anchor 对应显式 ASCII HTML ID，不带 `#` |
+| `kind` | `required` 为本轮必须处理的约束，`guidance` 为需考虑的建议 |
+| `targets` | `['*']`、稳定章节 ID、`book` 或 `article`，限定作品内适用目标 |
+| `modes` | `['*']` 或 `trial/plan/draft/revise/review/title/deliver`，限定任务类型 |
+| `check` | `semantic` 或 `mechanical`，说明检查类别；具体问题写在规则正文，不宣称工具自动判定文学质量 |
+| `sources` | 规则来源的文件和位置；指向真实方案或决定 |
+
+规则 `path` 及每个 `sources.path` 都必须包含在 `files` 中。用显式锚点稳定定位，例如 `<a id="r-source-boundary"></a>`。规则来源可以与规则正文同文件，但仍要说明其依据；索引不能替代缺失来源。
+
+[规则正文模板](../templates/work-rules.md) 与 [合成索引模板](../templates/rules-manifest.json) 配套，索引哈希只对应模板原文；复制到作品并修改后需按实际内容更新，不能沿用示例哈希或示例授权。
+
+## 从规则到本轮任务
+
+1. **写前读取。** 从作品入口解析本轮目标、任务类型、规则正文和来源。读原文并确认适用范围，再记录实际阅读；哈希和快照只证明版本及完整性。
+2. **方案落点。** 在章方案或文章任务单中列出继承版本和适用规则，说明每项在哪个结构、场景或审阅步骤落实。章级细化不能静默取消全书约束；例外引用明确决定与适用范围。
+3. **写后核对。** 按实际保存的产物逐项审阅，绑定稿件 ID、哈希和位置。没有做到就记录缺口，不以“已参考”“已读取”代替正文证据。
+
+规则冲突只影响依赖它的部分。保留原文和冲突来源，继续可独立完成的任务；需要作者决定的例外不能由 Agent 填写一条“已豁免”代签。
+
+## 解析和检查
+
+在能力项目根运行，示例中的 workspace、作品和审稿文件须替换为实际输入：
+
+```bash
+python3 scripts/writing_rules.py --workspace /path/to/workspace --project demo resolve --target scene-a --mode draft
+python3 scripts/writing_rules.py --workspace /path/to/workspace --project demo check --target scene-a --mode draft
+python3 scripts/writing_rules.py --workspace /path/to/workspace --project demo review --target scene-a --mode draft --review review.json --artifacts artifacts.json
+```
+
+`resolve` 用于取得本轮规则，`check` 核对配置和依赖完整性。`review` 核对审阅文件与已保存产物的绑定；`artifacts.json` 为 `[{"id":"draft-1","path":"候选/draft.md","sha256":"实际哈希"}]`，路径相对作品根。命令不会调用模型阅读文字，也不会判断一段场景是否生动或作者声音是否准确。
+
+新 run 固定本次规则上下文与引用文件，后续规则变化形成漂移，不静默改写已开始任务的输入。没有规则索引的旧作品继续使用 `rules_file`，旧快照保留原契约，不补写不存在的历史阅读或审阅记录。
+
+## 审阅覆盖与三个状态
+
+审阅保存 `rule_set_sha256` 和 `rule_coverage`。每项用 `rule_id` 对齐本轮规则，记录 `status`、具体 `reason` 和 `evidence`；证据绑定 `artifact_id`、`sha256`、`location`。`artifacts` 只列本次实际被审的稿件或方案；每条适用规则都须对其中每份产物给出证据。辅助来源放在输入与来源说明中，不能用 A 稿的检查结果登记 B 稿。
+
+已启用索引的任务使用 [结构化规则审阅模板](../templates/rules-review.json)，未启用索引的旧 run 仍可使用 [旧审阅模板](../templates/run-review.json)。两者不能用一份占位文件直接代替真实审阅。独立 `review` 命令的 context 与 run 内锁定的 context 可能因 target、mode 或规则版本不同而有不同哈希，应从本次实际上下文取得值。
+
+| `status` | 含义 |
+|---|---|
+| `satisfied` | 已在指定正文中找到满足规则的证据 |
+| `partial` | 只落实了部分要求，说明余下缺口 |
+| `unmet` | 尚未落实，指出具体位置或缺失内容 |
+| `not_applicable` | 本轮不适用，须补充 `basis` 说明依据与范围 |
+| `needs_verification` | 现有材料不足以判断，列出待核内容 |
+
+`not_applicable` 不是跳过必需规则的通用开关。错误适用或有授权例外须有真实依据，不能为了通过检查随意填写。`guidance` 允许根据作品取舍，但同样说明判断。
+
+审阅文件分别记录 `task_result` 和 `manuscript_result`：前者为本次任务是否交付完成，后者为 `meets_rules`、`needs_revision` 或 `not_assessed`。例如“只审阅，不改稿”可以是 `task_result=completed` 且 `manuscript_result=needs_revision`；它没有授权 Agent 继续改写。写作交付仍有必需规则未解决时，稿件不能标成满足规则。
+
+第三个状态是内容登记中的 `accepted`，必须来自实际作者对确切版本的决定。任务完成、审阅认为满足规则、保存候选、Git 提交都不自动建立 accepted。
+
+保存失败稿或未完成候选有助于恢复，不需要先把它包装成合格。登记受规则管理的新稿时，通过 `add-revision --rules-review review.json --rules-mode draft` 传入实际审阅；run 的 `register` 在 revision JSON 中用 `review_id` 指向该 run 已保存的审阅产物。具体命令见 [CLI](cli.md)，运行阶段见 [runs](runs.md)。
+
+## 小改与旧作品
+
+改一句话、核对标题或轻量审阅可以不创建完整 run。读取适用规则和上下文，保存简短核对：目标文本、规则来源／版本、修改位置、适用项、发现与例外。若正式登记命中规则约束，仍按登记命令提交所需审阅证据；“无 run”不等于跳过检查。
+
+升级不会替旧作品补造新规则，或重新评判历史终稿。已有来源、规则正文、继承、运行快照和作者决定保持原样；引入索引或修改规则应新建明确版本，并记录对后续任务的生效范围。

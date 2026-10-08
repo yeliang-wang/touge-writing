@@ -1,0 +1,123 @@
+{
+  "enabled": true,
+  "schema_version": 1,
+  "project_id": "meeting-note",
+  "target": "article",
+  "mode": "revise",
+  "manifest": {
+    "id": "meeting-note-rules-v1",
+    "path": "rules-manifest-v1.json",
+    "sha256": "a671f7bbfc7213beb7b433d00b48a936606c2ab96fd180010ead46737f0ce26f"
+  },
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "464ee14fdaa643257e32e090dc30897e0665de43c9e9ece11c312bad130c7ec5",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "0cf514d4333072bd2aee9378267bf752037fa2874021b18ca673876672fe4e15",
+      "role": "synthetic_task_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "one-sentence",
+      "path": "rules-v1.md",
+      "anchor": "one-sentence",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "direct-action",
+      "path": "rules-v1.md",
+      "anchor": "direct-action",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "protect-uncertainty",
+      "path": "rules-v1.md",
+      "anchor": "protect-uncertainty",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "no-new-facts",
+      "path": "rules-v1.md",
+      "anchor": "no-new-facts",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "facts"
+        }
+      ]
+    }
+  ],
+  "rule_set_sha256": "72d3ef83b4173a7b353a3c898423233b8e9b46fd16de6d1c51d1bb229b5aea83",
+  "read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/wechat/meeting-note/rules-manifest-v1.json",
+      "sha256": "a671f7bbfc7213beb7b433d00b48a936606c2ab96fd180010ead46737f0ce26f",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/wechat/meeting-note/rules-v1.md",
+      "sha256": "464ee14fdaa643257e32e090dc30897e0665de43c9e9ece11c312bad130c7ec5",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/wechat/meeting-note/inputs/request.md",
+      "sha256": "0cf514d4333072bd2aee9378267bf752037fa2874021b18ca673876672fe4e15",
+      "read_state": "not_attested"
+    }
+  ]
+}

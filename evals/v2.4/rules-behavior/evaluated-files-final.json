@@ -1,0 +1,22 @@
+[
+  {
+    "path": ".agents/skills/touge-novel-writing/SKILL.md",
+    "sha256": "4deabbf3cada0ad66ed6cb73cbd8f7d209d148ad4e386b86825069d695274875"
+  },
+  {
+    "path": ".agents/skills/touge-wechat-writing/SKILL.md",
+    "sha256": "3b2a02ff2a0105b1a3f9c6128a5dd3ff187b6aa514a93f49c2d86ad8f752bfbd"
+  },
+  {
+    "path": "scripts/writing_rules.py",
+    "sha256": "12e5deeeb6eb28aa645d3462c4d3d57176313e82d2dfdecb29d40788946f958d"
+  },
+  {
+    "path": "scripts/writing_workspace.py",
+    "sha256": "b5347408c922d6f0735950af78d4463731d583226fc9e4a70fe793e2afdcfd69"
+  },
+  {
+    "path": "scripts/writing_run.py",
+    "sha256": "d75713c356c1adf1a9acddd88ef9c7cecfe48c32145bec4e6fa16f96abb1b16e"
+  }
+]

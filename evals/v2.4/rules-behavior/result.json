@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "source": "independent_agent_forward_test",
+  "all_in_scope_passed": true,
+  "cases": [
+    {
+      "id": "novel-review-only-with-missing-material",
+      "status": "passed",
+      "observations": [
+        "全文读取目标章、前章和实际规则，按稳定章ID执行审阅run。",
+        "在机械扫描无告警时，仍指出钥匙连续性缺口、签字断言缺证、两章尾部语义重复及背景功能问题。",
+        "缺失接管表只导致相关规则needs_verification，未编造设定；钥匙规则unmet。",
+        "交付有位置、保留项、修订收益和损失；任务completed但稿件needs_revision。",
+        "原章、邻章和版本登记哈希均未变，无新正文或accepted登记。"
+      ]
+    },
+    {
+      "id": "wechat-one-sentence-lightweight-edit",
+      "status": "passed",
+      "observations": [
+        "读取本篇要求和规则后直接交付候选全文与一句说明，无提纲审批。",
+        "只改变第5行一个句子；标题、其他段落和指定犹疑句逐字保留。",
+        "候选将抽象口号改为负责人和第一版时间，没有辱骂、新经历、数据或他人心理。",
+        "以轻量检查和四项实际规则覆盖交付，没有建立完整run或登记接受。",
+        "局部语义呼应保留并说明范围取舍；meets_rules不是整篇最优或作者审美保证。"
+      ]
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "非盲测；场景与输入由独立评估Agent自行构造。",
+    "语义审阅由执行本轮任务的Agent作出，不是第二位文学评审。",
+    "未执行旧任务契约恢复、规则漂移或真实多账户行为。",
+    "完整run输入快照未在选定证据包重复归档；清单与来源哈希已保留。"
+  ],
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "a1e11dc5782c2f9590a0b62673cbe2216c01069d67520202332e0cf1c0e0590d"
+    },
+    {
+      "path": "article-rule-context.json",
+      "sha256": "6fed574b14bd2be01dc97fdd48256790a13c0cd68b04deecda65d2d4472e089e"
+    },
+    {
+      "path": "evaluated-files-final.json",
+      "sha256": "a953f8adbee19fda6bc2ac8ad8714bbeb798b28d8dddffb5290842d96d169797"
+    },
+    {
+      "path": "evaluated-files-start.json",
+      "sha256": "ab7e58acb09a0203ab27c816b88f6682ee40ec69abcf9016516e921cf7629353"
+    },
+    {
+      "path": "execution-notes.md",
+      "sha256": "adbc19574e59cfd01fb800f58a2cebb8f19e181daf4bbbb02117814b0ee8def3"
+    },
+    {
+      "path": "final-verification.json",
+      "sha256": "9f08aa37cbd90eec35ad5df462518a23369e0eeb5495201a8c0b3ea6401eb798"
+    },
+    {
+      "path": "inputs-after-check.json",
+      "sha256": "c536ae07cf908fc5cee508fbfe2cdda82e7492714924604664df6a99ef6b8ec0"
+    },
+    {
+      "path": "inputs-before.json",
+      "sha256": "4e8505b8828abd06493fa8f6c6471045e413dfed40f73b71680d0e22f2c1111a"
+    },
+    {
+      "path": "novel-rule-context.json",
+      "sha256": "783191dc0172a74336ac7808460c1123c1f1faf111ab0d395adc171037077b24"
+    },
+    {
+      "path": "scope.md",
+      "sha256": "d63269bd1d4cc470fd921973810d549c903c86df6dad0dfad8f3843e48583bc8"
+    },
+    {
+      "path": "transcript.jsonl",
+      "sha256": "03ffa830f09831376d9d36271e56416ba893229d960f658515a5d8fe3ec76897"
+    },
+    {
+      "path": "workspace/catalog.json",
+      "sha256": "3495c90cda6634c3af5b327bfc1245e185a03e25a695baf71c88c4e81d6d6e02"
+    },
+    {
+      "path": "workspace/novels/night-archive/START-HERE.md",
+      "sha256": "57d749414a47c1710106447e63cc8d113f260e3fac324c1f9f9978744e35c93f"
+    },
+    {
+      "path": "workspace/novels/night-archive/book.yaml",
+      "sha256": "2d0aa16c41cfe9fd92ddb9b83a28df174e357c6cc00f321e25057c211e1fa336"
+    },
+    {
+      "path": "workspace/novels/night-archive/chapters.json",
+      "sha256": "f05f078ad9ca13b7ce3ee0c015b84b445095b153c4ed410a6e87e725e0fccfb0"
+    },
+    {
+      "path": "workspace/novels/night-archive/inputs/chapter.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+    },
+    {
+      "path": "workspace/novels/night-archive/inputs/materials.md",
+      "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919"
+    },
+    {
+      "path": "workspace/novels/night-archive/inputs/neighbor.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002"
+    },
+    {
+      "path": "workspace/novels/night-archive/inputs/request.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54"
+    },
+    {
+      "path": "workspace/novels/night-archive/lifecycle/events/00000001.json",
+      "sha256": "316afcc4face3f59830ca507beb352699e3abf4d33d45f3468e9dba13e4944b0"
+    },
+    {
+      "path": "workspace/novels/night-archive/lifecycle/events/00000002.json",
+      "sha256": "278bb19e5a5e8e1537dcdd394c7e2e12bc4d1be4e0f766892abf1803b0a1f543"
+    },
+    {
+      "path": "workspace/novels/night-archive/lifecycle/events/00000003.json",
+      "sha256": "b40fb7c2b0bdb96ef5db0933511c8a4a36f91c1752abe292ed238678c42d5b06"
+    },
+    {
+      "path": "workspace/novels/night-archive/lifecycle/events/00000004.json",
+      "sha256": "b7ffa48b0d1805bbf45b0d7e20886e21921cbee84298abccec4f8c4bcf3cb318"
+    },
+    {
+      "path": "workspace/novels/night-archive/lifecycle/events/00000005.json",
+      "sha256": "e9ab414621cd4d527d50b3109cb4f04e72d722c69ddec252128782ce25bb1a64"
+    },
+    {
+      "path": "workspace/novels/night-archive/lifecycle/state.json",
+      "sha256": "3360ca24cb368c5fe41ec357b020238c0bbc8f3fca2795599a88b168827cc9f1"
+    },
+    {
+      "path": "workspace/novels/night-archive/outputs/artifacts.json",
+      "sha256": "53d47842048117929fe5afa5794edac1606d247ca648e467071c4736c7f6771b"
+    },
+    {
+      "path": "workspace/novels/night-archive/outputs/mechanical.json",
+      "sha256": "1053f2c6aae1cd5d16364c668ae0e861de86ab6f351af34a74ca1cef5089d71e"
+    },
+    {
+      "path": "workspace/novels/night-archive/outputs/reading-record.json",
+      "sha256": "b00b084fbc5a468e5b14e82055375957309466a1c94983d09f16f98d181b1a91"
+    },
+    {
+      "path": "workspace/novels/night-archive/outputs/review.md",
+      "sha256": "f6237317ab1f16aeedfeba1edb702d2ca2aac12c4f2dbe9ec7195135ab79d5aa"
+    },
+    {
+      "path": "workspace/novels/night-archive/outputs/rule-review.json",
+      "sha256": "b27fe28faf4ab1f6448da0e98db76cff0d48a9a87df5409dd17d3e5943eb7944"
+    },
+    {
+      "path": "workspace/novels/night-archive/outputs/task-note.md",
+      "sha256": "979d2005b7462780a7541fedb47bda346725a54aeee969619215da0ffb99ca0e"
+    },
+    {
+      "path": "workspace/novels/night-archive/request.json",
+      "sha256": "5b4485ac703a9d429836498aecbd38823bc8e30cd97c320f7ae638cf4c389ba1"
+    },
+    {
+      "path": "workspace/novels/night-archive/rules-manifest-v1.json",
+      "sha256": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3"
+    },
+    {
+      "path": "workspace/novels/night-archive/rules-v1.md",
+      "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c"
+    },
+    {
+      "path": "workspace/novels/night-archive/runs/novel-review-001/artifacts/chapter-as-received.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+    },
+    {
+      "path": "workspace/novels/night-archive/runs/novel-review-001/artifacts/review-1.json",
+      "sha256": "b27fe28faf4ab1f6448da0e98db76cff0d48a9a87df5409dd17d3e5943eb7944"
+    },
+    {
+      "path": "workspace/novels/night-archive/runs/novel-review-001/artifacts/review-delivery.md",
+      "sha256": "f6237317ab1f16aeedfeba1edb702d2ca2aac12c4f2dbe9ec7195135ab79d5aa"
+    },
+    {
+      "path": "workspace/novels/night-archive/runs/novel-review-001/run.json",
+      "sha256": "7980f4899b2268891d8a794237b0f514ff54f7588afd57c44502ac55a95290db"
+    },
+    {
+      "path": "workspace/novels/night-archive/state.json",
+      "sha256": "cf3d22e9ab48927f34f628f25974d5f442b602f3e3f0e81f42f30c5d88d1c390"
+    },
+    {
+      "path": "workspace/novels/night-archive/版本记录/content/chapter-v1.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+    },
+    {
+      "path": "workspace/novels/night-archive/版本记录/content/neighbor-v1.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002"
+    },
+    {
+      "path": "workspace/novels/night-archive/版本记录/revisions.json",
+      "sha256": "c33316d408dac3240e606f0a3a21b973c849f4119a2911630e8f140afc6cc1aa"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/START-HERE.md",
+      "sha256": "8934d7dacb396037ae1e28b6173ac5e27928a22509f3a926816fb258d73aaded"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/book.yaml",
+      "sha256": "176543909263e703ffb59f6a3d66dd0f65fed40f9277bdfea97581c15c8bd91e"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/inputs/article.md",
+      "sha256": "3f2c1d1013b362b5ed4d1dbd8b2c432ada8d1951465fc49fdc8f2101d49009ac"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/inputs/request.md",
+      "sha256": "0cf514d4333072bd2aee9378267bf752037fa2874021b18ca673876672fe4e15"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/artifacts.json",
+      "sha256": "c4fd49ff218d825726bb5014417734d0dbf6ce8d3c4b7e03003b85c81483875d"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/candidate.md",
+      "sha256": "89b8bd2933f12f75582ce712d0851036b57bd1b9d8dc4c4148648a57831858fc"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/change.diff",
+      "sha256": "75e9567e4ef1b87a11827806ad4ed09b59844cca89b84cf2414c6a6af7cc9145"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/delivery.md",
+      "sha256": "d208081cc0c2dc4c6becebac6c9c853e84045e78108654e6b952c017b2799801"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/lightweight-check.md",
+      "sha256": "ad0f5d5c5c2fa24031a3cfa536e899f576761e7550bb94bc74f022264bdd8997"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/mechanical.json",
+      "sha256": "325795a1aacdf1fd8f08608bbbc456c9060ba639c919dfa4ae56346ec731e537"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/reading-record.json",
+      "sha256": "110baf5fbf59124a01f464d9e0c3395de22a2930d6b4a32f4ec8f1af7cec6690"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/rule-review.json",
+      "sha256": "2add432873074a6e5c2cc1d35b6d642aaf4f0443a3dff4b61513f0e4ea445fe8"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/outputs/scope-check.json",
+      "sha256": "392b06a2b96cbb05881f3303487b45c268f949c81bcaa2a9fc491a5a18161f40"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/rules-manifest-v1.json",
+      "sha256": "a671f7bbfc7213beb7b433d00b48a936606c2ab96fd180010ead46737f0ce26f"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/rules-v1.md",
+      "sha256": "464ee14fdaa643257e32e090dc30897e0665de43c9e9ece11c312bad130c7ec5"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/state.json",
+      "sha256": "c1cf63a136c0d0476af208511f6f2bb6bd169c860d24778d56709d4aa1f4defd"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/版本记录/content/article-v1.md",
+      "sha256": "3f2c1d1013b362b5ed4d1dbd8b2c432ada8d1951465fc49fdc8f2101d49009ac"
+    },
+    {
+      "path": "workspace/wechat/meeting-note/版本记录/revisions.json",
+      "sha256": "f685ac89b1cba597c62a688243d515885c535df8b831b28f9167ebe28db10d88"
+    }
+  ],
+  "evaluated_files": [
+    {
+      "path": ".agents/skills/touge-novel-writing/SKILL.md",
+      "sha256": "4deabbf3cada0ad66ed6cb73cbd8f7d209d148ad4e386b86825069d695274875"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/SKILL.md",
+      "sha256": "3b2a02ff2a0105b1a3f9c6128a5dd3ff187b6aa514a93f49c2d86ad8f752bfbd"
+    },
+    {
+      "path": "scripts/writing_rules.py",
+      "sha256": "12e5deeeb6eb28aa645d3462c4d3d57176313e82d2dfdecb29d40788946f958d"
+    },
+    {
+      "path": "scripts/writing_workspace.py",
+      "sha256": "b5347408c922d6f0735950af78d4463731d583226fc9e4a70fe793e2afdcfd69"
+    },
+    {
+      "path": "scripts/writing_run.py",
+      "sha256": "d75713c356c1adf1a9acddd88ef9c7cecfe48c32145bec4e6fa16f96abb1b16e"
+    }
+  ],
+  "real_manuscripts_modified": false,
+  "author_approval_claimed": false
+}

@@ -1,4 +1,4 @@
-# 按需组合 · v2.1
+# 按需组合 · v2.4
 
 [机器可读组合](recipes.json)给出起点，不要求全部运行。先看任务再读对应能力卡；每次 run 锁定实际选择。公共能力目录在项目根 `capabilities/registry.json`。
 

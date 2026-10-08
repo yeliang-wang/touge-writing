@@ -1,0 +1,38 @@
+{
+  "scope": "填写实际读取的规则正文、来源、目标稿件与邻文范围",
+  "task_result": "in_progress",
+  "manuscript_result": "needs_revision",
+  "rule_set_sha256": "替换为本次解析或run固定的rule_set_sha256",
+  "findings": [
+    {
+      "location": "实际产物位置",
+      "observation": "具体保留项或问题及理由",
+      "resolution": "实际处理结果"
+    }
+  ],
+  "unresolved_blockers": [
+    "只填写阻断本次任务交付的事项；单纯稿件需修改不等于审阅任务未完成"
+  ],
+  "artifacts": [
+    {
+      "id": "draft-1",
+      "sha256": "替换为实际所审稿件哈希"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "替换为本轮适用的实际规则ID，每项分别记录",
+      "status": "needs_verification",
+      "reason": "填写具体判断、缺口与影响",
+      "evidence": [
+        {
+          "artifact_id": "draft-1",
+          "sha256": "替换为实际所审稿件哈希",
+          "location": "具体段落、句子或缺失内容应在的位置"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review或independent_review，按真实情况填写",
+  "author_aesthetic_approval": "not_requested"
+}

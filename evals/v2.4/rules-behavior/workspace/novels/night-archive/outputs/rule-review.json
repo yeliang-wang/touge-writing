@@ -1,0 +1,99 @@
+{
+  "scope": "全文审阅目标章；前章与材料说明用于核对衔接，未审阅未提供的后章或全书。任务只审不改。",
+  "task_result": "completed",
+  "manuscript_result": "needs_revision",
+  "rule_set_sha256": "272e51d0600e9faa16201a29d85627e9514974675e798f5ea05b1b3c34d17912",
+  "findings": [
+    {
+      "location": "chapter-as-received:第3行→第7行",
+      "observation": "唯一钥匙从秦迟口袋直接变到叙述者手中，缺交还动作。",
+      "resolution": "未改原文；审阅第1项提供交还或调整开门人的选择及代价。"
+    },
+    {
+      "location": "chapter-as-received:第5行",
+      "observation": "未见接管表却把秦迟签字写成确定事实。",
+      "resolution": "保留待核，不补造设定；只影响该断言。"
+    },
+    {
+      "location": "chapter-as-received:第7、11行；前章第5行",
+      "observation": "指定犹疑值得保留；结尾重复前章求助主题，且缺本章行动支撑。",
+      "resolution": "审阅第3项说明可选认识增量及暂留未解的取舍，未替作者落实。"
+    },
+    {
+      "location": "chapter-as-received:第9行",
+      "observation": "库房沿革和抽象人生感悟未影响眼前行动。",
+      "resolution": "建议压缩或在后续授权下补与找目录的具体关联。"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "chapter-as-received",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "review-scope",
+      "status": "satisfied",
+      "reason": "原稿作为审阅对象原样保存，交付仅为审阅；登记仍为baseline，未产生正文修订。",
+      "evidence": [
+        {
+          "artifact_id": "chapter-as-received",
+          "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+          "location": "全文；输入与保存产物哈希相同"
+        }
+      ]
+    },
+    {
+      "rule_id": "source-boundary",
+      "status": "needs_verification",
+      "reason": "第2段签字人没有所需材料，且文本把推测写成确定；本轮只定位，未假装核实。",
+      "evidence": [
+        {
+          "artifact_id": "chapter-as-received",
+          "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+          "location": "第5行签字断言及其推论"
+        }
+      ]
+    },
+    {
+      "rule_id": "key-continuity",
+      "status": "unmet",
+      "reason": "第1段钥匙在秦迟口袋，第3段叙述者开门，无交还路径。",
+      "evidence": [
+        {
+          "artifact_id": "chapter-as-received",
+          "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+          "location": "第3行与第7行"
+        }
+      ]
+    },
+    {
+      "rule_id": "hesitation",
+      "status": "partial",
+      "reason": "指定犹疑句存在且保留，但结尾的成熟结论压过尚未解决的犹疑。",
+      "evidence": [
+        {
+          "artifact_id": "chapter-as-received",
+          "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+          "location": "第7行指定句；第11行成熟结论"
+        }
+      ]
+    },
+    {
+      "rule_id": "theme",
+      "status": "unmet",
+      "reason": "本章结尾与前章求助主题同义；当前正文没有新增共同动作支撑新认识。",
+      "evidence": [
+        {
+          "artifact_id": "chapter-as-received",
+          "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+          "location": "第11行，对照前章第5行"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

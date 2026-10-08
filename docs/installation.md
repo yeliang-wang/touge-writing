@@ -1,4 +1,4 @@
-# 安装与首次初始化 · v2.3.1
+# 安装与首次初始化 · v2.4
 
 需要 macOS/Linux、Python 3.9+；核心使用标准库，单机文件锁依赖 fcntl，未声明原生 Windows 支持。Git 用于能力更新和可选私有作品协作；GitHub CLI 可选，GitHub MCP 不必需。Codex 执行写作与 MCP。可选抓取使用 lxml；旧 PPT 生成使用 Pillow 和 macOS 字体，按需安装，不是写作核心依赖。
 

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "active_run": null,
+  "runs": {
+    "novel-review-001": {
+      "run_id": "novel-review-001",
+      "stage": "completed",
+      "mode": "review",
+      "target": "archive-door",
+      "artifacts": [
+        {
+          "id": "chapter-as-received",
+          "path": "artifacts/chapter-as-received.md",
+          "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+          "role": "text"
+        },
+        {
+          "id": "review-delivery",
+          "path": "artifacts/review-delivery.md",
+          "sha256": "f6237317ab1f16aeedfeba1edb702d2ca2aac12c4f2dbe9ec7195135ab79d5aa",
+          "role": "delivery"
+        },
+        {
+          "id": "review-1",
+          "path": "artifacts/review-1.json",
+          "sha256": "b27fe28faf4ab1f6448da0e98db76cff0d48a9a87df5409dd17d3e5943eb7944",
+          "role": "review"
+        }
+      ],
+      "registered_versions": [],
+      "resolved_issues": []
+    }
+  }
+}

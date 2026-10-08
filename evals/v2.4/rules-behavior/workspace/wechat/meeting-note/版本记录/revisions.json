@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "article-v1",
+      "kind": "text",
+      "version": "1",
+      "status": "baseline",
+      "chapter_id": null,
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/article-v1.md",
+      "sha256": "3f2c1d1013b362b5ed4d1dbd8b2c432ada8d1951465fc49fdc8f2101d49009ac"
+    }
+  ]
+}

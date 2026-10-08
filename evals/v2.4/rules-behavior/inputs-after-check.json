@@ -1,0 +1,194 @@
+[
+  {
+    "path": "workspace/novels/night-archive/inputs/chapter.md",
+    "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+    "sha256_after": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/inputs/materials.md",
+    "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919",
+    "sha256_after": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/inputs/neighbor.md",
+    "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+    "sha256_after": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/inputs/request.md",
+    "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+    "sha256_after": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/000.md",
+    "sha256": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+    "sha256_after": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/001.md",
+    "sha256": "d68e291f20bd4fc47b49470b8a2cab18b65bc8e14c285fa523e6ca82b43cde91",
+    "sha256_after": "d68e291f20bd4fc47b49470b8a2cab18b65bc8e14c285fa523e6ca82b43cde91",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/002.md",
+    "sha256": "82e208f6a793f6ec811e13ed86f6b39496fd9a3761657f852118c20897bb0699",
+    "sha256_after": "82e208f6a793f6ec811e13ed86f6b39496fd9a3761657f852118c20897bb0699",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/003.md",
+    "sha256": "9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242",
+    "sha256_after": "9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/004.md",
+    "sha256": "4deabbf3cada0ad66ed6cb73cbd8f7d209d148ad4e386b86825069d695274875",
+    "sha256_after": "4deabbf3cada0ad66ed6cb73cbd8f7d209d148ad4e386b86825069d695274875",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/005.json",
+    "sha256": "a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991",
+    "sha256_after": "a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/006.md",
+    "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d",
+    "sha256_after": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/007.md",
+    "sha256": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb",
+    "sha256_after": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/008.md",
+    "sha256": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede",
+    "sha256_after": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/009.md",
+    "sha256": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a",
+    "sha256_after": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/010.yaml",
+    "sha256": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582",
+    "sha256_after": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/011.md",
+    "sha256": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000",
+    "sha256_after": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/012.md",
+    "sha256": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0",
+    "sha256_after": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/013.json",
+    "sha256": "73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09",
+    "sha256_after": "73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/014.md",
+    "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+    "sha256_after": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/015.md",
+    "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+    "sha256_after": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/016.md",
+    "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919",
+    "sha256_after": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/017.md",
+    "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+    "sha256_after": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/018.yaml",
+    "sha256": "2d0aa16c41cfe9fd92ddb9b83a28df174e357c6cc00f321e25057c211e1fa336",
+    "sha256_after": "2d0aa16c41cfe9fd92ddb9b83a28df174e357c6cc00f321e25057c211e1fa336",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/019.json",
+    "sha256": "c33316d408dac3240e606f0a3a21b973c849f4119a2911630e8f140afc6cc1aa",
+    "sha256_after": "c33316d408dac3240e606f0a3a21b973c849f4119a2911630e8f140afc6cc1aa",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/020.md",
+    "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+    "sha256_after": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/021.md",
+    "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+    "sha256_after": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/022.json",
+    "sha256": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3",
+    "sha256_after": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/runs/novel-review-001/inputs/023.md",
+    "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+    "sha256_after": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/novels/night-archive/版本记录/revisions.json",
+    "sha256": "c33316d408dac3240e606f0a3a21b973c849f4119a2911630e8f140afc6cc1aa",
+    "sha256_after": "c33316d408dac3240e606f0a3a21b973c849f4119a2911630e8f140afc6cc1aa",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/wechat/meeting-note/inputs/article.md",
+    "sha256": "3f2c1d1013b362b5ed4d1dbd8b2c432ada8d1951465fc49fdc8f2101d49009ac",
+    "sha256_after": "3f2c1d1013b362b5ed4d1dbd8b2c432ada8d1951465fc49fdc8f2101d49009ac",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/wechat/meeting-note/inputs/request.md",
+    "sha256": "0cf514d4333072bd2aee9378267bf752037fa2874021b18ca673876672fe4e15",
+    "sha256_after": "0cf514d4333072bd2aee9378267bf752037fa2874021b18ca673876672fe4e15",
+    "unchanged": true
+  },
+  {
+    "path": "workspace/wechat/meeting-note/版本记录/revisions.json",
+    "sha256": "f685ac89b1cba597c62a688243d515885c535df8b831b28f9167ebe28db10d88",
+    "sha256_after": "f685ac89b1cba597c62a688243d515885c535df8b831b28f9167ebe28db10d88",
+    "unchanged": true
+  }
+]

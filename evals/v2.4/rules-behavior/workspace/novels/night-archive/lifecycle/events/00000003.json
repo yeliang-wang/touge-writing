@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "run_id": "novel-review-001",
+  "operation_id": "save-delivery",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "review-delivery",
+      "path": "artifacts/review-delivery.md",
+      "sha256": "f6237317ab1f16aeedfeba1edb702d2ca2aac12c4f2dbe9ec7195135ab79d5aa",
+      "role": "delivery"
+    }
+  },
+  "payload_sha256": "50755af0a5d0a13e513ee23312048c2bafa4c541e836f136671711f55de21459",
+  "previous": "91a4ce54fea4e58e135668ff9d1be1ca9c83f50b0c51b186234b6545c82ef951"
+}

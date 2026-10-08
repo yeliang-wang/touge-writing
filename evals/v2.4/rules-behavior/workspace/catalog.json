@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "id": "night-archive",
+      "title": "夜班档案（合成）",
+      "type": "novel",
+      "path": "novels/night-archive",
+      "aliases": []
+    },
+    {
+      "id": "meeting-note",
+      "title": "散会之前（合成）",
+      "type": "wechat",
+      "path": "wechat/meeting-note",
+      "aliases": []
+    }
+  ]
+}

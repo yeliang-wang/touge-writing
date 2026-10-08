@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "demo-rules-v1",
+  "project_id": "demo",
+  "files": [
+    {
+      "path": "work-rules.md",
+      "sha256": "488cc44bdca90323b39e71dbe98a98fd5e70443e7f3738dba326dd07448d38b1",
+      "role": "rule_body"
+    }
+  ],
+  "rules": [
+    {
+      "id": "source-boundary",
+      "path": "work-rules.md",
+      "anchor": "r-source-boundary",
+      "kind": "required",
+      "targets": [
+        "*"
+      ],
+      "modes": [
+        "*"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "work-rules.md",
+          "anchor": "rule-inheritance"
+        }
+      ]
+    },
+    {
+      "id": "reader-purpose",
+      "path": "work-rules.md",
+      "anchor": "r-reader-purpose",
+      "kind": "guidance",
+      "targets": [
+        "*"
+      ],
+      "modes": [
+        "draft",
+        "revise",
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "work-rules.md",
+          "anchor": "rule-inheritance"
+        }
+      ]
+    }
+  ]
+}

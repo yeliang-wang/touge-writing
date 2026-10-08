@@ -194,8 +194,8 @@ def run_legacy(workspace, output_dir=None, skill_receipt=None):
 
 
 def run(workspace, public_only=False):
-    from acceptance_v23 import run as run_v23
-    return run_v23(workspace, public_only)
+    from acceptance_v24 import run as run_v24
+    return run_v24(workspace, public_only)
 
 
 def main():

@@ -93,6 +93,14 @@ def load(project, run_id):
         snapshot = scoped_path(paths(project, run_id), pin['snapshot'])
         if snapshot.is_symlink() or digest(snapshot) != pin['sha256']:
             raise ValueError('Run snapshot missing/changed: ' + pin['label'])
+    if row.get('rule_context'):
+        from writing_rules import check_context
+        check_context(row['rule_context'])
+        if row['rule_context'].get('enabled'):
+            pinned = {p['source']: p['sha256'] for p in row['pins'] if p['origin'] == 'project'}
+            for dependency in [row['rule_context']['manifest'], *row['rule_context']['files']]:
+                if pinned.get(dependency['path']) != dependency['sha256']:
+                    raise ValueError('Rule context does not match its frozen input: ' + dependency['path'])
     return row
 
 
@@ -187,6 +195,10 @@ def start(project, request, root=ROOT):
             if rid in by_id:
                 selected.add(by_id[rid].get('parent_plan_id'))
         automatic = ['book.yaml', '版本记录/revisions.json'] + [r['path'] for r in records if r['id'] in selected]
+        from writing_rules import resolve_rules
+        rule_context = resolve_rules(project, target, request['mode'])
+        if rule_context['enabled']:
+            automatic += [rule_context['manifest']['path']] + [f['path'] for f in rule_context['files']]
         inputs = list(request.get('inputs', []))
         for relative in automatic:
             if relative not in {i['path'] for i in inputs}:
@@ -206,6 +218,9 @@ def start(project, request, root=ROOT):
                'request_sha256': fingerprint(request), 'pins': pins,
                'author_profile_version': profile['version'],
                'model': request.get('model', {'id': 'unknown', 'configuration': 'unknown'})}
+        # Only new, enabled runs adopt this protocol. Historical runs keep their own semantics.
+        if rule_context['enabled']:
+            row['rule_context'] = rule_context
         immutable_json(manifest, row)
     append_event(project, run_id, 'start', {'action': 'start', 'request_sha256': row['request_sha256'],
                  'mode': request['mode'], 'target': request.get('target'), 'stage': request['stage'],
@@ -255,12 +270,16 @@ def change_stage(project, run_id, op_id, stage, reason, review_id=None):
             raise ValueError('Completion needs an actual review artifact')
         review = read_json(scoped_path(paths(project, run_id), reviews[0]['path']))
         texts = {a['id']: a for a in state['artifacts'] if a['role'] != 'review'}
-        if (review.get('result') != 'pass' or not review.get('findings') or not review.get('scope')
-                or review.get('unresolved_blockers') != [] or not review.get('artifacts')):
-            raise ValueError('Review is incomplete or unresolved')
-        for ref in review['artifacts']:
-            if ref.get('id') not in texts or texts[ref['id']]['sha256'] != ref.get('sha256'):
-                raise ValueError('Review does not cover immutable output versions')
+        if checked['run'].get('rule_context', {}).get('enabled'):
+            from writing_rules import validate_review
+            validate_review(checked['run']['rule_context'], review, list(texts.values()), require_completed=True)
+        else:
+            if (review.get('result') != 'pass' or not review.get('findings') or not review.get('scope')
+                    or review.get('unresolved_blockers') != [] or not review.get('artifacts')):
+                raise ValueError('Review is incomplete or unresolved')
+            for ref in review['artifacts']:
+                if ref.get('id') not in texts or texts[ref['id']]['sha256'] != ref.get('sha256'):
+                    raise ValueError('Review does not cover immutable output versions')
         # This checks the record's structure. The host must actually read/review the text.
     return append_event(project, run_id, op_id, payload)
 
@@ -280,7 +299,7 @@ def resolve_issue(project, run_id, op_id, issue_id, decision_ref):
 @locked
 def register(project, run_id, op_id, artifact_id, revision):
     """Recover both copy-before-registry and registry-before-event interruptions."""
-    from writing_workspace import add_revision, derive_state, validate
+    from writing_workspace import add_revision, derive_state, validate, validate_new_revision_scope
     checked = verify(project, run_id); state = checked['state']
     artifacts = [a for a in state['artifacts'] if a['id'] == artifact_id]
     if len(artifacts) != 1:
@@ -289,6 +308,9 @@ def register(project, run_id, op_id, artifact_id, revision):
         raise ValueError('Source is fixed by the selected run artifact')
     source = scoped_path(paths(project, run_id), artifacts[0]['path'])
     revision = dict(revision)
+    if any(k.startswith('_') for k in revision) or 'rules_review' in revision or 'rules_mode' in revision:
+        raise ValueError('Run rule evidence is selected by review_id, not caller-supplied rule context')
+    review_id = revision.pop('review_id', None)
     target = checked['run']['request'].get('target')
     if target not in {None, 'article', 'book'} and revision.get('chapter_id') != target:
         raise ValueError('Run registration cannot change its chapter scope')
@@ -299,6 +321,26 @@ def register(project, run_id, op_id, artifact_id, revision):
     payload = {'action': 'register', 'revision_id': revision['revision_id'], 'artifact_id': artifact_id,
                'sha256': digest(source), 'revision': revision,
                'decision_sha256': digest(revision['decision_file']) if revision.get('decision_file') else None}
+    rule_context = checked['run'].get('rule_context', {'enabled': False})
+    if rule_context.get('enabled'):
+        validate_new_revision_scope(read_json(project / 'book.yaml'), revision.get('kind'), revision.get('chapter_id'), target)
+    rule_review = None
+    rule_artifacts = [a for a in state['artifacts'] if a['role'] != 'review']
+    if rule_context.get('enabled') and revision.get('kind') != 'review':
+        mode = checked['run']['request']['mode']
+        if ((revision.get('kind') == 'text' and mode not in {'draft', 'revise', 'trial', 'deliver'})
+                or (revision.get('kind') in {'book_plan', 'chapter_plan'} and mode not in {'plan', 'revise'})):
+            raise ValueError('Run mode cannot register this content kind; start the authorized writing/plan task')
+        reviews = [a for a in state['artifacts'] if a['id'] == review_id and a['role'] == 'review']
+        if len(reviews) != 1:
+            raise ValueError('Rule-enabled registration requires an exact review_id artifact')
+        rule_review = scoped_path(paths(project, run_id), reviews[0]['path'])
+        from writing_rules import validate_review
+        review = read_json(rule_review)
+        validate_review(rule_context, review, rule_artifacts)
+        if not any(a['id'] == artifact_id and a['sha256'] == digest(source) for a in review['artifacts']):
+            raise ValueError('Rule review does not cover the registered artifact')
+        payload['review_id'] = review_id
     old = operation(project, run_id, op_id, payload)
     if old:
         if validate(project): raise ValueError('Registered content changed')
@@ -316,7 +358,8 @@ def register(project, run_id, op_id, artifact_id, revision):
         write_json(project / 'state.json', derive_state(project))
     else:
         # Already holding the same project lock; call the wrapped operation once.
-        add_revision.__wrapped__(project, source, **revision)
+        add_revision.__wrapped__(project, source, **revision, rules_review=rule_review,
+                                 _rules_context=rule_context, _rules_artifacts=rule_artifacts)
     return append_event(project, run_id, op_id, payload)
 
 

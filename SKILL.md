@@ -3,7 +3,7 @@ name: touge-writing
 description: 为头哥的写作任务选择公众号文章或长篇小说工作流，复用作者风格；兼容原有交流、复盘、产品问答与内容交付请求。
 ---
 
-# 头哥写作 · v2.3.1
+# 头哥写作 · v2.4
 
 从用户的作品和任务开始，按需读取一个入口：
 
@@ -27,5 +27,7 @@ description: 为头哥的写作任务选择公众号文章或长篇小说工作�
 原有命令见 [docs/GUIDE](docs/GUIDE)；外部服务使用说明见 [docs/external-services/adding-service.md](docs/external-services/adding-service.md)。
 
 方法使用 [13 项原子能力](capabilities/README.md)；有状态任务按 [运行记录](docs/runs.md)固定版本，既有辅助入口与命令保留。
+
+写作与审阅先恢复作品的规则入口和明确继承，阅读全文后再确定本轮适用项；方案说明落点，写后按规则记录证据、缺口与例外。具体格式见 [规则执行](docs/rules.md)。快照不证明理解，候选保存与任务完成不证明稿件合格；accepted 仍需实际作者决定。小型修改可用轻量核对，不为了规则检查强制创建 run。
 
 合作或存储迁移时读 [合作流程](docs/collaboration.md)。公共能力仓库与私有作品仓库独立；贡献者从共同提交在本地副本写作，只提交选定候选包。主编顺序登记，个人运行链不合并，PR 合并不等于 accepted。腾讯文档为可选导入/导出与历史入口。

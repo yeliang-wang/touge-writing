@@ -1,0 +1,5 @@
+# 执行环境说明
+
+默认shell工具在执行前因历史工作目录符号链接拒绝启动，随后用require_escalated执行同一授权的公开读取及合成workspace操作。没有读取私人workspace。
+
+临时评估驱动脚本含很长的中文源行，直接交给本机Python 3.9.6时两次报Non-UTF-8源文本错误；全文read_bytes可按UTF-8解码并compile成功，随后通过该方式执行同一临时脚本成功。此问题发生在评估驱动，不属于被评估产品脚本；产品CLI命令回执全部保存在transcript.jsonl。未因它修改任何产品代码。

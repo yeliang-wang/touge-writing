@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "night-archive",
+  "title": "夜班档案（合成）",
+  "type": "novel",
+  "chapters": [
+    {
+      "id": "key-kept",
+      "title": "留钥匙"
+    },
+    {
+      "id": "archive-door",
+      "title": "库门"
+    }
+  ],
+  "rules_file": "rules-v1.md",
+  "rules_manifest": "rules-manifest-v1.json"
+}

@@ -1,4 +1,4 @@
-# CLI 参考 · v2.3.1
+# CLI 参考 · v2.4
 
 在项目根运行，核心 Python 3.9+。`--help` 显示当前参数，所有路径使用自己的本地目录。脚本不调用模型、不自动连接账号。下例显式使用推荐外部工作区；自定义时替换全部相关路径。脚本省略 --workspace 仍沿用当前终端目录下的 workspace，没有全局配置或自动回退。
 
@@ -23,6 +23,18 @@ python3 scripts/writing_workspace.py --workspace "$HOME/.touge-writing/workspace
 
 kind：book_plan/chapter_plan/text/review；status：draft/accepted/baseline/historical。chapter_plan 用 --parent-plan 指向已接受全书方案，小说 accepted text 指向同章已接受章方案。--based-on 指同类同章前版本。accepted 必须带 --decision-file 实际作者决定；工具复制留档，不替作者作决定。
 
+有适用规则的新稿登记增加 `--rules-review review.json --rules-mode draft`，保存实际审阅与规则上下文；允许登记候选不等于宣布满足规则。历史记录不追溯补造证据。
+
+## 作品规则
+
+```bash
+python3 scripts/writing_rules.py --workspace "$HOME/.touge-writing/workspace" --project demo resolve --target scene-a --mode draft
+python3 scripts/writing_rules.py --workspace "$HOME/.touge-writing/workspace" --project demo check --target scene-a --mode draft
+python3 scripts/writing_rules.py --workspace "$HOME/.touge-writing/workspace" --project demo review --target scene-a --mode draft --review review.json --artifacts artifacts.json
+```
+
+`--target` 使用稳定章节 ID、book 或 article；`--mode` 按实际 trial/plan/draft/revise/review/title/deliver 选择。artifacts 文件列出作品内相对 path、产物 id 和实际 sha256。解析和检查不会代替读取正文或文学审阅，完整字段见 [规则执行](rules.md)。
+
 ## 素材与能力
 
 ```bash
@@ -43,7 +55,7 @@ material_index 的 index/read/attest-read 详见 [素材](materials.md)。build_
 {"revision_id":"scene-a-draft-1","kind":"text","version":"0.1","status":"draft","chapter_id":"scene-a"}
 ```
 
-可增加 parent_plan_id、based_on、decision_file；后者是作品内相对路径。source 由选定 run 产物固定，不能再指定别的文件。每次写入给稳定 operation-id，重试沿用，输入改变则换新操作。
+可增加 parent_plan_id、based_on、decision_file；后者是作品内相对路径。规则审阅以 `review_id` 引用已保存的 run 审阅产物。source 由选定 run 产物固定，不能再指定别的文件。每次写入给稳定 operation-id，重试沿用，输入改变则换新操作。
 
 ```bash
 python3 scripts/manuscript_check.py draft.md --out scan.json
@@ -75,7 +87,7 @@ external_operations.py 的 prepare/record 对已有作品和远端操作记账�
 python3 scripts/backup_workspace.py create --workspace "$HOME/.touge-writing/workspace" --out "$HOME/.touge-writing/backups/snapshot.tar.gz"
 python3 scripts/backup_workspace.py restore --archive "$HOME/.touge-writing/backups/snapshot.tar.gz" --destination "$HOME/.touge-writing/restores/snapshot"
 python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
-python3 scripts/build_release.py --out dist/touge-writing-2.3.1.zip
+python3 scripts/build_release.py --out dist/touge-writing-2.4.0.zip
 python3 scripts/acceptance.py --public-only
 python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 ```

@@ -108,13 +108,26 @@ def validate(project):
                     problems.append('missing acceptance evidence: ' + r['id'])
                 elif r.get('decision_sha256') and digest(decision) != r['decision_sha256']:
                     problems.append('changed acceptance evidence: ' + r['id'])
+            if r.get('rule_review'):
+                from writing_rules import validate_review
+                receipt_ref = r['rule_review']
+                receipt_path = scoped_path(project, receipt_ref['path'])
+                if digest(receipt_path) != receipt_ref['sha256']:
+                    problems.append('changed rule review: ' + r['id'])
+                else:
+                    receipt = read_json(receipt_path)
+                    if receipt['context']['project_id'] != meta['id'] or receipt['context']['rule_set_sha256'] != receipt_ref['rule_set_sha256']:
+                        problems.append('rule review belongs to different work/rules: ' + r['id'])
+                    validate_review(receipt['context'], receipt['review'], receipt['review']['artifacts'])
+                    if r['sha256'] not in {a['sha256'] for a in receipt['review']['artifacts']}:
+                        problems.append('rule review does not cover revision: ' + r['id'])
         except (ValueError, OSError) as exc:
             problems.append(r['id'] + ': ' + str(exc))
         seen.add(r['id'])
     return problems
 
 
-def context(project, chapter_id=None):
+def context(project, chapter_id=None, mode=None):
     problems = validate(project)
     if problems:
         raise ValueError('; '.join(problems))
@@ -148,6 +161,18 @@ def context(project, chapter_id=None):
             add(c['latest_text'] if j == i else c['accepted_text'] or c['latest_text'], 'target_text' if j == i else 'neighbor_text')
     if state.get('latest_text'):
         add(state['latest_text'], 'article_text')
+    from writing_rules import resolve_rules, reading_paths
+    same_task = active and (target or current_target) == current_target and (mode is None or mode == active['run']['request']['mode'])
+    if same_task:
+        rules = active['run'].get('rule_context', {'enabled': False, 'project_id': state['project_id'],
+                'notice': 'Legacy run retains its original rules; start a new run to use an enabled manifest.'})
+        from writing_run import paths
+        rule_reads = reading_paths(project, rules, active['run']['pins'], paths(project, active['run']['id']))
+    else:
+        rules = resolve_rules(project, target, mode)
+        rule_reads = reading_paths(project, rules)
+    meta = read_json(project / 'book.yaml')
+    rules_file = scoped_path(project, meta.get('rules_file', '全书方案/有效规则.md'))
     return {'state': state, 'selected_chapter': target, 'active_task': active,
             'task_precedence': 'Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.',
             'material_maps': [str(p) for p in sorted((project / 'materials/maps').glob('*.json'))],
@@ -155,7 +180,8 @@ def context(project, chapter_id=None):
                                 'status': r['status'], 'version': r['version'], 'sha256': r['sha256'],
                                 'excerpt': scoped_path(project, r['path']).read_text(encoding='utf-8')[:600],
                                 'excerpt_is_full_read': False} for r in selected],
-            'rules_path': str(project / '全书方案/有效规则.md') if (project / '全书方案/有效规则.md').exists() else None,
+            'rules_path': str(rules_file) if rules_file.exists() else None,
+            'rule_context': rules, 'rules_read_full_text': rule_reads,
             'open_issues_path': str(project / '决策记录/open-issues.json') if (project / '决策记录/open-issues.json').exists() else None}
 
 
@@ -181,9 +207,29 @@ def retrieve(project, query, include_history=False, top_k=5):
     return sorted(results, key=lambda x: -x['score'])[:top_k]
 
 
+def validate_new_revision_scope(meta, kind, chapter_id, target=None):
+    """Validate new writes without reinterpreting already registered history."""
+    chapters = {c['id'] for c in meta.get('chapters', [])}
+    if chapter_id is not None and (meta['type'] != 'novel' or chapter_id not in chapters):
+        raise ValueError('Chapter scope is only valid for a known novel chapter')
+    if kind == 'book_plan':
+        if meta['type'] != 'novel' or chapter_id is not None or target not in {None, 'book'}:
+            raise ValueError('Book plan requires a novel book target without chapter_id')
+    elif kind == 'chapter_plan' or (kind == 'text' and meta['type'] == 'novel'):
+        if meta['type'] != 'novel' or chapter_id not in chapters or (target is not None and target != chapter_id):
+            raise ValueError('Novel text/chapter plan requires its exact chapter target')
+    elif meta['type'] == 'wechat':
+        if chapter_id is not None or target not in {None, 'article'}:
+            raise ValueError('WeChat content requires an article target without chapter_id')
+    elif kind == 'review' and target is not None:
+        if (target == 'book' and chapter_id is not None) or (target != 'book' and target != chapter_id):
+            raise ValueError('Review registration must match its book/chapter target')
+
+
 @locked
 def add_revision(project, source, revision_id, kind, version, status, chapter_id=None,
-                 parent_plan_id=None, based_on=None, decision_file=None):
+                 parent_plan_id=None, based_on=None, decision_file=None, rules_review=None,
+                 rules_mode=None, _rules_context=None, _rules_artifacts=None):
     if kind not in {'book_plan', 'chapter_plan', 'text', 'review'} or status not in {'draft', 'accepted', 'baseline', 'historical'}:
         raise ValueError('Unsupported revision kind or status')
     if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9._-]*', revision_id):
@@ -216,10 +262,39 @@ def add_revision(project, source, revision_id, kind, version, status, chapter_id
     if parent_plan_id and parent_plan_id not in by_id:
         raise ValueError('Unknown parent plan')
     meta = read_json(project / 'book.yaml')
+    validate_new_revision_scope(meta, kind, chapter_id)
     if chapter_id and chapter_id not in {c['id'] for c in meta.get('chapters', [])}:
         raise ValueError('Unknown chapter')
     if kind == 'chapter_plan' and not chapter_id:
         raise ValueError('Chapter plan needs a chapter ID')
+    if kind != 'review':
+        from writing_rules import resolve_rules, validate_review
+        from material_index import immutable_json
+        target = chapter_id or ('book' if meta['type'] == 'novel' else 'article')
+        mode = rules_mode or ('plan' if kind in {'book_plan', 'chapter_plan'} else 'revise' if based_on else 'draft')
+        if _rules_context is None and ((kind == 'text' and mode not in {'draft', 'revise', 'trial', 'deliver'})
+                or (kind in {'book_plan', 'chapter_plan'} and mode not in {'plan', 'revise'})):
+            raise ValueError('Rules mode does not match registered content kind')
+        rule_context = _rules_context if _rules_context is not None else resolve_rules(project, target, mode)
+        if rule_context.get('enabled'):
+            if rule_context['project_id'] != meta['id'] or rule_context['target'] != target:
+                raise ValueError('Rule review belongs to another work/chapter')
+            if not rules_review:
+                raise ValueError('Enabled rules require a matching lightweight/run rule review before registration')
+            review = read_json(rules_review)
+            artifacts = _rules_artifacts
+            if artifacts is None:
+                artifacts = [a for a in review.get('artifacts', []) if isinstance(a, dict) and a.get('sha256') == row['sha256']]
+                if len(artifacts) != 1:
+                    raise ValueError('Lightweight review must identify this exact content version once')
+            validate_review(rule_context, review, artifacts)
+            if row['sha256'] not in {a['sha256'] for a in review['artifacts']}:
+                raise ValueError('Rule review does not cover the registered content')
+            relative = '版本记录/rule-reviews/' + revision_id + '.json'
+            receipt = {'schema_version': 1, 'context': rule_context, 'review': review}
+            immutable_json(scoped_path(project, relative), receipt)
+            row['rule_review'] = {'path': relative, 'sha256': digest(scoped_path(project, relative)),
+                                  'rule_set_sha256': rule_context['rule_set_sha256']}
     immutable_copy(source, scoped_path(project, row['path']), row['sha256'])
     if decision_file and status == 'accepted':
         immutable_copy(decision_file, scoped_path(project, row['decision_path']))
@@ -287,13 +362,14 @@ def main():
     subs = p.add_subparsers(dest='command', required=True)
     for command in ['resume', 'validate', 'rebuild-state', 'search', 'add-revision', 'set-chapters']:
         s = subs.add_parser(command); s.add_argument('--project', required=True)
-        if command == 'resume': s.add_argument('--chapter')
+        if command == 'resume':
+            s.add_argument('--chapter'); s.add_argument('--mode')
         if command == 'set-chapters': s.add_argument('--file', type=Path, required=True)
         if command == 'search':
             s.add_argument('--query', required=True); s.add_argument('--history', action='store_true')
         if command == 'add-revision':
             for name in ['source', 'id', 'kind', 'version', 'status']: s.add_argument('--' + name, required=True)
-            for name in ['chapter', 'parent-plan', 'based-on', 'decision-file']: s.add_argument('--' + name)
+            for name in ['chapter', 'parent-plan', 'based-on', 'decision-file', 'rules-review', 'rules-mode']: s.add_argument('--' + name)
     s = subs.add_parser('init'); s.add_argument('--id', required=True); s.add_argument('--title', required=True)
     s.add_argument('--type', choices=['wechat', 'novel'], required=True)
     a = p.parse_args()
@@ -303,7 +379,7 @@ def main():
     else:
         project = resolve_project(a.workspace, a.project)
         if a.command == 'resume':
-            result = dict(context(project, a.chapter), workspace=str(a.workspace), project_path=str(project))
+            result = dict(context(project, a.chapter, a.mode), workspace=str(a.workspace), project_path=str(project))
         elif a.command == 'set-chapters': result = set_chapters(project, read_json(a.file))
         elif a.command == 'validate':
             result = {'errors': validate(project)}
@@ -313,7 +389,7 @@ def main():
             if errors: raise ValueError('; '.join(errors))
             result = derive_state(project); write_json(project / 'state.json', result)
         elif a.command == 'search': result = retrieve(project, a.query, a.history)
-        else: result = add_revision(project, a.source, a.id, a.kind, a.version, a.status, a.chapter, a.parent_plan, a.based_on, a.decision_file)
+        else: result = add_revision(project, a.source, a.id, a.kind, a.version, a.status, a.chapter, a.parent_plan, a.based_on, a.decision_file, a.rules_review, a.rules_mode)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "meeting-note-rules-v1",
+  "project_id": "meeting-note",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "464ee14fdaa643257e32e090dc30897e0665de43c9e9ece11c312bad130c7ec5",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "0cf514d4333072bd2aee9378267bf752037fa2874021b18ca673876672fe4e15",
+      "role": "synthetic_task_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "one-sentence",
+      "path": "rules-v1.md",
+      "anchor": "one-sentence",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "direct-action",
+      "path": "rules-v1.md",
+      "anchor": "direct-action",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "protect-uncertainty",
+      "path": "rules-v1.md",
+      "anchor": "protect-uncertainty",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "no-new-facts",
+      "path": "rules-v1.md",
+      "anchor": "no-new-facts",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "facts"
+        }
+      ]
+    }
+  ]
+}

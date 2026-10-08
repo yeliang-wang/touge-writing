@@ -1,0 +1,142 @@
+{
+  "enabled": true,
+  "schema_version": 1,
+  "project_id": "night-archive",
+  "target": "archive-door",
+  "mode": "review",
+  "manifest": {
+    "id": "night-archive-rules-v1",
+    "path": "rules-manifest-v1.json",
+    "sha256": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3"
+  },
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+      "role": "synthetic_task_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "review-scope",
+      "path": "rules-v1.md",
+      "anchor": "review-scope",
+      "kind": "required",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "source-boundary",
+      "path": "rules-v1.md",
+      "anchor": "source-boundary",
+      "kind": "required",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "scope"
+        }
+      ]
+    },
+    {
+      "id": "key-continuity",
+      "path": "rules-v1.md",
+      "anchor": "key-continuity",
+      "kind": "required",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "hesitation",
+      "path": "rules-v1.md",
+      "anchor": "hesitation",
+      "kind": "guidance",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "path": "rules-v1.md",
+      "anchor": "theme",
+      "kind": "guidance",
+      "targets": [
+        "archive-door"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md",
+          "anchor": "request"
+        }
+      ]
+    }
+  ],
+  "rule_set_sha256": "272e51d0600e9faa16201a29d85627e9514974675e798f5ea05b1b3c34d17912",
+  "read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/novels/night-archive/rules-manifest-v1.json",
+      "sha256": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/novels/night-archive/rules-v1.md",
+      "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/novels/night-archive/inputs/request.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+      "read_state": "not_attested"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# 写作运行记录 · v2.3.1
+# 写作运行记录 · v2.4
 
 run 保存一次作者任务的方法、输入和结果。`版本记录/revisions.json` 仍是正文及方案 accepted 状态的唯一依据。宿主生成文字、执行审读和持有作者授权；脚本不会调用模型或自动确认文学质量。
 
@@ -14,6 +14,8 @@ python3 scripts/writing_workspace.py --workspace "$HOME/.touge-writing/workspace
 
 `start` 锁定所选能力、Skill、生命周期定义、作者表达包以及明确列入的作品输入。复制为 run 内不可变快照。工具同时自动固定作品元数据、内容登记、当前全书方案及目标和相邻章的现行方案／文本；任务额外材料仍需显式列入 inputs。引用全文时把实际源文件列入 inputs；清单本身的快照不等于锁定清单中全部正文。model/configuration 不可得时记 unknown。摘要由宿主阅读后填写，脚本绑定其输入哈希，不自动认证理解。
 
+v2.4 新 run 还固定按作品入口解析的 `rule_context` 与引用文件，目标和 mode 决定本轮适用规则。规则解析结果提供文件位置，宿主仍须读原文并判断继承和例外；没有额外的自动阅读认证命令。旧 run 按当时契约恢复，不回填新规则上下文，也不把当前规则覆盖旧快照。[规则说明](rules.md)
+
 章级 target 是已登记章节 ID；全书是 book；公众号是 article。inputs 应包含本轮实际继承的方案、当前文本、必要邻文和素材／映射。授权引用来自用户真实请求或已有决定；fiction_policy 中 scope 是本轮允许小说化的范围。open_issues 每项说明 impact 与 blocks_completion：局部未决不必阻断无关试写。
 
 ## 产物、审稿、阶段
@@ -25,11 +27,15 @@ python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --pr
 python3 scripts/writing_run.py --workspace "$HOME/.touge-writing/workspace" --project demo stage --run article-001 --operation-id finish --stage completed --reason '本次任务已交付并审读' --review-id review-1
 ```
 
-review.json 参见 [模板](../templates/run-review.json)：scope、findings、result、unresolved_blockers、被审产物的 ID 与哈希。程序检查记录完整性和阻塞事项；评审文字必须由宿主实际阅读后填写。需要修订则 review → revise → review，增加新的产物 ID，保留失败稿与旧审稿。计划任务可 plan → review → completed；没有要求先写正文。完成不代表作者审美认可或平台发布。
+review.json 参见 [旧版兼容模板](../templates/run-review.json)：scope、findings、result、unresolved_blockers、被审产物的 ID 与哈希。已启用规则索引时使用 [规则审阅模板](../templates/rules-review.json)，增加 `rule_set_sha256`、逐项 `rule_coverage`、`task_result` 和 `manuscript_result`。程序核对绑定、覆盖、非空位置和阻塞事项，不判断文字审阅是否正确；评审必须由宿主读实际正文后填写。
+
+需要修订的写作任务按 review → revise → review，增加新的产物 ID，保留失败稿与旧审稿。只要求审阅的任务可以完成并给出 `manuscript_result=needs_revision`，不自动取得改稿授权。计划任务可 plan → review → completed，不必生成正文。保存候选、任务完成、稿件满足规则、作者 accepted 和平台发布分别判断。
 
 ## 采纳与幂等恢复
 
 `register --artifact-id draft-1 --revision revision.json` 复用现有内容登记；revision.json 字段见 [CLI](cli.md)。本次 run 的产物只能登记到其章节范围。accepted 仍需作品内实际作者决定文件；脚本不能判断该记录是否真由作者作出，执行宿主须保证真实性。
+
+规则管理下的登记在 revision.json 中用 `review_id` 绑定已保存的审阅产物。直接 `add-revision` 通过 `--rules-review` 提供轻量审阅并固定审阅及规则上下文。旧登记保持原记录；不能为了兼容新检查补造历史作者决定或规则覆盖。具体要求见 [规则审阅](rules.md)。
 
 同 run 同 operation-id 同输入重试返回已有记录；换输入报冲突。产物已复制但事件未落盘时核对哈希后继续。内容版本已登记而 run 事件未落盘时核对版本、正文、父方案和决定，补齐引用，避免第二份定稿。准备好的 start 中断可用原 request 重试。多个文件不具数据库事务保证。
 

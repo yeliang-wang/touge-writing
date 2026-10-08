@@ -1,0 +1,77 @@
+{
+  "scope": "本篇单句修改，全文读取用于保护上下文；按本篇v1规则核对，不进行整篇重写。",
+  "task_result": "completed",
+  "manuscript_result": "meets_rules",
+  "rule_set_sha256": "72d3ef83b4173a7b353a3c898423233b8e9b46fd16de6d1c51d1bb229b5aea83",
+  "findings": [
+    {
+      "location": "candidate:第5行",
+      "observation": "原句三个抽象词组变为负责人和第一版时间，且没有辱骂。",
+      "resolution": "仅替换原第二段一句。"
+    },
+    {
+      "location": "candidate:第1、3、7行",
+      "observation": "标题与前后段逐字保留，尤其保留省时收益的不确定性。",
+      "resolution": "差异核对确认仅一行改变；未全篇优化。"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "article-candidate",
+      "sha256": "89b8bd2933f12f75582ce712d0851036b57bd1b9d8dc4c4148648a57831858fc"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "one-sentence",
+      "status": "satisfied",
+      "reason": "只替换第5行完整一句，前后字节与基准一致；见change.diff和scope-check.json。",
+      "evidence": [
+        {
+          "artifact_id": "article-candidate",
+          "sha256": "89b8bd2933f12f75582ce712d0851036b57bd1b9d8dc4c4148648a57831858fc",
+          "location": "第5行；第1、3、7行保持原样"
+        }
+      ]
+    },
+    {
+      "rule_id": "direct-action",
+      "status": "satisfied",
+      "reason": "说清谁先动手、何时交第一版，批评用点头代替分工，不骂人、不用抽象口号。",
+      "evidence": [
+        {
+          "artifact_id": "article-candidate",
+          "sha256": "89b8bd2933f12f75582ce712d0851036b57bd1b9d8dc4c4148648a57831858fc",
+          "location": "第5行"
+        }
+      ]
+    },
+    {
+      "rule_id": "protect-uncertainty",
+      "status": "satisfied",
+      "reason": "原文“我也拿不准这办法能省下多少时间”完整保留，未升级为收益保证。",
+      "evidence": [
+        {
+          "artifact_id": "article-candidate",
+          "sha256": "89b8bd2933f12f75582ce712d0851036b57bd1b9d8dc4c4148648a57831858fc",
+          "location": "第7行"
+        }
+      ]
+    },
+    {
+      "rule_id": "no-new-facts",
+      "status": "satisfied",
+      "reason": "候选只把已有最终段的行动原则提前明确，没有新故事、数据或他人心理；原输入三人会议保持原样。",
+      "evidence": [
+        {
+          "artifact_id": "article-candidate",
+          "sha256": "89b8bd2933f12f75582ce712d0851036b57bd1b9d8dc4c4148648a57831858fc",
+          "location": "全文，尤其第3、5、7行"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "neighbor-v1",
+      "kind": "text",
+      "version": "1",
+      "status": "baseline",
+      "chapter_id": "key-kept",
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/neighbor-v1.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002"
+    },
+    {
+      "id": "chapter-v1",
+      "kind": "text",
+      "version": "1",
+      "status": "baseline",
+      "chapter_id": "archive-door",
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/chapter-v1.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "novel-review-001",
+  "task": "请审阅本章，暂不改正文，给出实际改进点",
+  "authorization_refs": [
+    "inputs/request.md#request",
+    "scope.md（评估范围，合成作者输入不是真实作者接受）"
+  ],
+  "target": "archive-door",
+  "mode": "review",
+  "stage": "review",
+  "fiction_policy": {
+    "mode": "fiction",
+    "scope": "仅分析明确列出的合成小说材料；不授权改正文和新设定",
+    "authorization_ref": "inputs/request.md#scope"
+  },
+  "capabilities": [
+    "source-map@1.0.0",
+    "continuity-audit@1.0.0",
+    "author-voice-review@1.0.0",
+    "editorial-review@1.0.0"
+  ],
+  "inputs": [
+    {
+      "path": "inputs/neighbor.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002"
+    },
+    {
+      "path": "inputs/chapter.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+    },
+    {
+      "path": "inputs/materials.md",
+      "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54"
+    }
+  ],
+  "parameters": {
+    "task_boundary": "review_only",
+    "read_scope": "target_and_preceding_chapter"
+  },
+  "open_issues": [
+    {
+      "id": "handover-sheet-missing",
+      "impact": "无法确认签字人；只阻断稿件该断言的确认，不阻断识别问题和完成审阅",
+      "blocks_completion": false
+    }
+  ],
+  "model": {
+    "id": "inherited_agent_model",
+    "configuration": "unknown"
+  }
+}

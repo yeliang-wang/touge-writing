@@ -1,0 +1,44 @@
+{
+  "novel_run_completed": true,
+  "novel_run_drift": [],
+  "novel_review": {
+    "coverage_complete": true,
+    "task_result": "completed",
+    "manuscript_result": "needs_revision",
+    "required_unmet": [
+      "source-boundary",
+      "key-continuity"
+    ],
+    "author_acceptance": "not_determined",
+    "limits": "Record/hash checks only; semantic judgments and actual reading remain the reviewer responsibility."
+  },
+  "article_review": {
+    "coverage_complete": true,
+    "task_result": "completed",
+    "manuscript_result": "meets_rules",
+    "required_unmet": [],
+    "author_acceptance": "not_determined",
+    "limits": "Record/hash checks only; semantic judgments and actual reading remain the reviewer responsibility."
+  },
+  "all_initial_inputs_and_registries_unchanged": true,
+  "accepted_versions": 0,
+  "article_run_created": false,
+  "frozen_code_recheck": "Same immutable run/request and completion operation replayed after code freeze; both rule reviews and workspace validation rerun. No new manuscript was registered.",
+  "code_changes_during_setup": [
+    {
+      "path": "scripts/writing_rules.py",
+      "before_sha256": "5c3bc482a116b7b18dd2618dad68311be92d425769224cda81e0e0748ab2122b",
+      "final_sha256": "12e5deeeb6eb28aa645d3462c4d3d57176313e82d2dfdecb29d40788946f958d"
+    },
+    {
+      "path": "scripts/writing_workspace.py",
+      "before_sha256": "3159e13a7e754ffc4062d4c7d2600e180119056eef25c41f3f29b63004ca5141",
+      "final_sha256": "b5347408c922d6f0735950af78d4463731d583226fc9e4a70fe793e2afdcfd69"
+    },
+    {
+      "path": "scripts/writing_run.py",
+      "before_sha256": "962c40682707ad80fb1e90cc3f5068c9535751db2152dd445804c350f131ed3b",
+      "final_sha256": "d75713c356c1adf1a9acddd88ef9c7cecfe48c32145bec4e6fa16f96abb1b16e"
+    }
+  ]
+}

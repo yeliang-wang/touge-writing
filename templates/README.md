@@ -1,4 +1,4 @@
-# 按需模板 · v2.3.1
+# 按需模板 · v2.4
 
 book-plan、chapter-plan、wechat-article 帮助组织作品方案，字段按真实任务取舍。run-request、run-review 和 material-map 是脚本输入形状；替换占位说明和实际哈希，不把模板当作作者决定。
 
@@ -7,3 +7,7 @@ collaboration 用于合作作品，填写私人仓库、共同基准、分工、
 每个方案继承明确版本，正文与编辑说明分开。参数来自作品，不能默认复制另一部小说配额。模板只是公共格式；init 创建实际索引与作品元数据，工作区结构及字段见 [workspace](../docs/workspace.md)。不附带整套私人工作区或完整虚构作品。
 
 [全书](book-plan.md) · [章节](chapter-plan.md) · [文章](wechat-article.md) · [合作](collaboration.md) · [运行请求](run-request.json) · [审稿](run-review.json) · [映射](material-map.json)
+
+work-rules 为私人规则正文格式，rule-review 为轻量语义审阅。规则索引只绑定 ID、来源、适用范围和文件哈希；不要把合成示例直接视为作者决定。章方案记录继承与落点，run-review 按本轮规则记录逐项证据；小改可不创建 run。详见 [规则执行](../docs/rules.md)。
+
+[规则正文](work-rules.md) · [合成规则索引](rules-manifest.json) · [结构化规则审阅](rules-review.json) · [轻量规则审阅](rule-review.md)

@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "id": "novel-review-001",
+  "request": {
+    "schema_version": 1,
+    "id": "novel-review-001",
+    "task": "请审阅本章，暂不改正文，给出实际改进点",
+    "authorization_refs": [
+      "inputs/request.md#request",
+      "scope.md（评估范围，合成作者输入不是真实作者接受）"
+    ],
+    "target": "archive-door",
+    "mode": "review",
+    "stage": "review",
+    "fiction_policy": {
+      "mode": "fiction",
+      "scope": "仅分析明确列出的合成小说材料；不授权改正文和新设定",
+      "authorization_ref": "inputs/request.md#scope"
+    },
+    "capabilities": [
+      "source-map@1.0.0",
+      "continuity-audit@1.0.0",
+      "author-voice-review@1.0.0",
+      "editorial-review@1.0.0"
+    ],
+    "inputs": [
+      {
+        "path": "inputs/neighbor.md",
+        "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002"
+      },
+      {
+        "path": "inputs/chapter.md",
+        "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809"
+      },
+      {
+        "path": "inputs/materials.md",
+        "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919"
+      },
+      {
+        "path": "inputs/request.md",
+        "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54"
+      }
+    ],
+    "parameters": {
+      "task_boundary": "review_only",
+      "read_scope": "target_and_preceding_chapter"
+    },
+    "open_issues": [
+      {
+        "id": "handover-sheet-missing",
+        "impact": "无法确认签字人；只阻断稿件该断言的确认，不阻断识别问题和完成审阅",
+        "blocks_completion": false
+      }
+    ],
+    "model": {
+      "id": "inherited_agent_model",
+      "configuration": "unknown"
+    }
+  },
+  "request_sha256": "5709f66a24eec714d30be620cad92f4e3c58eeb6c422c7944b2aae9c1eb35132",
+  "pins": [
+    {
+      "label": "capabilities/source-map/1.0.0/CAPABILITY.md",
+      "origin": "public",
+      "source": "capabilities/source-map/1.0.0/CAPABILITY.md",
+      "snapshot": "inputs/000.md",
+      "sha256": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "capabilities/continuity-audit/1.0.0/CAPABILITY.md",
+      "origin": "public",
+      "source": "capabilities/continuity-audit/1.0.0/CAPABILITY.md",
+      "snapshot": "inputs/001.md",
+      "sha256": "d68e291f20bd4fc47b49470b8a2cab18b65bc8e14c285fa523e6ca82b43cde91",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "capabilities/author-voice-review/1.0.0/CAPABILITY.md",
+      "origin": "public",
+      "source": "capabilities/author-voice-review/1.0.0/CAPABILITY.md",
+      "snapshot": "inputs/002.md",
+      "sha256": "82e208f6a793f6ec811e13ed86f6b39496fd9a3761657f852118c20897bb0699",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "capabilities/editorial-review/1.0.0/CAPABILITY.md",
+      "origin": "public",
+      "source": "capabilities/editorial-review/1.0.0/CAPABILITY.md",
+      "snapshot": "inputs/003.md",
+      "sha256": "9e3dbdbf463c9eabd5367a19138317a3a5d9dcce78f95381815ad22d31fdb242",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": ".agents/skills/touge-novel-writing/SKILL.md",
+      "origin": "public",
+      "source": ".agents/skills/touge-novel-writing/SKILL.md",
+      "snapshot": "inputs/004.md",
+      "sha256": "4deabbf3cada0ad66ed6cb73cbd8f7d209d148ad4e386b86825069d695274875",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": ".agents/skills/touge-novel-writing/references/lifecycle.json",
+      "origin": "public",
+      "source": ".agents/skills/touge-novel-writing/references/lifecycle.json",
+      "snapshot": "inputs/005.json",
+      "sha256": "a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/PROFILE.md",
+      "origin": "public",
+      "source": "shared/author-expression/PROFILE.md",
+      "snapshot": "inputs/006.md",
+      "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/expression-evidence.md",
+      "origin": "public",
+      "source": "shared/author-expression/expression-evidence.md",
+      "snapshot": "inputs/007.md",
+      "sha256": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/judgment.md",
+      "origin": "public",
+      "source": "shared/author-expression/judgment.md",
+      "snapshot": "inputs/008.md",
+      "sha256": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/language.md",
+      "origin": "public",
+      "source": "shared/author-expression/language.md",
+      "snapshot": "inputs/009.md",
+      "sha256": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/lexicon.yaml",
+      "origin": "public",
+      "source": "shared/author-expression/lexicon.yaml",
+      "snapshot": "inputs/010.yaml",
+      "sha256": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/rubric.md",
+      "origin": "public",
+      "source": "shared/author-expression/rubric.md",
+      "snapshot": "inputs/011.md",
+      "sha256": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/wechat-rubric.md",
+      "origin": "public",
+      "source": "shared/author-expression/wechat-rubric.md",
+      "snapshot": "inputs/012.md",
+      "sha256": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/manifest.json",
+      "origin": "public",
+      "source": "shared/author-expression/manifest.json",
+      "snapshot": "inputs/013.json",
+      "sha256": "73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "inputs/neighbor.md",
+      "origin": "project",
+      "source": "inputs/neighbor.md",
+      "snapshot": "inputs/014.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "inputs/chapter.md",
+      "origin": "project",
+      "source": "inputs/chapter.md",
+      "snapshot": "inputs/015.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "inputs/materials.md",
+      "origin": "project",
+      "source": "inputs/materials.md",
+      "snapshot": "inputs/016.md",
+      "sha256": "60f6adc89b66907b2373a8fc7ef5274be51f094c5003356e96529a450e654919",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "inputs/request.md",
+      "origin": "project",
+      "source": "inputs/request.md",
+      "snapshot": "inputs/017.md",
+      "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "book.yaml",
+      "origin": "project",
+      "source": "book.yaml",
+      "snapshot": "inputs/018.yaml",
+      "sha256": "2d0aa16c41cfe9fd92ddb9b83a28df174e357c6cc00f321e25057c211e1fa336",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "版本记录/revisions.json",
+      "origin": "project",
+      "source": "版本记录/revisions.json",
+      "snapshot": "inputs/019.json",
+      "sha256": "c33316d408dac3240e606f0a3a21b973c849f4119a2911630e8f140afc6cc1aa",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "版本记录/content/neighbor-v1.md",
+      "origin": "project",
+      "source": "版本记录/content/neighbor-v1.md",
+      "snapshot": "inputs/020.md",
+      "sha256": "fa953ba4075026622782309679e7fe72d3cb7f0cd69910d746ae4b1986eba002",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "版本记录/content/chapter-v1.md",
+      "origin": "project",
+      "source": "版本记录/content/chapter-v1.md",
+      "snapshot": "inputs/021.md",
+      "sha256": "febb9aca2da104027c64cf579cd2ae76e2b46584d8e1aaa476ccfd075e7ce809",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "rules-manifest-v1.json",
+      "origin": "project",
+      "source": "rules-manifest-v1.json",
+      "snapshot": "inputs/022.json",
+      "sha256": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "rules-v1.md",
+      "origin": "project",
+      "source": "rules-v1.md",
+      "snapshot": "inputs/023.md",
+      "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+      "summary": null,
+      "summary_basis_sha256": null
+    }
+  ],
+  "author_profile_version": "1.0.0",
+  "model": {
+    "id": "inherited_agent_model",
+    "configuration": "unknown"
+  },
+  "rule_context": {
+    "enabled": true,
+    "schema_version": 1,
+    "project_id": "night-archive",
+    "target": "archive-door",
+    "mode": "review",
+    "manifest": {
+      "id": "night-archive-rules-v1",
+      "path": "rules-manifest-v1.json",
+      "sha256": "f0352c8109c3012013b7a3652fe98c07e72ff015cd90d88cb0e168b7d573b5f3"
+    },
+    "files": [
+      {
+        "path": "rules-v1.md",
+        "sha256": "ee1d568139244331690b2b669809c42961fd3a39429205b6a29d641a6cbe303c",
+        "role": "rule_body"
+      },
+      {
+        "path": "inputs/request.md",
+        "sha256": "7905f3c9ed03a2268994a08c21edfc3c4792f913a33c5fc8768fe0a9a6b0fc54",
+        "role": "synthetic_task_source"
+      }
+    ],
+    "rules": [
+      {
+        "id": "review-scope",
+        "path": "rules-v1.md",
+        "anchor": "review-scope",
+        "kind": "required",
+        "targets": [
+          "archive-door"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md",
+            "anchor": "request"
+          }
+        ]
+      },
+      {
+        "id": "source-boundary",
+        "path": "rules-v1.md",
+        "anchor": "source-boundary",
+        "kind": "required",
+        "targets": [
+          "archive-door"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md",
+            "anchor": "scope"
+          }
+        ]
+      },
+      {
+        "id": "key-continuity",
+        "path": "rules-v1.md",
+        "anchor": "key-continuity",
+        "kind": "required",
+        "targets": [
+          "archive-door"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md",
+            "anchor": "request"
+          }
+        ]
+      },
+      {
+        "id": "hesitation",
+        "path": "rules-v1.md",
+        "anchor": "hesitation",
+        "kind": "guidance",
+        "targets": [
+          "archive-door"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md",
+            "anchor": "request"
+          }
+        ]
+      },
+      {
+        "id": "theme",
+        "path": "rules-v1.md",
+        "anchor": "theme",
+        "kind": "guidance",
+        "targets": [
+          "archive-door"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md",
+            "anchor": "request"
+          }
+        ]
+      }
+    ],
+    "rule_set_sha256": "272e51d0600e9faa16201a29d85627e9514974675e798f5ea05b1b3c34d17912"
+  }
+}
