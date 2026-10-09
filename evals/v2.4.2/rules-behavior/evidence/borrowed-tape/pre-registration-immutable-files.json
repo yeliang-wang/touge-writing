@@ -1,0 +1,10 @@
+[
+  {
+    "path": "workspace/wechat/borrowed-tape/runs/register-recover-001/run.json",
+    "sha256": "3fb60eac602b2e4d564ddde75f63688db49fe7038b647f1767bda7d77259e568"
+  },
+  {
+    "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000001.json",
+    "sha256": "0ce7cddf10b55f5a3f05f79d956c1bca0330f95880586d49993eadf26f5addeb"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "path": "workspace/novels/back-door/版本记录/revisions.json",
+    "sha256": "34cd7b97d2a18079bf0e41a36913d479f948f3ffb4743f78bbfb14504fe8d932"
+  },
+  {
+    "path": "workspace/novels/back-door/state.json",
+    "sha256": "fafcde7fbab2e03bbf79d48626e939dc85ebe086ecdb15870e8df7de9a02bc7b"
+  },
+  {
+    "path": "workspace/novels/back-door/inputs/materials-and-collaboration.md",
+    "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358"
+  },
+  {
+    "path": "workspace/novels/back-door/inputs/reference-v1.0.md",
+    "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+  },
+  {
+    "path": "workspace/novels/back-door/inputs/request.md",
+    "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a"
+  },
+  {
+    "path": "workspace/novels/back-door/inputs/target-v0.3.md",
+    "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+  },
+  {
+    "path": "workspace/novels/back-door/版本记录/content/after-shift-draft-0.3.md",
+    "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+  },
+  {
+    "path": "workspace/novels/back-door/版本记录/content/first-count-baseline-1.0.md",
+    "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+  }
+]

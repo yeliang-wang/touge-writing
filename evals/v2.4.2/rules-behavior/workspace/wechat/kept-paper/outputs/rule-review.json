@@ -1,0 +1,70 @@
+{
+  "scope": "完整当前正文、请求、适用规则；小说另读完整参考章与合作/素材原文。",
+  "task_result": "completed",
+  "manuscript_result": "needs_revision",
+  "rule_set_sha256": "fcc8104500392e0a61c0b0912e5190ad912dd11a475dd5a968f59a2ebe883575",
+  "findings": [
+    {
+      "location": "L7–L17 排除 L11",
+      "observation": "正文290汉字，含40字引用；完整记录范围及源哈希，标题编务附记不计。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    },
+    {
+      "location": "L17",
+      "observation": "重复前文道理，且不会再误会的保证过满；机械无重复窗口并不能推翻此判断。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    },
+    {
+      "location": "全文及审阅交付",
+      "observation": "只输出统计和意见；未生成替代正文或新登记。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "reviewed-article",
+      "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "body-scope",
+      "status": "satisfied",
+      "reason": "正文290汉字，含40字引用；完整记录范围及源哈希，标题编务附记不计。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-article",
+          "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1",
+          "location": "L7–L17 排除 L11"
+        }
+      ]
+    },
+    {
+      "rule_id": "judgment",
+      "status": "unmet",
+      "reason": "重复前文道理，且不会再误会的保证过满；机械无重复窗口并不能推翻此判断。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-article",
+          "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1",
+          "location": "L17"
+        }
+      ]
+    },
+    {
+      "rule_id": "review-only",
+      "status": "satisfied",
+      "reason": "只输出统计和意见；未生成替代正文或新登记。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-article",
+          "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1",
+          "location": "全文及审阅交付"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "back-door",
+  "title": "后门的灯",
+  "type": "novel",
+  "chapters": [
+    {
+      "id": "first-count",
+      "title": "第一次点数"
+    },
+    {
+      "id": "after-shift",
+      "title": "交班后那一页"
+    }
+  ],
+  "rules_file": "rules-v1.md",
+  "rules_manifest": "rules-manifest-v1.json"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "run_id": "novel-review-001",
+  "operation_id": "save-rule-review",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "rule-review",
+      "path": "artifacts/rule-review.json",
+      "sha256": "433c6cfde684ba28dc1ff76923a58d6adcf0019a043001cfa34bd043918b85cb",
+      "role": "review"
+    }
+  },
+  "payload_sha256": "80437fe13eed4cc2d316578a6bba6bb669a4b0fe9232a25c15be749625c34f6f",
+  "previous": "b63dc8053dd8ad7cdb3a9783c54e812b562a5b18f8e1690ad1612090a904cba6"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 5,
+  "run_id": "novel-review-001",
+  "operation_id": "complete-review",
+  "payload": {
+    "action": "stage",
+    "stage": "completed",
+    "reason": "只审阅任务已交付；稿件仍 needs_revision，无改稿或接受",
+    "review_id": "rule-review"
+  },
+  "payload_sha256": "3f4e1681d5d7dc8ccb259396cf446d5ab709db453be2f1334c6dc6ddd06aac43",
+  "previous": "54f5626b4a9d5b8abb27d0bb10832e91eccbce6211e594ef6b7c3de3f6ed727f"
+}

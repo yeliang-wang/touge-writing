@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "id": "kept-paper",
+  "title": "我们为什么留下那张纸",
+  "type": "wechat",
+  "chapters": [],
+  "rules_file": "rules-v1.md",
+  "rules_manifest": "rules-manifest-v1.json"
+}

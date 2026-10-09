@@ -1,0 +1,26 @@
+[
+  {
+    "path": "workspace/wechat/borrowed-tape/版本记录/revisions.json",
+    "sha256": "84c83eea6ac44492ef879b5ab71a568e93a6dedf61c0b014355f6fc33f3bdc09"
+  },
+  {
+    "path": "workspace/wechat/borrowed-tape/state.json",
+    "sha256": "7e4fa53f6eb32026670f635fc36ac24a30c777d1b2133590639ee584355de96e"
+  },
+  {
+    "path": "workspace/wechat/borrowed-tape/inputs/candidate-v0.2.md",
+    "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+  },
+  {
+    "path": "workspace/wechat/borrowed-tape/inputs/old-v0.1.md",
+    "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+  },
+  {
+    "path": "workspace/wechat/borrowed-tape/inputs/request.md",
+    "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb"
+  },
+  {
+    "path": "workspace/wechat/borrowed-tape/版本记录/content/article-draft-0.1.md",
+    "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+  }
+]

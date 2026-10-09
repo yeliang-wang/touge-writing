@@ -1,0 +1,38 @@
+[
+  {
+    "path": "inputs/novel-materials.md",
+    "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358"
+  },
+  {
+    "path": "inputs/novel-reference-v1.0.md",
+    "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+  },
+  {
+    "path": "inputs/novel-request.md",
+    "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a"
+  },
+  {
+    "path": "inputs/novel-target-v0.3.md",
+    "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+  },
+  {
+    "path": "inputs/registration-candidate-v0.2.md",
+    "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+  },
+  {
+    "path": "inputs/registration-old-v0.1.md",
+    "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+  },
+  {
+    "path": "inputs/registration-request.md",
+    "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb"
+  },
+  {
+    "path": "inputs/wechat-draft-v0.1.md",
+    "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+  },
+  {
+    "path": "inputs/wechat-request.md",
+    "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477"
+  }
+]

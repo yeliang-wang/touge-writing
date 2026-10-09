@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 8,
+  "run_id": "register-recover-001",
+  "operation_id": "complete-registration-task",
+  "payload": {
+    "action": "stage",
+    "stage": "completed",
+    "reason": "请求的正常登记与实际恢复核验已完成；保留源漂移及解释，无作者accepted",
+    "review_id": "completed-review"
+  },
+  "payload_sha256": "3a8b01fe32064bb8bd9de488b8735df25bce4c27c8b38156d59ab002a18113fd",
+  "previous": "8d69668294ac027a5e003317b9dfb61669167dfb8d77aa6c01f493f5ac7b6fe1"
+}

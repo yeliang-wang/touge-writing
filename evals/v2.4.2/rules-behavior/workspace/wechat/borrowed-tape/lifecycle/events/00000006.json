@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 6,
+  "run_id": "register-recover-001",
+  "operation_id": "save-completed-review",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "completed-review",
+      "path": "artifacts/completed-review.json",
+      "sha256": "a69c91bf6e9407e985edfa5f2d4b34d8644afa25a4d27b27af921db7870a924a",
+      "role": "review"
+    }
+  },
+  "payload_sha256": "4a70aa7c7619c7f55fa69a812cfd957f28eda758a474b952eb536d38cca4a75f",
+  "previous": "d4551186d5e61f1014fa1fa30f4a3775adad6a0d50db8e7da9069e04e99ac81f"
+}

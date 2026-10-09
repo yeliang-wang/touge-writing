@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "first-count-baseline-1.0",
+      "kind": "text",
+      "version": "1.0",
+      "status": "baseline",
+      "chapter_id": "first-count",
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/first-count-baseline-1.0.md",
+      "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+    },
+    {
+      "id": "after-shift-draft-0.3",
+      "kind": "text",
+      "version": "0.3",
+      "status": "draft",
+      "chapter_id": "after-shift",
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/after-shift-draft-0.3.md",
+      "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "sequence": 5,
+  "run_id": "register-recover-001",
+  "operation_id": "register-selected-v02",
+  "payload": {
+    "action": "register",
+    "revision_id": "article-draft-0.2",
+    "artifact_id": "candidate-v02",
+    "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+    "revision": {
+      "revision_id": "article-draft-0.2",
+      "kind": "text",
+      "version": "0.2",
+      "status": "draft",
+      "based_on": "article-draft-0.1"
+    },
+    "decision_sha256": null,
+    "review_id": "pre-registration-review"
+  },
+  "payload_sha256": "ca5ab3e906450b0ea9606c11e0be283a6a6c91f302282d910dfbb86bfb67a2b8",
+  "previous": "1d24c73e9aafcc0dc727334ec364f0216f5008ffc0aa61d4354d159345e786af"
+}

@@ -176,6 +176,17 @@
         "novel"
       ],
       "summary": "以实际正文为对象的审稿"
+    },
+    {
+      "id": "editorial-review",
+      "version": "1.0.2",
+      "path": "capabilities/editorial-review/1.0.2/CAPABILITY.md",
+      "sha256": "762c7dc58c08c8a784b11d7083672910d4e83db55c4ef29ff62ef138e0fae232",
+      "applies_to": [
+        "wechat",
+        "novel"
+      ],
+      "summary": "以实际正文为对象的审稿"
     }
   ]
 }

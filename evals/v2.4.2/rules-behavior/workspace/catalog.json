@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "id": "back-door",
+      "title": "后门的灯",
+      "type": "novel",
+      "path": "novels/back-door",
+      "aliases": []
+    },
+    {
+      "id": "kept-paper",
+      "title": "我们为什么留下那张纸",
+      "type": "wechat",
+      "path": "wechat/kept-paper",
+      "aliases": []
+    },
+    {
+      "id": "borrowed-tape",
+      "title": "借出去的卷尺",
+      "type": "wechat",
+      "path": "wechat/borrowed-tape",
+      "aliases": []
+    }
+  ]
+}

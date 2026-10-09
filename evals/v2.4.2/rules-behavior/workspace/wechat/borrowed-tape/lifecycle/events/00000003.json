@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "run_id": "register-recover-001",
+  "operation_id": "review-registration",
+  "payload": {
+    "action": "stage",
+    "stage": "review",
+    "reason": "已读取现有候选和前版，只按请求登记，不改正文",
+    "review_id": null
+  },
+  "payload_sha256": "61b4eba5d3ff45f27d8fb84520d778633d5c513b79e2fbbb6403728886d1c474",
+  "previous": "a42b7e07055f6f3e081e5a4e18e18e3efdace381f059097c69fb79111901bf84"
+}

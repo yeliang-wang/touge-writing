@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "active_run": null,
+  "runs": {
+    "novel-review-001": {
+      "run_id": "novel-review-001",
+      "stage": "completed",
+      "mode": "review",
+      "target": "after-shift",
+      "artifacts": [
+        {
+          "id": "reviewed-text",
+          "path": "artifacts/reviewed-text.md",
+          "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+          "role": "text"
+        },
+        {
+          "id": "rule-review",
+          "path": "artifacts/rule-review.json",
+          "sha256": "433c6cfde684ba28dc1ff76923a58d6adcf0019a043001cfa34bd043918b85cb",
+          "role": "review"
+        },
+        {
+          "id": "human-review",
+          "path": "artifacts/human-review.md",
+          "sha256": "1ee228a979537ff97cd5d16445ed040dc6de7ad61334ae3808071e6ec0b5b3ed",
+          "role": "delivery"
+        }
+      ],
+      "registered_versions": [],
+      "resolved_issues": []
+    }
+  }
+}

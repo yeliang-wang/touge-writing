@@ -1,0 +1,132 @@
+{
+  "state": {
+    "schema_version": 1,
+    "project_id": "kept-paper",
+    "title": "我们为什么留下那张纸",
+    "book_plan": null,
+    "chapters": [],
+    "next_action": null,
+    "latest_text": "article-draft-0.1"
+  },
+  "selected_chapter": null,
+  "active_task": null,
+  "task_precedence": "Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.",
+  "material_maps": [],
+  "read_full_text": [
+    {
+      "id": "article-draft-0.1",
+      "role": "article_text",
+      "path": "<EVAL>/workspace/wechat/kept-paper/版本记录/content/article-draft-0.1.md",
+      "status": "draft",
+      "version": "0.1",
+      "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1",
+      "excerpt": "# 我们为什么留下那张纸\n\n署名：戴禾（合成人物）。现稿 v0.1。\n\n> 编务说明：工作区旧截图待清理，不进入排版。\n\n上午，客户把一张手写纸推过来。我以为那是已经废掉的旧需求，想直接用昨天的表替换。他按住纸角，让我先看最后两行。我照着念完，才发现我们把“收到”写成了“认可”。\n\n> 收到这份表，只表示我们拿到了内容——不表示已经认可安排。需要改动的地方，我们会在周五前写回。\n\n【编务】此处插入纸张照片。配套方案以后另做，不应混进正文；引文中的破折号保留。\n\n我把表头的“客户确认”改成“客户已收”，原来的纸也夹在后面。周五，他回了三处修改，两个日期都往后挪了。没有人因此少做一次沟通，我们只是终于知道，那封信当时答应的是什么。\n\n收到不等于认可，这个区别我以前也知道。可我急着把事项划掉时，还是会把两个词写到一格里。现在我愿意把那张纸留下，因为纸上有他的话，表里有我的理解，两样不该偷偷变成一样。\n\n把话说清楚很重要，沟通清楚才能避免误会。只要把原话放在旁边，以后就不会再有误会。\n\n## 资料附记\n\n这篇原计划配两张图，采访提问尚未整理。附记不是正文，不应算入篇幅。\n",
+      "excerpt_is_full_read": false
+    }
+  ],
+  "rules_path": "<EVAL>/workspace/wechat/kept-paper/rules-v1.md",
+  "rule_context": {
+    "enabled": true,
+    "schema_version": 1,
+    "project_id": "kept-paper",
+    "target": "article",
+    "mode": "review",
+    "manifest": {
+      "id": "kept-paper-synthetic-rules-v1",
+      "path": "rules-manifest-v1.json",
+      "sha256": "10f2a79a02cf9f94162ee6b9434bc84377c04845e7be241b2aebf52725dd7cfb"
+    },
+    "files": [
+      {
+        "path": "rules-v1.md",
+        "sha256": "f232aeb7ef4820963fc1cfa2173bb6d4518054ceca600128dbd6f1d1df12a339",
+        "role": "rule_body"
+      },
+      {
+        "path": "inputs/request.md",
+        "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477",
+        "role": "synthetic_source"
+      }
+    ],
+    "rules": [
+      {
+        "id": "body-scope",
+        "path": "rules-v1.md",
+        "anchor": "r-body-scope",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "judgment",
+        "path": "rules-v1.md",
+        "anchor": "r-judgment",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "review-only",
+        "path": "rules-v1.md",
+        "anchor": "r-review-only",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "review"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      }
+    ],
+    "rule_set_sha256": "fcc8104500392e0a61c0b0912e5190ad912dd11a475dd5a968f59a2ebe883575"
+  },
+  "rules_read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/wechat/kept-paper/rules-manifest-v1.json",
+      "sha256": "10f2a79a02cf9f94162ee6b9434bc84377c04845e7be241b2aebf52725dd7cfb",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/wechat/kept-paper/rules-v1.md",
+      "sha256": "f232aeb7ef4820963fc1cfa2173bb6d4518054ceca600128dbd6f1d1df12a339",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/wechat/kept-paper/inputs/request.md",
+      "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477",
+      "read_state": "not_attested"
+    }
+  ],
+  "open_issues_path": null,
+  "workspace": "<EVAL>/workspace",
+  "project_path": "<EVAL>/workspace/wechat/kept-paper"
+}

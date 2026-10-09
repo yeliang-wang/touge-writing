@@ -1,4 +1,4 @@
-# v2.4.1 文档导航
+# v2.4.2 文档导航
 
 完整项目提供可升级的公共写作能力。私人作品保存在显式选择的 workspace，可以只在本地使用，或建立独立私有 Git 仓库。公共安装包不携带个人作品。
 
@@ -8,7 +8,7 @@
 | 公众号单篇／长篇小说 | [公众号入口](../.agents/skills/touge-wechat-writing/README.md)、[小说入口](../.agents/skills/touge-novel-writing/README.md) |
 | 公共能力与私有作品边界 | [架构](architecture.md)、[workspace](workspace.md) |
 | 读取作品规则、落实章方案、逐项审阅 | [规则执行](rules.md)、[规则审阅模板](../templates/rule-review.md) |
-| 本轮写作方法提炼与补丁边界 | [v2.4.1 升级说明](upgrade-v2.4.1.md) |
+| 本轮写作方法提炼与补丁边界 | [v2.4.2 升级说明](upgrade-v2.4.2.md) |
 | 更名、升级和多作品工作区 | [v2.3.1 更名](rename-v2.3.1.md) |
 | 首次迁入独立私有 Git、备份和恢复 | [v2.3 迁移](migration-v2.3.md) |
 | 分支候选、主编整合与作者确认 | [合作流程](collaboration.md)、[合作约定模板](../templates/collaboration.md) |

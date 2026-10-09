@@ -1,0 +1,70 @@
+{
+  "scope": "完整 old-v0.1.md 与 candidate-v0.2.md、登记前清单、合成操作请求和规则；本次是登记，不进行文学验收。",
+  "task_result": "in_progress",
+  "manuscript_result": "not_assessed",
+  "rule_set_sha256": "e55163039d6fe47ab6f660a55b527159ccecc512939fba750efb3841664b0f26",
+  "findings": [
+    {
+      "location": "全文",
+      "observation": "候选仅将末句从泛泛方便改为到了日期仍须问，未扩展其他事件；本轮已读原文件，按请求逐字保存，拟登记 draft。",
+      "resolution": "按顺序登记再核验，未宣称已经恢复"
+    },
+    {
+      "location": "新版本元数据",
+      "observation": "现有注册为 article-draft-0.1，已核对旧正文；新 ID/版本/前版已准备，等待实际 register 执行后核验。",
+      "resolution": "按顺序登记再核验，未宣称已经恢复"
+    },
+    {
+      "location": "登记后的恢复步骤",
+      "observation": "尚未发生登记，不能预先声称恢复通过；先保存此真实阶段的审核。",
+      "resolution": "按顺序登记再核验，未宣称已经恢复"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "candidate-v02",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "candidate-integrity",
+      "status": "satisfied",
+      "reason": "候选仅将末句从泛泛方便改为到了日期仍须问，未扩展其他事件；本轮已读原文件，按请求逐字保存，拟登记 draft。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v02",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "location": "全文"
+        }
+      ]
+    },
+    {
+      "rule_id": "version-lineage",
+      "status": "partial",
+      "reason": "现有注册为 article-draft-0.1，已核对旧正文；新 ID/版本/前版已准备，等待实际 register 执行后核验。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v02",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "location": "新版本元数据"
+        }
+      ]
+    },
+    {
+      "rule_id": "recover-records",
+      "status": "needs_verification",
+      "reason": "尚未发生登记，不能预先声称恢复通过；先保存此真实阶段的审核。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v02",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "location": "登记后的恢复步骤"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

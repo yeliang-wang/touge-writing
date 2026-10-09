@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "active_run": null,
+  "runs": {
+    "register-recover-001": {
+      "run_id": "register-recover-001",
+      "stage": "completed",
+      "mode": "revise",
+      "target": "article",
+      "artifacts": [
+        {
+          "id": "candidate-v02",
+          "path": "artifacts/candidate-v02.md",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "role": "text"
+        },
+        {
+          "id": "pre-registration-review",
+          "path": "artifacts/pre-registration-review.json",
+          "sha256": "9889a953c24830832d5c50189a8959aa79d9f94eecb8a7941710d98d9739165a",
+          "role": "review"
+        },
+        {
+          "id": "completed-review",
+          "path": "artifacts/completed-review.json",
+          "sha256": "a69c91bf6e9407e985edfa5f2d4b34d8644afa25a4d27b27af921db7870a924a",
+          "role": "review"
+        },
+        {
+          "id": "recovery-delivery",
+          "path": "artifacts/recovery-delivery.md",
+          "sha256": "aa64f2e6a1f25322f07bdc93dbc1361a90cd991e8b0e41f0e0164cfb33b72a85",
+          "role": "delivery"
+        }
+      ],
+      "registered_versions": [
+        "article-draft-0.2"
+      ],
+      "resolved_issues": []
+    }
+  }
+}

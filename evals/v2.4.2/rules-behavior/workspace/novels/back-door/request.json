@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "novel-review-001",
+  "task": "执行 inputs/request.md 的合成请求；不访问真实私人作品",
+  "authorization_refs": [
+    "inputs/request.md（合成操作请求）"
+  ],
+  "target": "after-shift",
+  "mode": "review",
+  "stage": "review",
+  "fiction_policy": {
+    "mode": "source-based",
+    "scope": "仅本任务提供的合成输入；不扩充素材事实"
+  },
+  "capabilities": [
+    "source-map@1.0.0",
+    "continuity-audit@1.0.0",
+    "reflection-shaping@1.0.1",
+    "editorial-review@1.0.2"
+  ],
+  "inputs": [
+    {
+      "path": "inputs/request.md",
+      "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a"
+    },
+    {
+      "path": "inputs/materials-and-collaboration.md",
+      "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358"
+    }
+  ],
+  "parameters": {
+    "synthetic_evaluation": true
+  },
+  "open_issues": [],
+  "model": {
+    "id": "unknown",
+    "configuration": "unknown"
+  }
+}

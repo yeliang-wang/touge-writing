@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "borrowed-tape-synthetic-rules-v1",
+  "project_id": "borrowed-tape",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+      "role": "synthetic_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "candidate-integrity",
+      "path": "rules-v1.md",
+      "anchor": "r-candidate-integrity",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "version-lineage",
+      "path": "rules-v1.md",
+      "anchor": "r-version-lineage",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "recover-records",
+      "path": "rules-v1.md",
+      "anchor": "r-recover-records",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    }
+  ]
+}

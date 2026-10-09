@@ -1,0 +1,714 @@
+{
+  "schema_version": 1,
+  "source": "independent_agent_forward_test",
+  "all_in_scope_passed": true,
+  "independence": {
+    "execution": "agent separate from product implementation",
+    "scenario_author": "same independent evaluator; newly constructed synthetic inputs",
+    "semantic_review": "self_review",
+    "blind": false
+  },
+  "cases": [
+    {
+      "id": "novel-review-scope",
+      "status": "passed",
+      "task_result": "completed",
+      "manuscript_result": "needs_revision",
+      "reviewer_relationship": "self_review",
+      "observations": [
+        "阅读全文目标、完整参考章、摘记和合作记录，分开确认叙述者、素材整理、执笔、确认权限与未定署名。",
+        "同一 explicit 汉字口径保留正文纸条，分别得到453与260；按实际句子划分现场、铺垫、后果、回望并报告混合段边界。",
+        "定位未知动机断言、重复结尾和无依据保证，给出保留项、优先级与收益损失，未按场景比例自动评优。",
+        "review-only run completed，但稿件 needs_revision；正文、参考稿和正式登记哈希不变。"
+      ]
+    },
+    {
+      "id": "wechat-body-scope",
+      "status": "passed",
+      "task_result": "completed",
+      "manuscript_result": "needs_revision",
+      "reviewer_relationship": "self_review",
+      "observations": [
+        "当前草稿完整阅读后显式选 L7–L17、排除 L11，正文290汉字包括40字引用。",
+        "本次另跑legacy为322，分别说明漏引用与额外计入元数据；未假称还原未知旧统计。",
+        "统计和密度共享正文范围，全文结构词命中经实际阅读确认在编务处；无逐字重复仍指出语义重复和过满保证。",
+        "未修改、重登记或发表原稿。"
+      ]
+    },
+    {
+      "id": "registration-recovery",
+      "status": "passed",
+      "task_result": "completed",
+      "manuscript_result": "not_assessed",
+      "reviewer_relationship": "self_review",
+      "observations": [
+        "实际调用 run register，将现有候选逐字追加为article-draft-0.2 draft并指向0.1。",
+        "实际resume与verify显示当前正文0.2，唯一drift是登记源文件；旧条目与旧正文不变。",
+        "新增条目、候选SHA、唯一register事件一致，全部冻结快照和既有事件不变。",
+        "保留真实drift及对账，没有自动豁免其他变化、重写快照或追加重复版本，没有accepted。"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "case_id": "novel-review-scope",
+      "type": "manuscript_issue",
+      "status": "reported_not_rewritten",
+      "description": "资料外动机断言、重复回望和过满保证；审阅任务已完成，稿件 needs_revision。"
+    },
+    {
+      "case_id": "wechat-body-scope",
+      "type": "manuscript_issue",
+      "status": "reported_not_rewritten",
+      "description": "结尾重复且声称不会再误会，已定位说明；未取得或执行改稿授权。"
+    }
+  ],
+  "limitations": [
+    "独立于产品实现执行，但输入构造与语义审阅由同一Agent完成，非盲测或第二位文学评审。",
+    "正文统计和场景分类仅适用这些实际版本与所述范围；分类边界不等于客观文学分数。",
+    "只选入必要证据，完整run输入快照本地已核验但未分发；run清单保留其来源和真实哈希。",
+    "正常登记后恢复已实测；中断故障、真实多人账号、外部服务、真实作者批准与公共完整验收未在本Agent执行。"
+  ],
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "bcd22c3d27c1d7528da52e297ed1acaadfaf4d19dc3aeb196ad41d05bcdaa8ef"
+    },
+    {
+      "path": "evaluated-files-final.json",
+      "sha256": "0e7df0f66f4c8e90d9ecb700cb77b23e1c7c0f1c1d6146bb62311eff92c32e29"
+    },
+    {
+      "path": "evaluated-files-start.json",
+      "sha256": "0e7df0f66f4c8e90d9ecb700cb77b23e1c7c0f1c1d6146bb62311eff92c32e29"
+    },
+    {
+      "path": "evidence/back-door/before.json",
+      "sha256": "0cbba17fa5f459a220c2cc9a558a90f8d150db638eaa3fc6e09481c64e1c366c"
+    },
+    {
+      "path": "evidence/back-door/completed.json",
+      "sha256": "9f3a64bbaf834fdca4467de089955ec4a7a87ebe4336c2854c649d9c63c8d907"
+    },
+    {
+      "path": "evidence/back-door/resume-before.json",
+      "sha256": "7bbe912a97a7e306509a0592d0d316bb3e3097ee9d3ca407d12983317bf2ba6a"
+    },
+    {
+      "path": "evidence/back-door/review-check.json",
+      "sha256": "93673040aad125bf0f7da3c2d80d385a4fc62989ef9d060fbd32b002368a3179"
+    },
+    {
+      "path": "evidence/back-door/revisions-before.json",
+      "sha256": "34cd7b97d2a18079bf0e41a36913d479f948f3ffb4743f78bbfb14504fe8d932"
+    },
+    {
+      "path": "evidence/back-door/revisions-final.json",
+      "sha256": "34cd7b97d2a18079bf0e41a36913d479f948f3ffb4743f78bbfb14504fe8d932"
+    },
+    {
+      "path": "evidence/back-door/rule-context.json",
+      "sha256": "63fc662897dd5ae23ab660ef7b2567ba0c15f15c542ed0a2e0d738ca6587a699"
+    },
+    {
+      "path": "evidence/back-door/run-start.json",
+      "sha256": "c007ab68f50a7b586a399baac364ba081781cd6754836ee3dd1b3d3f2cf9458e"
+    },
+    {
+      "path": "evidence/back-door/validate-final.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/back-door/verify.json",
+      "sha256": "ef1d786f9f23a3439f4a82cb407ac8a48a081cdd3c51deab7e2609b300cb0c7c"
+    },
+    {
+      "path": "evidence/borrowed-tape/before.json",
+      "sha256": "d4002143e25e9d827f5a322310afd237a64744bdc6edb36c2a7fd391c56f25eb"
+    },
+    {
+      "path": "evidence/borrowed-tape/completed.json",
+      "sha256": "e80ba13f57d375cef3adbcdd8f56547aecb5ff435c23dcaa8d003d1b5a4c7838"
+    },
+    {
+      "path": "evidence/borrowed-tape/immutable-history-verification.json",
+      "sha256": "e1917253dcb7764f7a1f5707480eae34fbba72e213d2f6d4c89a890cc3026f34"
+    },
+    {
+      "path": "evidence/borrowed-tape/pre-registration-immutable-files.json",
+      "sha256": "983597aaff1f4958f4e3ef47366e328702d4c32501f588cc6328f7b87c13f7f4"
+    },
+    {
+      "path": "evidence/borrowed-tape/register.json",
+      "sha256": "358d7c0fcc9ebac0face674d9d8d1b553822293efb39d1558ad23ded6762473b"
+    },
+    {
+      "path": "evidence/borrowed-tape/registration-reconciliation.json",
+      "sha256": "b76acea18c0038db0e791563468948048984d6963124ed1cdecfbeed3cd27179"
+    },
+    {
+      "path": "evidence/borrowed-tape/resume-before.json",
+      "sha256": "63ed431d109638a0b773a26a64856efdfe8495e03a00fc5926377684e888016e"
+    },
+    {
+      "path": "evidence/borrowed-tape/resume-final.json",
+      "sha256": "8391af698fa5148df9d37cbf8789e7ee9b4b4c04f3c10de318d6641cf951836d"
+    },
+    {
+      "path": "evidence/borrowed-tape/revisions-after-register.json",
+      "sha256": "ffd9d169c6a6e83edcb5c476eeb6b0c9b59f73c58f31ae0b8fe751d64f069e8c"
+    },
+    {
+      "path": "evidence/borrowed-tape/revisions-before.json",
+      "sha256": "84c83eea6ac44492ef879b5ab71a568e93a6dedf61c0b014355f6fc33f3bdc09"
+    },
+    {
+      "path": "evidence/borrowed-tape/revisions-final.json",
+      "sha256": "ffd9d169c6a6e83edcb5c476eeb6b0c9b59f73c58f31ae0b8fe751d64f069e8c"
+    },
+    {
+      "path": "evidence/borrowed-tape/rule-context.json",
+      "sha256": "79c358d7302d459f03aa84650f8353f68d6bbc5582dc519c8010204918f42fe3"
+    },
+    {
+      "path": "evidence/borrowed-tape/run-resume-after-register.json",
+      "sha256": "782f938438203c7353a62d83768488133b74c84dc55560c84d4b62a7e5e31253"
+    },
+    {
+      "path": "evidence/borrowed-tape/run-start.json",
+      "sha256": "8d3986e85d92d35c41b690032b21b2e9855a820937d20a0356a1851c9c775abf"
+    },
+    {
+      "path": "evidence/borrowed-tape/snapshots-after.json",
+      "sha256": "5d930e8eb030ed49f8118585f2fc60d736d475cf44e6245351db226b1031c7df"
+    },
+    {
+      "path": "evidence/borrowed-tape/snapshots-before.json",
+      "sha256": "5d930e8eb030ed49f8118585f2fc60d736d475cf44e6245351db226b1031c7df"
+    },
+    {
+      "path": "evidence/borrowed-tape/validate-after-register.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/borrowed-tape/validate-final.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/borrowed-tape/verify-after-register.json",
+      "sha256": "782f938438203c7353a62d83768488133b74c84dc55560c84d4b62a7e5e31253"
+    },
+    {
+      "path": "evidence/borrowed-tape/verify-final.json",
+      "sha256": "2ab766792aa3f8b8908e573ad5bc6de3c28244ed7c054708aab1f3c8fe77f067"
+    },
+    {
+      "path": "evidence/borrowed-tape/workspace-resume-after-register.json",
+      "sha256": "f39cdee985d7c06451aadcfe6c73dd6f19c05be4453ce3c2548cc330d43ca57e"
+    },
+    {
+      "path": "evidence/kept-paper/before.json",
+      "sha256": "4a06032153941fff8c31961fda59814339f92504ad31e59a31d852b962c17654"
+    },
+    {
+      "path": "evidence/kept-paper/resume-before.json",
+      "sha256": "1bba8f6dc9d8ccdc8e151029e452421d4fa53b4924591c8a45774053fe581933"
+    },
+    {
+      "path": "evidence/kept-paper/review-check.json",
+      "sha256": "b1a69b03f09c45543d364344b99d1fc0e175be95e05808e2d1f492ac2639150c"
+    },
+    {
+      "path": "evidence/kept-paper/revisions-before.json",
+      "sha256": "ca45551db322ef04436baede14c04e5aadee8724392b635040125549bb7be46d"
+    },
+    {
+      "path": "evidence/kept-paper/revisions-final.json",
+      "sha256": "ca45551db322ef04436baede14c04e5aadee8724392b635040125549bb7be46d"
+    },
+    {
+      "path": "evidence/kept-paper/rule-context.json",
+      "sha256": "39ffb39606e05dc10fb7b627f30d3cf378988746f0718766fc4f613cccd3bb98"
+    },
+    {
+      "path": "evidence/kept-paper/validate-final.json",
+      "sha256": "339acc3b09add3c3d0e689adf17878a1bd264d3a3f00fccce7db538630e20066"
+    },
+    {
+      "path": "evidence/novel-reference-explicit.json",
+      "sha256": "be55a0fdf2a7aaee463f5bbae7046fc29c29acc2a127da04e40c6e44ea30d8db"
+    },
+    {
+      "path": "evidence/novel-reference-legacy.json",
+      "sha256": "3e83851408f5d7becf44749dbdc2a88fd3e703ba1f66952260a9f34889a0fb66"
+    },
+    {
+      "path": "evidence/novel-target-explicit.json",
+      "sha256": "e60161d62b6d52e2354f63e8b50f01d93026426354d5dab99d09104bfe8f3fa3"
+    },
+    {
+      "path": "evidence/novel-target-legacy.json",
+      "sha256": "a5bc3aea761de20e49db3bdcd1ea89c6fe2fd86e006599ab66fd7f924f1775b8"
+    },
+    {
+      "path": "evidence/wechat-draft-explicit.json",
+      "sha256": "b4bd2eacd3d0d29c085fdc156c8b1896693b147b1f39ba649834fc74625e33bd"
+    },
+    {
+      "path": "evidence/wechat-draft-legacy.json",
+      "sha256": "fa90c8ea981902e200d5213649d5a809c7e8d7ae53b53da05f8a560fd6a0a4b9"
+    },
+    {
+      "path": "evidence_tools.py",
+      "sha256": "3b8a9ce7eae381952208957f6dea768863ee33d50980c7a4b0d4c9ea22e42c42"
+    },
+    {
+      "path": "inputs/novel-materials.md",
+      "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358"
+    },
+    {
+      "path": "inputs/novel-reference-v1.0.md",
+      "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+    },
+    {
+      "path": "inputs/novel-request.md",
+      "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a"
+    },
+    {
+      "path": "inputs/novel-target-v0.3.md",
+      "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+    },
+    {
+      "path": "inputs/registration-candidate-v0.2.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    },
+    {
+      "path": "inputs/registration-old-v0.1.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+    },
+    {
+      "path": "inputs/registration-request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb"
+    },
+    {
+      "path": "inputs/wechat-draft-v0.1.md",
+      "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+    },
+    {
+      "path": "inputs/wechat-request.md",
+      "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477"
+    },
+    {
+      "path": "inputs-after.json",
+      "sha256": "900e9e9b54d79c5c3b09be5263d9fc5a413fc378ce10218c6bfc00c6879854a1"
+    },
+    {
+      "path": "inputs-before.json",
+      "sha256": "900e9e9b54d79c5c3b09be5263d9fc5a413fc378ce10218c6bfc00c6879854a1"
+    },
+    {
+      "path": "protected-files-verification.json",
+      "sha256": "8cf9a32358a903e8ac3cb8503fa3f9193d318c4bc76588bfa0b9931c855f1f31"
+    },
+    {
+      "path": "transcript.jsonl",
+      "sha256": "71e14e8fb5876be2afa240a02f7edaa67608fac496dc13e014ace41211459c53"
+    },
+    {
+      "path": "workspace/catalog.json",
+      "sha256": "65c1b287d1677436895da4dd4f73d3afb197c725c4ea1489727fc337b3e1db42"
+    },
+    {
+      "path": "workspace/novels/back-door/START-HERE.md",
+      "sha256": "4dae6e5ff9a256ce75ce6f687a68c0d49fa0deb1eb68e9b0023f1a98e7094f33"
+    },
+    {
+      "path": "workspace/novels/back-door/book.yaml",
+      "sha256": "5ffc127a50815411f5abc434d83b43f87980ee3d7c01211e14440ed74f1bc5d6"
+    },
+    {
+      "path": "workspace/novels/back-door/chapters.json",
+      "sha256": "e874cce03d18f9770f8fb5179f2a65ca2ae5a5b0ed03442e47e166eab5e4d674"
+    },
+    {
+      "path": "workspace/novels/back-door/inputs/materials-and-collaboration.md",
+      "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358"
+    },
+    {
+      "path": "workspace/novels/back-door/inputs/reference-v1.0.md",
+      "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+    },
+    {
+      "path": "workspace/novels/back-door/inputs/request.md",
+      "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a"
+    },
+    {
+      "path": "workspace/novels/back-door/inputs/target-v0.3.md",
+      "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+    },
+    {
+      "path": "workspace/novels/back-door/lifecycle/events/00000001.json",
+      "sha256": "3344a106f76ebd61881e1d096dbf2b4e0cbcfc5b2ee03824d9745d54cf98bd9e"
+    },
+    {
+      "path": "workspace/novels/back-door/lifecycle/events/00000002.json",
+      "sha256": "a2eb1a6f91aafce8769a8561f93976c4e2bacf6b62275d7d1cb0bd3acb518b78"
+    },
+    {
+      "path": "workspace/novels/back-door/lifecycle/events/00000003.json",
+      "sha256": "90b8939b9c362a8bcd8ebfe6664d2025d3c463ca5dbac8e116078fada1eb9cba"
+    },
+    {
+      "path": "workspace/novels/back-door/lifecycle/events/00000004.json",
+      "sha256": "20877fe9d48f124e7662f39a35dea8eb97a836bb33846cee0e760c9da4161099"
+    },
+    {
+      "path": "workspace/novels/back-door/lifecycle/events/00000005.json",
+      "sha256": "9f3a64bbaf834fdca4467de089955ec4a7a87ebe4336c2854c649d9c63c8d907"
+    },
+    {
+      "path": "workspace/novels/back-door/lifecycle/state.json",
+      "sha256": "65e080e68ad4f2eb86b4a84726741885db0c95615dfb66e4a82e6274489ebc29"
+    },
+    {
+      "path": "workspace/novels/back-door/outputs/artifacts.json",
+      "sha256": "6242b7977b653e0202de1053c983a9f655e3d2793110091c9a820f016204be4a"
+    },
+    {
+      "path": "workspace/novels/back-door/outputs/reading-record.json",
+      "sha256": "db703a827a81a030dd588d8b6b6b91e9ae66519a95f6e7e17129d5bbcde1b1f2"
+    },
+    {
+      "path": "workspace/novels/back-door/outputs/review.md",
+      "sha256": "1ee228a979537ff97cd5d16445ed040dc6de7ad61334ae3808071e6ec0b5b3ed"
+    },
+    {
+      "path": "workspace/novels/back-door/outputs/rule-review.json",
+      "sha256": "433c6cfde684ba28dc1ff76923a58d6adcf0019a043001cfa34bd043918b85cb"
+    },
+    {
+      "path": "workspace/novels/back-door/outputs/scene-comparison.json",
+      "sha256": "3b11184e3fa5dc1dc636f22d27c363c66d4bf57c743a2c206ff0157f8c830365"
+    },
+    {
+      "path": "workspace/novels/back-door/request.json",
+      "sha256": "5c900e4e7fb30c08feb5b727f8504e9a528196557d3b29e1cbce4ff60a90a94c"
+    },
+    {
+      "path": "workspace/novels/back-door/rules-manifest-v1.json",
+      "sha256": "d6d0b4d3f37137d1c6a5859709cf9d70745221f564e86a600247d11b136e04df"
+    },
+    {
+      "path": "workspace/novels/back-door/rules-v1.md",
+      "sha256": "d0e342b092700b603bf006a99fd3c00a7f6367973047b745cc4fe0c57c2ce5ba"
+    },
+    {
+      "path": "workspace/novels/back-door/runs/novel-review-001/artifacts/human-review.md",
+      "sha256": "1ee228a979537ff97cd5d16445ed040dc6de7ad61334ae3808071e6ec0b5b3ed"
+    },
+    {
+      "path": "workspace/novels/back-door/runs/novel-review-001/artifacts/reviewed-text.md",
+      "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+    },
+    {
+      "path": "workspace/novels/back-door/runs/novel-review-001/artifacts/rule-review.json",
+      "sha256": "433c6cfde684ba28dc1ff76923a58d6adcf0019a043001cfa34bd043918b85cb"
+    },
+    {
+      "path": "workspace/novels/back-door/runs/novel-review-001/run.json",
+      "sha256": "eda4e73f42dd3d84916a65388c60b7f64be17e779b79583a773ee43a782a0f8b"
+    },
+    {
+      "path": "workspace/novels/back-door/state.json",
+      "sha256": "fafcde7fbab2e03bbf79d48626e939dc85ebe086ecdb15870e8df7de9a02bc7b"
+    },
+    {
+      "path": "workspace/novels/back-door/版本记录/content/after-shift-draft-0.3.md",
+      "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+    },
+    {
+      "path": "workspace/novels/back-door/版本记录/content/first-count-baseline-1.0.md",
+      "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd"
+    },
+    {
+      "path": "workspace/novels/back-door/版本记录/revisions.json",
+      "sha256": "34cd7b97d2a18079bf0e41a36913d479f948f3ffb4743f78bbfb14504fe8d932"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/START-HERE.md",
+      "sha256": "1be38d5dd4e4ffc1ce414b78691e720a57e0948a81fd1c6c23d3b554db6bdbb0"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/book.yaml",
+      "sha256": "85d96868f460c311920edd67b392247f6e1122e65801cbd219568720fbe1a556"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/inputs/candidate-v0.2.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/inputs/old-v0.1.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000001.json",
+      "sha256": "0ce7cddf10b55f5a3f05f79d956c1bca0330f95880586d49993eadf26f5addeb"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000002.json",
+      "sha256": "399917b9755848fb50ccc778cd9d77a52abf0694887884c608a386ee0225f1b9"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000003.json",
+      "sha256": "9996ad6367549aa2807e84a273904eacc3097e078958338c32cee2666e43b57f"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000004.json",
+      "sha256": "71998944f861968304528c58923601a00e3fd9819d176687c0bdfe36edbd17f7"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000005.json",
+      "sha256": "358d7c0fcc9ebac0face674d9d8d1b553822293efb39d1558ad23ded6762473b"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000006.json",
+      "sha256": "aa780593bcaad3798ea5ba9e4fed221b9f207d480b0078571634d73533c9b4de"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000007.json",
+      "sha256": "cf0a3a404a08029cd14e9782eb09b4b415684a2d8b28aa0107f9cc8fb075dbdd"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/events/00000008.json",
+      "sha256": "e80ba13f57d375cef3adbcdd8f56547aecb5ff435c23dcaa8d003d1b5a4c7838"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/lifecycle/state.json",
+      "sha256": "0477605c258d4d26d158d4faae04eb369896416966dac450c20768ba989d7336"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/outputs/candidate-diff.diff",
+      "sha256": "b8e9710b6aab507ffc54856d13a2676430166442ae79745a8e88f4682e17dd95"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/outputs/completed-review.json",
+      "sha256": "a69c91bf6e9407e985edfa5f2d4b34d8644afa25a4d27b27af921db7870a924a"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/outputs/pre-registration-review.json",
+      "sha256": "9889a953c24830832d5c50189a8959aa79d9f94eecb8a7941710d98d9739165a"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/outputs/reading-record.json",
+      "sha256": "03dd883b1aad53b512840b3112e4bb577ae0834aa538a55b37144b7e62cce5ce"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/outputs/recovery-review.md",
+      "sha256": "aa64f2e6a1f25322f07bdc93dbc1361a90cd991e8b0e41f0e0164cfb33b72a85"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/request.json",
+      "sha256": "3fdbeb0877ccc7c54e12ef125f6a8435ac6f809257af454143098d41a4c70a4f"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/revision-request.json",
+      "sha256": "bb9b04324564d057f5ada86c32f94ed15935f68aa1bc05109c6e3cbb6cad4c39"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/rules-manifest-v1.json",
+      "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/rules-v1.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/runs/register-recover-001/artifacts/candidate-v02.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/runs/register-recover-001/artifacts/completed-review.json",
+      "sha256": "a69c91bf6e9407e985edfa5f2d4b34d8644afa25a4d27b27af921db7870a924a"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/runs/register-recover-001/artifacts/pre-registration-review.json",
+      "sha256": "9889a953c24830832d5c50189a8959aa79d9f94eecb8a7941710d98d9739165a"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/runs/register-recover-001/artifacts/recovery-delivery.md",
+      "sha256": "aa64f2e6a1f25322f07bdc93dbc1361a90cd991e8b0e41f0e0164cfb33b72a85"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/runs/register-recover-001/run.json",
+      "sha256": "3fb60eac602b2e4d564ddde75f63688db49fe7038b647f1767bda7d77259e568"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/state.json",
+      "sha256": "18f5ffa2a1c4df1aef3437ecc029ebc29832702a8fb89944ce6e6f5c8357ecac"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/版本记录/content/article-draft-0.1.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/版本记录/content/article-draft-0.2.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/版本记录/revisions.json",
+      "sha256": "ffd9d169c6a6e83edcb5c476eeb6b0c9b59f73c58f31ae0b8fe751d64f069e8c"
+    },
+    {
+      "path": "workspace/wechat/borrowed-tape/版本记录/rule-reviews/article-draft-0.2.json",
+      "sha256": "d76920b3e86ec56918a7f91238f164461a1f27e7a1da5cc381eafdf3624cc048"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/START-HERE.md",
+      "sha256": "5e9c729737e19e4637e3bad3e34ce0703645efc16819b1b274ae50099d8d9c32"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/book.yaml",
+      "sha256": "0c2f1e18613eb96eea42261891255e594dbd120713bdcd52c62e5aa523d69cb7"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/inputs/draft-v0.1.md",
+      "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/inputs/request.md",
+      "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/outputs/artifacts.json",
+      "sha256": "60e8c21b5cc21df7902557e4ae80c7235c8ebd1ca7b950c3f5263ed3d5eb3d15"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/outputs/reading-record.json",
+      "sha256": "c48e16abca5b8f190961b1526ff3b6aef3cde60f413b8845c9d3e46449e585b4"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/outputs/review.md",
+      "sha256": "484fbe3e9cef1d9ed29e86e029db95d791470cab58dfeae2a9779a1f3ea0d6ee"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/outputs/rule-review.json",
+      "sha256": "fde0ff019055dbc6be6d4ba6ce7c75c032f257e8c7c6c9578faf0cfe7f574ef4"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/rules-manifest-v1.json",
+      "sha256": "10f2a79a02cf9f94162ee6b9434bc84377c04845e7be241b2aebf52725dd7cfb"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/rules-v1.md",
+      "sha256": "f232aeb7ef4820963fc1cfa2173bb6d4518054ceca600128dbd6f1d1df12a339"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/state.json",
+      "sha256": "1309e03951bb7066ae5a8f28dea8de0619f02bef952ab0247e46c8013c0722eb"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/版本记录/content/article-draft-0.1.md",
+      "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+    },
+    {
+      "path": "workspace/wechat/kept-paper/版本记录/revisions.json",
+      "sha256": "ca45551db322ef04436baede14c04e5aadee8724392b635040125549bb7be46d"
+    }
+  ],
+  "evaluated_files": [
+    {
+      "path": ".agents/skills/touge-novel-writing/SKILL.md",
+      "sha256": "a01b7c4ee62f5a20d57e96e30c72bbcc828add77a79f3906c5313243a1d29e6c"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/SKILL.md",
+      "sha256": "44b48ef98d2f95222c0b3fc1cc4216dc1bb198eed8f7a73768667e43f037f1be"
+    },
+    {
+      "path": "scripts/writing_rules.py",
+      "sha256": "12e5deeeb6eb28aa645d3462c4d3d57176313e82d2dfdecb29d40788946f958d"
+    },
+    {
+      "path": "scripts/writing_workspace.py",
+      "sha256": "b5347408c922d6f0735950af78d4463731d583226fc9e4a70fe793e2afdcfd69"
+    },
+    {
+      "path": "scripts/writing_run.py",
+      "sha256": "d75713c356c1adf1a9acddd88ef9c7cecfe48c32145bec4e6fa16f96abb1b16e"
+    },
+    {
+      "path": "capabilities/registry.json",
+      "sha256": "7e8e5e11cebb329871d607519b9c520a46e866b4cb1dd9b52f09a1428528cc92"
+    },
+    {
+      "path": "capabilities/scene-design/1.0.1/CAPABILITY.md",
+      "sha256": "bec3d5640bd1dd867dea4ace828234ba99696b83536b5dc03efbb3f9d825ee53"
+    },
+    {
+      "path": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+      "sha256": "18c089960b28818d3bcda24089958bc3f3073c04b692d6d83709b0ab663d2ca2"
+    },
+    {
+      "path": "capabilities/editorial-review/1.0.2/CAPABILITY.md",
+      "sha256": "762c7dc58c08c8a784b11d7083672910d4e83db55c4ef29ff62ef138e0fae232"
+    },
+    {
+      "path": ".agents/skills/touge-novel-writing/references/recipes.json",
+      "sha256": "bf47c39ba815873208f05b8c5cc138f56aee92ba6b3e74238813b688c5cca7e4"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/references/recipes.json",
+      "sha256": "99c4e3d46d69b946ee3b510b50872cfa0873f7f26a848fb99c8dbf0c90df8fc3"
+    },
+    {
+      "path": ".agents/skills/touge-novel-writing/references/recipes.md",
+      "sha256": "648539345c7e08079b264d2eb700278815db8d235d39dbe72ac286c238d48c7a"
+    },
+    {
+      "path": ".agents/skills/touge-novel-writing/references/lifecycle.md",
+      "sha256": "9bce46fa24b0e65df086934a73fec02f1694f089f5952535c2181847f89d9ff6"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/references/recipes.md",
+      "sha256": "648539345c7e08079b264d2eb700278815db8d235d39dbe72ac286c238d48c7a"
+    },
+    {
+      "path": ".agents/skills/touge-wechat-writing/references/lifecycle.md",
+      "sha256": "9bce46fa24b0e65df086934a73fec02f1694f089f5952535c2181847f89d9ff6"
+    },
+    {
+      "path": "docs/rules.md",
+      "sha256": "96e065a02fd8ff50b3794e143ee3d7665202eb82d3b696a3b88d4115e8cb74f3"
+    },
+    {
+      "path": "scripts/manuscript_check.py",
+      "sha256": "23faa8ed0468e1241e9e36f1aa64fb388d55e6d498fc0bbbaf8d7347cc7cb942"
+    },
+    {
+      "path": "docs/cli.md",
+      "sha256": "b0f3cd31140e1eb22fea16b1555efa6a422cc696d14a9c5942a01d70f21717dd"
+    },
+    {
+      "path": "docs/runs.md",
+      "sha256": "7e55843a126ca96693ef146fbcc2d8c5afef63ad4afe8e18eaf2574164cc6c75"
+    },
+    {
+      "path": "templates/chapter-plan.md",
+      "sha256": "a4bdceab2e61a9a7a1faf8a39000e9a2d6b7ffe3c45d46e62bf61f4b75992a58"
+    },
+    {
+      "path": "templates/collaboration.md",
+      "sha256": "e042c9b16de7552272f25acc2eaa9afb90b83551947fd857d326d06904e2c9b5"
+    },
+    {
+      "path": "configs/acceptance-v2.4.2.json",
+      "sha256": "ec5fe5eac8c713de1ec07c85ea258a44eb68b5f35f5353cae6211bf069418546"
+    }
+  ],
+  "real_manuscripts_modified": false,
+  "author_approval_claimed": false
+}

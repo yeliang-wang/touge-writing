@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 7,
+  "run_id": "register-recover-001",
+  "operation_id": "save-recovery-delivery",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "recovery-delivery",
+      "path": "artifacts/recovery-delivery.md",
+      "sha256": "aa64f2e6a1f25322f07bdc93dbc1361a90cd991e8b0e41f0e0164cfb33b72a85",
+      "role": "delivery"
+    }
+  },
+  "payload_sha256": "50939eabdd1ff73c959bb9bf345856a9d224f72dcf65107b53690f1293e86eb2",
+  "previous": "51babffb466daf8b22b5e1923547229c160f57be0410a6dcce2a94221961372f"
+}

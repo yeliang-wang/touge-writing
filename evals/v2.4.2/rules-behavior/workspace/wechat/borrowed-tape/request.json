@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "register-recover-001",
+  "task": "执行 inputs/request.md 的合成请求；不访问真实私人作品",
+  "authorization_refs": [
+    "inputs/request.md（合成操作请求）"
+  ],
+  "target": "article",
+  "mode": "revise",
+  "stage": "revise",
+  "fiction_policy": {
+    "mode": "source-based",
+    "scope": "仅本任务提供的合成输入；不扩充素材事实"
+  },
+  "capabilities": [
+    "source-map@1.0.0",
+    "editorial-review@1.0.2"
+  ],
+  "inputs": [
+    {
+      "path": "inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb"
+    },
+    {
+      "path": "inputs/candidate-v0.2.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    }
+  ],
+  "parameters": {
+    "synthetic_evaluation": true
+  },
+  "open_issues": [],
+  "model": {
+    "id": "unknown",
+    "configuration": "unknown"
+  }
+}

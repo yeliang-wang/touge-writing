@@ -1,0 +1,70 @@
+{
+  "scope": "现有选定候选、旧登记、登记后条目、事件、实际 resume/verify 回执及冻结快照；登记操作核验，非文学评审。",
+  "task_result": "completed",
+  "manuscript_result": "not_assessed",
+  "rule_set_sha256": "e55163039d6fe47ab6f660a55b527159ccecc512939fba750efb3841664b0f26",
+  "findings": [
+    {
+      "location": "全文",
+      "observation": "现有候选与 run 产物及登记正文 SHA 完全一致，状态 draft；没有改写或 accepted。",
+      "resolution": "实际完成；证据见 registration-reconciliation.json 和 recovery-review.md"
+    },
+    {
+      "location": "登记新增 article-draft-0.2",
+      "observation": "实际新增一条0.2，based_on为0.1，旧条目逐字段和旧正文哈希不变；真实 register 事件一致。",
+      "resolution": "实际完成；证据见 registration-reconciliation.json 和 recovery-review.md"
+    },
+    {
+      "location": "verify/resume 实际回执",
+      "observation": "已恢复到最新0.2，唯一 drift 是登记源追加；快照、旧条目、输入、方法未变，保留提示与解释。",
+      "resolution": "实际完成；证据见 registration-reconciliation.json 和 recovery-review.md"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "candidate-v02",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "candidate-integrity",
+      "status": "satisfied",
+      "reason": "现有候选与 run 产物及登记正文 SHA 完全一致，状态 draft；没有改写或 accepted。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v02",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "location": "全文"
+        }
+      ]
+    },
+    {
+      "rule_id": "version-lineage",
+      "status": "satisfied",
+      "reason": "实际新增一条0.2，based_on为0.1，旧条目逐字段和旧正文哈希不变；真实 register 事件一致。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v02",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "location": "登记新增 article-draft-0.2"
+        }
+      ]
+    },
+    {
+      "rule_id": "recover-records",
+      "status": "satisfied",
+      "reason": "已恢复到最新0.2，唯一 drift 是登记源追加；快照、旧条目、输入、方法未变，保留提示与解释。",
+      "evidence": [
+        {
+          "artifact_id": "candidate-v02",
+          "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+          "location": "verify/resume 实际回执"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}

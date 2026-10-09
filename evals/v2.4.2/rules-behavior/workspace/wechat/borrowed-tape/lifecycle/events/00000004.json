@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "run_id": "register-recover-001",
+  "operation_id": "save-pre-registration-review",
+  "payload": {
+    "action": "artifact",
+    "artifact": {
+      "id": "pre-registration-review",
+      "path": "artifacts/pre-registration-review.json",
+      "sha256": "9889a953c24830832d5c50189a8959aa79d9f94eecb8a7941710d98d9739165a",
+      "role": "review"
+    }
+  },
+  "payload_sha256": "db947db47100ef3554b08f5f2372e7d115ad4b01186956417cbd56837ec40d7f",
+  "previous": "21c8ccb942d4b07a0ed44d08223de06c20e8bfaa74038ba4e3fbd8dace4c610c"
+}

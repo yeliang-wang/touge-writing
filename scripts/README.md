@@ -1,4 +1,4 @@
-# 确定性文件工具 · v2.4.1
+# 确定性文件工具 · v2.4.2
 
 writing_workspace 管内容与继承；material_index 适配素材清单并记录映射；writing_run 管任务、快照和恢复；capability_catalog 解析显式方法版本。它们使用标准库及 workspace_lib，不调用模型。
 
@@ -16,4 +16,6 @@ git_collaboration 在独立 Git workspace 中创建候选包并检查提交边�
 
 writing_rules 解析作品 rules_file 与可选 rules_manifest，按目标／任务类型检查引用完整性与审阅覆盖。规则 Markdown 是正文单源；工具不认证已阅读、不判断文学质量。新 run 固定规则上下文，直接登记可保存轻量审阅。见 [规则执行](../docs/rules.md)。
 
-本轮补丁的范围与兼容说明见 [v2.4.1 升级说明](../docs/upgrade-v2.4.1.md)。方法按 ID 与显式版本解析；能力数量按独立 ID 统计。验收按 VERSION 使用独立配置、行为证据及输出，保留既有版本记录。
+本轮补丁的范围与兼容说明见 [v2.4.2 升级说明](../docs/upgrade-v2.4.2.md)。方法按 ID 与显式版本解析；能力数量按独立 ID 统计。验收按 VERSION 使用独立配置、行为证据及输出，保留既有版本记录。
+
+manuscript_check 的 `explicit` 模式按明确正文／排除行范围统计，保留叙事引用；`legacy` 默认保持旧算法。报告包含范围与内容哈希，检查结果仍不认证文学质量。正文范围不是自动 Markdown 语义识别。

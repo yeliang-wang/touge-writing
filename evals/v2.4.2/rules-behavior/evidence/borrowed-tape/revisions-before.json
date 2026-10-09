@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "article-draft-0.1",
+      "kind": "text",
+      "version": "0.1",
+      "status": "draft",
+      "chapter_id": null,
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/article-draft-0.1.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+    }
+  ]
+}

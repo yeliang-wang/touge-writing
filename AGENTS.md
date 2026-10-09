@@ -1,4 +1,4 @@
-# Writing project · v2.4.1
+# Writing project · v2.4.2
 
 This repository provides shared author expression, WeChat article writing and novel writing. Codex owns execution and external MCP connections. Keep private works in the explicitly selected local workspace (recommended `~/.touge-writing/workspace`); public source is methods, templates, scripts and reviewed style abstractions.
 

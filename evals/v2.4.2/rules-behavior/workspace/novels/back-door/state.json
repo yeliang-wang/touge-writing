@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "project_id": "back-door",
+  "title": "后门的灯",
+  "book_plan": null,
+  "chapters": [
+    {
+      "id": "first-count",
+      "title": "第一次点数",
+      "plan": null,
+      "accepted_text": null,
+      "latest_text": "first-count-baseline-1.0"
+    },
+    {
+      "id": "after-shift",
+      "title": "交班后那一页",
+      "plan": null,
+      "accepted_text": null,
+      "latest_text": "after-shift-draft-0.3"
+    }
+  ],
+  "next_action": {
+    "chapter_id": "first-count",
+    "action": "review_chapter_plan"
+  }
+}

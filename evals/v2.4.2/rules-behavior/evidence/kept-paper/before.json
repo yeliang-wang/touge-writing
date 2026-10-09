@@ -1,0 +1,22 @@
+[
+  {
+    "path": "workspace/wechat/kept-paper/版本记录/revisions.json",
+    "sha256": "ca45551db322ef04436baede14c04e5aadee8724392b635040125549bb7be46d"
+  },
+  {
+    "path": "workspace/wechat/kept-paper/state.json",
+    "sha256": "1309e03951bb7066ae5a8f28dea8de0619f02bef952ab0247e46c8013c0722eb"
+  },
+  {
+    "path": "workspace/wechat/kept-paper/inputs/draft-v0.1.md",
+    "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+  },
+  {
+    "path": "workspace/wechat/kept-paper/inputs/request.md",
+    "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477"
+  },
+  {
+    "path": "workspace/wechat/kept-paper/版本记录/content/article-draft-0.1.md",
+    "sha256": "bf0ac2adfcd5813eeb5343194dea5b357c92a746988a9f27f256c3c294b81ab1"
+  }
+]

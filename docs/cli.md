@@ -58,10 +58,13 @@ material_index 的 index/read/attest-read 详见 [素材](materials.md)。build_
 可增加 parent_plan_id、based_on、decision_file；后者是作品内相对路径。规则审阅以 `review_id` 引用已保存的 run 审阅产物。source 由选定 run 产物固定，不能再指定别的文件。每次写入给稳定 operation-id，重试沿用，输入改变则换新操作。
 
 ```bash
-python3 scripts/manuscript_check.py draft.md --out scan.json
+python3 scripts/manuscript_check.py draft.md --body-policy explicit --body-range 5:120 --exclude-range 40:42 --out scan.json
+python3 scripts/manuscript_check.py draft.md --body-policy legacy --out legacy-scan.json
 ```
 
-只检查文字数量、逐字重复和标点/工作标记等线索。可选 --dash-limit 来自具体作品，不是公共审美配额。
+示例行号须按实际文件替换，`START:END` 为从 1 开始的闭区间，范围参数可重复。`explicit` 必须提供正文范围，保留所选正文引用及标题；不计入的标题或编辑说明须明确排除，越界、反向或排除后为空的范围报错。报告 `body_scope` 记录策略、范围及源文本 SHA-256。
+
+不带参数仍为 `legacy`，保留按 `#`／`>` 开头排除行的历史行为，适合复现旧结果；新的正文统计应显式选范围。数量、逐字重复和破折号密度使用相同正文范围，工作标记检查仍针对全文。可选 --dash-limit 来自具体作品，不是公共审美配额。
 
 ## 私有 Git 候选协作
 
@@ -87,7 +90,7 @@ external_operations.py 的 prepare/record 对已有作品和远端操作记账�
 python3 scripts/backup_workspace.py create --workspace "$HOME/.touge-writing/workspace" --out "$HOME/.touge-writing/backups/snapshot.tar.gz"
 python3 scripts/backup_workspace.py restore --archive "$HOME/.touge-writing/backups/snapshot.tar.gz" --destination "$HOME/.touge-writing/restores/snapshot"
 python3 scripts/export_author_profile.py --out dist/touge-author-expression-1.0.0.zip
-python3 scripts/build_release.py --out dist/touge-writing-2.4.1.zip
+python3 scripts/build_release.py --out dist/touge-writing-2.4.2.zip
 python3 scripts/acceptance.py --public-only
 python3 scripts/acceptance.py --workspace "$HOME/.touge-writing/workspace"
 ```

@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "id": "back-door-synthetic-rules-v1",
+  "project_id": "back-door",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "d0e342b092700b603bf006a99fd3c00a7f6367973047b745cc4fe0c57c2ce5ba",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a",
+      "role": "synthetic_source"
+    },
+    {
+      "path": "inputs/materials-and-collaboration.md",
+      "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358",
+      "role": "synthetic_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "source-boundary",
+      "path": "rules-v1.md",
+      "anchor": "r-source-boundary",
+      "kind": "required",
+      "targets": [
+        "after-shift"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md"
+        }
+      ]
+    },
+    {
+      "id": "reflection-scope",
+      "path": "rules-v1.md",
+      "anchor": "r-reflection-scope",
+      "kind": "required",
+      "targets": [
+        "after-shift"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md"
+        }
+      ]
+    },
+    {
+      "id": "review-only",
+      "path": "rules-v1.md",
+      "anchor": "r-review-only",
+      "kind": "required",
+      "targets": [
+        "after-shift"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md"
+        }
+      ]
+    },
+    {
+      "id": "comparison",
+      "path": "rules-v1.md",
+      "anchor": "r-comparison",
+      "kind": "required",
+      "targets": [
+        "after-shift"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md"
+        }
+      ]
+    },
+    {
+      "id": "roles",
+      "path": "rules-v1.md",
+      "anchor": "r-roles",
+      "kind": "required",
+      "targets": [
+        "after-shift"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md"
+        }
+      ]
+    }
+  ]
+}

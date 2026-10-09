@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "kept-paper-synthetic-rules-v1",
+  "project_id": "kept-paper",
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "f232aeb7ef4820963fc1cfa2173bb6d4518054ceca600128dbd6f1d1df12a339",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477",
+      "role": "synthetic_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "body-scope",
+      "path": "rules-v1.md",
+      "anchor": "r-body-scope",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "judgment",
+      "path": "rules-v1.md",
+      "anchor": "r-judgment",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "review-only",
+      "path": "rules-v1.md",
+      "anchor": "r-review-only",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    }
+  ]
+}

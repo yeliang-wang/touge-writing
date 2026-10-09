@@ -1,0 +1,101 @@
+{
+  "enabled": true,
+  "schema_version": 1,
+  "project_id": "borrowed-tape",
+  "target": "article",
+  "mode": "revise",
+  "manifest": {
+    "id": "borrowed-tape-synthetic-rules-v1",
+    "path": "rules-manifest-v1.json",
+    "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8"
+  },
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+      "role": "synthetic_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "candidate-integrity",
+      "path": "rules-v1.md",
+      "anchor": "r-candidate-integrity",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "version-lineage",
+      "path": "rules-v1.md",
+      "anchor": "r-version-lineage",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "recover-records",
+      "path": "rules-v1.md",
+      "anchor": "r-recover-records",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "revise"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    }
+  ],
+  "rule_set_sha256": "e55163039d6fe47ab6f660a55b527159ccecc512939fba750efb3841664b0f26",
+  "read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/rules-manifest-v1.json",
+      "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/rules-v1.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+      "read_state": "not_attested"
+    }
+  ]
+}

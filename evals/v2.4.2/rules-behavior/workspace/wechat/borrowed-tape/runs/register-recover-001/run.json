@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "id": "register-recover-001",
+  "request": {
+    "schema_version": 1,
+    "id": "register-recover-001",
+    "task": "执行 inputs/request.md 的合成请求；不访问真实私人作品",
+    "authorization_refs": [
+      "inputs/request.md（合成操作请求）"
+    ],
+    "target": "article",
+    "mode": "revise",
+    "stage": "revise",
+    "fiction_policy": {
+      "mode": "source-based",
+      "scope": "仅本任务提供的合成输入；不扩充素材事实"
+    },
+    "capabilities": [
+      "source-map@1.0.0",
+      "editorial-review@1.0.2"
+    ],
+    "inputs": [
+      {
+        "path": "inputs/request.md",
+        "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb"
+      },
+      {
+        "path": "inputs/candidate-v0.2.md",
+        "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10"
+      }
+    ],
+    "parameters": {
+      "synthetic_evaluation": true
+    },
+    "open_issues": [],
+    "model": {
+      "id": "unknown",
+      "configuration": "unknown"
+    }
+  },
+  "request_sha256": "10145260afd204bcb6e195975848b6d57b82b657364f1a3d53d037d74c57b473",
+  "pins": [
+    {
+      "label": "capabilities/source-map/1.0.0/CAPABILITY.md",
+      "origin": "public",
+      "source": "capabilities/source-map/1.0.0/CAPABILITY.md",
+      "snapshot": "inputs/000.md",
+      "sha256": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "capabilities/editorial-review/1.0.2/CAPABILITY.md",
+      "origin": "public",
+      "source": "capabilities/editorial-review/1.0.2/CAPABILITY.md",
+      "snapshot": "inputs/001.md",
+      "sha256": "762c7dc58c08c8a784b11d7083672910d4e83db55c4ef29ff62ef138e0fae232",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": ".agents/skills/touge-wechat-writing/SKILL.md",
+      "origin": "public",
+      "source": ".agents/skills/touge-wechat-writing/SKILL.md",
+      "snapshot": "inputs/002.md",
+      "sha256": "44b48ef98d2f95222c0b3fc1cc4216dc1bb198eed8f7a73768667e43f037f1be",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": ".agents/skills/touge-wechat-writing/references/lifecycle.json",
+      "origin": "public",
+      "source": ".agents/skills/touge-wechat-writing/references/lifecycle.json",
+      "snapshot": "inputs/003.json",
+      "sha256": "4d2de9efceba183e019085c387d2c6bbfbb13d72f441abdb5b847cfe964474bb",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/PROFILE.md",
+      "origin": "public",
+      "source": "shared/author-expression/PROFILE.md",
+      "snapshot": "inputs/004.md",
+      "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/expression-evidence.md",
+      "origin": "public",
+      "source": "shared/author-expression/expression-evidence.md",
+      "snapshot": "inputs/005.md",
+      "sha256": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/judgment.md",
+      "origin": "public",
+      "source": "shared/author-expression/judgment.md",
+      "snapshot": "inputs/006.md",
+      "sha256": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/language.md",
+      "origin": "public",
+      "source": "shared/author-expression/language.md",
+      "snapshot": "inputs/007.md",
+      "sha256": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/lexicon.yaml",
+      "origin": "public",
+      "source": "shared/author-expression/lexicon.yaml",
+      "snapshot": "inputs/008.yaml",
+      "sha256": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/rubric.md",
+      "origin": "public",
+      "source": "shared/author-expression/rubric.md",
+      "snapshot": "inputs/009.md",
+      "sha256": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/wechat-rubric.md",
+      "origin": "public",
+      "source": "shared/author-expression/wechat-rubric.md",
+      "snapshot": "inputs/010.md",
+      "sha256": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "shared/author-expression/manifest.json",
+      "origin": "public",
+      "source": "shared/author-expression/manifest.json",
+      "snapshot": "inputs/011.json",
+      "sha256": "73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "inputs/request.md",
+      "origin": "project",
+      "source": "inputs/request.md",
+      "snapshot": "inputs/012.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "inputs/candidate-v0.2.md",
+      "origin": "project",
+      "source": "inputs/candidate-v0.2.md",
+      "snapshot": "inputs/013.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "book.yaml",
+      "origin": "project",
+      "source": "book.yaml",
+      "snapshot": "inputs/014.yaml",
+      "sha256": "85d96868f460c311920edd67b392247f6e1122e65801cbd219568720fbe1a556",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "版本记录/revisions.json",
+      "origin": "project",
+      "source": "版本记录/revisions.json",
+      "snapshot": "inputs/015.json",
+      "sha256": "84c83eea6ac44492ef879b5ab71a568e93a6dedf61c0b014355f6fc33f3bdc09",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "版本记录/content/article-draft-0.1.md",
+      "origin": "project",
+      "source": "版本记录/content/article-draft-0.1.md",
+      "snapshot": "inputs/016.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "rules-manifest-v1.json",
+      "origin": "project",
+      "source": "rules-manifest-v1.json",
+      "snapshot": "inputs/017.json",
+      "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8",
+      "summary": null,
+      "summary_basis_sha256": null
+    },
+    {
+      "label": "rules-v1.md",
+      "origin": "project",
+      "source": "rules-v1.md",
+      "snapshot": "inputs/018.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+      "summary": null,
+      "summary_basis_sha256": null
+    }
+  ],
+  "author_profile_version": "1.0.0",
+  "model": {
+    "id": "unknown",
+    "configuration": "unknown"
+  },
+  "rule_context": {
+    "enabled": true,
+    "schema_version": 1,
+    "project_id": "borrowed-tape",
+    "target": "article",
+    "mode": "revise",
+    "manifest": {
+      "id": "borrowed-tape-synthetic-rules-v1",
+      "path": "rules-manifest-v1.json",
+      "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8"
+    },
+    "files": [
+      {
+        "path": "rules-v1.md",
+        "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+        "role": "rule_body"
+      },
+      {
+        "path": "inputs/request.md",
+        "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+        "role": "synthetic_source"
+      }
+    ],
+    "rules": [
+      {
+        "id": "candidate-integrity",
+        "path": "rules-v1.md",
+        "anchor": "r-candidate-integrity",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "version-lineage",
+        "path": "rules-v1.md",
+        "anchor": "r-version-lineage",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "recover-records",
+        "path": "rules-v1.md",
+        "anchor": "r-recover-records",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      }
+    ],
+    "rule_set_sha256": "e55163039d6fe47ab6f660a55b527159ccecc512939fba750efb3841664b0f26"
+  }
+}

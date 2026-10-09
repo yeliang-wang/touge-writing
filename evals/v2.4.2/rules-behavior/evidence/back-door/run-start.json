@@ -1,0 +1,399 @@
+{
+  "run": {
+    "schema_version": 1,
+    "id": "novel-review-001",
+    "request": {
+      "schema_version": 1,
+      "id": "novel-review-001",
+      "task": "执行 inputs/request.md 的合成请求；不访问真实私人作品",
+      "authorization_refs": [
+        "inputs/request.md（合成操作请求）"
+      ],
+      "target": "after-shift",
+      "mode": "review",
+      "stage": "review",
+      "fiction_policy": {
+        "mode": "source-based",
+        "scope": "仅本任务提供的合成输入；不扩充素材事实"
+      },
+      "capabilities": [
+        "source-map@1.0.0",
+        "continuity-audit@1.0.0",
+        "reflection-shaping@1.0.1",
+        "editorial-review@1.0.2"
+      ],
+      "inputs": [
+        {
+          "path": "inputs/request.md",
+          "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md",
+          "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358"
+        }
+      ],
+      "parameters": {
+        "synthetic_evaluation": true
+      },
+      "open_issues": [],
+      "model": {
+        "id": "unknown",
+        "configuration": "unknown"
+      }
+    },
+    "request_sha256": "2e04b0b4356d0ab990da36e08a915b970449bb81c82fbaefaa0c15cacf60486f",
+    "pins": [
+      {
+        "label": "capabilities/source-map/1.0.0/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/source-map/1.0.0/CAPABILITY.md",
+        "snapshot": "inputs/000.md",
+        "sha256": "530015b0a480f443adf99bd41582ca50dc17b05dc3e38998fbe39ea759523199",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "capabilities/continuity-audit/1.0.0/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/continuity-audit/1.0.0/CAPABILITY.md",
+        "snapshot": "inputs/001.md",
+        "sha256": "d68e291f20bd4fc47b49470b8a2cab18b65bc8e14c285fa523e6ca82b43cde91",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/reflection-shaping/1.0.1/CAPABILITY.md",
+        "snapshot": "inputs/002.md",
+        "sha256": "18c089960b28818d3bcda24089958bc3f3073c04b692d6d83709b0ab663d2ca2",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "capabilities/editorial-review/1.0.2/CAPABILITY.md",
+        "origin": "public",
+        "source": "capabilities/editorial-review/1.0.2/CAPABILITY.md",
+        "snapshot": "inputs/003.md",
+        "sha256": "762c7dc58c08c8a784b11d7083672910d4e83db55c4ef29ff62ef138e0fae232",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": ".agents/skills/touge-novel-writing/SKILL.md",
+        "origin": "public",
+        "source": ".agents/skills/touge-novel-writing/SKILL.md",
+        "snapshot": "inputs/004.md",
+        "sha256": "a01b7c4ee62f5a20d57e96e30c72bbcc828add77a79f3906c5313243a1d29e6c",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": ".agents/skills/touge-novel-writing/references/lifecycle.json",
+        "origin": "public",
+        "source": ".agents/skills/touge-novel-writing/references/lifecycle.json",
+        "snapshot": "inputs/005.json",
+        "sha256": "a4f4df3ecf7dffc1c924af9ba0396ce9c45beaaa6c151507a28a3b85d4337991",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/PROFILE.md",
+        "origin": "public",
+        "source": "shared/author-expression/PROFILE.md",
+        "snapshot": "inputs/006.md",
+        "sha256": "45feba1f70de2a0739a374d34f5c735b715d5b2a306b5d66a1fde686a26d626d",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/expression-evidence.md",
+        "origin": "public",
+        "source": "shared/author-expression/expression-evidence.md",
+        "snapshot": "inputs/007.md",
+        "sha256": "463b30532d3d6748e356b8b4cb1e64283d07f034eb1fe53ac3a4e754dd32cecb",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/judgment.md",
+        "origin": "public",
+        "source": "shared/author-expression/judgment.md",
+        "snapshot": "inputs/008.md",
+        "sha256": "f4ccc6c33c77100e3a7b1d6933b6ffa0961ae4dc6da55ebdceb5f8f916d38ede",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/language.md",
+        "origin": "public",
+        "source": "shared/author-expression/language.md",
+        "snapshot": "inputs/009.md",
+        "sha256": "08f0b31e373139cb76ffe850c56effe3af8ea7427c3fc78b7b1eee9d76ad1f3a",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/lexicon.yaml",
+        "origin": "public",
+        "source": "shared/author-expression/lexicon.yaml",
+        "snapshot": "inputs/010.yaml",
+        "sha256": "09af9ebc8ab3e2001599e67db310aead850ca6418bfedebf5aa138eef9e75582",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/rubric.md",
+        "origin": "public",
+        "source": "shared/author-expression/rubric.md",
+        "snapshot": "inputs/011.md",
+        "sha256": "68771d43a3b906935541f5e051393265e378651a163a0ccf5b70c2531be2b000",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/wechat-rubric.md",
+        "origin": "public",
+        "source": "shared/author-expression/wechat-rubric.md",
+        "snapshot": "inputs/012.md",
+        "sha256": "6e3e6d28e58132fb56cde6608fc8122155f08c21f386e01461bd8f1368cdbda0",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "shared/author-expression/manifest.json",
+        "origin": "public",
+        "source": "shared/author-expression/manifest.json",
+        "snapshot": "inputs/013.json",
+        "sha256": "73259778739ae96ff74cc8fc0314c8ff493502a1fc8ce3d9b2d8c1b03e66ce09",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "inputs/request.md",
+        "origin": "project",
+        "source": "inputs/request.md",
+        "snapshot": "inputs/014.md",
+        "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "inputs/materials-and-collaboration.md",
+        "origin": "project",
+        "source": "inputs/materials-and-collaboration.md",
+        "snapshot": "inputs/015.md",
+        "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "book.yaml",
+        "origin": "project",
+        "source": "book.yaml",
+        "snapshot": "inputs/016.yaml",
+        "sha256": "5ffc127a50815411f5abc434d83b43f87980ee3d7c01211e14440ed74f1bc5d6",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "版本记录/revisions.json",
+        "origin": "project",
+        "source": "版本记录/revisions.json",
+        "snapshot": "inputs/017.json",
+        "sha256": "34cd7b97d2a18079bf0e41a36913d479f948f3ffb4743f78bbfb14504fe8d932",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "版本记录/content/first-count-baseline-1.0.md",
+        "origin": "project",
+        "source": "版本记录/content/first-count-baseline-1.0.md",
+        "snapshot": "inputs/018.md",
+        "sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "版本记录/content/after-shift-draft-0.3.md",
+        "origin": "project",
+        "source": "版本记录/content/after-shift-draft-0.3.md",
+        "snapshot": "inputs/019.md",
+        "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "rules-manifest-v1.json",
+        "origin": "project",
+        "source": "rules-manifest-v1.json",
+        "snapshot": "inputs/020.json",
+        "sha256": "d6d0b4d3f37137d1c6a5859709cf9d70745221f564e86a600247d11b136e04df",
+        "summary": null,
+        "summary_basis_sha256": null
+      },
+      {
+        "label": "rules-v1.md",
+        "origin": "project",
+        "source": "rules-v1.md",
+        "snapshot": "inputs/021.md",
+        "sha256": "d0e342b092700b603bf006a99fd3c00a7f6367973047b745cc4fe0c57c2ce5ba",
+        "summary": null,
+        "summary_basis_sha256": null
+      }
+    ],
+    "author_profile_version": "1.0.0",
+    "model": {
+      "id": "unknown",
+      "configuration": "unknown"
+    },
+    "rule_context": {
+      "enabled": true,
+      "schema_version": 1,
+      "project_id": "back-door",
+      "target": "after-shift",
+      "mode": "review",
+      "manifest": {
+        "id": "back-door-synthetic-rules-v1",
+        "path": "rules-manifest-v1.json",
+        "sha256": "d6d0b4d3f37137d1c6a5859709cf9d70745221f564e86a600247d11b136e04df"
+      },
+      "files": [
+        {
+          "path": "rules-v1.md",
+          "sha256": "d0e342b092700b603bf006a99fd3c00a7f6367973047b745cc4fe0c57c2ce5ba",
+          "role": "rule_body"
+        },
+        {
+          "path": "inputs/request.md",
+          "sha256": "8eb435d9fc5ce6493eed7499af20655e70b7191924b9352ddef34de20c196b0a",
+          "role": "synthetic_source"
+        },
+        {
+          "path": "inputs/materials-and-collaboration.md",
+          "sha256": "18891818c12c41fae0e1f1df4898aee00d5304c8d752e7fce387e54252acc358",
+          "role": "synthetic_source"
+        }
+      ],
+      "rules": [
+        {
+          "id": "source-boundary",
+          "path": "rules-v1.md",
+          "anchor": "r-source-boundary",
+          "kind": "required",
+          "targets": [
+            "after-shift"
+          ],
+          "modes": [
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            },
+            {
+              "path": "inputs/materials-and-collaboration.md"
+            }
+          ]
+        },
+        {
+          "id": "reflection-scope",
+          "path": "rules-v1.md",
+          "anchor": "r-reflection-scope",
+          "kind": "required",
+          "targets": [
+            "after-shift"
+          ],
+          "modes": [
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            },
+            {
+              "path": "inputs/materials-and-collaboration.md"
+            }
+          ]
+        },
+        {
+          "id": "review-only",
+          "path": "rules-v1.md",
+          "anchor": "r-review-only",
+          "kind": "required",
+          "targets": [
+            "after-shift"
+          ],
+          "modes": [
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            },
+            {
+              "path": "inputs/materials-and-collaboration.md"
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "path": "rules-v1.md",
+          "anchor": "r-comparison",
+          "kind": "required",
+          "targets": [
+            "after-shift"
+          ],
+          "modes": [
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            },
+            {
+              "path": "inputs/materials-and-collaboration.md"
+            }
+          ]
+        },
+        {
+          "id": "roles",
+          "path": "rules-v1.md",
+          "anchor": "r-roles",
+          "kind": "required",
+          "targets": [
+            "after-shift"
+          ],
+          "modes": [
+            "review"
+          ],
+          "check": "semantic",
+          "sources": [
+            {
+              "path": "inputs/request.md"
+            },
+            {
+              "path": "inputs/materials-and-collaboration.md"
+            }
+          ]
+        }
+      ],
+      "rule_set_sha256": "8758bb1215213d2f535d47fdbdeb7e29b1b508ae0c3f86ef1648fdd7495a88eb"
+    }
+  },
+  "state": {
+    "run_id": "novel-review-001",
+    "stage": "review",
+    "mode": "review",
+    "target": "after-shift",
+    "artifacts": [],
+    "registered_versions": [],
+    "resolved_issues": []
+  },
+  "drift": [],
+  "reproduction": "Locked inputs support audit, not deterministic model regeneration"
+}

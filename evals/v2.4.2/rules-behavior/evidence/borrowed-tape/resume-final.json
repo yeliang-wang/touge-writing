@@ -1,0 +1,132 @@
+{
+  "state": {
+    "schema_version": 1,
+    "project_id": "borrowed-tape",
+    "title": "借出去的卷尺",
+    "book_plan": null,
+    "chapters": [],
+    "next_action": null,
+    "latest_text": "article-draft-0.2"
+  },
+  "selected_chapter": null,
+  "active_task": null,
+  "task_precedence": "Explicit chapter selection, then active task, then legacy next_action. Content acceptance is unchanged.",
+  "material_maps": [],
+  "read_full_text": [
+    {
+      "id": "article-draft-0.2",
+      "role": "article_text",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/版本记录/content/article-draft-0.2.md",
+      "status": "draft",
+      "version": "0.2",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+      "excerpt": "# 借出去的卷尺\n\n邻居借走卷尺时，我随口说用完再还。隔了一周要量书架，我才想起它还在外面。后来我们约了一个归还日期。日期到了我仍得问一句，但至少知道从哪一天开始问。\n",
+      "excerpt_is_full_read": false
+    }
+  ],
+  "rules_path": "<EVAL>/workspace/wechat/borrowed-tape/rules-v1.md",
+  "rule_context": {
+    "enabled": true,
+    "schema_version": 1,
+    "project_id": "borrowed-tape",
+    "target": "article",
+    "mode": null,
+    "manifest": {
+      "id": "borrowed-tape-synthetic-rules-v1",
+      "path": "rules-manifest-v1.json",
+      "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8"
+    },
+    "files": [
+      {
+        "path": "rules-v1.md",
+        "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+        "role": "rule_body"
+      },
+      {
+        "path": "inputs/request.md",
+        "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+        "role": "synthetic_source"
+      }
+    ],
+    "rules": [
+      {
+        "id": "candidate-integrity",
+        "path": "rules-v1.md",
+        "anchor": "r-candidate-integrity",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "version-lineage",
+        "path": "rules-v1.md",
+        "anchor": "r-version-lineage",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      },
+      {
+        "id": "recover-records",
+        "path": "rules-v1.md",
+        "anchor": "r-recover-records",
+        "kind": "required",
+        "targets": [
+          "article"
+        ],
+        "modes": [
+          "revise"
+        ],
+        "check": "semantic",
+        "sources": [
+          {
+            "path": "inputs/request.md"
+          }
+        ]
+      }
+    ],
+    "rule_set_sha256": "6bbe72b4a53f793791a59def8c10a32390efb2d6ac59d440dc5e96a544d2230a"
+  },
+  "rules_read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/rules-manifest-v1.json",
+      "sha256": "be06e61880baad052655f00b47d34fe98477fc4598856b3d1bdb15f354d9ade8",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/rules-v1.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/wechat/borrowed-tape/inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+      "read_state": "not_attested"
+    }
+  ],
+  "open_issues_path": null,
+  "workspace": "<EVAL>/workspace",
+  "project_path": "<EVAL>/workspace/wechat/borrowed-tape"
+}

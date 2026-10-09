@@ -1,0 +1,33 @@
+{
+  "chinese_characters": 260,
+  "dash_density_per_100": 0.0,
+  "dash_limit_exceeded": false,
+  "repeated_windows": [],
+  "structural_word_findings": [],
+  "body_scope": {
+    "policy": "explicit",
+    "line_numbering": "1-based, inclusive",
+    "input_text_sha256": "01f0316c958ed056c9db192357a948b416fcffa96684a96a451ea48da38c15bd",
+    "total_lines": 21,
+    "body_ranges": [
+      [
+        7,
+        17
+      ]
+    ],
+    "exclude_ranges": [],
+    "retained_ranges": [
+      [
+        7,
+        17
+      ]
+    ],
+    "repeated_window_scope": "within_retained_paragraphs",
+    "repeat_position_unit": "0-based Han-character offset in retained body",
+    "interpretation": "Only the selected ranges define body; headings, notes and quotations are not auto-classified."
+  },
+  "structural_word_findings_scope": "full_text",
+  "facts_verified": false,
+  "meaning": "机械扫描线索，需按作品约定审阅；不代表事实或文学质量验收。"
+}
+

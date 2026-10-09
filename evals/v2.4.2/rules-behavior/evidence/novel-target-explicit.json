@@ -1,0 +1,38 @@
+{
+  "chinese_characters": 453,
+  "dash_density_per_100": 0.0,
+  "dash_limit_exceeded": false,
+  "repeated_windows": [],
+  "structural_word_findings": [
+    {
+      "line": 5,
+      "marker": "工作区"
+    }
+  ],
+  "body_scope": {
+    "policy": "explicit",
+    "line_numbering": "1-based, inclusive",
+    "input_text_sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+    "total_lines": 25,
+    "body_ranges": [
+      [
+        9,
+        21
+      ]
+    ],
+    "exclude_ranges": [],
+    "retained_ranges": [
+      [
+        9,
+        21
+      ]
+    ],
+    "repeated_window_scope": "within_retained_paragraphs",
+    "repeat_position_unit": "0-based Han-character offset in retained body",
+    "interpretation": "Only the selected ranges define body; headings, notes and quotations are not auto-classified."
+  },
+  "structural_word_findings_scope": "full_text",
+  "facts_verified": false,
+  "meaning": "机械扫描线索，需按作品约定审阅；不代表事实或文学质量验收。"
+}
+

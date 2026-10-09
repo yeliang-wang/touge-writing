@@ -1,0 +1,26 @@
+{
+  "scope": "All listed synthetic input files and scoped rule text read in full; not an attestation of factual truth.",
+  "relationship": "self_review",
+  "files": [
+    {
+      "path": "inputs/candidate-v0.2.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+      "read_coverage": "full_file"
+    },
+    {
+      "path": "inputs/old-v0.1.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8",
+      "read_coverage": "full_file"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "a1d82115db7977dd43ee63885a3af05b2586c1cd4decc58e2cae5aa9712fa5fb",
+      "read_coverage": "full_file"
+    },
+    {
+      "path": "rules-v1.md",
+      "sha256": "c1834df279ef0b9b59343d62e49dede057b847f440e26b89b42fbf3e0092ff7e",
+      "read_coverage": "full_file"
+    }
+  ]
+}

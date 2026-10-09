@@ -11,3 +11,5 @@ collaboration 用于合作作品，填写私人仓库、共同基准、分工、
 work-rules 为私人规则正文格式，rule-review 为轻量语义审阅。规则索引只绑定 ID、来源、适用范围和文件哈希；不要把合成示例直接视为作者决定。章方案记录继承与落点，run-review 按本轮规则记录逐项证据；小改可不创建 run。详见 [规则执行](../docs/rules.md)。
 
 [规则正文](work-rules.md) · [合成规则索引](rules-manifest.json) · [结构化规则审阅](rules-review.json) · [轻量规则审阅](rule-review.md)
+
+v2.4.2 的章节与合作模板增加可选角色字段，区分经历主体／叙述者、素材作者、执笔者与确认权限。只在实际合写或改编需要时填写，不新增登记 schema 或强制审批阶段。

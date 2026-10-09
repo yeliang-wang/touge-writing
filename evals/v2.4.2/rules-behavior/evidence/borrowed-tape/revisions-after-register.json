@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "revisions": [
+    {
+      "id": "article-draft-0.1",
+      "kind": "text",
+      "version": "0.1",
+      "status": "draft",
+      "chapter_id": null,
+      "parent_plan_id": null,
+      "based_on": null,
+      "path": "版本记录/content/article-draft-0.1.md",
+      "sha256": "8687acc505c8269c95ae2f9cda09961c3b3e793437d96acfae0f0b694b9505b8"
+    },
+    {
+      "id": "article-draft-0.2",
+      "kind": "text",
+      "version": "0.2",
+      "status": "draft",
+      "chapter_id": null,
+      "parent_plan_id": null,
+      "based_on": "article-draft-0.1",
+      "path": "版本记录/content/article-draft-0.2.md",
+      "sha256": "1261ec6189d890315e779aa0bcd257768b90de8f20b56ea716e83a3d62a80b10",
+      "rule_review": {
+        "path": "版本记录/rule-reviews/article-draft-0.2.json",
+        "sha256": "d76920b3e86ec56918a7f91238f164461a1f27e7a1da5cc381eafdf3624cc048",
+        "rule_set_sha256": "e55163039d6fe47ab6f660a55b527159ccecc512939fba750efb3841664b0f26"
+      }
+    }
+  ]
+}

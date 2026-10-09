@@ -1,0 +1,101 @@
+{
+  "enabled": true,
+  "schema_version": 1,
+  "project_id": "kept-paper",
+  "target": "article",
+  "mode": "review",
+  "manifest": {
+    "id": "kept-paper-synthetic-rules-v1",
+    "path": "rules-manifest-v1.json",
+    "sha256": "10f2a79a02cf9f94162ee6b9434bc84377c04845e7be241b2aebf52725dd7cfb"
+  },
+  "files": [
+    {
+      "path": "rules-v1.md",
+      "sha256": "f232aeb7ef4820963fc1cfa2173bb6d4518054ceca600128dbd6f1d1df12a339",
+      "role": "rule_body"
+    },
+    {
+      "path": "inputs/request.md",
+      "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477",
+      "role": "synthetic_source"
+    }
+  ],
+  "rules": [
+    {
+      "id": "body-scope",
+      "path": "rules-v1.md",
+      "anchor": "r-body-scope",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "judgment",
+      "path": "rules-v1.md",
+      "anchor": "r-judgment",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    },
+    {
+      "id": "review-only",
+      "path": "rules-v1.md",
+      "anchor": "r-review-only",
+      "kind": "required",
+      "targets": [
+        "article"
+      ],
+      "modes": [
+        "review"
+      ],
+      "check": "semantic",
+      "sources": [
+        {
+          "path": "inputs/request.md"
+        }
+      ]
+    }
+  ],
+  "rule_set_sha256": "fcc8104500392e0a61c0b0912e5190ad912dd11a475dd5a968f59a2ebe883575",
+  "read_full_text": [
+    {
+      "source": "rules-manifest-v1.json",
+      "path": "<EVAL>/workspace/wechat/kept-paper/rules-manifest-v1.json",
+      "sha256": "10f2a79a02cf9f94162ee6b9434bc84377c04845e7be241b2aebf52725dd7cfb",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "rules-v1.md",
+      "path": "<EVAL>/workspace/wechat/kept-paper/rules-v1.md",
+      "sha256": "f232aeb7ef4820963fc1cfa2173bb6d4518054ceca600128dbd6f1d1df12a339",
+      "read_state": "not_attested"
+    },
+    {
+      "source": "inputs/request.md",
+      "path": "<EVAL>/workspace/wechat/kept-paper/inputs/request.md",
+      "sha256": "dce2b8aac2ff966a4c2be4de105e8576e735c6431254fad79813a56d3f112477",
+      "read_state": "not_attested"
+    }
+  ]
+}

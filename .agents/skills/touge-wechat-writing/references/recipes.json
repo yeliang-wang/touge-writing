@@ -15,13 +15,13 @@
     "continuity-audit@1.0.0",
     "author-voice-review@1.0.0",
     "prose-hygiene@1.0.0",
-    "editorial-review@1.0.1"
+    "editorial-review@1.0.2"
   ],
   "revise": [
     "source-map@1.0.0",
     "continuity-audit@1.0.0",
     "reflection-shaping@1.0.1",
-    "editorial-review@1.0.1"
+    "editorial-review@1.0.2"
   ],
   "title": [
     "title-design@1.0.0"

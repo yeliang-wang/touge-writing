@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "run_id": "register-recover-001",
+  "operation_id": "start",
+  "payload": {
+    "action": "start",
+    "request_sha256": "10145260afd204bcb6e195975848b6d57b82b657364f1a3d53d037d74c57b473",
+    "mode": "revise",
+    "target": "article",
+    "stage": "revise",
+    "manifest_sha256": "3fb60eac602b2e4d564ddde75f63688db49fe7038b647f1767bda7d77259e568"
+  },
+  "payload_sha256": "789b9571ed0bd78fe3cf3e63083eed888439dd72d9abcc7d9ae1f90429a6ad51",
+  "previous": null
+}

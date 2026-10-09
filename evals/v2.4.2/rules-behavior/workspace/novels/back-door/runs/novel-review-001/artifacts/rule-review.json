@@ -1,0 +1,104 @@
+{
+  "scope": "完整当前正文、请求、适用规则；小说另读完整参考章与合作/素材原文。",
+  "task_result": "completed",
+  "manuscript_result": "needs_revision",
+  "rule_set_sha256": "8758bb1215213d2f535d47fdbdeb7e29b1b508ae0c3f86ef1648fdd7495a88eb",
+  "findings": [
+    {
+      "location": "L11",
+      "observation": "主管动机断言与摘记的不清楚冲突；抽屉和描字细节还缺独立核实。本次只审，不补资料。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    },
+    {
+      "location": "L19–L21",
+      "observation": "回望同义叠加，结尾一定能查清超出本事件支持；已定位并给修改优先级，未改稿。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    },
+    {
+      "location": "全文及审阅交付",
+      "observation": "只保存审阅和原稿的 run 副本；正式登记与原稿均不改。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    },
+    {
+      "location": "L9–L21；参考 L7–L17",
+      "observation": "同一汉字口径保留纸条、排除编务附录；按完整句切分混合段，分开现场/铺垫/后果/回望，并说明边界。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    },
+    {
+      "location": "L3及材料合作记录",
+      "observation": "整理署名不作章节作者；乔宁、苏禾、陈岚、梁帆的职责和联合确认要求分别列出，正式署名未确认。",
+      "resolution": "仅审阅交付，正文保持不变；详情见 outputs/review.md"
+    }
+  ],
+  "unresolved_blockers": [],
+  "artifacts": [
+    {
+      "id": "reviewed-text",
+      "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27"
+    }
+  ],
+  "rule_coverage": [
+    {
+      "rule_id": "source-boundary",
+      "status": "needs_verification",
+      "reason": "主管动机断言与摘记的不清楚冲突；抽屉和描字细节还缺独立核实。本次只审，不补资料。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-text",
+          "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+          "location": "L11"
+        }
+      ]
+    },
+    {
+      "rule_id": "reflection-scope",
+      "status": "unmet",
+      "reason": "回望同义叠加，结尾一定能查清超出本事件支持；已定位并给修改优先级，未改稿。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-text",
+          "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+          "location": "L19–L21"
+        }
+      ]
+    },
+    {
+      "rule_id": "review-only",
+      "status": "satisfied",
+      "reason": "只保存审阅和原稿的 run 副本；正式登记与原稿均不改。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-text",
+          "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+          "location": "全文及审阅交付"
+        }
+      ]
+    },
+    {
+      "rule_id": "comparison",
+      "status": "satisfied",
+      "reason": "同一汉字口径保留纸条、排除编务附录；按完整句切分混合段，分开现场/铺垫/后果/回望，并说明边界。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-text",
+          "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+          "location": "L9–L21；参考 L7–L17"
+        }
+      ]
+    },
+    {
+      "rule_id": "roles",
+      "status": "satisfied",
+      "reason": "整理署名不作章节作者；乔宁、苏禾、陈岚、梁帆的职责和联合确认要求分别列出，正式署名未确认。",
+      "evidence": [
+        {
+          "artifact_id": "reviewed-text",
+          "sha256": "1b0af0357f2f15a12118523fb05b638d09d0bd902e4b7eeec754f9b960e9ac27",
+          "location": "L3及材料合作记录"
+        }
+      ]
+    }
+  ],
+  "reviewer_relationship": "self_review",
+  "author_aesthetic_approval": "not_requested"
+}
